@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report 
+            id="report_sale_order"
+            string="Project Details"
+            model="project.project" 
+            report_type="qweb-pdf"
+            file="project_report.report_projectdetail" 
+            name="project_report.report_projectdetail" />
+    </data>
+</openerp>

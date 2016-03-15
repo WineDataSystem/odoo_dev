@@ -1,0 +1,106 @@
+<t name="Product" t-name="website_sale.product">
+  <t t-call="website.layout">
+    <script type="text/javascript" src="/website_sale/static/src/js/website_sale_tracking.js"/>
+    <t t-set="additional_title" t-value="product.name"/>
+    <div itemscope="itemscope" itemtype="http://schema.org/Product" id="wrap" class="js_sale">
+      <section class="container mt8">
+        <div class="row">
+          <div class="col-sm-4">
+            <ol class="breadcrumb">
+              <li>
+                <a t-att-href="keep(category=0)" onclick="history.go(-1); return false;">Products</a>
+              </li>
+              <li t-if="category">
+                <a t-att-href="keep()" t-field="category.name"/>
+              </li>
+              <li class="active">
+                <span t-field="product.name"/>
+              </li>
+            </ol>
+          </div>
+          <div class="col-sm-4" groups="base.group_sale_manager">
+            <t t-call="website.publish_management">
+              <t t-set="object" t-value="product"/>
+              <t t-set="publish_edit" t-value="True"/>
+              <t t-set="action" t-value="'product.product_template_action'"/>
+            </t>
+          </div>
+        </div>
+      </section>
+      <section t-attf-class="container oe_website_sale #{(compute_currency(product.lst_price) - product.price) &gt; 0.1 and 'discount'}" id="product_detail">
+        <div class="row">
+        
+        
+          <div class="col-sm-7 col-md-7 col-lg-7">
+            <t t-name="private.website.videos" t-if="not user_id.partner_id.name == 'Public user' and product.description_purchase">
+              <h4>You are an OdooClass.com subscriber. Use the player below to watch the video.</h4>
+              <t t-set="CloudFronthref" t-value="'http://d31yc6elm41351.cloudfront.net/' + product.x_fullurl"/>
+              <link href="//vjs.zencdn.net/4.9/video-js.css" rel="stylesheet"/>
+              <script src="//vjs.zencdn.net/4.9/video.js"/>
+              <video id="example_video_1" class="video-js vjs-default-skin" width="520" height="310" data-setup="{ &quot;controls&quot;: true, &quot;autoplay&quot;: false, &quot;preload&quot;: &quot;auto&quot;}">
+                <source t-att-src="CloudFronthref" type="video/mp4"/>
+                <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+              </video>
+              <h4>Have trouble using the player? Download the video using the link below:</h4>
+              <t t-set="s3href" t-value="'https://s3.amazonaws.com/subscriptionvideos/' + product.x_fullurl"/>
+              <p>
+                <a t-att-href="CloudFronthref" type="video/mp4">Direct download link (CloudFront)</a>
+              </p>
+              <p>
+                <a t-att-href="s3href">Alternate download link to video (Amazon S3)</a>
+              </p>
+              <h4>Download Information</h4>
+              <span class="text-muted">CloudFront provides the fastest possible service by automatically copying the videos from the central Amazon S3 server to servers close to your region. This allows for the fastest possible delivery of the videos. Unfortunately, while this service from Amazon is transparent and works great for many users, some users have trouble with CloudFront in their region. When this occurs, you can use the alternate S3 link to download the video. That has been more reliable than the CloudFront method for some users. If you continue to have problems downloading videos, do not hesitate to contact us. </span>
+            </t>
+            <t t-name="public.website.videos" t-if="user_id.partner_id.name == 'Public user' or not product.description_purchase">
+              <h4>Premium Video: Become an OdooClass.com subscriber to view the video below.</h4>
+              <a href="/page/video-subscription-page">
+                <span itemprop="image" t-field="product.image" t-field-options="{&quot;widget&quot;: &quot;image&quot;, &quot;class&quot;: &quot;product_detail_img&quot;}"/>
+              </a>
+            </t>
+          </div>
+          
+          
+          
+          
+          
+          <div class="col-sm-5 col-md-5 col-lg-4 col-lg-offset-1">
+            <h1 itemprop="name" t-field="product.name">Product Name</h1>
+            <span itemprop="url" style="display:none;" t-esc="'/shop/product/%s' % slug(product)"/>
+            <form t-att-action="keep('/shop/cart/update')" class="js_add_cart_variants" method="POST">
+              <div class="js_product">
+                <t t-placeholder="select">
+                  <input type="hidden" class="product_id" name="product_id" t-att-value="int(product.product_variant_ids[0]) if len(product.product_variant_ids) == 1 else '0'"/>
+                  <t t-call="website_sale.variants">
+                    <t t-set="ul_class" t-value="'nav-stacked'"/>
+                  </t>
+                </t>
+                <t t-name="public.website.videos" t-if="user_id.partner_id.name == 'Public user' and not product.description_sale == 'Subscription Only'">
+                  <t t-call="website_sale.product_price"/>
+                  <p t-if="len(product.product_variant_ids) &gt; 1" class="css_not_available_msg bg-danger" style="padding: 15px;">Product not available</p>
+                  <a id="add_to_cart" class="btn btn-primary btn-lg mt8 js_check_product a-submit" href="#">Add to Cart</a>
+                  <a class="btn btn-success  btn-lg mt8" href="/page/video-subscription-page"><i class="fa fa-arrow-right"/> Subscription Options</a>
+                </t>
+              </div>
+            </form>
+            <hr t-if="product.description_sale"/>
+            <t t-name="public.website.videos" t-if="user_id.partner_id.name == 'Public user' and product.description_sale == 'Subscription Only'">
+              <span itemprop="price" style="display:none;" t-esc="product.price"/>
+            </t>
+            <div>
+              <p t-field="product.description_sale" class="text-muted"/>
+              <h4>Video Length:
+              <span t-field="product.x_videolength" class="text-muted"/></h4>
+            </div>
+            <div t-if="user_id.partner_id.name == 'Public user'">
+              <a class="btn btn-success  btn-lg mt8" href="/page/website.sample-videos"><i class="fa fa-arrow-right"/> View Sample Videos</a>
+              <a class="btn btn-primary  btn-lg mt8" href="/page/video-subscription-page"><i class="fa fa-arrow-right"/> Subscribe</a>
+            </div>
+            <hr/>
+            <p class="text-muted"/>
+          </div>
+        </div>
+      </section>
+      <div itemprop="description" t-field="product.website_description" class="oe_structure mt16" id="product_full_description"/>
+    </div>
+  </t>

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <!-- Website Page Export view -->
+
+        <record model="ir.ui.view" id="pageexport_view">
+            <field name="name">pageexport.form</field>
+            <field name="model">pageexport</field>
+            <field name="arch" type="xml">
+                <form string="Export Web Pages">
+                    <label string="Please select the webpages you need to export"/>
+                    <group>
+	                    <field name="page_ids" widget="many2many_tags" options="{'no_create': True}"/>
+	                    <field name="name"/>
+	                    <field name="port"/>
+	                    <field name="db"/>
+	                    <field name="user"/>
+	                    <field name="pwd"/>
+                    </group>
+                    <footer>
+                        <button name="pageexport" type="object"
+                            string="Export" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Website Page Export action -->
+
+        <record model="ir.actions.act_window" id="pageexport_act">
+            <field name="name">Export Web Pages</field>
+            <field name="res_model">pageexport</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="pageexport_view"/>
+            <field name="target">new</field>
+        </record>
+        <menuitem action="pageexport_act" id="pageexport_menu" parent="base.next_id_2" sequence="1"/>
+    </data>
+</openerp>   

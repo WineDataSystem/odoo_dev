@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="report_projectdetail_document">
+    <t t-call="report.external_layout">
+        <div class="page">
+            <div class="oe_structure"/>
+            <img t-att-src="'/report/barcode/QR/%s' % 'My text in qr code'"/>
+            <h2>
+                <span>Project XPTO:</span>
+                <span t-esc="dd()"/>
+            </h2>
+            <h2>
+                <span>Project Name:</span>
+                <span t-field="o.name"/>
+            </h2>
+            <div class="row mt32 mb32" id="informations">
+                <div t-if="o.user_id" class="col-xs-3">
+                    <strong>Project Manager:</strong>
+                    <p t-field="o.user_id"/>
+                </div>
+                <div t-if="o.partner_id" class="col-xs-3">
+                    <strong>Customer:</strong>
+                    <p t-field="o.partner_id"/>
+                </div>
+            </div>
+            <div class="oe_structure"/>
+        </div>
+    </t>
+</template>
+
+<template id="report_projectdetail">
+    <t t-call="report.html_container">
+    	
+        <t t-foreach="doc_ids" t-as="doc_id">
+            <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 
+            			'project_report.report_projectdetail_document')"/>
+        </t>
+    </t>
+</template>
+</data>
+</openerp>
