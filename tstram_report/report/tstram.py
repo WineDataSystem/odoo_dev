@@ -31,6 +31,7 @@ class tstram_report(osv.osv):
         cr.execute("""
             create or replace view tstram_report as (
                 SELECT
+                  i.id,
                   i.date_due,
                   i.partner_id,
                   i.type,

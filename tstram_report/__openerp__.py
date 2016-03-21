@@ -13,7 +13,6 @@ Tstram Report
     'installable': True,
     'data': [
         'report/tstram_view.xml',
-        'report/website_templates.xml'
     ],
     'demo': [
     ],
