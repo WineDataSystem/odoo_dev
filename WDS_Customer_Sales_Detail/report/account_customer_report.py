@@ -23,9 +23,9 @@ from openerp import tools
 import openerp.addons.decimal_precision as dp
 from openerp.osv import fields,osv
 
-class account_sales_report(osv.osv):
-    _name = "account.sales.report"
-    _description = "Statistiques Ventes"
+class account_customer_report(osv.osv):
+    _name = "account.customer.report"
+    _description = "Stats Client"
     _auto = False
     _rec_name = 'date'
 

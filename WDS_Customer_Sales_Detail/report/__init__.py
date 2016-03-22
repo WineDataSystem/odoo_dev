@@ -18,27 +18,8 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-{
-    'name' : 'WDS_Report_Client',
-    'version' : '1.1',
-    'author' : 'WineDataSystem',
-    'category' : 'Sales',
-    'description' : """
-Suivi des ventes.
-    """,
-    'website': 'http://www.winedatasystem.com',
-    'depends' : ['base_setup', 'product', 'analytic', 'board', 'edi', 'report'],
-    'data': [
-        'report/account_sales_report_view_wds.xml',
-    ],
-    'qweb' : [
-    ],
-    'demo': [
-    ],
-    'test': [
-    ],
-    'installable': True,
-    'auto_install': False,
-}
+
+import account_customer_report
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+

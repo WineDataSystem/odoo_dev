@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
 <data>
-    <record id="view_sales_report_graph" model="ir.ui.view">
-         <field name="name">account.sales.report.graph</field>
-         <field name="model">account.sales.report</field>
+    <record id="view_account_customer_report_graph" model="ir.ui.view">
+         <field name="name">account.customer.report.graph</field>
+         <field name="model">account.customer.report</field>
          <field name="arch" type="xml">
-             <graph string="Analyses factures" type="pivot">
+             <graph string="Analyses Factures" type="pivot">
                  <field name="categ_id" type="row"/>
                  <field name="period_id" type="col"/>
                  <field name="price_total" type="measure"/>
@@ -14,47 +14,47 @@
     </record>
 
     <!-- Custom reports (aka filters) -->
-    <record id="filter_invoice_salespersons" model="ir.filters">
+    <record id="filter_customer_salespersons" model="ir.filters">
         <field name="name">By Salespersons</field>
-        <field name="model_id">account.sales.report</field>
+        <field name="model_id">account.customer.report</field>
         <field name="domain">[]</field>
         <field name="user_id" eval="False"/>
         <field name="context">{'group_by': ['date:month', 'user_id']}</field>
     </record>
-    <record id="filter_invoice_product" model="ir.filters">
+    <record id="filter_customer_product" model="ir.filters">
         <field name="name">By Product</field>
-        <field name="model_id">account.sales.report</field>
+        <field name="model_id">account.customer.report</field>
         <field name="domain">[]</field>
         <field name="user_id" eval="False"/>
         <field name="context">{'group_by': ['date:month', 'product_id'], 'set_visible':True, 'residual_invisible':True}</field>
     </record>
-    <record id="filter_invoice_product_category" model="ir.filters">
+    <record id="filter_customer_product_category" model="ir.filters">
         <field name="name">By Product Category</field>
-        <field name="model_id">account.sales.report</field>
+        <field name="model_id">account.customer.report</field>
         <field name="domain">[]</field>
         <field name="user_id" eval="False"/>
         <field name="context">{'group_by': ['date:month', 'categ_id'], 'residual_invisible':True}</field>
     </record>
-    <record id="filter_invoice_refund" model="ir.filters">
+    <record id="filter_customer_refund" model="ir.filters">
         <field name="name">By Refund</field>
-        <field name="model_id">account.sales.report</field>
+        <field name="model_id">account.customer.report</field>
         <field name="domain">[('type', '=', 'out_refund')]</field>
         <field name="user_id" eval="False"/>
         <field name="context">{'group_by': ['date:month', 'user_id']}</field>
     </record>
-    <record id="filter_invoice_country" model="ir.filters">
+    <record id="filter_customer_country" model="ir.filters">
         <field name="name">By Country</field>
-        <field name="model_id">account.sales.report</field>
+        <field name="model_id">account.customer.report</field>
         <field name="domain">[]</field>
         <field name="user_id" eval="False"/>
         <field name="context">{'group_by': ['date:month', 'country_id']}</field>
     </record>
 
-    <record id="view_account_sales_report_search" model="ir.ui.view">
-        <field name="name">account.sales.report.search</field>
-        <field name="model">account.sales.report</field>
+    <record id="view_account_customer_report_search" model="ir.ui.view">
+        <field name="name">account.customer.report.search</field>
+        <field name="model">account.customer.report</field>
         <field name="arch" type="xml">
-            <search string="Invoices Analysis">
+            <search string="Analyse Client">
                 <field name="date"/>
                 <filter string="This Year" name="thisyear" domain="['|', ('date', '=', False), '&amp;',('date','&lt;=', time.strftime('%%Y-12-31')),('date','&gt;=',time.strftime('%%Y-01-01'))]" help="Journal invoices with period in current year"/>
                 <separator/>
@@ -84,24 +84,24 @@
         </field>
     </record>
 
-    <record id="action_account_sales_report_all" model="ir.actions.act_window">
-        <field name="name">Invoices Analysis</field>
-        <field name="res_model">account.sales.report</field>
+    <record id="action_account_customer_report_all" model="ir.actions.act_window">
+        <field name="name">Analyse client</field>
+        <field name="res_model">account.customer.report</field>
         <field name="view_type">form</field>
         <field name="view_mode">graph</field>
         <field name="context">{'search_default_current':1, 'search_default_customer':1, 'group_by':[], 'group_by_no_leaf':1, 'search_default_year': 1}</field>
-        <field name="search_view_id" ref="view_account_sales_report_search"/>
+        <field name="search_view_id" ref="view_account_customer_report_search"/>
         <field name="help">From this report, you can have an overview of the amount invoiced to your customer. The tool search can also be used to personalise your Invoices reports and so, match this analysis to your needs.</field>
 
     </record>
 
-    <menuitem action="action_account_sales_report_all" id="menu_action_account_sales_report_all" parent="account.menu_finance_reporting" sequence="0"/>
+    <menuitem action="action_account_customer_report_all" id="menu_action_account_customer_report_all" parent="account.menu_finance_reporting" sequence="0"/>
 
     <act_window
-        id="act_account_sales_partner_relation"
-        name="WDS Rapport Client"
+        id="act_account_customer_partner_relation"
+        name="Analyse Factures Client"
         context="{'search_default_partner_id':[active_id], 'search_default_month':1,'search_default_user':1,'group_by_no_leaf':1,'group_by':[]}"
-        res_model="account.sales.report"
+        res_model="account.customer.report"
         src_model="res.partner"
         view_mode="graph"/>
 
