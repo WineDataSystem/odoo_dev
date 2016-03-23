@@ -21,6 +21,7 @@
 
 from openerp import tools
 import openerp.addons.decimal_precision as dp
+from datetime import timedelta
 from openerp.osv import fields,osv
 
 class account_customer_report(osv.osv):

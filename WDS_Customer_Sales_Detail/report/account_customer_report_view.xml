@@ -57,6 +57,7 @@
             <search string="Analyse Client">
                 <field name="date"/>
                 <filter string="This Year" name="thisyear" domain="['|', ('date', '=', False), '&amp;',('date','&lt;=', time.strftime('%%Y-12-31')),('date','&gt;=',time.strftime('%%Y-01-01'))]" help="Journal invoices with period in current year"/>
+                <filter string="This Year/Y-1" name="thisyear/PreviousYear" domain="['|', ('date', '=', False), '&amp;',('date','&lt;=', time.strftime('%%Y-12-31')),('date','&gt;=',(context_today()-relativedelta(years=1)).strftime('%%Y-01-01'))]" help="Journal invoices with period in current year and previous year"/>
                 <separator/>
                 <filter string="To Invoice" domain="[('state','=','draft')]" help = "Draft Invoices"/>
                 <filter string="Pro-forma" domain="['|', ('state','=','proforma'),('state','=','proforma2')]"/>
