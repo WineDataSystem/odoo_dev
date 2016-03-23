@@ -63,6 +63,7 @@ class account_customer_report(osv.osv):
 
     _columns = {
         'date': fields.date('Date', readonly=True),
+        'invoicenum': fields.char('Invoice Num', readonly=True),
         'product_id': fields.many2one('product.product', 'Product', readonly=True),
         'product_qty':fields.float('Product Quantity', readonly=True),
         'uom_name': fields.char('Reference Unit of Measure', size=128, readonly=True),
@@ -126,7 +127,7 @@ class account_customer_report(osv.osv):
 
     def _select(self):
         select_str = """
-            SELECT sub.id, sub.date, sub.product_id, sub.partner_id, sub.country_id,
+            SELECT sub.id, sub.date, sub.invoicenum, sub.product_id, sub.partner_id, sub.country_id,
                 sub.payment_term, sub.period_id, sub.uom_name, sub.currency_id, sub.journal_id,
                 sub.fiscal_position, sub.user_id, sub.company_id, sub.nbr, sub.type, sub.state,
                 sub.categ_id, sub.date_due, sub.account_id, sub.account_line_id, sub.partner_bank_id,
@@ -139,6 +140,7 @@ class account_customer_report(osv.osv):
         select_str = """
                 SELECT min(ail.id) AS id,
                     ai.date_invoice AS date,
+                    ai.number AS invoicenum,
                     ail.product_id, ai.partner_id, ai.payment_term, ai.period_id,
                     u2.name AS uom_name,
                     ai.currency_id, ai.journal_id, ai.fiscal_position, ai.user_id, ai.company_id,
@@ -194,7 +196,7 @@ class account_customer_report(osv.osv):
     def _group_by(self):
         group_by_str = """
                 GROUP BY ail.product_id, ai.date_invoice, ai.id,
-                    ai.partner_id, ai.payment_term, ai.period_id, u2.name, u2.id, ai.currency_id, ai.journal_id,
+                    ai.partner_id, ai.number, ai.payment_term, ai.period_id, u2.name, u2.id, ai.currency_id, ai.journal_id,
                     ai.fiscal_position, ai.user_id, ai.company_id, ai.type, ai.state, pt.categ_id,
                     ai.date_due, ai.account_id, ail.account_id, ai.partner_bank_id, ai.residual,
                     ai.amount_total, ai.commercial_partner_id, partner.country_id
