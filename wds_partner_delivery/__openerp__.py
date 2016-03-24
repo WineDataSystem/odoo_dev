@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "WDS_partner_delivery",
+    'name': "WDS partner delivery",
 
     'summary': """
-        Smart Button Delivery""",
+        Ajout Smart-Button pour les livraisons""",
 
     'description': """
         Add a smart button in order to show delivery order linked to a partner

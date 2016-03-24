@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
 # class WdsPartnerDelivery(http.Controller):
-#     @http.route('/WDS_partner_delivery/WDS_partner_delivery/', auth='public')
+#     @http.route('/wds_partner_delivery/wds_partner_delivery/', auth='public')
 #     def index(self, **kw):
 #         return "Hello, world"
 
-#     @http.route('/WDS_partner_delivery/WDS_partner_delivery/objects/', auth='public')
+#     @http.route('/wds_partner_delivery/wds_partner_delivery/objects/', auth='public')
 #     def list(self, **kw):
-#         return http.request.render('WDS_partner_delivery.listing', {
-#             'root': '/WDS_partner_delivery/WDS_partner_delivery',
-#             'objects': http.request.env['WDS_partner_delivery.WDS_partner_delivery'].search([]),
+#         return http.request.render('wds_partner_delivery.listing', {
+#             'root': '/wds_partner_delivery/wds_partner_delivery',
+#             'objects': http.request.env['wds_partner_delivery.wds_partner_delivery'].search([]),
 #         })
 
-#     @http.route('/WDS_partner_delivery/WDS_partner_delivery/objects/<model("WDS_partner_delivery.WDS_partner_delivery"):obj>/', auth='public')
+#     @http.route('/wds_partner_delivery/wds_partner_delivery/objects/<model("wds_partner_delivery.wds_partner_delivery"):obj>/', auth='public')
 #     def object(self, obj, **kw):
-#         return http.request.render('WDS_partner_delivery.object', {
+#         return http.request.render('wds_partner_delivery.object', {
 #             'object': obj
 #         })
 
