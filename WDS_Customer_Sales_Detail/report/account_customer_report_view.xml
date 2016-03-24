@@ -107,7 +107,7 @@
         view_mode="graph"/>
 
 
-<!-- Ajout bouton appel Détail des ventes -->
+<!-- Ajout bouton appel Détail des ventes xxx -->
    <record id="wds_customer_sales_detail_view_buttons" model="ir.ui.view">
             <field name="name">wds_customer_sales_detail_view_buttons</field>
             <field name="model">res.partner</field>
