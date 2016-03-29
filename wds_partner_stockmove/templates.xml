@@ -4,23 +4,23 @@
 
         <record id="act_res_partner_2_stock_move" model="ir.actions.act_window">
             <field name="name">Delivery</field>
-            <field name="res_model">stock.picking</field>
+            <field name="res_model">stock.move</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form,graph</field>
             <field name="context">{'search_default_partner_id': active_id}</field>
         </record>
 
-        <record id="wds_partner_delivery_view_buttons" model="ir.ui.view">
+        <record id="wds_partner_stock_move_view_buttons" model="ir.ui.view">
             <field name="name">wds_partner_delivery.view.buttons</field>
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
-            <field name="priority" eval="19"/>
+            <field name="priority" eval="20"/>
             <field name="arch" type="xml">
                 <xpath expr="//div[@name='buttons']" position="inside">
                     <button class="oe_inline oe_stat_button" type="action" name="%(act_res_partner_2_stock_move)d"
                         attrs="{'invisible':[('customer', '=', False)]}"
                         icon="fa-book">
-                        <field string="Delivery" name="delivery_count" widget="statinfo"/>
+                        <field string="Stock Move" name="stock_move_count" widget="statinfo"/>
                     </button>
                 </xpath>
             </field>

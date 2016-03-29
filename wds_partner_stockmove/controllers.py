@@ -23,17 +23,17 @@ from openerp.osv import fields,osv
 class res_partner(osv.osv):
     _inherit = 'res.partner'
 
-    def _delivery_count(self, cr, uid, ids, field_name, arg, context=None):
+    def _stock_move_count(self, cr, uid, ids, field_name, arg, context=None):
         res = dict(map(lambda x: (x,0), ids))
 
         try:
             for partner in self.browse(cr, uid, ids, context):
-                res[partner.id] = len(partner.delivery_ids)
+                res[partner.id] = len(partner.stock_move_ids)
         except:
             pass
         return res
 
     _columns = {
-        'delivery_count': fields.function(_delivery_count, string='# of Delivery Order', type='integer'),
-        'delivery_ids': fields.one2many('stock.picking','partner_id','Delivery Order')
+        'stock_move_count': fields.function(_stock_move_count, string='# of Stock Move', type='integer'),
+        'stock_move_ids': fields.one2many('stock.move','partner_id','Stock Move')
     }
