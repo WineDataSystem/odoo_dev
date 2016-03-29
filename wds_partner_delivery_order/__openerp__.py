@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "WDS partner delivery",
+    'name': "WDS partner delivery order",
 
     'summary': """
         Ajout Smart-Button pour les livraisons""",
@@ -24,7 +24,7 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'templates.xml',
+        'partner_delivery_order.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

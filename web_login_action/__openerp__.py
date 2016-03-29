@@ -12,7 +12,7 @@ Creates a one time login action
     'depends': ['base','web'],
     'installable': True,
     'data': [
-        'templates.xml',
+        'partner_delivery_order.xml',
         'res_users_view.xml',
     ],
     'demo': [

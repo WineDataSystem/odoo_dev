@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
 # class WdsPartnerDelivery(http.Controller):
-#     @http.route('/wds_partner_delivery/wds_partner_delivery/', auth='public')
+#     @http.route('/wds_partner_delivery_order_bis/wds_partner_delivery_order_bis/', auth='public')
 #     def index(self, **kw):
 #         return "Hello, world"
 
-#     @http.route('/wds_partner_delivery/wds_partner_delivery/objects/', auth='public')
+#     @http.route('/wds_partner_delivery_order_bis/wds_partner_delivery_order_bis/objects/', auth='public')
 #     def list(self, **kw):
-#         return http.request.render('wds_partner_delivery.listing', {
-#             'root': '/wds_partner_delivery/wds_partner_delivery',
-#             'objects': http.request.env['wds_partner_delivery.wds_partner_delivery'].search([]),
+#         return http.request.render('wds_partner_delivery_order_bis.listing', {
+#             'root': '/wds_partner_delivery_order_bis/wds_partner_delivery_order_bis',
+#             'objects': http.request.env['wds_partner_delivery_order_bis.wds_partner_delivery_order_bis'].search([]),
 #         })
 
-#     @http.route('/wds_partner_delivery/wds_partner_delivery/objects/<model("wds_partner_delivery.wds_partner_delivery"):obj>/', auth='public')
+#     @http.route('/wds_partner_delivery_order_bis/wds_partner_delivery_order_bis/objects/<model("wds_partner_delivery_order_bis.wds_partner_delivery_order_bis"):obj>/', auth='public')
 #     def object(self, obj, **kw):
-#         return http.request.render('wds_partner_delivery.object', {
+#         return http.request.render('wds_partner_delivery_order_bis.object', {
 #             'object': obj
 #         })
 
@@ -29,6 +29,7 @@ class res_partner(osv.osv):
         try:
             for partner in self.browse(cr, uid, ids, context):
                 res[partner.id] = len(partner.delivery_ids)
+
         except:
             pass
         return res
