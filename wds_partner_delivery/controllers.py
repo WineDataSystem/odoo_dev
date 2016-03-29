@@ -28,12 +28,12 @@ class res_partner(osv.osv):
 
         try:
             for partner in self.browse(cr, uid, ids, context):
-                res[partner.id] = len(partner.delivery_ids)
+                res[name] = len(partner.delivery_ids)
         except:
             pass
         return res
 
     _columns = {
         'delivery_count': fields.function(_delivery_count, string='# of Delivery Order', type='integer'),
-        'delivery_ids': fields.one2many('stock.move','partner_id','Delivery Order')
+        'delivery_ids': fields.one2many('stock.picking','name','Delivery Order')
     }

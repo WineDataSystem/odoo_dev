@@ -19,9 +19,7 @@
 #
 ##############################################################################
 
-import account_customer_report
-
-
+import ppp_test_report
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
 
