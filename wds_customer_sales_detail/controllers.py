@@ -35,5 +35,5 @@ class res_partner(osv.osv):
 
     _columns = {
         'invoice_count': fields.function(_invoice_count, string='# of invoices', type='char'),
-        'invoice_ids': fields.one2many('stock.move','partner_id','Delivery Order')
+        #'invoice_ids': fields.one2many('stock.move','partner_id','Delivery Order')
     }

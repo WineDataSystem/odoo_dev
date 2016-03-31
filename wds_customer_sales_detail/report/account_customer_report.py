@@ -67,6 +67,7 @@ class account_customer_report(osv.osv):
         'product_id': fields.many2one('product.product', 'Produit', readonly=True),
         'product_qty':fields.float('Quantite', readonly=True),
         'uom_name': fields.char('Unite de mesure', size=128, readonly=True),
+        'number': fields.char('Numéro facture', size=128, readonly=True),
         'payment_term': fields.many2one('account.payment.term', 'Conditions de paiement', readonly=True),
         'period_id': fields.many2one('account.period', 'Forcer la periode', domain=[('state','<>','done')], readonly=True),
         'fiscal_position': fields.many2one('account.fiscal.position', 'Position Fiscale', readonly=True),
@@ -112,7 +113,7 @@ class account_customer_report(osv.osv):
             'account_id', 'amount_total', 'commercial_partner_id', 'company_id',
             'currency_id', 'date_due', 'date_invoice', 'fiscal_position',
             'journal_id', 'partner_bank_id', 'partner_id', 'payment_term',
-            'period_id', 'residual', 'state', 'type', 'user_id',
+            'period_id', 'residual', 'state', 'type', 'user_id','number'
         ],
         'account.invoice.line': [
             'account_id', 'invoice_id', 'price_subtotal', 'product_id',
@@ -199,7 +200,7 @@ class account_customer_report(osv.osv):
                     ai.partner_id, ai.payment_term, ai.period_id, u2.name, u2.id, ai.currency_id, ai.journal_id,
                     ai.fiscal_position, ai.user_id, ai.company_id, ai.type, ai.state, pt.categ_id,
                     ai.date_due, ai.account_id, ail.account_id, ai.partner_bank_id, ai.residual,
-                    ai.amount_total, ai.commercial_partner_id, partner.country_id
+                    ai.amount_total, ai.commercial_partner_id, partner.country_id,ai.number
         """
         return group_by_str
 
