@@ -7,6 +7,7 @@
          <field name="model">account.customer.report</field>
          <field name="arch" type="xml">
              <graph string="Analyses Factures" type="pivot">
+                 <field name="section_id" type="row"/>
                  <field name="fiscal_position" type="row"/>
                  <field name="date" interval="year" type="col"/>
                  <field name="product_qty" type="measure"/>
@@ -78,7 +79,9 @@
                     <filter string="Partenaire" name="partner_id" context="{'group_by':'partner_id','residual_visible':True}"/>
                     <filter string="Vendeur" name='user' context="{'group_by':'user_id'}"/>
                     <filter string="Catégorie Produit" name="category_product" context="{'group_by':'categ_id','residual_invisible':True}"/>
+                    <filter string="Numero de facture" name="number" context="{'group_by':'number'}"/>
                     <filter string="Statuts" context="{'group_by':'state'}"/>
+                    <filter string="Sales Team" context="{'group_by':'section_id'}" groups="base.group_multi_salesteams"/>
                      <!--  <filter string="Company" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>-->
                     <separator orientation="vertical" />
                     <filter string="Période" context="{'group_by':'period_id'}"/>

@@ -109,7 +109,7 @@
         <field name="view_type">form</field>
         <field name="view_mode">graph</field>
         <field name="view_id" ref="view_avancement_ca_client_report_graph"></field>
-        <field name="context">{'group_by': ['partner_id', 'set_visible':True, 'residual_invisible':True}</field>
+        <field name="context">{'group_by': ['partner_id'],'order':'ca_prev_annee desc', 'set_visible':True, 'residual_invisible':True}</field>
         <field name="help"></field>
     </record>
 

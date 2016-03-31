@@ -105,6 +105,7 @@ class account_customer_report(osv.osv):
         'residual': fields.float('Balance', readonly=True),
         'user_currency_residual': fields.function(_compute_amounts_in_user_currency, string="Balance", type='float', digits_compute=dp.get_precision('Account'), multi="_compute_amounts"),
         'country_id': fields.many2one('res.country', 'Pays du Partenaire'),
+        'section_id': fields.many2one('crm.case.section', 'Sales Team'),
     }
     _order = 'date desc'
 
@@ -113,7 +114,7 @@ class account_customer_report(osv.osv):
             'account_id', 'amount_total', 'commercial_partner_id', 'company_id',
             'currency_id', 'date_due', 'date_invoice', 'fiscal_position',
             'journal_id', 'partner_bank_id', 'partner_id', 'payment_term',
-            'period_id', 'residual', 'state', 'type', 'user_id','number'
+            'period_id', 'residual', 'state', 'type', 'user_id','number',
         ],
         'account.invoice.line': [
             'account_id', 'invoice_id', 'price_subtotal', 'product_id',
@@ -129,11 +130,11 @@ class account_customer_report(osv.osv):
     def _select(self):
         select_str = """
             SELECT sub.id, sub.date, sub.invoicenb, sub.product_id, sub.partner_id, sub.country_id,
-                sub.payment_term, sub.period_id, sub.uom_name, sub.currency_id, sub.journal_id,
+                sub.payment_term, sub.period_id, sub.uom_name,sub.number, sub.currency_id, sub.journal_id,
                 sub.fiscal_position, sub.user_id, sub.company_id, sub.nbr, sub.type, sub.state,
                 sub.categ_id, sub.date_due, sub.account_id, sub.account_line_id, sub.partner_bank_id,
                 sub.product_qty, sub.price_total / cr.rate as price_total, sub.price_average /cr.rate as price_average,
-                cr.rate as currency_rate, sub.residual / cr.rate as residual, sub.commercial_partner_id as commercial_partner_id
+                cr.rate as currency_rate, sub.residual / cr.rate as residual, sub.commercial_partner_id as commercial_partner_id,sub.section_id
         """
         return select_str
 
@@ -141,7 +142,7 @@ class account_customer_report(osv.osv):
         select_str = """
                 SELECT min(ail.id) AS id,
                     ai.date_invoice AS date,
-                    count(DISTINCT ai.number) AS invoicenb,
+                    count(DISTINCT ai.number) AS invoicenb, number,
                     ail.product_id, ai.partner_id, ai.payment_term, ai.period_id,
                     u2.name AS uom_name,
                     ai.currency_id, ai.journal_id, ai.fiscal_position, ai.user_id, ai.company_id,
@@ -178,7 +179,8 @@ class account_customer_report(osv.osv):
                     END / (SELECT count(*) FROM account_invoice_line l where invoice_id = ai.id) *
                     count(*) AS residual,
                     ai.commercial_partner_id as commercial_partner_id,
-                    partner.country_id
+                    partner.country_id,
+                    ai.section_id as section_id
         """
         return select_str
 
@@ -200,7 +202,7 @@ class account_customer_report(osv.osv):
                     ai.partner_id, ai.payment_term, ai.period_id, u2.name, u2.id, ai.currency_id, ai.journal_id,
                     ai.fiscal_position, ai.user_id, ai.company_id, ai.type, ai.state, pt.categ_id,
                     ai.date_due, ai.account_id, ail.account_id, ai.partner_bank_id, ai.residual,
-                    ai.amount_total, ai.commercial_partner_id, partner.country_id,ai.number
+                    ai.amount_total, ai.commercial_partner_id, partner.country_id,ai.number,ai.section_id
         """
         return group_by_str
 

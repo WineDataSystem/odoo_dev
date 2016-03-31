@@ -20,7 +20,7 @@
 
 from openerp.osv import fields,osv
 
-    class res_partner(osv.osv):
+class res_partner(osv.osv):
     _inherit = 'res.partner'
 
     def _delivery_count(self, cr, uid, ids, field_name, arg, context=None):
