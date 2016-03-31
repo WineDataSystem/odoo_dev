@@ -124,6 +124,7 @@ class avancement_ca_client_report(osv.osv):
                 JOIN res_partner partner ON ai.partner_id = partner.id
                 WHERE (EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE)  or
                 EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) -1) and ai.type in ('out_invoice','out_refund')
+                and ai.state = 'paid'
         """
         return from_str
 
