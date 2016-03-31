@@ -122,8 +122,8 @@ class avancement_ca_client_report(osv.osv):
         from_str = """
                 FROM  account_invoice ai
                 JOIN res_partner partner ON ai.partner_id = partner.id
-                WHERE EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE)  or
-                EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) -1
+                WHERE (EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE)  or
+                EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) -1) and ai.type in ('out_invoice','out_refund')
         """
         return from_str
 
