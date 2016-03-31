@@ -24,11 +24,11 @@ import openerp.addons.decimal_precision as dp
 from datetime import timedelta
 from openerp.osv import fields,osv
 
-class ppp_test_report(osv.osv):
-    _name = "ppp.test.report"
-    _description = "%CA Client"
+class avancement_ca_client_report(osv.osv):
+    _name = "avancement.ca.client.report"
+    _description = "Avancement CA Client"
     _auto = False
-    _rec_name = 'date'
+    _rec_name = 'partner_id'
 
     def _compute_amounts_in_user_currency(self, cr, uid, ids, field_names, args, context=None):
         """Compute the amounts in the currency of the user
@@ -62,13 +62,20 @@ class ppp_test_report(osv.osv):
         return res
 
     _columns = {
-        'invoicenb': fields.float('Invoice Nb', readonly=True),
-        'nbr': fields.integer('# of Invoices lines', readonly=True),  # TDE FIXME master: rename into nbr_lines
-        'ca_y': fields.integer('CA Année en Cours', readonly=True),
-        'ca_prev_y': fields.integer('CA Année précédente', readonly=True),
-        'partner_id': fields.many2one('res.partner', 'Partner', readonly=True),
+        # 'date': fields.date('Date', readonly=True),
+        'partner_id': fields.many2one('res.partner', 'Partenaire', readonly=True),
+        'invoicenb': fields.float('Invoice Num', readonly=True),
+        'currency_id': fields.many2one('res.currency', 'Monnaie', readonly=True),
+        'company_id': fields.many2one('res.company', 'Societe', readonly=True),
+        'user_id': fields.many2one('res.users', 'Vendeur', readonly=True),
+        'ca_annee': fields.float('CA Année en cours', readonly=True),
+        'ca_prev_annee': fields.float('CA Année précédente', readonly=True),
+        'percentca': fields.float('Avancement %', readonly=True),
+        # 'user_currency_price_average': fields.function(_compute_amounts_in_user_currency, string="Prix de Vente Moyen", type='float', digits_compute=dp.get_precision('Account'), multi="_compute_amounts"),
+        # 'currency_rate': fields.float('Currency Rate', readonly=True),
+        'nbr': fields.integer('Nb Ligne de facture', readonly=True),
     }
-    _order = 'date desc'
+    _order = 'ca_annee desc'
 
     _depends = {
         'account.invoice': [
@@ -90,52 +97,52 @@ class ppp_test_report(osv.osv):
 
     def _select(self):
         select_str = """
-            SELECT sub.id, sub.invoicenb, sub.ca_y, sub.ca_prev,
-                sub.payment_term, sub.period_id, sub.uom_name, sub.currency_id, sub.journal_id,
-                sub.fiscal_position, sub.user_id, sub.company_id, sub.nbr, sub.type, sub.state,
-                sub.categ_id, sub.date_due, sub.account_id, sub.account_line_id, sub.partner_bank_id,
-                sub.product_qty, sub.price_total / cr.rate as price_total, sub.price_average /cr.rate as price_average,
-                cr.rate as currency_rate, sub.residual / cr.rate as residual, sub.commercial_partner_id as commercial_partner_id
+            SELECT sub.id, sub.partner_id,sub.invoicenb,sub.currency_id,sub.ca_annee, sub.ca_prev_annee,
+            CASE when sub.ca_prev_annee =0 then 100 else (((sub.ca_annee - sub.ca_prev_annee) / sub.ca_prev_annee) * 100) +100 end as percentca,
+            sub.nbr
         """
         return select_str
 
     def _sub_select(self):
         select_str = """
-                SELECT min(ail.id) AS id,
-                    count(*) AS invoicenb,
-                    ai.partner_id,
+                SELECT min(ai.partner_id) as id, ai.partner_id ,
+                    count(distinct ai.number) AS invoicenb,
+                    ai.currency_id,
                     sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) then
                     CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
-                    THEN - ai.amount_total ELSE ai.amount_total end else 0 end ) ca_y ,
+                    THEN - ai.amount_total ELSE ai.amount_total end else 0 end ) ca_annee ,
                     sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) -1  then
                     CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
-                    THEN - ai.amount_total ELSE ai.amount_total end else 0 end ) ca_prev_y,
-                    ai.commercial_partner_id as commercial_partner_id
+                    THEN - ai.amount_total ELSE ai.amount_total end else 0 end ) ca_prev_annee,
+                    count(*) AS nbr
         """
         return select_str
 
     def _from(self):
         from_str = """
-                FROM account_invoice
-                JOIN res_partner partner ON ai.commercial_partner_id = partner.id
-                        """
+                FROM  account_invoice ai
+                JOIN res_partner partner ON ai.partner_id = partner.id
+                WHERE EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE)  or
+                EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) -1
+        """
         return from_str
 
     def _group_by(self):
         group_by_str = """
-                GROUP BY ai.partner_id,
+                GROUP BY partner_id,ai.currency_id
         """
         return group_by_str
 
     def init(self, cr):
-        # self._table = ppp_test_report
+        # self._table = account_invoice_report
         tools.drop_view_if_exists(cr, self._table)
         cr.execute("""CREATE or REPLACE VIEW %s as (
-             %s
+
+            %s
             FROM (
                 %s %s %s
             ) AS sub
-            )
+
         )""" % (
                     self._table,
                     self._select(), self._sub_select(), self._from(), self._group_by()))

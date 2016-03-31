@@ -18,7 +18,27 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-import controllers
-import report
+{
+    'name' : 'WDS Avancement CA Client',
+    'version' : '1.1',
+    'author' : 'WineDataSystem',
+    'category' : 'Sales',
+    'description' : """
+Avancement CA Client
+    """,
+    'website': 'https://www.winedatasystem.com',
+    'depends' : ['account'],
+    'data': [
+        'report/avancement_ca_client_report_view.xml',
+    ],
+    'qweb' : [
+    ],
+    'demo': [
+    ],
+    'test': [
+    ],
+    'installable': True,
+    'auto_install': False,
+}
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

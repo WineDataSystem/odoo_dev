@@ -2,16 +2,18 @@
 <openerp>
 <data>
      <!-- Génération page Graph -->
-     <record id="view_account_customer_report_graph" model="ir.ui.view">
-         <field name="name">account.customer.report.graph</field>
-         <field name="model">account.customer.report</field>
+     <record id="view_avancement_ca_client_report_graph" model="ir.ui.view">
+         <field name="name">avancement.ca.client.report.graph</field>
+         <field name="model">avancement.ca.client.report</field>
          <field name="arch" type="xml">
-             <graph string="Analyses Factures" type="pivot">
-                 <field name="fiscal_position" type="row"/>
-                 <field name="date" interval="year" type="col"/>
-                 <field name="product_qty" type="measure"/>
-                 <field name="price_total" type="measure"/>
-                 <field name="residual" type="measure"/>
+             <graph string="Avancement CA" type="pivot">
+                 <!--<field name="fiscal_position" type="row"/>-->
+                 <!--<field name="date" interval="year" type="col"/>-->
+                 <!--<field name="product_qty" type="measure"/>-->
+                 <field name="ca_annee" type="measure"/>
+                 <field name="ca_prev_annee" type="measure"/>
+                 <field name="percentca" type="measure"/>
+       <!--          <field name="residual" type="measure"/>-->
              </graph>
          </field>
     </record>
@@ -54,12 +56,12 @@
     </record>-->
 
         <!-- Option vue Graph -->
-    <record id="view_account_customer_report_search" model="ir.ui.view">
-        <field name="name">account.customer.report.search</field>
-        <field name="model">account.customer.report</field>
+    <record id="view_avancement_ca_client_search" model="ir.ui.view">
+        <field name="name">avancement.ca.client.report.search</field>
+        <field name="model">avancement.ca.client.report</field>
         <field name="arch" type="xml">
-            <search string="Analyse Client">
-                <filter string="Cette Année" name="thisyear" domain="['|', ('date', '=', False), '&amp;',('date','&lt;=', time.strftime('%%Y-12-31')),('date','&gt;=',time.strftime('%%Y-01-01'))]" help="Journal invoices with period in current year"/>
+            <search string="Avancement CA Client">
+      <!--          <filter string="Cette Année" name="thisyear" domain="['|', ('date', '=', False), '&amp;',('date','&lt;=', time.strftime('%%Y-12-31')),('date','&gt;=',time.strftime('%%Y-01-01'))]" help="Journal invoices with period in current year"/>
                 <filter string="Cette Année / A-1" name="thisyear/PreviousYear" domain="['|', ('date', '=', False), '&amp;',('date','&lt;=', time.strftime('%%Y-12-31')),('date','&gt;=',(context_today()-relativedelta(years=1)).strftime('%%Y-01-01'))]" help="Journal invoices with period in current year and previous year"/>
                 <separator/>
                 <filter string="A facturer" domain="[('state','=','draft')]" help = "Draft Invoices"/>
@@ -70,26 +72,26 @@
                 <filter string="Fournisseur" domain="['|', ('type','=','in_invoice'),('type','=','in_refund')]"/>
                 <separator/>
                 <filter string="Facture" domain="['|', ('type','=','out_invoice'),('type','=','in_invoice')]"/>
-                <filter string="Avoir" domain="['|', ('type','=','out_refund'),('type','=','in_refund')]"/>
+                <filter string="Avoir" domain="['|', ('type','=','out_refund'),('type','=','in_refund')]"/>-->
                 <field name="partner_id" operator="child_of"/>
-                <field name="user_id" />
+               <!-- <field name="user_id" />
                 <field name="categ_id" filter_domain="[('categ_id', 'child_of', self)]"/>
                 <group expand="1" string="Group By">
                     <filter string="Partenaire" name="partner_id" context="{'group_by':'partner_id','residual_visible':True}"/>
                     <filter string="Vendeur" name='user' context="{'group_by':'user_id'}"/>
                     <filter string="Catégorie Produit" name="category_product" context="{'group_by':'categ_id','residual_invisible':True}"/>
                     <filter string="Statuts" context="{'group_by':'state'}"/>
-                     <!--  <filter string="Company" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>-->
+                     &lt;!&ndash;  <filter string="Company" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>&ndash;&gt;
                     <separator orientation="vertical" />
                     <filter string="Période" context="{'group_by':'period_id'}"/>
                     <filter string="Date de Paiement" context="{'group_by':'date_due:month'}"/>
                     <filter string="Trimestre" context="{'group_by':'date:quarter'}" type="col"/>
-                </group>
+                </group>-->
             </search>
         </field>
     </record>
 
-    <!-- Action Smart Button -->
+<!--    &lt;!&ndash; Action Smart Button &ndash;&gt;
     <record id="action_account_customer_report_all" model="ir.actions.act_window">
         <field name="name">Analyse client</field>
         <field name="res_model">account.customer.report</field>
@@ -98,35 +100,50 @@
         <field name="context">{'search_default_partner_id':[active_id],'search_default_year': 1,'group_by': ['product_id'], 'set_visible':True, 'residual_invisible':True}</field>
         <field name="search_view_id" ref="view_account_customer_report_search"/>
         <field name="help">From this report, you can have an overview of the amount invoiced to your customer. The tool search can also be used to personalise your Invoices reports and so, match this analysis to your needs.</field>
+    </record>-->
+
+
+   <record id="action_avancement_ca_client_report2_all" model="ir.actions.act_window">
+        <field name="name">Avancement CA Client</field>
+        <field name="res_model">avancement.ca.client.report</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="view_avancement_ca_client_report_graph"></field>
+        <field name="context">{'group_by': ['partner_id', 'set_visible':True, 'residual_invisible':True}</field>
+        <field name="help"></field>
     </record>
 
-    <!--<menuitem action="action_account_customer_report_all" id="menu_action_account_customer_report_all" parent="account.menu_finance_reporting" sequence="0"/> -->
+    <menuitem action="action_avancement_ca_client_report2_all" id="menu_action_avancement_ca_client_report_all" parent="base.next_id_73" sequence="3"/>
 
-    <!--<act_window
-        id="act_account_customer_partner_relation"
-        name="Analyse Factures Client"
-        context="{'search_default_partner_id':[active_id], 'search_default_month':1,'search_default_user':1,'group_by_no_leaf':1,'group_by':[]}"
-        res_model="account.customer.report"
-        src_model="res.partner"
-        view_mode="graph"/>-->
-
+ <record id="action_avancement_ca_client_report_all" model="ir.actions.act_window">
+        <field name="name">Avancement CA Client</field>
+        <field name="res_model">avancement.ca.client.report</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="view_avancement_ca_client_report_graph"></field>
+        <field name="context">{'search_default_partner_id':[active_id],'group_by': 1, 'set_visible':True, 'residual_invisible':True}</field>
+        <field name="help"></field>
+    </record>
 
     <!-- Vue Smart Button -->
-   <record id="wds_customer_sales_detail_view_buttons" model="ir.ui.view">
-            <field name="name">wds_customer_sales_detail_view_buttons</field>
+   <record id="wds_avancement_ca_client_view_buttons" model="ir.ui.view">
+            <field name="name">wds_avancement_ca_client_view_buttons</field>
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="priority" eval="20"/>
             <field name="arch" type="xml">
                 <xpath expr="//div[@name='buttons']" position="inside">
-                    <button class="oe_inline oe_stat_button" type="action" name="%(action_account_customer_report_all)d"
+                    <button class="oe_inline oe_stat_button" type="action" name="%(action_avancement_ca_client_report_all)d"
                         attrs="{'invisible':[('customer', '=', False)]}"
                         icon="fa-bar-chart-o">
-                        <field string="Detail des ventes" name="invoice_count" widget="statinfo"/>
+                        <field string="Avancement CA" name="invoice_count" widget="statinfo"/>
                     </button>
                 </xpath>
             </field>
    </record>
 </data>
 </openerp>
+
+
+
 
