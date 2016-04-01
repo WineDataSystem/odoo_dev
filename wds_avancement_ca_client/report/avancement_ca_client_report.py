@@ -105,15 +105,15 @@ class avancement_ca_client_report(osv.osv):
 
     def _sub_select(self):
         select_str = """
-                SELECT min(ai.partner_id) as id, ai.partner_id ,
+                SELECT min(ai.partner_id) as id, ai.partner_id  ,
                     count(distinct ai.number) AS invoicenb,
                     ai.currency_id,
                     sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) then
                     CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
-                    THEN - ai.amount_total ELSE ai.amount_total end else 0 end ) ca_annee ,
+                    THEN - ai.amount_untaxed ELSE ai.amount_untaxed end else 0 end ) ca_annee ,
                     sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) -1  then
                     CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
-                    THEN - ai.amount_total ELSE ai.amount_total end else 0 end ) ca_prev_annee,
+                    THEN - ai.amount_untaxed  ELSE ai.amount_untaxed end else 0 end ) ca_prev_annee,
                     count(*) AS nbr
         """
         return select_str
@@ -122,9 +122,9 @@ class avancement_ca_client_report(osv.osv):
         from_str = """
                 FROM  account_invoice ai
                 JOIN res_partner partner ON ai.partner_id = partner.id
-                WHERE (EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE)  or
-                EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) -1) and ai.type in ('out_invoice','out_refund')
-                and ai.state = 'paid'
+                WHERE ((EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE)  or
+                EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) -1) and ai.type in ('out_invoice','out_refund'))
+                and ai.state in ('paid','open')
         """
         return from_str
 
@@ -138,13 +138,10 @@ class avancement_ca_client_report(osv.osv):
         # self._table = account_invoice_report
         tools.drop_view_if_exists(cr, self._table)
         cr.execute("""CREATE or REPLACE VIEW %s as (
-
             %s
             FROM (
                 %s %s %s
-            ) AS sub
-
-        )""" % (
+            ) AS sub        )""" % (
                     self._table,
                     self._select(), self._sub_select(), self._from(), self._group_by()))
 
