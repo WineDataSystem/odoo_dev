@@ -1,0 +1,389 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="1">
+        
+        <record id="wds_department_67" model="wds.department">
+            <field name="number">67</field>
+            <field name="name">Bas-Rhin</field>
+        </record>
+        <record id="wds_department_68" model="wds.department">
+            <field name="number">68</field>
+            <field name="name">Haut-Rhin</field>
+        </record>
+        <record id="wds_department_24" model="wds.department">
+            <field name="number">24</field>
+            <field name="name">Dordogne</field>
+        </record>
+        <record id="wds_department_33" model="wds.department">
+            <field name="number">33</field>
+            <field name="name">Gironde</field>
+        </record>
+        <record id="wds_department_40" model="wds.department">
+            <field name="number">40</field>
+            <field name="name">Landes</field>
+        </record>
+        <record id="wds_department_47" model="wds.department">
+            <field name="number">47</field>
+            <field name="name">Lot-et-Garonne</field>
+        </record>
+        <record id="wds_department_64" model="wds.department">
+            <field name="number">64</field>
+            <field name="name">Pyrénées-Atlantiques</field>
+        </record>
+        <record id="wds_department_03" model="wds.department">
+            <field name="number">03</field>
+            <field name="name">Allier</field>
+        </record>
+        <record id="wds_department_15" model="wds.department">
+            <field name="number">15</field>
+            <field name="name">Cantal</field>
+        </record>
+        <record id="wds_department_43" model="wds.department">
+            <field name="number">43</field>
+            <field name="name">Haute-Loire</field>
+        </record>
+        <record id="wds_department_63" model="wds.department">
+            <field name="number">63</field>
+            <field name="name">Puy-de-Dôme</field>
+        </record>
+        <record id="wds_department_14" model="wds.department">
+            <field name="number">14</field>
+            <field name="name">Calvados</field>
+        </record>
+        <record id="wds_department_61" model="wds.department">
+            <field name="number">61</field>
+            <field name="name">Orne</field>
+        </record>
+        <record id="wds_department_21" model="wds.department">
+            <field name="number">21</field>
+            <field name="name">Côte d'Or</field>
+        </record>
+        <record id="wds_department_58" model="wds.department">
+            <field name="number">58</field>
+            <field name="name">Nièvre</field>
+        </record>
+        <record id="wds_department_71" model="wds.department">
+            <field name="number">71</field>
+            <field name="name">Saône-et-Loire</field>
+        </record>
+        <record id="wds_department_89" model="wds.department">
+            <field name="number">89</field>
+            <field name="name">Yonne</field>
+        </record>
+        <record id="wds_department_22" model="wds.department">
+            <field name="number">22</field>
+            <field name="name">Côtes d'Armor</field>
+        </record>
+        <record id="wds_department_29" model="wds.department">
+            <field name="number">29</field>
+            <field name="name">Finistère</field>
+        </record>
+        <record id="wds_department_35" model="wds.department">
+            <field name="number">35</field>
+            <field name="name">Ille-et-Vilaine</field>
+        </record>
+        <record id="wds_department_56" model="wds.department">
+            <field name="number">56</field>
+            <field name="name">Morbihan</field>
+        </record>
+        <record id="wds_department_18" model="wds.department">
+            <field name="number">18</field>
+            <field name="name">Cher</field>
+        </record>
+        <record id="wds_department_28" model="wds.department">
+            <field name="number">28</field>
+            <field name="name">Eure-et-Loir</field>
+        </record>
+        <record id="wds_department_36" model="wds.department">
+            <field name="number">36</field>
+            <field name="name">Indre</field>
+        </record>
+        <record id="wds_department_37" model="wds.department">
+            <field name="number">37</field>
+            <field name="name">Indre-et-Loire</field>
+        </record>
+        <record id="wds_department_45" model="wds.department">
+            <field name="number">45</field>
+            <field name="name">Loiret</field>
+        </record>
+        <record id="wds_department_41" model="wds.department">
+            <field name="number">41</field>
+            <field name="name">Loir-et-Cher</field>
+        </record>
+        <record id="wds_department_08" model="wds.department">
+            <field name="number">08</field>
+            <field name="name">Ardennes</field>
+        </record>
+        <record id="wds_department_10" model="wds.department">
+            <field name="number">10</field>
+            <field name="name">Aube</field>
+        </record>
+        <record id="wds_department_52" model="wds.department">
+            <field name="number">52</field>
+            <field name="name">Haute-Marne</field>
+        </record>
+        <record id="wds_department_51" model="wds.department">
+            <field name="number">51</field>
+            <field name="name">Marne</field>
+        </record>
+        <record id="wds_department_20" model="wds.department">
+            <field name="number">20</field>
+            <field name="name">Corse</field>
+        </record>
+        <record id="wds_department_25" model="wds.department">
+            <field name="number">25</field>
+            <field name="name">Doubs</field>
+        </record>
+        <record id="wds_department_70" model="wds.department">
+            <field name="number">70</field>
+            <field name="name">Haute-Saône</field>
+        </record>
+        <record id="wds_department_39" model="wds.department">
+            <field name="number">39</field>
+            <field name="name">Jura</field>
+        </record>
+        <record id="wds_department_90" model="wds.department">
+            <field name="number">90</field>
+            <field name="name">Territoire-de-Belfort</field>
+        </record>
+        <record id="wds_department_27" model="wds.department">
+            <field name="number">27</field>
+            <field name="name">Eure</field>
+        </record>
+        <record id="wds_department_76" model="wds.department">
+            <field name="number">76</field>
+            <field name="name">Seine-Maritime</field>
+        </record>
+        <record id="wds_department_91" model="wds.department">
+            <field name="number">91</field>
+            <field name="name">Essonne</field>
+        </record>
+        <record id="wds_department_92" model="wds.department">
+            <field name="number">92</field>
+            <field name="name">Hauts-de-Seine</field>
+        </record>
+        <record id="wds_department_75" model="wds.department">
+            <field name="number">75</field>
+            <field name="name">Paris</field>
+        </record>
+        <record id="wds_department_77" model="wds.department">
+            <field name="number">77</field>
+            <field name="name">Seine-et-Marne</field>
+        </record>
+        <record id="wds_department_93" model="wds.department">
+            <field name="number">93</field>
+            <field name="name">Seine-St-Denis</field>
+        </record>
+        <record id="wds_department_94" model="wds.department">
+            <field name="number">94</field>
+            <field name="name">Val-de-Marne</field>
+        </record>
+        <record id="wds_department_95" model="wds.department">
+            <field name="number">95</field>
+            <field name="name">Val-d'Oise</field>
+        </record>
+        <record id="wds_department_78" model="wds.department">
+            <field name="number">78</field>
+            <field name="name">Yvelines</field>
+        </record>
+        <record id="wds_department_11" model="wds.department">
+            <field name="number">11</field>
+            <field name="name">Aude</field>
+        </record>
+        <record id="wds_department_30" model="wds.department">
+            <field name="number">30</field>
+            <field name="name">Gard</field>
+        </record>
+        <record id="wds_department_34" model="wds.department">
+            <field name="number">34</field>
+            <field name="name">Hérault</field>
+        </record>
+        <record id="wds_department_48" model="wds.department">
+            <field name="number">48</field>
+            <field name="name">Lozère</field>
+        </record>
+        <record id="wds_department_66" model="wds.department">
+            <field name="number">66</field>
+            <field name="name">Pyrénées-Orientales</field>
+        </record>
+        <record id="wds_department_19" model="wds.department">
+            <field name="number">19</field>
+            <field name="name">Corrèze</field>
+        </record>
+        <record id="wds_department_23" model="wds.department">
+            <field name="number">23</field>
+            <field name="name">Creuse</field>
+        </record>
+        <record id="wds_department_87" model="wds.department">
+            <field name="number">87</field>
+            <field name="name">Haute-Vienne</field>
+        </record>
+        <record id="wds_department_54" model="wds.department">
+            <field name="number">54</field>
+            <field name="name">Meurthe-et-Moselle</field>
+        </record>
+        <record id="wds_department_55" model="wds.department">
+            <field name="number">55</field>
+            <field name="name">Meuse</field>
+        </record>
+        <record id="wds_department_57" model="wds.department">
+            <field name="number">57</field>
+            <field name="name">Moselle</field>
+        </record>
+        <record id="wds_department_88" model="wds.department">
+            <field name="number">88</field>
+            <field name="name">Vosges</field>
+        </record>
+        <record id="wds_department_09" model="wds.department">
+            <field name="number">09</field>
+            <field name="name">Ariège</field>
+        </record>
+        <record id="wds_department_12" model="wds.department">
+            <field name="number">12</field>
+            <field name="name">Aveyron</field>
+        </record>
+        <record id="wds_department_32" model="wds.department">
+            <field name="number">32</field>
+            <field name="name">Gers</field>
+        </record>
+        <record id="wds_department_31" model="wds.department">
+            <field name="number">31</field>
+            <field name="name">Haute-Garonne</field>
+        </record>
+        <record id="wds_department_65" model="wds.department">
+            <field name="number">65</field>
+            <field name="name">Hautes-Pyrénées</field>
+        </record>
+        <record id="wds_department_46" model="wds.department">
+            <field name="number">46</field>
+            <field name="name">Lot</field>
+        </record>
+        <record id="wds_department_81" model="wds.department">
+            <field name="number">81</field>
+            <field name="name">Tarn</field>
+        </record>
+        <record id="wds_department_82" model="wds.department">
+            <field name="number">82</field>
+            <field name="name">Tarn-et-Garonne</field>
+        </record>
+        <record id="wds_department_59" model="wds.department">
+            <field name="number">59</field>
+            <field name="name">Nord</field>
+        </record>
+        <record id="wds_department_" model="wds.department">
+            <field name="number">62</field>
+            <field name="name">Pas-de-Calais
+            </field>
+        </record>
+        <record id="wds_department_50" model="wds.department">
+            <field name="number">50</field>
+            <field name="name">Manche</field>
+        </record>
+        <record id="wds_department_44" model="wds.department">
+            <field name="number">44</field>
+            <field name="name">Loire-Atlantique</field>
+        </record>
+        <record id="wds_department_49" model="wds.department">
+            <field name="number">49</field>
+            <field name="name">Maine-et-Loire</field>
+        </record>
+        <record id="wds_department_53" model="wds.department">
+            <field name="number">53</field>
+            <field name="name">Mayenne</field>
+        </record>
+        <record id="wds_department_72" model="wds.department">
+            <field name="number">72</field>
+            <field name="name">Sarthe</field>
+        </record>
+        <record id="wds_department_85" model="wds.department">
+            <field name="number">85</field>
+            <field name="name">Vendée</field>
+        </record>
+        <record id="wds_department_02" model="wds.department">
+            <field name="number">02</field>
+            <field name="name">Aisne</field>
+        </record>
+        <record id="wds_department_60" model="wds.department">
+            <field name="number">60</field>
+            <field name="name">Oise</field>
+        </record>
+        <record id="wds_department_80" model="wds.department">
+            <field name="number">80</field>
+            <field name="name">Somme</field>
+        </record>
+        <record id="wds_department_16" model="wds.department">
+            <field name="number">16</field>
+            <field name="name">Charente</field>
+        </record>
+        <record id="wds_department_17" model="wds.department">
+            <field name="number">17</field>
+            <field name="name">Charente Maritime</field>
+        </record>
+        <record id="wds_department_79" model="wds.department">
+            <field name="number">79</field>
+            <field name="name">Deux-Sèvres</field>
+        </record>
+        <record id="wds_department_86" model="wds.department">
+            <field name="number">86</field>
+            <field name="name">Vienne</field>
+        </record>
+        <record id="wds_department_04" model="wds.department">
+            <field name="number">04</field>
+            <field name="name">Alpes de Haute-Provence</field>
+        </record>
+        <record id="wds_department_06" model="wds.department">
+            <field name="number">06</field>
+            <field name="name">Alpes-Maritimes</field>
+        </record>
+        <record id="wds_department_13" model="wds.department">
+            <field name="number">13</field>
+            <field name="name">Bouches du Rhône
+            </field>
+        </record>
+        <record id="wds_department_05" model="wds.department">
+            <field name="number">05</field>
+            <field name="name">Hautes-Alpes</field>
+        </record>
+        <record id="wds_department_83" model="wds.department">
+            <field name="number">83</field>
+            <field name="name">Var</field>
+        </record>
+        <record id="wds_department_84" model="wds.department">
+            <field name="number">84</field>
+            <field name="name">Vaucluse</field>
+        </record>
+        <record id="wds_department_01" model="wds.department">
+            <field name="number">01</field>
+            <field name="name">Ain</field>
+        </record>
+        <record id="wds_department_07" model="wds.department">
+            <field name="number">07</field>
+            <field name="name">Ardèche</field>
+        </record>
+        <record id="wds_department_26" model="wds.department">
+            <field name="number">26</field>
+            <field name="name">Drôme</field>
+        </record>
+        <record id="wds_department_74" model="wds.department">
+            <field name="number">74</field>
+            <field name="name">Haute-Savoie</field>
+        </record>
+        <record id="wds_department_38" model="wds.department">
+            <field name="number">38</field>
+            <field name="name">Isère</field>
+        </record>
+        <record id="wds_department_42" model="wds.department">
+            <field name="number">42</field>
+            <field name="name">Loire</field>
+        </record>
+        <record id="wds_department_69" model="wds.department">
+            <field name="number">69</field>
+            <field name="name">Rhône</field>
+        </record>
+        <record id="wds_department_73" model="wds.department">
+            <field name="number">73</field>
+            <field name="name">Savoie</field>
+        </record>
+
+    </data>
+</openerp>

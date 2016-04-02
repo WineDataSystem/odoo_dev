@@ -1,0 +1,7 @@
+<openerp>
+    <data>
+
+        <menuitem action="action_invoice_line_list" id="menu_action_invoice_line_list" parent="account.menu_finance_receivables"/>
+
+    </data>
+</openerp>
