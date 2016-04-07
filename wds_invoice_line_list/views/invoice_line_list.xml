@@ -24,7 +24,7 @@
             <field name="res_model">account.invoice.line</field>
             <field name="view_mode">list</field>
             <field name="view_id" ref="invoice_line_list_tree"/>
-            <field name="target">inline</field>
+                <!--<field name="target">inline</field>-->
         </record>
 
     </data>
