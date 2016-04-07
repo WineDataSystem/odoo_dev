@@ -3,3 +3,5 @@
 # import models
 # import partner
 # import wizard
+
+import models
