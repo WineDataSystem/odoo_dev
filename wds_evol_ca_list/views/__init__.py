@@ -18,8 +18,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-import report
-from wds_customer_sales_detail.report import controllers
 
+import wds_evol_ca_list
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

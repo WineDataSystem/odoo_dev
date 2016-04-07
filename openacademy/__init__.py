@@ -1,3 +1,9 @@
 # -*- coding: utf-8 -*-
-from . import controllers
-from . import models
+#
+# Module Open Academy for OpenERP
+#
+
+import course
+import session
+import partner
+import wizard
