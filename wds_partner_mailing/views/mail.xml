@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <!-- partner form view-->
+        <record id="wds_mailing_mailing_list_form" model="ir.ui.view">
+            <field name="name">wds.mailing.mailing.list.form</field>
+            <field name="model">mail.mass_mailing.list</field>
+            <field name="priority">1</field>
+            <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_list_form" />
+            <field name="arch" type="xml">
+                <data>
+
+                    <field name="name" position="after">
+                        <br/>
+                        <field name="ir_filter_id" placeholder="Appliquer à" />
+                    </field>
+
+
+                </data>
+            </field>
+        </record>
+
+    </data>
+</openerp>

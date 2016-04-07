@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "openacademy",
+    'name': "WDS Partner Pro",
 
     'summary': """
-        Modulo de prueba""",
+        Fonctions Pro sur clients""",
 
     'description': """
-        Modulo de prueba
+        Ce module permet d'ajouter des champs pour les professionnels
     """,
 
-    'author': "Jhonny Martínez Espinoza",
+    'author': "WineDataSystem",
     'website': "http://www.yourcompany.com",
 
     # Categories can be used to filter modules in modules listing

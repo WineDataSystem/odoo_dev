@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "openacademy",
+    'name': "Open Academy",
 
-    'summary': """
-        Modulo de prueba""",
+    'summary': """Manage trainings""",
 
     'description': """
-        Modulo de prueba
+        Open Academy module for managing trainings:
+            - training courses
+            - training sessions
+            - attendees registration
     """,
 
-    'author': "Jhonny Martínez Espinoza",
+    'author': "Your Company",
     'website': "http://www.yourcompany.com",
 
     # Categories can be used to filter modules in modules listing
@@ -24,13 +26,8 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'security/security.xml',
-        'security/ir.model.access.csv',
         'templates.xml',
         'views/openacademy.xml',
-        'views/partner.xml',
-        'views/session_workflow.xml',
-        'reports.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
