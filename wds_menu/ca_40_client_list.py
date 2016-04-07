@@ -24,9 +24,9 @@ import openerp.addons.decimal_precision as dp
 from datetime import timedelta
 from openerp.osv import fields,osv
 
-class avancement_ca_client_report(osv.osv):
-    _name = "avancement.ca.client.report"
-    _description = "Avancement CA Client"
+class ca_40_client_report(osv.osv):
+    _name = "ca.40.client.list"
+    _description = "CA 40 Meilleurs Clients"
     _auto = False
     _rec_name = 'partner_id'
 
@@ -69,9 +69,9 @@ class avancement_ca_client_report(osv.osv):
 
     _columns = {
         # 'date': fields.date('Date', readonly=True),
+        'id': fields.integer('Id', readonly=True),
         'partner_id': fields.many2one('res.partner', 'Partenaire', readonly=True),
-        'invoicenb': fields.float('Invoice Num', readonly=True),
-        'currency_id': fields.many2one('res.currency', 'Monnaie', readonly=True),
+        'invoicenb': fields.float('Nombre de factures', readonly=True),
         'company_id': fields.many2one('res.company', 'Societe', readonly=True),
         'user_id': fields.many2one('res.users', 'Vendeur', readonly=True),
         'ca_annee': fields.float('CA Année en cours', readonly=True),
@@ -79,7 +79,6 @@ class avancement_ca_client_report(osv.osv):
         'percentca': fields.float('Avancement %', readonly=True),
         # 'user_currency_price_average': fields.function(_compute_amounts_in_user_currency, string="Prix de Vente Moyen", type='float', digits_compute=dp.get_precision('Account'), multi="_compute_amounts"),
         # 'currency_rate': fields.float('Currency Rate', readonly=True),
-        'nbr': fields.integer('Nb Ligne de facture', readonly=True),
     }
     _order = 'ca_annee desc'
 
@@ -102,10 +101,9 @@ class avancement_ca_client_report(osv.osv):
     }
 
     def _select(self):
-        select_str = """
-            SELECT sub.id, sub.partner_id,sub.invoicenb,sub.currency_id,sub.ca_annee, sub.ca_prev_annee,
-            CASE when sub.ca_prev_annee =0 then 100 else (((sub.ca_annee - sub.ca_prev_annee) / sub.ca_prev_annee) * 100) +100 end as percentca,
-            sub.nbr
+        select_str = """ select sub2.id, partner_id, invoicenb , ca_prev_annee , ca_annee, percentca from
+        (SELECT sub.id, sub.partner_id,sub.invoicenb,sub.currency_id,sub.ca_annee, sub.ca_prev_annee,
+            CASE when sub.ca_prev_annee =0 then 100 else (((sub.ca_annee - sub.ca_prev_annee) / sub.ca_prev_annee) * 100) +100 end as percentca
         """
         return select_str
 
@@ -119,8 +117,7 @@ class avancement_ca_client_report(osv.osv):
                     THEN - ai.amount_untaxed ELSE ai.amount_untaxed end else 0 end ) ca_annee ,
                     sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) -1  then
                     CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
-                    THEN - ai.amount_untaxed  ELSE ai.amount_untaxed end else 0 end ) ca_prev_annee,
-                    count(*) AS nbr
+                    THEN - ai.amount_untaxed  ELSE ai.amount_untaxed end else 0 end ) ca_prev_annee
         """
         return select_str
 
@@ -147,7 +144,7 @@ class avancement_ca_client_report(osv.osv):
             %s
             FROM (
                 %s %s %s
-            ) AS sub        )""" % (
+            ) AS sub  ) sub2  order by ca_annee desc   limit 40      )""" % (
                     self._table,
                     self._select(), self._sub_select(), self._from(), self._group_by()))
 

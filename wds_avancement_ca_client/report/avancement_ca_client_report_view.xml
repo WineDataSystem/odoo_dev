@@ -13,14 +13,14 @@
                  <field name="ca_annee" type="measure"/>
                  <field name="ca_prev_annee" type="measure"/>
                  <field name="percentca" type="measure"/>
-       <!--          <field name="residual" type="measure"/>-->
+                <!--          <field name="residual" type="measure"/>-->
              </graph>
          </field>
     </record>
 
     <!-- Favoris dans filtre
     <record id="filter_customer_salespersons" model="ir.filters">
-        <field name="name">By Salespersons</field>
+        <field name="name">By Sainvoice_countlespersons</field>
         <field name="model_id">account.customer.report</field>
         <field name="domain">[]</field>
         <field name="user_id" eval="False"/>
@@ -109,11 +109,11 @@
         <field name="view_type">form</field>
         <field name="view_mode">graph</field>
         <field name="view_id" ref="view_avancement_ca_client_report_graph"></field>
-        <field name="context">{'group_by': ['partner_id'],'order':'ca_prev_annee desc', 'set_visible':True, 'residual_invisible':True}</field>
+        <!--<field name="context">{'group_by': ['partner_id'],'order':'ca_prev_annee desc', 'set_visible':True, 'residual_invisible':True}</field>-->
+        <field name="context">{'group_by': ['partner_id'],'order':'ca_prev_annee desc'}</field>
         <field name="help"></field>
     </record>
 
-    <menuitem action="action_avancement_ca_client_report2_all" id="menu_action_avancement_ca_client_report_all" parent="base.next_id_73" sequence="3"/>
 
  <record id="action_avancement_ca_client_report_all" model="ir.actions.act_window">
         <field name="name">Avancement CA Client</field>
@@ -143,7 +143,3 @@
    </record>
 </data>
 </openerp>
-
-
-
-
