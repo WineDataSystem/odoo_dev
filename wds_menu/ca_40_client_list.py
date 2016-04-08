@@ -71,12 +71,13 @@ class ca_40_client_report(osv.osv):
         # 'date': fields.date('Date', readonly=True),
         'id': fields.integer('Id', readonly=True),
         'partner_id': fields.many2one('res.partner', 'Partenaire', readonly=True),
-        'invoicenb': fields.float('Nombre de factures', readonly=True),
+        'invoicenb': fields.float('Nbr factures', readonly=True),
         'company_id': fields.many2one('res.company', 'Societe', readonly=True),
         'user_id': fields.many2one('res.users', 'Vendeur', readonly=True),
-        'ca_annee': fields.float('CA Année en cours', readonly=True),
-        'ca_prev_annee': fields.float('CA Année précédente', readonly=True),
-        'percentca': fields.float('Avancement %', readonly=True),
+        'vol_annee': fields.float('Quantité Année en cours', readonly=True),
+        'ca_annee': fields.float('CA ', readonly=True),
+        'ca_prev_annee': fields.float('CA N-1', readonly=True),
+        'percentca': fields.float('Evolution %', readonly=True),
         # 'user_currency_price_average': fields.function(_compute_amounts_in_user_currency, string="Prix de Vente Moyen", type='float', digits_compute=dp.get_precision('Account'), multi="_compute_amounts"),
         # 'currency_rate': fields.float('Currency Rate', readonly=True),
     }
@@ -101,8 +102,8 @@ class ca_40_client_report(osv.osv):
     }
 
     def _select(self):
-        select_str = """ select sub2.id, partner_id, invoicenb , ca_prev_annee , ca_annee, percentca from
-        (SELECT sub.id, sub.partner_id,sub.invoicenb,sub.currency_id,sub.ca_annee, sub.ca_prev_annee,
+        select_str = """ select sub2.id, partner_id, invoicenb , ca_prev_annee , ca_annee, vol_annee, percentca from
+        (SELECT sub.id, sub.partner_id,sub.invoicenb,sub.currency_id,sub.ca_annee, sub.ca_prev_annee, sub.vol_annee,
             CASE when sub.ca_prev_annee =0 then 100 else (((sub.ca_annee - sub.ca_prev_annee) / sub.ca_prev_annee) * 100) +100 end as percentca
         """
         return select_str
@@ -114,16 +115,20 @@ class ca_40_client_report(osv.osv):
                     ai.currency_id,
                     sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) then
                     CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
-                    THEN - ai.amount_untaxed ELSE ai.amount_untaxed end else 0 end ) ca_annee ,
+                    THEN - ail.price_subtotal ELSE ail.price_subtotal end else 0 end ) ca_annee ,
+                    sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) then
+                    CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
+                    THEN - ail.quantity ELSE ail.quantity end else 0 end ) vol_annee ,
                     sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) -1  then
                     CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
-                    THEN - ai.amount_untaxed  ELSE ai.amount_untaxed end else 0 end ) ca_prev_annee
+                    THEN - ail.price_subtotal  ELSE ail.price_subtotal end else 0 end ) ca_prev_annee
         """
         return select_str
 
     def _from(self):
         from_str = """
-                FROM  account_invoice ai
+                FROM account_invoice_line ail
+                JOIN account_invoice ai ON ai.id = ail.invoice_id
                 JOIN res_partner partner ON ai.partner_id = partner.id
                 WHERE ((EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE)  or
                 EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) -1) and ai.type in ('out_invoice','out_refund'))
@@ -133,7 +138,7 @@ class ca_40_client_report(osv.osv):
 
     def _group_by(self):
         group_by_str = """
-                GROUP BY partner_id,ai.currency_id
+                GROUP BY ai.partner_id,ai.currency_id
         """
         return group_by_str
 

@@ -118,9 +118,9 @@ class wds_evol_ca_list(osv.osv):
                 and ai.state in ('paid','open')
                 GROUP BY ai.partner_id,ai.currency_id ) AS sub
                 union
-                SELECT sub.id, sub.partner_id,sub.invoicenb, sub.categ_id , sub.currency_id,sub.ca_annee, sub.ca_prev_annee,
+                SELECT sub.id, sub.partner_id,sub.invoicenb, case when sub.categ_id is null then 304 else sub.categ_id end categ_id, sub.currency_id,sub.ca_annee, sub.ca_prev_annee,
             CASE when sub.ca_prev_annee =0 then 100 else (((sub.ca_annee - sub.ca_prev_annee) / sub.ca_prev_annee) * 100) +100 end as percentca,
-            sub.nbr from (SELECT min(ai.partner_id)*10000 + pt.categ_id as id, ai.partner_id  ,pt.categ_id,
+            sub.nbr from (SELECT min(ai.partner_id)*10000 + case when pt.categ_id is null then 304 else pt.categ_id end as id, ai.partner_id  ,pt.categ_id,
                     count(distinct ai.number) AS invoicenb,
                     ai.currency_id,
                     sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) then

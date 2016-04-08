@@ -92,16 +92,15 @@
             <field name="model">wds.evol.ca.list</field>
             <field name="view_mode">tree,form</field>
             <field name="arch" type="xml">
-                <tree editable="top" colors="blue:categ_id == 0" >
+                <tree editable="top" colors="blue:categ_id == 0" create="false" edit="false">
                     <field name="partner_id"/>
-                    <field name="invoicenb"/>
-                    <field name="categ_id"/>
                     <field name="nomcat"/>
-                    <field name="currency_id"/>
+                    <field name="categ_id" invisible="1"/>
                     <field name="ca_annee"/>
                     <field name="ca_prev_annee"/>
                     <field name="percentca"/>
-                    <field name="nbr"/>
+                    <field name="invoicenb"/>
+               <!--     <field name="nbr"/>-->
                 </tree>
             </field>
         </record>
@@ -135,11 +134,12 @@
             <field name="model">ca.40.client.list</field>
             <field name="view_mode">tree,form</field>
             <field name="arch" type="xml">
-                <tree editable="top"  >
+                <tree editable="top" create="false" edit="false" >
                     <field name="partner_id"/>
                     <field name="invoicenb"/>
-                    <field name="ca_annee"/>
                     <field name="ca_prev_annee"/>
+                    <field name="ca_annee"/>
+                    <field name="vol_annee"/>
                     <field name="percentca"/>
                     <button type="action" name="%(action_wds_evol_ca_list)d" string="Detail"/>
                 </tree>
@@ -159,7 +159,7 @@
         </record>
 
         <!--Options de menu -->
-            <menuitem id="WDS_menu_root" sequence="15" name="WDS Menu" />
+            <menuitem id="WDS_menu_root" sequence="15" name="WDS Report" />
             <menuitem id="WDS_analyse_clients" parent="WDS_menu_root" sequence="1" name="Ventes"/>
             <menuitem action="action_avancement_ca_client_report2_all" id="menu_action_avancement_ca_client_report2_all" parent="WDS_analyse_clients" />
             <menuitem action="action_ca_40_client_list_all" id="menu_action_ca_40_client_list_all" parent="WDS_analyse_clients" />

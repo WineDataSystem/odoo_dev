@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "WDS_menu",
+    'name': "WDS_report",
 
     'summary': """
         Menu principal WDS""",
@@ -24,7 +24,7 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'wds_menu.xml',
+        'wds_report.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
