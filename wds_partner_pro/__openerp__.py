@@ -10,7 +10,7 @@
     """,
 
     'author': "WineDataSystem",
-    'website': "http://www.yourcompany.com",
+    'website': "http://www.winedatasystem.com",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/master/openerp/addons/base/module/module_data.xml
@@ -24,16 +24,16 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'security/security.xml',
-        'security/ir.model.access.csv',
-        'templates.xml',
-        'views/openacademy.xml',
+        # 'security/security.xml',
+        # 'security/ir.model.access.csv',
+        # 'templates.xml',
+        # 'views/openacademy.xml',
         'views/partner.xml',
-        'views/session_workflow.xml',
-        'reports.xml',
+        # 'views/session_workflow.xml',
+        # 'reports.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
-        'demo.xml',
+
     ],
 }
