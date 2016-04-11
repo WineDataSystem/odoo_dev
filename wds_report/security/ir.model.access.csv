@@ -1,4 +1,8 @@
 id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
 access_wdsreport_user,wdsreport_user,model_account_customer_report,group_wds_user,1,0,0,0
 access_wdsreport_manager,wdsreport_manager,model_account_customer_report,group_wds_manager,1,1,1,1
-
+access_wds_lignes_fac_list,access_wds_lignes_fac_list,model_wds_lignes_fac_list,group_wds_user,1,0,0,0
+access_ca_40_client_list,access_ca_40_client_list,model_ca_40_client_list,group_wds_user,1,0,0,0
+access_wds_evol_ca_list,access_wds_evol_ca_list,model_wds_evol_ca_list,group_wds_user,1,0,0,0
+access_wds_account_ventes_report,access_wds_account_ventes_report,model_wds_account_ventes_report,group_wds_user,1,0,0,0
+access_avancement_ca_client_report,access_avancement_ca_client_report,model_avancement_ca_client_report,group_wds_user,1,0,0,0

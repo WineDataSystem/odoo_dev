@@ -316,7 +316,7 @@
         </record>
 
         <!--Options de menu -->
-            <menuitem id="WDS_menu_root" sequence="15" name="WDS Report" groups="group_wds_user" />
+            <menuitem id="WDS_menu_root" sequence="1" name="WDS Report" groups="group_wds_user" />
             <menuitem id="WDS_analyse_clients" parent="WDS_menu_root" sequence="1" name="Ventes"/>
             <menuitem action="action_avancement_ca_client_report2_all" id="menu_action_avancement_ca_client_report2_all" parent="WDS_analyse_clients" />
             <menuitem action="action_ca_40_client_list_all" id="menu_action_ca_40_client_list_all" parent="WDS_analyse_clients" />

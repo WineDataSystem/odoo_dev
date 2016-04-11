@@ -231,5 +231,21 @@ class account_customer_report(osv.osv):
                     self._table,
                     self._select(), self._sub_select(), self._from(), self._group_by()))
 
+class res_partner(osv.osv):
+    _inherit = 'res.partner'
 
+    def _invoice_count(self, cr, uid, ids, field_name, arg, context=None):
+        res = dict(map(lambda x: (x,0), ids))
+
+        try:
+            for partner in self.browse(cr, uid, ids, context):
+                res[partner.id] = " "
+        except:
+            pass
+        return res
+
+    _columns = {
+        'invoice_count': fields.function(_invoice_count, string='# of invoices', type='char'),
+        #'invoice_ids': fields.one2many('stock.move','partner_id','Delivery Order')
+    }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

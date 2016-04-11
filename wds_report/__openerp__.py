@@ -26,6 +26,7 @@
         'security/wdsreport.xml',
         'security/ir.model.access.csv',
         'wds_report.xml',
+        'report/account_customer_report_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
