@@ -1,0 +1,215 @@
+<openerp>
+    <data>
+        <!-- Vue : Analyse client report année en cours/annee moins 1-->
+        <record id="view_account_customer_report_search" model="ir.ui.view">
+            <field name="name">account.customer.report.search</field>
+            <field name="model">account.customer.report</field>
+            <field name="arch" type="xml">
+                <search string="Analyse Client">
+                    <filter string="Cette Annee" name="thisyear" domain="['|', ('date', '=', False), '&amp;',('date','&lt;=', time.strftime('%%Y-12-31')),('date','&gt;=',time.strftime('%%Y-01-01'))]" help="Journal invoices with period in current year"/>
+                    <filter string="Cette Annee / A-1" name="thisyear/PreviousYear" domain="['|', ('date', '=', False), '&amp;',('date','&lt;=', time.strftime('%%Y-12-31')),('date','&gt;=',(context_today()-relativedelta(years=1)).strftime('%%Y-01-01'))]" help="Journal invoices with period in current year and previous year"/>
+                    <separator/>
+                    <filter string="A facturer" domain="[('state','=','draft')]" help = "Draft Invoices"/>
+                    <filter string="Pro-forma" domain="['|', ('state','=','proforma'),('state','=','proforma2')]"/>
+                    <filter string="Facture" name="current" domain="[('state','not in', ('draft','cancel','proforma','proforma2'))]"/>
+                    <separator/>
+                    <filter string="Client" name="customer" domain="['|', ('type','=','out_invoice'),('type','=','out_refund')]"/>
+                    <filter string="Fournisseur" domain="['|', ('type','=','in_invoice'),('type','=','in_refund')]"/>
+                    <separator/>
+                    <filter string="Facture" domain="['|', ('type','=','out_invoice'),('type','=','in_invoice')]"/>
+                    <filter string="Avoir" domain="['|', ('type','=','out_refund'),('type','=','in_refund')]"/>
+                    <field name="partner_id" operator="child_of"/>
+                    <field name="user_id" />
+                    <field name="categ_id" filter_domain="[('categ_id', 'child_of', self)]"/>
+                    <group expand="1" string="Group By">
+                        <filter string="Partenaire" name="partenaire" context="{'group_by':'partner_id','residual_visible':True}"/>
+                        <filter string="Vendeur" name='user' context="{'group_by':'user_id'}"/>
+                        <filter string="Categorie Produit" name="category_product" context="{'group_by':'categ_id','residual_invisible':True}"/>
+                        <filter string="Numero de facture" name="number" context="{'group_by':'number'}"/>
+                        <filter string="Statuts" context="{'group_by':'state'}"/>
+                        <filter string="Sales Team" context="{'group_by':'section_id'}" groups="base.group_multi_salesteams"/>
+                         <!--  <filter string="Company" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>-->
+                        <separator orientation="vertical" />
+                        <filter string="Periode" context="{'group_by':'period_id'}"/>
+                        <filter string="Date de Paiement" context="{'group_by':'date_due:month'}"/>
+                        <filter string="Trimestre" context="{'group_by':'date:quarter'}" type="col"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <!-- Action : Analyse client report année en cours/annee moins 1-->
+        <record id="action_account_customer_report2_all" model="ir.actions.act_window">
+            <field name="name">Analyse client</field>
+            <field name="res_model">account.customer.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">graph</field>
+            <!--<field name="context">{'group_by': ['partner_id']['categ_id'] ,'search_default_partner_id':[active_id], "search_default_current":1}</field>-->
+            <field name="search_view_id" ref="view_account_customer_report_search"/>
+            <field name="help">From this report, you can have an overview of the amount invoiced to your customer. The tool search can also be used to personalise your Invoices reports and so, match this analysis to your needs.</field>
+        </record>
+
+        <!-- Vue : Pourcentage de CA réalisé par rapport à l'année précédente-->
+        <record id="view_avancement_ca_client_report_graph" model="ir.ui.view">
+             <field name="name">avancement.ca.client.report.graph</field>
+             <field name="model">avancement.ca.client.report</field>
+             <field name="arch" type="xml">
+                 <graph string="Avancement CA" type="pivot">
+                     <!--<field name="fiscal_position" type="row"/>-->
+                     <!--<field name="date" interval="year" type="col"/>-->
+                     <!--<field name="product_qty" type="measure"/>-->
+                     <field name="ca_annee" type="measure"/>
+                     <field name="ca_prev_annee" type="measure"/>
+                     <field name="percentca" type="measure"/>
+                    <!--          <field name="residual" type="measure"/>-->
+                 </graph>
+             </field>
+        </record>
+        <!-- Action lancée par le menu : Pourcentage de CA réalisé par rapport à l'année précédente-->
+        <record id="action_avancement_ca_client_report2_all" model="ir.actions.act_window">
+            <field name="name">Avancement CA Client</field>
+            <field name="res_model">avancement.ca.client.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="view_avancement_ca_client_report_graph"></field>
+            <!--<field name="context">{'group_by': ['partner_id'],'order':'ca_prev_annee desc', 'set_visible':True, 'residual_invisible':True}</field>-->
+            <field name="context">{'group_by': ['partner_id'],'order':'ca_prev_annee desc'}</field>
+            <field name="help"></field>
+        </record>
+
+        <!-- Action lancée par le bouton fiche client : Pourcentage de CA réalisé par rapport à l'année précédente-->
+         <record id="action_avancement_ca_client_report_all" model="ir.actions.act_window">
+            <field name="name">Avancement CA Client</field>
+            <field name="res_model">avancement.ca.client.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="view_avancement_ca_client_report_graph"></field>
+            <field name="context">{'search_default_partner_id':[active_id],'group_by': 1, 'set_visible':True, 'residual_invisible':True}</field>
+            <field name="help"></field>
+        </record>
+
+        <!-- Vue : lignes de factures année en cours /année précédente par categorie article -->
+        <record id="wds_lignes_fac_list_tree" model="ir.ui.view">
+            <field name="name">Détail lignes de facture</field><field name="partner_id"/><field name="categ_id"/>
+            <field name="model">wds.lignes.fac.list</field>
+            <field name="view_mode">tree,form</field>
+            <field name="arch" type="xml">
+                <tree editable="top" create="false">
+                    <field name="partner_id"/>
+                    <field name="categ_id" />
+                    <field name="date"/>
+                    <field name="number"/>
+                    <field name="product_id"/>
+                    <field name="quantity"/>
+                    <field name="uom_name"/>
+                    <field name="fiscal_position"/>
+                    <field name="price_subtotal"/>
+                    <field name="type"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+         <!-- Filtre : lignes de factures année en cours /année précédente par categorie article -->
+        <record id="view_wds_lignes_fac_list_filter" model="ir.ui.view">
+            <field name="name">wds.lignes.fac.list.select</field>
+            <field name="model">wds.lignes.fac.list</field>
+            <field name="arch" type="xml">
+                <search string="Search Customer">
+                    <field name="partner_id" />
+                    <field name="categ_id" />
+                </search>
+            </field>
+        </record>
+        <!-- action : lignes de factures année en cours /année précédente par categorie article -->
+        <record id="action_wds_lignes_fac_list" model="ir.actions.act_window">
+            <field name="name">Détail Lignes de factures</field>
+            <field name="res_model">wds.lignes.fac.list</field>
+            <field name="view_mode">list</field>
+            <field name="view_id" ref="wds_lignes_fac_list_tree"/>
+            <!--<field name="context">{'search_default_partner_id':[active_id],'order':'ca_annee desc', 'set_visible':True, 'residual_invisible':True}</field>-->
+            <field name="context">{'search_default_partner_id':[active_id],'order':'categ_id'}</field>
+            <!-- <field name="target">inline</field>-->
+            <field name="search_view_id" ref="view_wds_lignes_fac_list_filter"/>
+        </record>
+      <!-- Vue : % evolution des clients année encours vs année précédente -->
+        <record id="wds_evol_ca_list_tree" model="ir.ui.view">
+            <field name="name">Evolution du chiffre d'affaire</field><field name="partner_id"/>
+            <field name="model">wds.evol.ca.list</field>
+            <field name="view_mode">tree,form</field>
+            <field name="arch" type="xml">
+                <tree editable="top" colors="blue:categ_id == 0" create="false">
+                    <field name="partner_id"/>
+                    <field name="nomcat"/>
+                    <field name="categ_id" invisible="1"/>
+                    <field name="ca_annee"/>
+                    <field name="ca_prev_annee"/>
+                    <field name="percentca"/>
+                    <field name="invoicenb"/>
+                    <button type="action" name="%(action_wds_lignes_fac_list)d" string="Detail"/>
+               <!--     <field name="nbr"/>-->
+                </tree>
+            </field>
+        </record>
+
+        <!-- Filtre : % evolution des clients année encours vs année précédente -->
+        <record id="view_wds_evol_ca_list_filter" model="ir.ui.view">
+            <field name="name">wds.evol.ca.list.select</field>
+            <field name="model">wds.evol.ca.list</field>
+            <field name="arch" type="xml">
+                <search string="Search Customer">
+                    <field name="partner_id" />
+                    <field name="categ_id" />
+                </search>
+            </field>
+        </record>
+        <!-- action : % evolution des clients année encours vs année précédente -->
+        <record id="action_wds_evol_ca_list" model="ir.actions.act_window">
+            <field name="name">Evolution du chiffre d'affaire</field>
+            <field name="res_model">wds.evol.ca.list</field>
+            <field name="view_mode">list</field>
+            <field name="view_id" ref="wds_evol_ca_list_tree"/>
+            <!--<field name="context">{'search_default_partner_id':[active_id],'order':'ca_annee desc', 'set_visible':True, 'residual_invisible':True}</field>-->
+            <field name="context">{'search_default_partner_id':[active_id],'order':'ca_annee desc'}</field>
+            <!-- <field name="target">inline</field>-->
+            <field name="search_view_id" ref="view_wds_evol_ca_list_filter"/>
+        </record>
+
+        <!-- Vue : 40 plus gros clients de l'année en cours-->
+        <record id="view_ca_40_client_list" model="ir.ui.view">
+            <field name="name">40 Meilleurs clients</field>
+            <field name="partner_id"/>
+            <field name="model">ca.40.client.list</field>
+            <field name="view_mode">tree,form</field>
+            <field name="arch" type="xml">
+                <tree editable="top" create="false">
+                    <field name="partner_id"/>
+                    <field name="invoicenb"/>
+                    <field name="ca_prev_annee"/>
+                    <field name="ca_annee"/>
+                    <field name="vol_annee"/>
+                    <field name="percentca"/>
+                    <button type="action" name="%(action_wds_evol_ca_list)d" string="Detail"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action lancée par le menu :40 plus gros clients de l'année en cours-->
+        <record id="action_ca_40_client_list_all" model="ir.actions.act_window">
+            <field name="name">40 meilleurs clients</field>
+            <field name="res_model">ca.40.client.list</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_ca_40_client_list"></field>
+            <!--<field name="context">{'group_by': ['partner_id'],'order':'ca_prev_annee desc', 'set_visible':True, 'residual_invisible':True}</field>-->
+            <field name="context">{'order':'ca_annee desc'}</field>
+            <field name="help"></field>
+        </record>
+
+        <!--Options de menu -->
+            <menuitem id="WDS_menu_root" sequence="15" name="WDS Report" />
+            <menuitem id="WDS_analyse_clients" parent="WDS_menu_root" sequence="1" name="Ventes"/>
+            <menuitem action="action_avancement_ca_client_report2_all" id="menu_action_avancement_ca_client_report2_all" parent="WDS_analyse_clients" />
+            <menuitem action="action_ca_40_client_list_all" id="menu_action_ca_40_client_list_all" parent="WDS_analyse_clients" />
+            <!--<menuitem id="WDS_analyse_achat" parent="WDS_menu_root" sequence="2" name="Achat"/>-->
+            <!--<menuitem action="action_account_customer_report2_all" id="menu_action_account_customer_report2_all" parent="WDS_analyse_achat" />-->
+    </data>
+</openerp>
