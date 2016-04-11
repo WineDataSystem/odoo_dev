@@ -16,14 +16,15 @@
     # Check https://github.com/odoo/odoo/blob/master/openerp/addons/base/module/module_data.xml
     # for the full list
     'category': 'sales',
-    'version': '0.2b',
+    'version': '0.3',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','account'],
+    'depends': ['base','account',],
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
+        'security/wdsreport.xml',
+        'security/ir.model.access.csv',
         'wds_report.xml',
     ],
     # only loaded in demonstration mode

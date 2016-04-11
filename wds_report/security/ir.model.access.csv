@@ -1,0 +1,4 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_wdsreport_user,wdsreport_user,model_account_customer_report,group_wds_user,1,0,0,0
+access_wdsreport_manager,wdsreport_manager,model_account_customer_report,group_wds_manager,1,1,1,1
+
