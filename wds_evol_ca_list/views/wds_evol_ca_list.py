@@ -71,6 +71,7 @@ class wds_evol_ca_list(osv.osv):
         'nomcat': fields.char('Nom catégorie', size=128, readonly=True),
         'currency_id': fields.many2one('res.currency', 'Monnaie', readonly=True),
         'ca_annee': fields.float('CA Année en cours', readonly=True),
+        'vol_annee': fields.float('Quantité Année en cours', readonly=True),
         'ca_prev_annee': fields.float('CA Année précédente', readonly=True),
         'percentca': fields.float('Pourcentage évolution', readonly=True),
         'nbr': fields.integer('Nb Ligne de facture', readonly=True),
@@ -98,8 +99,8 @@ class wds_evol_ca_list(osv.osv):
     def init(self, cr):
         # self._table = account_invoice_report
         tools.drop_view_if_exists(cr, self._table)
-        cr.execute("""CREATE or REPLACE VIEW %s as (select toute.id,toute.partner_id, rp.name nomcli, invoicenb, categ_id, pc.name nomcat, currency_id, ca_annee, ca_prev_annee, percentca, nbr
-        from ( SELECT sub.id, sub.partner_id,sub.invoicenb, 0 categ_id , sub.currency_id,sub.ca_annee, sub.ca_prev_annee,
+        cr.execute("""CREATE or REPLACE VIEW %s as (select toute.id,toute.partner_id, rp.name nomcli, invoicenb, categ_id, pc.name nomcat, currency_id, ca_annee,vol_annee, ca_prev_annee, percentca, nbr
+        from ( SELECT sub.id, sub.partner_id,sub.invoicenb, 0 categ_id , sub.currency_id,sub.ca_annee,sub.vol_annee, sub.ca_prev_annee,
             CASE when sub.ca_prev_annee =0 then 100 else (((sub.ca_annee - sub.ca_prev_annee) / sub.ca_prev_annee) * 100) +100 end as percentca,
             sub.nbr from (SELECT min(ai.partner_id) as id, ai.partner_id  ,
                     count(distinct ai.number) AS invoicenb,
@@ -107,6 +108,9 @@ class wds_evol_ca_list(osv.osv):
                     sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) then
                     CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
                     THEN - ail.price_subtotal ELSE ail.price_subtotal end else 0 end ) ca_annee ,
+                     sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) then
+                    CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
+                    THEN - ail.quantity ELSE ail.quantity end else 0 end ) vol_annee ,
                     sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) -1  then
                     CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
                     THEN - ail.price_subtotal  ELSE ail.price_subtotal end else 0 end ) ca_prev_annee,
@@ -118,14 +122,17 @@ class wds_evol_ca_list(osv.osv):
                 and ai.state in ('paid','open')
                 GROUP BY ai.partner_id,ai.currency_id ) AS sub
                 union
-                SELECT sub.id, sub.partner_id,sub.invoicenb, sub.categ_id , sub.currency_id,sub.ca_annee, sub.ca_prev_annee,
+                SELECT sub.id, sub.partner_id,sub.invoicenb, case when sub.categ_id is null then 304 else sub.categ_id end categ_id, sub.currency_id,sub.ca_annee,sub.vol_annee, sub.ca_prev_annee,
             CASE when sub.ca_prev_annee =0 then 100 else (((sub.ca_annee - sub.ca_prev_annee) / sub.ca_prev_annee) * 100) +100 end as percentca,
-            sub.nbr from (SELECT min(ai.partner_id)*10000 + pt.categ_id as id, ai.partner_id  ,pt.categ_id,
+            sub.nbr from (SELECT min(ai.partner_id)*10000 + case when pt.categ_id is null then 304 else pt.categ_id end as id, ai.partner_id  ,pt.categ_id,
                     count(distinct ai.number) AS invoicenb,
                     ai.currency_id,
                     sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) then
                     CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
                     THEN - ail.price_subtotal ELSE ail.price_subtotal end else 0 end ) ca_annee ,
+                                       sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) then
+                    CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
+                    THEN - ail.quantity ELSE ail.quantity end else 0 end ) vol_annee ,
                     sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) -1  then
                     CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
                     THEN - ail.price_subtotal  ELSE ail.price_subtotal end else 0 end ) ca_prev_annee,
@@ -139,13 +146,16 @@ class wds_evol_ca_list(osv.osv):
                 and ai.state in ('paid','open')
                 GROUP BY ai.partner_id,ai.currency_id,pt.categ_id ) AS sub
                 union
-                 SELECT 0 id, sub.partner_id,sub.invoicenb, 0 categ_id , sub.currency_id,sub.ca_annee, sub.ca_prev_annee,
+                 SELECT 0 id, sub.partner_id,sub.invoicenb, 0 categ_id , sub.currency_id,sub.ca_annee,sub.vol_annee, sub.ca_prev_annee,
             CASE when sub.ca_prev_annee =0 then 100 else (((sub.ca_annee - sub.ca_prev_annee) / sub.ca_prev_annee) * 100) +100 end as percentca,
             sub.nbr from (SELECT min(ai.partner_id) as id, 9999999 partner_id  ,
                     count(distinct ai.number) AS invoicenb, 0 currency_id,
                     sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) then
                     CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
                     THEN - ai.amount_untaxed ELSE ai.amount_untaxed end else 0 end ) ca_annee ,
+                                       sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) then
+                    CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
+                    THEN - ail.quantity ELSE ail.quantity end else 0 end ) vol_annee ,
                     sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) -1  then
                     CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
                     THEN - ai.amount_untaxed  ELSE ai.amount_untaxed end else 0 end ) ca_prev_annee,

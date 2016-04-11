@@ -24,11 +24,11 @@ import openerp.addons.decimal_precision as dp
 from datetime import timedelta
 from openerp.osv import fields,osv
 
-class avancement_ca_client_report(osv.osv):
-    _name = "avancement.ca.client.report"
-    _description = "Avancement CA Client"
+class wds_lignes_fac_list(osv.osv):
+    _name = "wds.lignes.fac.list"
+    _description = "Lignes factures"
     _auto = False
-    _rec_name = 'partner_id'
+    _rec_name = 'id'
 
     def _compute_amounts_in_user_currency(self, cr, uid, ids, field_names, args, context=None):
         """Compute the amounts in the currency of the user
@@ -60,28 +60,32 @@ class avancement_ca_client_report(osv.osv):
                 'user_currency_residual': residual,
             }
         return res
-    def _compute_av(self):
-        if self.ca_prev_annee <> 0:
-            self.percentca_calc = (((self.ca_annee - self.ca_prev_annee) / self.ca_prev_annee) * 100) +100
-        else:
-            self.percentca_calc=0
-
 
     _columns = {
         # 'date': fields.date('Date', readonly=True),
+        'id': fields.integer('Id', readonly=True),
         'partner_id': fields.many2one('res.partner', 'Partenaire', readonly=True),
-        'invoicenb': fields.float('Invoice Num', readonly=True),
+        'date': fields.date('Date', readonly=True),
+        'number': fields.char('Reference Facture', size=128, readonly=True),
+        'product_id': fields.many2one('product.product', 'Product', readonly=True),
+        'quantity': fields.float('Product Quantity', readonly=True),
+        'uom_name': fields.char('Reference Unit of Measure', size=128, readonly=True),
         'currency_id': fields.many2one('res.currency', 'Monnaie', readonly=True),
-        'company_id': fields.many2one('res.company', 'Societe', readonly=True),
-        'user_id': fields.many2one('res.users', 'Vendeur', readonly=True),
-        'ca_annee': fields.float('CA Année en cours', readonly=True),
-        'ca_prev_annee': fields.float('CA Année précédente', readonly=True),
-        'percentca': fields.float('Avancement %', readonly=True),
-        # 'user_currency_price_average': fields.function(_compute_amounts_in_user_currency, string="Prix de Vente Moyen", type='float', digits_compute=dp.get_precision('Account'), multi="_compute_amounts"),
-        # 'currency_rate': fields.float('Currency Rate', readonly=True),
-        'nbr': fields.integer('Nb Ligne de facture', readonly=True),
-    }
-    _order = 'ca_annee desc'
+        'period_id': fields.many2one('account.period', 'Force Period', domain=[('state', '<>', 'done')], readonly=True),
+        'fiscal_position': fields.many2one('account.fiscal.position', 'Fiscal Position', readonly=True),
+        'categ_id': fields.many2one('product.category', 'Category of Product', readonly=True),
+        'price_subtotal': fields.float('Total Without Tax', readonly=True),
+        'sequence': fields.integer('Sequence'),
+        'type': fields.selection([
+            ('out_invoice', 'Customer Invoice'),
+            ('in_refund', 'Supplier Refund'),
+        ], 'Type', readonly=True),
+        'state': fields.selection([
+            ('open', 'Open'),
+            ('paid', 'Done')
+        ], 'Invoice Status', readonly=True),
+            }
+    _order = 'partner_id, categ_id, product_id'
 
     _depends = {
         'account.invoice': [
@@ -101,55 +105,21 @@ class avancement_ca_client_report(osv.osv):
         'res.partner': ['country_id'],
     }
 
-    def _select(self):
-        select_str = """
-            SELECT sub.id, sub.partner_id,sub.invoicenb,sub.currency_id,sub.ca_annee, sub.ca_prev_annee,
-            CASE when sub.ca_prev_annee =0 then 100 else (((sub.ca_annee - sub.ca_prev_annee) / sub.ca_prev_annee) * 100) +100 end as percentca,
-            sub.nbr
-        """
-        return select_str
-
-    def _sub_select(self):
-        select_str = """
-                SELECT min(ai.partner_id) as id, ai.partner_id  ,
-                    count(distinct ai.number) AS invoicenb,
-                    ai.currency_id,
-                    sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) then
-                    CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
-                    THEN - ai.amount_untaxed ELSE ai.amount_untaxed end else 0 end ) ca_annee ,
-                    sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) -1  then
-                    CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
-                    THEN - ai.amount_untaxed  ELSE ai.amount_untaxed end else 0 end ) ca_prev_annee,
-                    count(*) AS nbr
-        """
-        return select_str
-
-    def _from(self):
-        from_str = """
-                FROM  account_invoice ai
-                JOIN res_partner partner ON ai.partner_id = partner.id
-                WHERE ((EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE)  or
-                EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) -1) and ai.type in ('out_invoice','out_refund'))
-                and ai.state in ('paid','open')
-        """
-        return from_str
-
-    def _group_by(self):
-        group_by_str = """
-                GROUP BY partner_id,ai.currency_id
-        """
-        return group_by_str
-
     def init(self, cr):
         # self._table = account_invoice_report
         tools.drop_view_if_exists(cr, self._table)
-        cr.execute("""CREATE or REPLACE VIEW %s as (
-            %s
-            FROM (
-                %s %s %s
-            ) AS sub        )""" % (
-                    self._table,
-                    self._select(), self._sub_select(), self._from(), self._group_by()))
+        cr.execute("""CREATE or REPLACE VIEW %s as (select ail.id ,ai.partner_id ,date_invoice date,number ,product_id ,
+        quantity ,uom.name uom_name, currency_id, period_id,fiscal_position, categ_id, price_subtotal, ai.type, ai.state
+ from account_invoice_line ail JOIN account_invoice ai ON ai.id = ail.invoice_id
+JOIN res_partner partner ON ai.commercial_partner_id = partner.id
+                LEFT JOIN product_product pr ON pr.id = ail.product_id
+                left JOIN product_template pt ON pt.id = pr.product_tmpl_id
+                LEFT JOIN product_uom u ON u.id = ail.uos_id
+                LEFT JOIN product_uom uom ON uom.id = pt.uom_id
+  WHERE ((EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE)  or
+                EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) -1) and ai.type in ('out_invoice','out_refund'))
+                and ai.state in ('paid','open')
+ order by partner_id, categ_id, number, ail.id )""" % (self._table))
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
