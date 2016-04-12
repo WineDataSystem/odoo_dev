@@ -32,8 +32,9 @@ class wds_account_ventes_report(osv.osv):
         'date': fields.date('Effective Date', readonly=True),  # TDE FIXME master: rename into date_effective
         'date_created': fields.date('Date Created', readonly=True),
         'date_maturity': fields.date('Date Maturity', readonly=True),
+        'fiscal_position': fields.many2one('account.fiscal.position','Fiscal Position', readonly=True),
         'ref': fields.char('Reference', readonly=True),
-        'debref':fields.char('TypeRef', readonly=True),
+        'typref':fields.char('TypeRef', readonly=True),
         'nbr': fields.integer('# of Items', readonly=True),
         'debit': fields.float('Debit', readonly=True),
         'credit': fields.float('Credit', readonly=True),
@@ -114,8 +115,12 @@ class wds_account_ventes_report(osv.osv):
                 am.date as date,
                 l.date_maturity as date_maturity,
                 l.date_created as date_created,
+                case when ai.fiscal_position is NULL then 4
+                when ai.fiscal_position=0 then 4
+                else ai.fiscal_position end fiscal_position,
                 am.ref as ref,
-                substring(am.ref, 1 , 1) as debref,
+                case when substring(am.ref, 1 , 1)= 'F' then 'FAC'
+                     when substring(am.ref, 1 , 1)in ('M','N','P') then 'POS' else 'AUT' end as typref,
                 am.state as move_state,
                 l.state as move_line_state,
                 l.reconcile_id as reconcile_id,
@@ -142,6 +147,8 @@ class wds_account_ventes_report(osv.osv):
                 left join account_account a on (l.account_id = a.id)
                 left join account_move am on (am.id=l.move_id)
                 left join account_period p on (am.period_id=p.id)
+                left join account_invoice ai on l.ref = ai.number
+                left join pos_order po on l.ref = po.pos_reference
                 where l.state != 'draft' and a.code like '70%'
             )
         """)

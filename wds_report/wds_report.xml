@@ -12,7 +12,8 @@
                 <field name="date_created" invisible="1"/>
                 <field name="date_maturity" invisible="1"/>
                 <field name="ref" invisible="1"/>
-                <field name="debref" />
+                <field name="typref" />
+                <field name="fiscal_position" />
                 <field name="nbr" sum="# of Entries "/>
                 <field name="quantity" sum="# of Products Qty " invisible="not context.get('quantity_visible', False)"/>
                 <field name="amount_currency" invisible="not context.get('amount_currency_visible', False)"/>
@@ -41,7 +42,8 @@
              <graph string="Entries Analysis" type="pivot">
                 <field name="user_type" type="row"/>
                 <field name="period_id" type="col"/>
-                 <field name="debref" type="col"/>
+                <field name="typref" type="row"/>
+                <field name="fiscal_position" type="row"/>
                  <!--<field name="debit" type="measure"/>
                 <field name="credit" type="measure"/>-->
                 <field name="balance" type="measure"/>
