@@ -40,6 +40,7 @@ class wds_account_ventes_report(osv.osv):
         'credit': fields.float('Credit', readonly=True),
         'balance': fields.float('Montant', readonly=True),
         'currency_id': fields.many2one('res.currency', 'Currency', readonly=True),
+        'country_id': fields.many2one('res.country', 'Country',readonly=True),
         'amount_currency': fields.float('Amount Currency', digits_compute=dp.get_precision('Account'), readonly=True),
         'period_id': fields.many2one('account.period', 'Period', readonly=True),
         'account_id': fields.many2one('account.account', 'Account', readonly=True),
@@ -119,8 +120,8 @@ class wds_account_ventes_report(osv.osv):
                 when ai.fiscal_position=0 then 4
                 else ai.fiscal_position end fiscal_position,
                 am.ref as ref,
-                case when substring(am.ref, 1 , 1)= 'F' then 'FAC'
-                     when substring(am.ref, 1 , 1)in ('M','N','P') then 'POS' else 'AUT' end as typref,
+                case when substring(am.ref, 1 , 1)= 'F' or upper(substring(am.ref, 1 , 2))='SO' then '1-FAC'
+                     when substring(am.ref, 1 , 1)in ('M','N','P') then '2-POS' else '3-AUT' end as typref,
                 am.state as move_state,
                 l.state as move_line_state,
                 l.reconcile_id as reconcile_id,
@@ -138,6 +139,7 @@ class wds_account_ventes_report(osv.osv):
                 1 as nbr,
                 l.quantity as quantity,
                 l.currency_id as currency_id,
+                case when rp.country_id is NULL or rp.country_id=0 then 76 else rp.country_id end country_id,
                 l.amount_currency as amount_currency,
                 l.debit as debit,
                 l.credit as credit,
@@ -149,6 +151,7 @@ class wds_account_ventes_report(osv.osv):
                 left join account_period p on (am.period_id=p.id)
                 left join account_invoice ai on l.ref = ai.number
                 left join pos_order po on l.ref = po.pos_reference
+                left join res_partner rp on l.partner_id= rp.id
                 where l.state != 'draft' and a.code like '70%'
             )
         """)

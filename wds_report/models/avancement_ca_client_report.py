@@ -72,8 +72,8 @@ class avancement_ca_client_report(osv.osv):
         'partner_id': fields.many2one('res.partner', 'Partenaire', readonly=True),
         'invoicenb': fields.float('Invoice Num', readonly=True),
         'currency_id': fields.many2one('res.currency', 'Monnaie', readonly=True),
-        'company_id': fields.many2one('res.company', 'Societe', readonly=True),
-        'user_id': fields.many2one('res.users', 'Vendeur', readonly=True),
+      #  'company_id': fields.many2one('res.company', 'Societe', readonly=True),
+      #  'user_id': fields.many2one('res.users', 'Vendeur', readonly=True),
         'ca_annee': fields.float('CA Année en cours', readonly=True),
         'ca_prev_annee': fields.float('CA Année précédente', readonly=True),
         'percentca': fields.float('Avancement %', readonly=True),
@@ -111,16 +111,17 @@ class avancement_ca_client_report(osv.osv):
 
     def _sub_select(self):
         select_str = """
-                SELECT min(ai.partner_id) as id, ai.partner_id  ,
-                    count(distinct ai.number) AS invoicenb,
-                    ai.currency_id,
-                    sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) then
+                SELECT min(ai.partner_id) as id,
+                ai.partner_id  ,
+                count(distinct ai.number) AS invoicenb,
+                ai.currency_id,
+                sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) then
                     CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
                     THEN - ai.amount_untaxed ELSE ai.amount_untaxed end else 0 end ) ca_annee ,
-                    sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) -1  then
+                sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) -1  then
                     CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
                     THEN - ai.amount_untaxed  ELSE ai.amount_untaxed end else 0 end ) ca_prev_annee,
-                    count(*) AS nbr
+                count(*) AS nbr
         """
         return select_str
 
@@ -147,7 +148,7 @@ class avancement_ca_client_report(osv.osv):
             %s
             FROM (
                 %s %s %s
-            ) AS sub        )""" % (
+            ) AS sub  order by ca_annee desc )""" % (
                     self._table,
                     self._select(), self._sub_select(), self._from(), self._group_by()))
 

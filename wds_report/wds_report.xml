@@ -141,7 +141,6 @@
                         <filter string="Numero de facture" name="number" context="{'group_by':'number'}"/>
                         <filter string="Statuts" context="{'group_by':'state'}"/>
                         <filter string="Sales Team" context="{'group_by':'section_id'}" groups="base.group_multi_salesteams"/>
-                         <!--  <filter string="Company" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>-->
                         <separator orientation="vertical" />
                         <filter string="Periode" context="{'group_by':'period_id'}"/>
                         <filter string="Date de Paiement" context="{'group_by':'date_due:month'}"/>
@@ -156,7 +155,6 @@
             <field name="res_model">account.customer.report</field>
             <field name="view_type">form</field>
             <field name="view_mode">graph</field>
-            <!--<field name="context">{'group_by': ['partner_id']['categ_id'] ,'search_default_partner_id':[active_id], "search_default_current":1}</field>-->
             <field name="search_view_id" ref="view_account_customer_report_search"/>
             <field name="help">From this report, you can have an overview of the amount invoiced to your customer. The tool search can also be used to personalise your Invoices reports and so, match this analysis to your needs.</field>
         </record>
@@ -167,13 +165,9 @@
              <field name="model">avancement.ca.client.report</field>
              <field name="arch" type="xml">
                  <graph string="Avancement CA" type="pivot">
-                     <!--<field name="fiscal_position" type="row"/>-->
-                     <!--<field name="date" interval="year" type="col"/>-->
-                     <!--<field name="product_qty" type="measure"/>-->
                      <field name="ca_annee" type="measure"/>
                      <field name="ca_prev_annee" type="measure"/>
                      <field name="percentca" type="measure"/>
-                    <!--          <field name="residual" type="measure"/>-->
                  </graph>
              </field>
         </record>
@@ -185,7 +179,7 @@
             <field name="view_mode">graph</field>
             <field name="view_id" ref="view_avancement_ca_client_report_graph"></field>
             <!--<field name="context">{'group_by': ['partner_id'],'order':'ca_prev_annee desc', 'set_visible':True, 'residual_invisible':True}</field>-->
-            <field name="context">{'group_by': ['partner_id'],'order':'ca_prev_annee desc'}</field>
+            <field name="context">{'group_by': ['partner_id'],'order':'ca_annee desc'}</field>
             <field name="help"></field>
         </record>
 
@@ -257,7 +251,7 @@
                     <field name="ca_prev_annee"/>
                     <field name="percentca"/>
                     <field name="invoicenb"/>
-                    <button type="action" name="%(action_wds_lignes_fac_list)d" string="Detail"/>
+                    <button type="action" name="%(action_wds_lignes_fac_list)d" string="Detail" attrs="{'invisible':[('categ_id','&lt;&gt;', 0)]}" />
                <!--     <field name="nbr"/>-->
                 </tree>
             </field>

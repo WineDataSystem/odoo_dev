@@ -3,10 +3,10 @@
     'name': "WDS Report",
 
     'summary': """
-        Menu de suvi d'activité""",
+        Menu de suivi d'activité""",
 
     'description': """
-        Création d'un menu qui permet d'afficher la rapports spécifiques à WineDataSystem
+        Création d'un menu qui permet d'afficher les rapports spécifiques à WineDataSystem
     """,
 
     'author': "WineDataSystem",
@@ -28,6 +28,16 @@
         'wds_report.xml',
         'report/account_customer_report_view.xml',
     ],
+    'test': [
+
+    ],
+    'js': [
+    ],
+    'qweb': [
+    ],
+    'installable': True,
+    'auto_install': False,
+    'images': [],
     # only loaded in demonstration mode
     'demo': [
 
