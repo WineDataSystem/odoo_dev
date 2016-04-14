@@ -77,6 +77,7 @@
                 <field name="categ_id" filter_domain="[('categ_id', 'child_of', self)]"/>
                 <group expand="1" string="Group By">
                     <filter string="Partenaire" name="partenaire" context="{'group_by':'partner_id','residual_visible':True}"/>
+                    <filter string="Position Fiscale" name="Position Fiscale" context="{'group_by':'fiscal_position','residual_visible':True}"/>
                     <filter string="Vendeur" name='user' context="{'group_by':'user_id'}"/>
                     <filter string="Catégorie Produit" name="category_product" context="{'group_by':'categ_id','residual_invisible':True}"/>
                     <filter string="Numero de facture" name="number" context="{'group_by':'number'}"/>
