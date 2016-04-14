@@ -24,11 +24,11 @@ import openerp.addons.decimal_precision as dp
 from datetime import timedelta
 from openerp.osv import fields,osv
 
-class ca_40_produits_list(osv.osv):
-    _name = "ca.40.produits.list"
-    _description = "CA 40 Meilleurs Produits"
+class ca_40_category_list(osv.osv):
+    _name = "ca.40.category.list"
+    _description = "CA 40 Meilleures categories"
     _auto = False
-    _rec_name = 'product_id'
+    _rec_name = 'categ_id'
 
     def _compute_amounts_in_user_currency(self, cr, uid, ids, field_names, args, context=None):
         """Compute the amounts in the currency of the user
@@ -70,8 +70,6 @@ class ca_40_produits_list(osv.osv):
     _columns = {
         # 'date': fields.date('Date', readonly=True),
         'id': fields.integer('Id', readonly=True),
-        'product_id': fields.many2one('product.product', 'Produit', readonly=True),
-        'facteur1' : fields.char('Unité', readonly=True),
         'categ_id': fields.many2one('product.category', 'Categorie Produit', readonly=True),
         'invoicenb': fields.float('Nbr factures', readonly=True),
         'company_id': fields.many2one('res.company', 'Societe', readonly=True),
@@ -104,17 +102,16 @@ class ca_40_produits_list(osv.osv):
     }
 
     def _select(self):
-        select_str = """ select sub2.id,  product_id,facteur1,facteur2,categ_id, invoicenb , ca_prev_annee , ca_annee, vol_annee, percentca from
-        (SELECT sub.id, sub.product_id,sub.facteur1,sub.facteur2,categ_id,sub.invoicenb,sub.currency_id,sub.ca_annee, sub.ca_prev_annee, sub.vol_annee,
+        select_str = """ select sub2.id, categ_id, invoicenb , ca_prev_annee , ca_annee, vol_annee, percentca from
+        (SELECT sub.id,categ_id,sub.invoicenb,sub.ca_annee, sub.ca_prev_annee, sub.vol_annee,
             CASE when sub.ca_prev_annee =0 then 100 else (((sub.ca_annee - sub.ca_prev_annee) / sub.ca_prev_annee) * 100) +100 end as percentca
         """
         return select_str
 
     def _sub_select(self):
         select_str = """
-                SELECT min(ail.product_id) as id, ail.product_id,u.name facteur1, u2.name facteur2,categ_id,
+                SELECT min(case when categ_id is null then 304 else categ_id end) as id, case when categ_id is null then 304 else categ_id end categ_id,
                     count(distinct ai.number) AS invoicenb,
-                    ai.currency_id,
                     sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) then
                     CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
                     THEN - ail.price_subtotal ELSE ail.price_subtotal end else 0 end ) ca_annee ,
@@ -133,8 +130,6 @@ class ca_40_produits_list(osv.osv):
                 JOIN account_invoice ai ON ai.id = ail.invoice_id
                 LEFT JOIN product_product pr ON pr.id = ail.product_id
                 left JOIN product_template pt ON pt.id = pr.product_tmpl_id
-                LEFT JOIN product_uom u ON u.id = ail.uos_id
-                LEFT JOIN product_uom u2 ON u2.id = pt.uom_id
                 left join product_category pc on pt.categ_id = pc.id
                 WHERE ((EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE)  or
                 EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) -1) and ai.type in ('out_invoice','out_refund'))
@@ -144,7 +139,7 @@ class ca_40_produits_list(osv.osv):
 
     def _group_by(self):
         group_by_str = """
-                GROUP BY ail.product_id,ai.currency_id,u.name , u2.name,categ_id
+                GROUP BY categ_id
         """
         return group_by_str
 
@@ -155,7 +150,7 @@ class ca_40_produits_list(osv.osv):
             %s
             FROM (
                 %s %s %s
-            ) AS sub where product_id is not null ) sub2  order by ca_annee desc   limit 40      )""" % (
+            ) AS sub ) sub2  order by ca_annee desc   limit 40      )""" % (
                     self._table,
                     self._select(), self._sub_select(), self._from(), self._group_by()))
 

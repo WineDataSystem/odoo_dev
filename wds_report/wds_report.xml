@@ -343,12 +343,44 @@
             <field name="context">{'order':'ca_annee desc'}</field>
             <field name="help"></field>
         </record>
+
+            <!-- Vue : 40 catégories les plus vendus dans l'année en cours-->
+        <record id="view_ca_40_category_list" model="ir.ui.view">
+            <field name="name">40 Meilleures categories</field>
+            <field name="categ_id"/>
+            <field name="model">ca.40.category.list</field>
+            <field name="view_mode">tree,form</field>
+            <field name="arch" type="xml">
+                <tree editable="top" create="false">
+                    <field name="categ_id"/>
+                    <field name="invoicenb"/>
+                    <field name="ca_prev_annee"/>
+                    <field name="ca_annee"/>
+                    <field name="vol_annee"/>
+                    <field name="percentca"/>
+                   <!-- <button type="action" name="%(action_wds_evol_ca_list)d" string="Detail"/>-->
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action lancée par le menu :40 categories les plus vendus dans l'année en cours-->
+        <record id="action_ca_40_category_list_all" model="ir.actions.act_window">
+            <field name="name">40 meilleurs categories</field>
+            <field name="res_model">ca.40.category.list</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_ca_40_category_list"></field>
+            <!--<field name="context">{'group_by': ['partner_id'],'order':'ca_prev_annee desc', 'set_visible':True, 'residual_invisible':True}</field>-->
+            <field name="context">{'order':'ca_annee desc'}</field>
+            <field name="help"></field>
+        </record>
         <!--Options de menu -->
             <menuitem id="WDS_menu_root" sequence="1" name="WDS Report" groups="group_wds_user" />
             <menuitem id="WDS_analyse_clients" parent="WDS_menu_root" sequence="1" name="Ventes" groups="group_wds_user"/>
             <menuitem action="action_avancement_ca_client_report2_all" id="menu_action_avancement_ca_client_report2_all" parent="WDS_analyse_clients" groups="group_wds_manager" />
             <menuitem action="action_ca_40_client_list_all" id="menu_action_ca_40_client_list_all" parent="WDS_analyse_clients" groups="group_wds_user" />
             <menuitem action="action_ca_40_produits_list_all" id="menu_action_ca_40_produits_list_all" parent="WDS_analyse_clients" groups="group_wds_user" />
+            <menuitem action="action_ca_40_category_list_all" id="menu_action_ca_40_category_list_all" parent="WDS_analyse_clients" groups="group_wds_user" />
             <menuitem action="action_wds_account_ventes_report_all" id="menu_action_wds_account_ventes_report_all"
         parent="WDS_analyse_clients" name="Toutes Ventes" groups="group_wds_manager" />
 
