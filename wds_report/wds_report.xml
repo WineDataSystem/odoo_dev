@@ -89,6 +89,11 @@
                 </group>
                 <group expand="1" string="Group By">
                     <filter string="Partner" context="{'group_by':'partner_id'}"/>
+                    <filter string="Pays" context="{'group_by':'country_id'}"/>
+                    <filter string="Compte" context="{'group_by':'account_id'}"/>
+                    <filter string="Produit" context="{'group_by':'product_id'}"/>
+                    <filter string="Position Fiscale" context="{'group_by':'fiscal_position'}"/>
+                     <filter string="Catégorie Produits" context="{'group_by':'categ_id'}"/>
                     <filter string="Journal" name="group_journal" context="{'group_by':'journal_id'}"/>
                     <filter string="Acc.Type" context="{'group_by':'user_type'}" name="usertype"/>
                     <filter string="Int.Type" context="{'group_by':'type'}"/>
@@ -168,6 +173,7 @@
                      <field name="ca_annee" type="measure"/>
                      <field name="ca_prev_annee" type="measure"/>
                      <field name="percentca" type="measure"/>
+                     <field name="stacli"/>
                  </graph>
              </field>
         </record>
@@ -179,7 +185,7 @@
             <field name="view_mode">graph</field>
             <field name="view_id" ref="view_avancement_ca_client_report_graph"></field>
             <!--<field name="context">{'group_by': ['partner_id'],'order':'ca_prev_annee desc', 'set_visible':True, 'residual_invisible':True}</field>-->
-            <field name="context">{'group_by': ['partner_id'],'order':'ca_annee desc'}</field>
+            <field name="context">{'group_by': ['stacli'],'order':'ca_annee desc'}</field>
             <field name="help"></field>
         </record>
 
@@ -196,7 +202,9 @@
 
         <!-- Vue : lignes de factures année en cours /année précédente par categorie article -->
         <record id="wds_lignes_fac_list_tree" model="ir.ui.view">
-            <field name="name">Détail lignes de facture</field><field name="partner_id"/><field name="categ_id"/>
+            <field name="name">Détail lignes de facture</field>
+            <field name="partner_id"/>
+            <field name="categ_id"/>
             <field name="model">wds.lignes.fac.list</field>
             <field name="view_mode">tree,form</field>
             <field name="arch" type="xml">
@@ -223,6 +231,9 @@
                 <search string="Search Customer">
                     <field name="partner_id" />
                     <field name="categ_id" />
+                    <group expand="1" string="Group By" position="inside">
+                       <filter string="Categorie" icon="terp-personal" domain="[]" context="{'group_by':'categ_id'}" />
+                    </group>
                 </search>
             </field>
         </record>
@@ -233,7 +244,7 @@
             <field name="view_mode">list</field>
             <field name="view_id" ref="wds_lignes_fac_list_tree"/>
             <!--<field name="context">{'search_default_partner_id':[active_id],'order':'ca_annee desc', 'set_visible':True, 'residual_invisible':True}</field>-->
-            <field name="context">{'search_default_partner_id':[active_id],'order':'categ_id'}</field>
+            <field name="context">{'search_default_partner_id':[active_id],'group by':'categ_id'}</field>
             <!-- <field name="target">inline</field>-->
             <field name="search_view_id" ref="view_wds_lignes_fac_list_filter"/>
         </record>
@@ -252,6 +263,7 @@
                     <field name="percentca"/>
                     <field name="invoicenb"/>
                     <button type="action" name="%(action_wds_lignes_fac_list)d" string="Detail" attrs="{'invisible':[('categ_id','&lt;&gt;', 0)]}" />
+
                <!--     <field name="nbr"/>-->
                 </tree>
             </field>

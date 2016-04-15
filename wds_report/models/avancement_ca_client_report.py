@@ -80,6 +80,7 @@ class avancement_ca_client_report(osv.osv):
         # 'user_currency_price_average': fields.function(_compute_amounts_in_user_currency, string="Prix de Vente Moyen", type='float', digits_compute=dp.get_precision('Account'), multi="_compute_amounts"),
         # 'currency_rate': fields.float('Currency Rate', readonly=True),
         'nbr': fields.integer('Nb Ligne de facture', readonly=True),
+        'stacli': fields.char('Statut client', size=28, readonly=True),
     }
     _order = 'ca_annee desc'
 
@@ -105,7 +106,12 @@ class avancement_ca_client_report(osv.osv):
         select_str = """
             SELECT sub.id, sub.partner_id,sub.invoicenb,sub.currency_id,sub.ca_annee, sub.ca_prev_annee,
             CASE when sub.ca_prev_annee =0 then 100 else (((sub.ca_annee - sub.ca_prev_annee) / sub.ca_prev_annee) * 100) +100 end as percentca,
-            sub.nbr
+            sub.nbr,
+        case when ca_annee > 0 and ca_prev_annee = 0 then '2/Nouveau'
+             when ca_annee = 0 and ca_prev_annee > 0 then '3/Perdu ?'
+             when ca_annee = 0 and ca_prev_annee = 0 then '4/       '
+             when CASE when sub.ca_prev_annee =0 then 100 else (((sub.ca_annee - sub.ca_prev_annee) / sub.ca_prev_annee) * 100) +100 end  > 50 then '1/ > 50 pcent'
+             else '4/       ' end stacli
         """
         return select_str
 

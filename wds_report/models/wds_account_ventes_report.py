@@ -47,6 +47,7 @@ class wds_account_ventes_report(osv.osv):
         'journal_id': fields.many2one('account.journal', 'Journal', readonly=True),
         'fiscalyear_id': fields.many2one('account.fiscalyear', 'Fiscal Year', readonly=True),
         'product_id': fields.many2one('product.product', 'Product', readonly=True),
+        'categ_id': fields.many2one('product.category', 'Category of Product', readonly=True),
         'product_uom_id': fields.many2one('product.uom', 'Product Unit of Measure', readonly=True),
         'move_state': fields.selection([('draft','Unposted'), ('posted','Posted')], 'Status', readonly=True),
         'move_line_state': fields.selection([('draft','Unbalanced'), ('valid','Valid')], 'State of Move Line', readonly=True),
@@ -127,6 +128,7 @@ class wds_account_ventes_report(osv.osv):
                 l.reconcile_id as reconcile_id,
                 l.partner_id as partner_id,
                 l.product_id as product_id,
+                case when categ_id is not null then categ_id else 304 end categ_id,
                 l.product_uom_id as product_uom_id,
                 am.company_id as company_id,
                 am.journal_id as journal_id,
@@ -152,6 +154,7 @@ class wds_account_ventes_report(osv.osv):
                 left join account_invoice ai on l.ref = ai.number
                 left join pos_order po on l.ref = po.pos_reference
                 left join res_partner rp on l.partner_id= rp.id
+                left join product_template pt on l.product_id=pt.id
                 where l.state != 'draft' and a.code like '70%'
             )
         """)

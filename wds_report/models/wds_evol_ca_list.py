@@ -75,7 +75,7 @@ class wds_evol_ca_list(osv.osv):
         'percentca': fields.float('Pourcentage évolution', readonly=True),
         'nbr': fields.integer('Nb Ligne de facture', readonly=True),
     }
-    _order = 'partner_id, categ_id'
+    _order = 'ca_annee desc, partner_id, categ_id'
 
     _depends = {
         'account.invoice': [
@@ -98,10 +98,12 @@ class wds_evol_ca_list(osv.osv):
     def init(self, cr):
         # self._table = account_invoice_report
         tools.drop_view_if_exists(cr, self._table)
-        cr.execute("""CREATE or REPLACE VIEW %s as (select toute.id,toute.partner_id, rp.name nomcli, invoicenb, categ_id, pc.name nomcat, currency_id, ca_annee, ca_prev_annee, percentca, nbr
+        cr.execute("""CREATE or REPLACE VIEW %s as (select toute.id,toute.partner_id, rp.name nomcli, invoicenb, categ_id,
+        pc.name nomcat, currency_id, ca_annee, ca_prev_annee, percentca, nbr
         from ( SELECT sub.id, sub.partner_id,sub.invoicenb, 0 categ_id , sub.currency_id,sub.ca_annee, sub.ca_prev_annee,
             CASE when sub.ca_prev_annee =0 then 100 else (((sub.ca_annee - sub.ca_prev_annee) / sub.ca_prev_annee) * 100) +100 end as percentca,
-            sub.nbr from (SELECT min(ai.partner_id) as id, ai.partner_id  ,
+            sub.nbr
+             from (SELECT min(ai.partner_id) as id, ai.partner_id  ,
                     count(distinct ai.number) AS invoicenb,
                     ai.currency_id,
                     sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) then
@@ -155,7 +157,7 @@ class wds_evol_ca_list(osv.osv):
                 EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) -1) and ai.type in ('out_invoice','out_refund'))
                 and ai.state in ('paid','open')
                 ) AS sub   ) toute left join res_partner rp on toute.partner_id = rp.id left join product_category pc on toute.categ_id = pc.id
-		    order by partner_id, categ_id )""" % (self._table))
+		    order by ca_annee,partner_id, categ_id )""" % (self._table))
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
