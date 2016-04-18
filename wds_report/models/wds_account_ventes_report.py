@@ -154,7 +154,8 @@ class wds_account_ventes_report(osv.osv):
                 left join account_invoice ai on l.ref = ai.number
                 left join pos_order po on l.ref = po.pos_reference
                 left join res_partner rp on l.partner_id= rp.id
-                left join product_template pt on l.product_id=pt.id
+                left join product_product pp on l.product_id=pp.id
+                left join product_template pt on pp.product_tmpl_id=pt.id
                 where l.state != 'draft' and a.code like '70%'
             )
         """)
