@@ -229,8 +229,8 @@
             <field name="model">wds.lignes.fac.list</field>
             <field name="arch" type="xml">
                 <search string="Search Customer">
-                    <field name="partner_id" />
-                    <field name="categ_id" />
+                    <field name="partner_id" string="Partenaire" />
+                    <field name="categ_id" string="Catégorie" />
                     <group expand="1" string="Group By" position="inside">
                        <filter string="Categorie" icon="terp-personal" domain="[]" context="{'group_by':'categ_id'}" />
                     </group>
@@ -243,14 +243,23 @@
             <field name="res_model">wds.lignes.fac.list</field>
             <field name="view_mode">list</field>
             <field name="view_id" ref="wds_lignes_fac_list_tree"/>
-            <!--<field name="context">{'search_default_partner_id':[active_id],'order':'ca_annee desc', 'set_visible':True, 'residual_invisible':True}</field>-->
             <field name="context">{'search_default_partner_id':[active_id],'group by':'categ_id'}</field>
-            <!-- <field name="target">inline</field>-->
+            <field name="search_view_id" ref="view_wds_lignes_fac_list_filter"/>
+        </record>
+             <!-- action : lignes de factures année en cours /année précédente par categorie article -->
+        <record id="action_wds_lignes_fac2_list" model="ir.actions.act_window">
+            <field name="name">Détail Lignes de factures</field>
+            <field name="res_model">wds.lignes.fac.list</field>
+            <field name="view_mode">list</field>
+            <field name="view_id" ref="wds_lignes_fac_list_tree"/>
+            <field name="context">{'search_default_partner_id':[active_id],'search_default_categ_id':[active_id],'default_categ_id' : 'active_id', 'group by':'categ_id'}</field>
             <field name="search_view_id" ref="view_wds_lignes_fac_list_filter"/>
         </record>
       <!-- Vue : % evolution des clients année encours vs année précédente -->
         <record id="wds_evol_ca_list_tree" model="ir.ui.view">
-            <field name="name">Evolution du chiffre d'affaire</field><field name="partner_id"/>
+            <field name="name">Evolution du chiffre d'affaire</field>
+            <field name="partner_id"/>
+            <field name="categ_id"/>
             <field name="model">wds.evol.ca.list</field>
             <field name="view_mode">tree,form</field>
             <field name="arch" type="xml">
@@ -263,9 +272,8 @@
                     <field name="percentca"/>
                     <field name="invoicenb"/>
                     <button type="action" name="%(action_wds_lignes_fac_list)d" string="Detail" attrs="{'invisible':[('categ_id','&lt;&gt;', 0)]}" />
-
-               <!--     <field name="nbr"/>-->
-                </tree>
+                    <!--<button type="action" name="%(action_wds_lignes_fac2_list)d" string="Detail" attrs="{'invisible':[('categ_id','=', 0)]}" />
+-->                </tree>
             </field>
         </record>
 
@@ -286,9 +294,7 @@
             <field name="res_model">wds.evol.ca.list</field>
             <field name="view_mode">list</field>
             <field name="view_id" ref="wds_evol_ca_list_tree"/>
-            <!--<field name="context">{'search_default_partner_id':[active_id],'order':'ca_annee desc', 'set_visible':True, 'residual_invisible':True}</field>-->
             <field name="context">{'search_default_partner_id':[active_id],'order':'ca_annee desc'}</field>
-            <!-- <field name="target">inline</field>-->
             <field name="search_view_id" ref="view_wds_evol_ca_list_filter"/>
         </record>
 
@@ -318,14 +324,25 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree</field>
             <field name="view_id" ref="view_ca_40_client_list"></field>
-            <!--<field name="context">{'group_by': ['partner_id'],'order':'ca_prev_annee desc', 'set_visible':True, 'residual_invisible':True}</field>-->
             <field name="context">{'order':'ca_annee desc'}</field>
             <field name="help"></field>
         </record>
 
-           <!-- Vue : 40 produits les plus vendus dans l'année en cours-->
+                <!-- Filtre : produits dans une catégorie -->
+        <record id="view_40_produits_list_filter" model="ir.ui.view">
+            <field name="name">ca.40.produits.list.select</field>
+            <field name="model">ca.40.produits.list</field>
+            <field name="arch" type="xml">
+                <search string="Recherche catégoerie">
+                    <field name="categ_id" />
+                    <field name="product_id" />
+                </search>
+            </field>
+        </record>
+
+           <!-- Vue : produits dans une catégorie -->
         <record id="view_ca_40_produits_list" model="ir.ui.view">
-            <field name="name">40 Meilleurs produits</field>
+            <field name="name">Produits dans catégorie</field>
             <field name="product_id"/>
             <field name="model">ca.40.produits.list</field>
             <field name="view_mode">tree,form</field>
@@ -339,20 +356,19 @@
                     <field name="facteur1"/>
                     <field name="categ_id"/>
                     <field name="percentca"/>
-                   <!-- <button type="action" name="%(action_wds_evol_ca_list)d" string="Detail"/>-->
                 </tree>
             </field>
         </record>
 
-        <!-- Action lancée par le menu :40 produits les plus vendus dans l'année en cours-->
+        <!-- Action lancée par le bouton de "40 catégories les plus vendues":produits dans catégorie-->
         <record id="action_ca_40_produits_list_all" model="ir.actions.act_window">
-            <field name="name">40 meilleurs produits</field>
+            <field name="name">Produits dans catégorie</field>
             <field name="res_model">ca.40.produits.list</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree</field>
             <field name="view_id" ref="view_ca_40_produits_list"></field>
-            <!--<field name="context">{'group_by': ['partner_id'],'order':'ca_prev_annee desc', 'set_visible':True, 'residual_invisible':True}</field>-->
-            <field name="context">{'order':'ca_annee desc'}</field>
+            <field name="search_view_id" ref="view_40_produits_list_filter"/>
+            <field name="context">{'order':'ca_annee desc','search_default_categ_id':[active_id]}</field>
             <field name="help"></field>
         </record>
 
@@ -370,7 +386,7 @@
                     <field name="ca_annee"/>
                     <field name="vol_annee"/>
                     <field name="percentca"/>
-                   <!-- <button type="action" name="%(action_wds_evol_ca_list)d" string="Detail"/>-->
+                    <button type="action" name="%(action_ca_40_produits_list_all)d" string="Detail"/>
                 </tree>
             </field>
         </record>
@@ -382,7 +398,6 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree</field>
             <field name="view_id" ref="view_ca_40_category_list"></field>
-            <!--<field name="context">{'group_by': ['partner_id'],'order':'ca_prev_annee desc', 'set_visible':True, 'residual_invisible':True}</field>-->
             <field name="context">{'order':'ca_annee desc'}</field>
             <field name="help"></field>
         </record>
@@ -391,7 +406,6 @@
             <menuitem id="WDS_analyse_clients" parent="WDS_menu_root" sequence="1" name="Ventes" groups="group_wds_user"/>
             <menuitem action="action_avancement_ca_client_report2_all" id="menu_action_avancement_ca_client_report2_all" parent="WDS_analyse_clients" groups="group_wds_manager" />
             <menuitem action="action_ca_40_client_list_all" id="menu_action_ca_40_client_list_all" parent="WDS_analyse_clients" groups="group_wds_user" />
-            <menuitem action="action_ca_40_produits_list_all" id="menu_action_ca_40_produits_list_all" parent="WDS_analyse_clients" groups="group_wds_user" />
             <menuitem action="action_ca_40_category_list_all" id="menu_action_ca_40_category_list_all" parent="WDS_analyse_clients" groups="group_wds_user" />
             <menuitem action="action_wds_account_ventes_report_all" id="menu_action_wds_account_ventes_report_all"
         parent="WDS_analyse_clients" name="Toutes Ventes" groups="group_wds_manager" />
