@@ -155,7 +155,7 @@ class ca_40_produits_list(osv.osv):
             %s
             FROM (
                 %s %s %s
-            ) AS sub where product_id is not null ) sub2  order by ca_annee desc   limit 40      )""" % (
+            ) AS sub where product_id is not null ) sub2  order by ca_annee desc )""" % (
                     self._table,
                     self._select(), self._sub_select(), self._from(), self._group_by()))
 
