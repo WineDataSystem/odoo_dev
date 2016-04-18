@@ -16,6 +16,7 @@
     'data': [
         'views/partner.xml',
     ],
+    'images': [],
     'demo': [
 
     ],

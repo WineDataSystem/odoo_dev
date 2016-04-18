@@ -1,21 +1,22 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "WDS Partner Pro",
+    'name': "WDS Product Wine",
 
     'summary': """
-        Fonctions Pro sur clients""",
+        Ajoute des champs vins pour les produits""",
 
     'description': """
-        Ce module permet d'ajouter des champs pour les professionnels
+        Ajoute des champs vins pour les produits
     """,
     'author': "WineDataSystem",
     'website': "http://www.winedatasystem.com",
-    'category': 'CRM',
+    'category': 'Sales',
     'version': '0.2',
-    'depends': ['base','crm'],
+    'depends': ['base','sales'],
     'data': [
-        'views/partner.xml',
+        'views/product.xml',
     ],
+    # 'images': [],
     'demo': [
 
     ],
