@@ -303,15 +303,7 @@
             <field name="context">{'group by':'categ_id'}</field>
             <field name="search_view_id" ref="view_wds_lignes_pos_list_filter"/>
         </record>
-             <!-- action : lignes de Point of Sales Orders  année en cours /année précédente par categorie article -->
-      <!--  <record id="action_wds_lignes_pos2_list" model="ir.actions.act_window">
-            <field name="name">Détail commandes POS</field>
-            <field name="res_model">wds.lignes.pos.list</field>
-            <field name="view_mode">list</field>
-            <field name="view_id" ref="wds_lignes_pos_list_tree"/>
-            <field name="context">{'search_default_partner_id':[active_id],'group by':'categ_id'}</field>
-            <field name="search_view_id" ref="view_wds_lignes_pos_list_filter"/>
-        </record>-->
+
       <!-- Vue : % evolution des clients année encours vs année précédente -->
         <record id="wds_evol_ca_list_tree" model="ir.ui.view">
             <field name="name">Evolution du chiffre d'affaire</field>

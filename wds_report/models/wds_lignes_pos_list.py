@@ -30,8 +30,6 @@ class wds_lignes_pos_list(osv.osv):
     _auto = False
     _rec_name = 'id'
 
-
-
     _columns = {
         # 'date': fields.date('Date', readonly=True),
         'id': fields.integer('Id', readonly=True),
