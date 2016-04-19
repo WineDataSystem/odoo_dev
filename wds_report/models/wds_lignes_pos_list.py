@@ -72,9 +72,9 @@ class wds_lignes_pos_list(osv.osv):
 JOIN res_partner partner ON po.partner_id = partner.id
                 LEFT JOIN product_product pr ON pr.id = pol.product_id
                 left JOIN product_template pt ON pt.id = pr.product_tmpl_id
-                WHERE ((EXTRACT (YEAR FROM po.date_order) = EXTRACT (YEAR FROM CURRENT_DATE)  or
-                EXTRACT (YEAR FROM po.date_order) = EXTRACT (YEAR FROM CURRENT_DATE) -1))
-                and po.state in ('paid','invoiced')
+                WHERE (EXTRACT (YEAR FROM po.date_order) = EXTRACT (YEAR FROM CURRENT_DATE)  or
+                EXTRACT (YEAR FROM po.date_order) = EXTRACT (YEAR FROM CURRENT_DATE) -1)
+
  order by partner_id, categ_id, pos_reference, pol.id )""" % (self._table))
 
 
