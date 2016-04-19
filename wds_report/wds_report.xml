@@ -258,6 +258,60 @@
             <field name="context">{'search_default_partner_id':[active_id],'search_default_categ_id':[active_id],'default_categ_id' : 'active_id', 'group by':'categ_id'}</field>
             <field name="search_view_id" ref="view_wds_lignes_fac_list_filter"/>
         </record>
+        <!-- Vue : lignes de Point of Sales Orders année en cours /année précédente par categorie article -->
+        <record id="wds_lignes_pos_list_tree" model="ir.ui.view">
+            <field name="name">Détail commandes POS</field>
+            <field name="partner_id"/>
+            <field name="categ_id"/>
+            <field name="model">wds.lignes.pos.list</field>
+            <field name="view_mode">tree,form</field>
+            <field name="arch" type="xml">
+                <tree editable="top" create="false">
+                    <field name="partner_id"/>
+                    <field name="categ_id" />
+                    <field name="date"/>
+                    <field name="pos_reference"/>
+                    <field name="product_id"/>
+                    <field name="qty"/>
+                    <field name="price_subtotal"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+         <!-- Filtre : lignes de Point of Sales Orders  année en cours /année précédente par categorie article -->
+        <record id="view_wds_lignes_pos_list_filter" model="ir.ui.view">
+            <field name="name">wds.lignes.pos.list.select</field>
+            <field name="model">wds.lignes.pos.list</field>
+            <field name="arch" type="xml">
+                <search string="Search Customer">
+                    <field name="partner_id" string="Partenaire" />
+                    <field name="categ_id" string="Catégorie" />
+                    <field name="state" string="Status" />
+                    <group expand="1" string="Group By" position="inside">
+                       <filter string="Categorie" icon="terp-personal" domain="[]" context="{'group_by':'categ_id'}" />
+                       <filter string="Status" icon="terp-personal" domain="[]" context="{'group_by':'state'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+        <!-- action : lignes de Point of Sales Orders  année en cours /année précédente par categorie article -->
+        <record id="action_wds_lignes_pos_list_all" model="ir.actions.act_window">
+            <field name="name">Détail commandes POS</field>
+            <field name="res_model">wds.lignes.pos.list</field>
+            <field name="view_mode">list</field>
+            <field name="view_id" ref="wds_lignes_pos_list_tree"/>
+            <field name="context">{'group by':'categ_id'}</field>
+            <field name="search_view_id" ref="view_wds_lignes_pos_list_filter"/>
+        </record>
+             <!-- action : lignes de Point of Sales Orders  année en cours /année précédente par categorie article -->
+      <!--  <record id="action_wds_lignes_pos2_list" model="ir.actions.act_window">
+            <field name="name">Détail commandes POS</field>
+            <field name="res_model">wds.lignes.pos.list</field>
+            <field name="view_mode">list</field>
+            <field name="view_id" ref="wds_lignes_pos_list_tree"/>
+            <field name="context">{'search_default_partner_id':[active_id],'group by':'categ_id'}</field>
+            <field name="search_view_id" ref="view_wds_lignes_pos_list_filter"/>
+        </record>-->
       <!-- Vue : % evolution des clients année encours vs année précédente -->
         <record id="wds_evol_ca_list_tree" model="ir.ui.view">
             <field name="name">Evolution du chiffre d'affaire</field>
@@ -407,11 +461,11 @@
         <!--Options de menu -->
             <menuitem id="WDS_menu_root" sequence="1" name="WDS Report" groups="group_wds_user" />
             <menuitem id="WDS_analyse_clients" parent="WDS_menu_root" sequence="1" name="Ventes" groups="group_wds_user"/>
-            <menuitem action="action_avancement_ca_client_report2_all" id="menu_action_avancement_ca_client_report2_all" parent="WDS_analyse_clients" groups="group_wds_manager" />
-            <menuitem action="action_ca_40_client_list_all" id="menu_action_ca_40_client_list_all" parent="WDS_analyse_clients" groups="group_wds_user" />
-            <menuitem action="action_ca_40_category_list_all" id="menu_action_ca_40_category_list_all" parent="WDS_analyse_clients" groups="group_wds_user" />
-            <menuitem action="action_wds_account_ventes_report_all" id="menu_action_wds_account_ventes_report_all"
-        parent="WDS_analyse_clients" name="Toutes Ventes" groups="group_wds_manager" />
+         <menuitem action="action_wds_account_ventes_report_all" id="menu_action_wds_account_ventes_report_all" parent="WDS_analyse_clients" sequence="10" name="Toutes Ventes" groups="group_wds_manager" />
+            <menuitem action="action_avancement_ca_client_report2_all" id="menu_action_avancement_ca_client_report2_all" parent="WDS_analyse_clients" sequence="20" groups="group_wds_manager" />
+            <menuitem action="action_ca_40_client_list_all" id="menu_action_ca_40_client_list_all" parent="WDS_analyse_clients" sequence="30" groups="group_wds_user" />
+            <menuitem action="action_ca_40_category_list_all" id="menu_action_ca_40_category_list_all" parent="WDS_analyse_clients" sequence="40" groups="group_wds_user" />
+            <menuitem action="action_wds_lignes_pos_list_all" id="menu_action_wds_lignes_pos_list_all" parent="WDS_analyse_clients" sequence="50" groups="group_wds_user" />
 
     </data>
 </openerp>
