@@ -53,6 +53,7 @@ class wds_account_ventes_report(osv.osv):
         'move_line_state': fields.selection([('draft','Unbalanced'), ('valid','Valid')], 'State of Move Line', readonly=True),
         'reconcile_id': fields.many2one('account.move.reconcile', 'Reconciliation number', readonly=True),
         'partner_id': fields.many2one('res.partner','Partner', readonly=True),
+        'section_id': fields.many2one('crm.case.section', 'Sales Team', readonly=True),
         'analytic_account_id': fields.many2one('account.analytic.account', 'Analytic Account', readonly=True),
         'quantity': fields.float('Products Quantity', digits=(16,2), readonly=True),  # TDE FIXME master: rename into product_quantity
         'user_type': fields.many2one('account.account.type', 'Account Type', readonly=True),
@@ -127,6 +128,9 @@ class wds_account_ventes_report(osv.osv):
                 l.state as move_line_state,
                 l.reconcile_id as reconcile_id,
                 l.partner_id as partner_id,
+                case when ai.section_id is not null then ai.section_id
+                     when rp.section_id is not null then rp.section_id
+                     else 36 end section_id,
                 l.product_id as product_id,
                 case when categ_id is not null then categ_id else 304 end categ_id,
                 l.product_uom_id as product_uom_id,

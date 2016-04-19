@@ -23,6 +23,7 @@
                 <field name="balance"/>
                 <field name="move_state" invisible="1"/>
                 <field name="partner_id" invisible="1"/>
+                <field name="section_id" invisible="1"/>
                 <field name="product_id" invisible="1"/>
                 <field name="product_uom_id" invisible="1"/>
                 <field name="company_id" invisible="1" groups="base.group_multi_company"/>
@@ -85,15 +86,17 @@
                     <field name="fiscalyear_id"/>
                     <field name="product_id"/>
                     <field name="partner_id"/>
+                    <field name="section_id"/>
                     <field name="company_id" groups="base.group_multi_company"/>
                 </group>
                 <group expand="1" string="Group By">
                     <filter string="Partner" context="{'group_by':'partner_id'}"/>
+                    <filter string="Sales.Team" context="{'group_by':'section_id'}"/>
                     <filter string="Pays" context="{'group_by':'country_id'}"/>
                     <filter string="Compte" context="{'group_by':'account_id'}"/>
                     <filter string="Produit" context="{'group_by':'product_id'}"/>
                     <filter string="Position Fiscale" context="{'group_by':'fiscal_position'}"/>
-                     <filter string="Catégorie Produits" context="{'group_by':'categ_id'}"/>
+                    <filter string="Catégorie.Produits" context="{'group_by':'categ_id'}"/>
                     <filter string="Journal" name="group_journal" context="{'group_by':'journal_id'}"/>
                     <filter string="Acc.Type" context="{'group_by':'user_type'}" name="usertype"/>
                     <filter string="Int.Type" context="{'group_by':'type'}"/>
