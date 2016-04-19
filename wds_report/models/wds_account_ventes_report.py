@@ -25,37 +25,37 @@ import openerp.addons.decimal_precision as dp
 
 class wds_account_ventes_report(osv.osv):
     _name = "wds.account.ventes.report"
-    _description = "Journal Ventes Analysis"
+    _description = "Analyse des ventes"
     _auto = False
     _rec_name = 'date'
     _columns = {
-        'date': fields.date('Effective Date', readonly=True),  # TDE FIXME master: rename into date_effective
-        'date_created': fields.date('Date Created', readonly=True),
+        'date': fields.date('Date ', readonly=True),  # TDE FIXME master: rename into date_effective
+        'date_created': fields.date('Date de création', readonly=True),
         'date_maturity': fields.date('Date Maturity', readonly=True),
         'fiscal_position': fields.many2one('account.fiscal.position','Fiscal Position', readonly=True),
         'ref': fields.char('Reference', readonly=True),
         'typref':fields.char('TypeRef', readonly=True),
-        'nbr': fields.integer('# of Items', readonly=True),
+        'nbr': fields.integer('# d\'éléments', readonly=True),
         'debit': fields.float('Debit', readonly=True),
         'credit': fields.float('Credit', readonly=True),
         'balance': fields.float('Montant', readonly=True),
-        'currency_id': fields.many2one('res.currency', 'Currency', readonly=True),
-        'country_id': fields.many2one('res.country', 'Country',readonly=True),
+        'currency_id': fields.many2one('res.currency', 'Monnaie', readonly=True),
+        'country_id': fields.many2one('res.country', 'Pays',readonly=True),
         'amount_currency': fields.float('Amount Currency', digits_compute=dp.get_precision('Account'), readonly=True),
-        'period_id': fields.many2one('account.period', 'Period', readonly=True),
-        'account_id': fields.many2one('account.account', 'Account', readonly=True),
+        'period_id': fields.many2one('account.period', 'Période', readonly=True),
+        'account_id': fields.many2one('account.account', 'Compte', readonly=True),
         'journal_id': fields.many2one('account.journal', 'Journal', readonly=True),
         'fiscalyear_id': fields.many2one('account.fiscalyear', 'Fiscal Year', readonly=True),
-        'product_id': fields.many2one('product.product', 'Product', readonly=True),
-        'categ_id': fields.many2one('product.category', 'Category of Product', readonly=True),
-        'product_uom_id': fields.many2one('product.uom', 'Product Unit of Measure', readonly=True),
+        'product_id': fields.many2one('product.product', 'Produit', readonly=True),
+        'categ_id': fields.many2one('product.category', 'Catégorie Produit', readonly=True),
+        'product_uom_id': fields.many2one('product.uom', 'Unité de mesure', readonly=True),
         'move_state': fields.selection([('draft','Unposted'), ('posted','Posted')], 'Status', readonly=True),
         'move_line_state': fields.selection([('draft','Unbalanced'), ('valid','Valid')], 'State of Move Line', readonly=True),
-        'reconcile_id': fields.many2one('account.move.reconcile', 'Reconciliation number', readonly=True),
-        'partner_id': fields.many2one('res.partner','Partner', readonly=True),
-        'section_id': fields.many2one('crm.case.section', 'Sales Team', readonly=True),
-        'analytic_account_id': fields.many2one('account.analytic.account', 'Analytic Account', readonly=True),
-        'quantity': fields.float('Products Quantity', digits=(16,2), readonly=True),  # TDE FIXME master: rename into product_quantity
+        'reconcile_id': fields.many2one('account.move.reconcile', 'Numéro de Réconciliation', readonly=True),
+        'partner_id': fields.many2one('res.partner','Partenaire', readonly=True),
+        'section_id': fields.many2one('crm.case.section', 'Equipe de vente', readonly=True),
+        'analytic_account_id': fields.many2one('account.analytic.account', 'Compte analytique', readonly=True),
+        'quantity': fields.float('Quantité', digits=(16,2), readonly=True),  # TDE FIXME master: rename into product_quantity
         'user_type': fields.many2one('account.account.type', 'Account Type', readonly=True),
         'type': fields.selection([
             ('receivable', 'Receivable'),

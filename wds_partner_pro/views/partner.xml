@@ -45,6 +45,10 @@
                                     <!--<field name="vat_subjected" class="oe_inline"/>-->
                                 </div>
                         <field name="w_accise" />
+                        <field name="w_kbis" />
+                            <!--<button name="import_file" string="Import" type="object"  class="oe_highlight" />-->
+                            <!---->
+
 
                         </group>
                     </page>
