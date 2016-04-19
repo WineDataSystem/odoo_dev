@@ -24,7 +24,7 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'partner_pos_order_butt.xml',
+        'partner_pos_order.xml',
     ],
     'images': [],
     # only loaded in demonstration mode
