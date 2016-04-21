@@ -234,18 +234,35 @@ class account_customer_report(osv.osv):
 class res_partner(osv.osv):
     _inherit = 'res.partner'
 
-    def _invoice_count(self, cr, uid, ids, field_name, arg, context=None):
+    def _avance_percent(self, cr, uid, ids, field_name, arg, context=None):
         res = dict(map(lambda x: (x,0), ids))
 
         try:
             for partner in self.browse(cr, uid, ids, context):
-                res[partner.id] = " "
+                # res[partner.id] = len(partner.pos_ids)
+                cr.execute("SELECT sub.partner_id, CASE when sub.ca_prev_annee =0 then 100 else \
+                                (((sub.ca_annee - sub.ca_prev_annee) / sub.ca_prev_annee) * 100) +100 end as percentca \
+                                from (SELECT ai.partner_id , \
+                                sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) then \
+                                CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text]) \
+                                THEN - ail.price_subtotal ELSE ail.price_subtotal end else 0 end ) ca_annee , \
+                                sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) -1  \
+                                then CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text]) \
+                                THEN - ail.price_subtotal  ELSE ail.price_subtotal end else 0 end ) ca_prev_annee \
+                            FROM  account_invoice_line ail JOIN account_invoice ai ON ai.id = ail.invoice_id \
+                                WHERE (EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE)  or \
+                                EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) -1) and ai.partner_id = %s \
+                                GROUP BY ai.partner_id) AS sub;", (partner.id,))
+                for partner_id, sum in cr.fetchall():
+                    if partner_id not in res:
+                        res[partner_id] = {}
+                    res[partner_id] = sum
         except:
             pass
         return res
 
     _columns = {
-        'invoice_count': fields.function(_invoice_count, string='# of invoices', type='char'),
-        #'invoice_ids': fields.one2many('stock.move','partner_id','Delivery Order')
+        'avance_percent': fields.function(_avance_percent, string=' Pourcentage d''avancement d''un client', type='integer'),
+        # 'pos_ids': fields.one2many('pos.order','partner_id','POS Order')
     }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
