@@ -69,7 +69,7 @@ class wds_lignes_pos_list(osv.osv):
         cr.execute("""CREATE or REPLACE VIEW %s as (select pol.id ,po.partner_id ,date_order date,pos_reference ,product_id ,
         qty ,categ_id, price_subtotal, po.state
         from pos_order_line pol JOIN pos_order po ON po.id = pol.order_id
-        JOIN res_partner partner ON po.partner_id = partner.id
+        left JOIN res_partner partner ON po.partner_id = partner.id
                 LEFT JOIN product_product pr ON pr.id = pol.product_id
                 left JOIN product_template pt ON pt.id = pr.product_tmpl_id
                 WHERE (EXTRACT (YEAR FROM po.date_order) = EXTRACT (YEAR FROM CURRENT_DATE)  or
