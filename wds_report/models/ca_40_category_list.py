@@ -81,7 +81,7 @@ class ca_40_category_list(osv.osv):
         # 'user_currency_price_average': fields.function(_compute_amounts_in_user_currency, string="Prix de Vente Moyen", type='float', digits_compute=dp.get_precision('Account'), multi="_compute_amounts"),
         # 'currency_rate': fields.float('Currency Rate', readonly=True),
     }
-    _order = 'ca_annee desc'
+    _order = 'categ_id'
 
     _depends = {
         'account.invoice': [
@@ -150,7 +150,7 @@ class ca_40_category_list(osv.osv):
             %s
             FROM (
                 %s %s %s
-            ) AS sub ) sub2  order by ca_annee desc   limit 40      )""" % (
+            ) AS sub ) sub2  order by categ_id )""" % (
                     self._table,
                     self._select(), self._sub_select(), self._from(), self._group_by()))
 

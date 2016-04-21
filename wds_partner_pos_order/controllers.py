@@ -19,7 +19,6 @@
 
 
 from openerp.osv import fields,osv
-import wds_report
 
 class res_partner(osv.osv):
     _inherit = 'res.partner'
@@ -29,13 +28,21 @@ class res_partner(osv.osv):
 
         try:
             for partner in self.browse(cr, uid, ids, context):
-                res[partner.id] = len(partner.pos_ids)
-
+               # res[partner.id] = len(partner.pos_ids)
+               cr.execute("SELECT partner_id, sum(price_subtotal) \
+                       FROM pos_order_line pol \
+                       JOIN pos_order po on pol.order_id=po.id \
+                       WHERE partner_id = %s \
+                       GROUP BY partner_id;", (partner.id,))
+               for partner_id, sum in cr.fetchall():
+                    if partner_id not in res:
+                        res[partner_id] = {}
+                    res[partner_id] = sum
         except:
             pass
         return res
 
     _columns = {
-        'pos_count': fields.function(_pos_count, string='# of POS Order', type='integer'),
-        'pos_ids': fields.one2many('wds.lignes.pos.list','partner_id','POS Order')
+        'pos_amount': fields.function(_pos_count, string='Valeur des POS Order', type='float'),
+        #'pos_ids': fields.one2many('pos.order','partner_id','POS Order')
     }
