@@ -1,0 +1,47 @@
+<openerp>
+    <data>
+        <!-- Vue : lignes de factures année en cours /année précédente par categorie article -->
+        <record id="wds_cost_produits_list_tree" model="ir.ui.view">
+            <field name="name">Coût de revient Produits</field>
+            <field name="product_id"/>
+            <field name="model">wds.cost.produits.list</field>
+            <field name="view_mode">tree,form</field>
+            <field name="arch" type="xml">
+                <tree editable="top" create="false">
+                    <field name="product_id"/>
+                    <field name="date"/>
+                    <field name="cost"/>
+                </tree>
+            </field>
+        </record>
+         <!-- Filtre : lignes de factures année en cours /année précédente par categorie article -->
+        <record id="view_wds_cost_produits_list_filter" model="ir.ui.view">
+            <field name="name">wds.cost.produits.list.select</field>
+            <field name="model">wds.cost.produits.list</field>
+            <field name="arch" type="xml">
+                <search string="Search Customer">
+                    <field name="partner_id" string="Partenaire" />
+                    <field name="categ_id" string="Catégorie" />
+                    <filter string="This F.Year" name="thisyear" domain="['|', ('date', '=', False), '&amp;',('date','&lt;=', time.strftime('%%Y-12-31')),('date','&gt;=',time.strftime('%%Y-01-01'))]" help="Journal Entries with period in current year"/>
+                    <group expand="1" string="Group By" position="inside">
+                       <filter string="Categorie" icon="terp-personal" domain="[]" context="{'group_by':'categ_id'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+        <!-- action : lignes de factures année en cours /année précédente par categorie article -->
+        <record id="action_wds_cost_produits_list" model="ir.actions.act_window">
+            <field name="name">Coût de revient Produits</field>
+            <field name="res_model">wds.cost.produits.list</field>
+            <field name="view_mode">list</field>
+            <field name="view_id" ref="wds_cost_produits_list_tree"/>
+            <field name="context">{'order by':'cost'}</field>
+            <field name="search_view_id" ref="view_wds_cost_produits_list_filter"/>
+        </record>
+        <!--Options de menu -->
+            <menuitem id="WDS_menu_root" sequence="1" name="WDS Report" groups="group_wds_user" />
+            <menuitem id="WDS_produits" parent="WDS_menu_root" sequence="40" name="Produits" groups="group_wds_user"/>
+            <menuitem action="action_wds_cost_produits_list_all" id="menu_action_wds_cost_produits_list_all" parent="WDS_produits" sequence="10" name="Coût de revient Produits" groups="group_wds_manager" />
+
+    </data>
+</openerp>
