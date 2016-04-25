@@ -109,9 +109,9 @@ class avancement_ca_client_report(osv.osv):
             sub.nbr,
         case when ca_annee > 0 and ca_prev_annee = 0 then '2/Nouveau'
              when ca_annee = 0 and ca_prev_annee > 0 then '3/Perdu ?'
-             when ca_annee = 0 and ca_prev_annee = 0 then '4/       '
+             when ca_annee = 0 and ca_prev_annee = 0 then '4/Autres '
              when CASE when sub.ca_prev_annee =0 then 100 else (((sub.ca_annee - sub.ca_prev_annee) / sub.ca_prev_annee) * 100) +100 end  > 50 then '1/ > 50 pcent'
-             else '4/       ' end stacli
+             else '4/Autres ' end stacli
         """
         return select_str
 

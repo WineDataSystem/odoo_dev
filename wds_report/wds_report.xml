@@ -157,6 +157,7 @@
                 </search>
             </field>
         </record>
+
         <!-- Action : Analyse client report année en cours/annee moins 1-->
         <record id="action_account_customer_report2_all" model="ir.actions.act_window">
             <field name="name">Analyse client</field>
@@ -167,6 +168,20 @@
             <field name="help">From this report, you can have an overview of the amount invoiced to your customer. The tool search can also be used to personalise your Invoices reports and so, match this analysis to your needs.</field>
         </record>
 
+
+        <!-- Vue : Paramètres de recherche Analyse client report année en cours/annee moins 1-->
+         <record id="view_avancement_ca_client_report_search" model="ir.ui.view">
+            <field name="name">avancement.ca.client.report.search</field>
+            <field name="model">avancement.ca.client.report</field>
+            <field name="arch" type="xml">
+                <search string="Analyse">
+                    <filter string="Nouveau" name="Nouveau" domain="[('stacli', '=', '2/Nouveau')]" help="Nouveaux clients"/>
+                    <filter string="Perdus" name="Perdus" domain="[('stacli', '=', '3/Perdu ?')]" help="Clients de l'an dernier n'ayant pas recommandé"/>
+                    <filter string="+50%" name="+50%" domain="[('stacli', '=', '1/ > 50 pcent')]" help="Clients dont CA atteint 50% au moins du CA année précédente"/>
+                    <filter string="Autres" name="Autres" domain="[('stacli', '=', '4/Autres ')]" help="Clients de l'an dernier ayant recommandé pour - de 50% par rapport à l'an dernier"/>
+                </search>
+            </field>
+        </record>
         <!-- Vue : Pourcentage de CA réalisé par rapport à l'année précédente-->
         <record id="view_avancement_ca_client_report_graph" model="ir.ui.view">
              <field name="name">avancement.ca.client.report.graph</field>
@@ -188,6 +203,7 @@
             <field name="view_mode">graph</field>
             <field name="view_id" ref="view_avancement_ca_client_report_graph"></field>
             <field name="context">{'group_by': ['partner_id'],'order':'ca_prev_annee desc', 'set_visible':True, 'residual_invisible':True}</field>
+             <field name="search_view_id" ref="view_avancement_ca_client_report_search"/>
             <field name="help"></field>
         </record>
 
