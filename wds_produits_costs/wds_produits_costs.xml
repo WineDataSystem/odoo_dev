@@ -1,0 +1,37 @@
+<openerp>
+    <data>
+        <!-- Filtre : dernier cout de revient d'un article  -->
+         <record id="wds_produits_costs_view" model="ir.ui.view">
+            <field name="name">wds_produits_costs</field>
+            <field name="model">product.product.tree</field>
+            <field name="arch" type="xml">
+                <tree string="Product Variants" editable="bottom">
+                    <field name="default_code"/>
+                    <field name="name"/>
+                    <field name="attribute_value_ids" widget="many2many_tags"/>
+                    <field name="lst_price"/>
+                    <field name="standard_price"/>
+                    <field name="price" invisible="not context.get('pricelist',False)"/>
+                    <field name="uom_id"/>
+                    <field name="ean13"/>
+                    <field name="state" invisible="1"/>
+                    <field name="product_tmpl_id" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="wds_produits_costs_action" model="ir.actions.act_window">
+            <field name="name">Product Variants</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.product</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="context">{}</field>
+        </record>
+        <!--Options de menu -->
+            <menuitem id="WDS_menu_root" sequence="1" name="WDS Report" groups="group_wds_user" />
+            <menuitem id="WDS_produits" parent="WDS_menu_root" sequence="40" name="Produits" groups="group_wds_user"/>
+            <menuitem action="wds_produits_costs_action" id="menu_wds_produits_costs_action" parent="WDS_produits" sequence="10" name="Coût de revient Produits" groups="group_wds_manager" />
+
+    </data>
+</openerp>
