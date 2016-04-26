@@ -1,19 +1,20 @@
 <openerp>
     <data>
+        <!-- =====================DEBUT WDS_PRODUITS_COST================================= -->
         <!-- Filtre : dernier cout de revient d'un article  -->
          <record id="wds_produits_costs_view" model="ir.ui.view">
             <field name="name">wds_produits_costs</field>
-            <field name="model">product.product.tree</field>
+            <field name="model">product.product</field>
             <field name="arch" type="xml">
-                <tree string="Product Variants" editable="bottom">
-                    <field name="default_code"/>
-                    <field name="name"/>
+                <tree string="Product Variants" editable="bottom" create="false">
+                    <field name="default_code" readonly="True"/>
+                    <field name="name" readonly="True"/>
                     <field name="attribute_value_ids" widget="many2many_tags"/>
-                    <field name="lst_price"/>
-                    <field name="standard_price"/>
+                    <field name="lst_price" readonly="True"/>
+                    <field name="standard_price" readonly="False"/>
                     <field name="price" invisible="not context.get('pricelist',False)"/>
-                    <field name="uom_id"/>
-                    <field name="ean13"/>
+                    <field name="uom_id" readonly="True"/>
+                    <field name="ean13" readonly="True"/>
                     <field name="state" invisible="1"/>
                     <field name="product_tmpl_id" invisible="1"/>
                 </tree>
@@ -25,13 +26,15 @@
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">product.product</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="wds_produits_costs_view"/>
             <field name="context">{}</field>
         </record>
-        <!--Options de menu -->
-            <menuitem id="WDS_menu_root" sequence="1" name="WDS Report" groups="group_wds_user" />
-            <menuitem id="WDS_produits" parent="WDS_menu_root" sequence="40" name="Produits" groups="group_wds_user"/>
-            <menuitem action="wds_produits_costs_action" id="menu_wds_produits_costs_action" parent="WDS_produits" sequence="10" name="Coût de revient Produits" groups="group_wds_manager" />
+
+<!-- ========================FIN WDS_PRODUITS_COSTS======================================== -->
+        <!--    <menuitem id="WDS_menu_root" sequence="1" name="WDS Report" />-->
+            <menuitem id="WDS_produits" parent="wds_report.WDS_menu_root" sequence="40" name="Produits" />
+            <menuitem action="wds_produits_costs_action" id="menu_wds_produits_costs_action" parent="WDS_produits" sequence="10" name="Coût de revient Produits"  />
 
     </data>
 </openerp>

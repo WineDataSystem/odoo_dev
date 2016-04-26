@@ -19,12 +19,11 @@
     'version': '0.3',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','account','mrp','product','product_margin','product_extended','product_email_template'],
+    'depends': ['base','product','wds_report'],
 
     # always loaded
-    'data': [''
-        'security/wdsprodcost.xml',
-        'security/ir.model.access.csv',
+    'data': [
+
         'wds_produits_costs.xml',
 
     ],
