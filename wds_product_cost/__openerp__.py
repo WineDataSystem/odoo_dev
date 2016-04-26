@@ -24,7 +24,7 @@
     # always loaded
     'data': [
 
-        'wds_produits_costs.xml',
+        'wds_product_cost.xml',
 
     ],
     'test': [
