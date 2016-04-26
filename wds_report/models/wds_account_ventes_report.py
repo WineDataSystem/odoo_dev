@@ -34,7 +34,8 @@ class wds_account_ventes_report(osv.osv):
         'date_maturity': fields.date('Date Maturity', readonly=True),
         'fiscal_position': fields.many2one('account.fiscal.position','Fiscal Position', readonly=True),
         'ref': fields.char('Reference', readonly=True),
-        'typref':fields.char('TypeRef', readonly=True),
+        'typref':fields.char('Type de ventes', readonly=True),
+        'description': fields.char('Description', readonly=True),
         'nbr': fields.integer('# d\'éléments', readonly=True),
         'debit': fields.float('Debit', readonly=True),
         'credit': fields.float('Credit', readonly=True),
@@ -51,7 +52,7 @@ class wds_account_ventes_report(osv.osv):
         'product_uom_id': fields.many2one('product.uom', 'Unité de mesure', readonly=True),
         'move_state': fields.selection([('draft','Unposted'), ('posted','Posted')], 'Status', readonly=True),
         'move_line_state': fields.selection([('draft','Unbalanced'), ('valid','Valid')], 'State of Move Line', readonly=True),
-        'reconcile_id': fields.many2one('account.move.reconcile', 'Numéro de Réconciliation', readonly=True),
+        'reconcile_id': fields.many2one('account.move.reconcile', '', readonly=True),
         'partner_id': fields.many2one('res.partner','Partenaire', readonly=True),
         'section_id': fields.many2one('crm.case.section', 'Equipe de vente', readonly=True),
         'analytic_account_id': fields.many2one('account.analytic.account', 'Compte analytique', readonly=True),
@@ -131,6 +132,7 @@ class wds_account_ventes_report(osv.osv):
                 case when ai.section_id is not null then ai.section_id
                      when rp.section_id is not null then rp.section_id
                      else 36 end section_id,
+                l.name as description,
                 l.product_id as product_id,
                 case when categ_id is not null then categ_id else 304 end categ_id,
                 l.product_uom_id as product_uom_id,

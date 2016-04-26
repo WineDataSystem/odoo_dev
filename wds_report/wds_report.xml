@@ -12,7 +12,7 @@
                     <field name="date_created" invisible="1"/>
                     <field name="date_maturity" invisible="1"/>
                     <field name="ref" invisible="1"/>
-                    <field name="typref" />
+                    <field name="typref" string="Type de Vente"/>
                     <field name="fiscal_position" />
                     <field name="nbr" sum="# of Entries "/>
                     <field name="quantity" sum="# of Products Qty " invisible="not context.get('quantity_visible', False)"/>
