@@ -73,10 +73,10 @@ class avancement_ca_client_list(osv.osv):
         'section_id': fields.many2one('crm.case.section', 'Sales Team'),
         'qty_annee': fields.float('Quantité Année en cours', readonly=True),
         'qty_prev_annee': fields.float('Quantité Année précédente', readonly=True),
-        'debit_annee': fields.float('Débit Année en cours', readonly=True),
-        'debit_prev_annee': fields.float('Débit Année précédente', readonly=True),
-        'credit_annee': fields.float('Crédit Année en cours', readonly=True),
-        'credit_prev_annee': fields.float('Crédit Année précédente', readonly=True),
+        'balance_annee': fields.float('Balance Année en cours', readonly=True),
+        'balance_prev_annee': fields.float('Balance Année précédente', readonly=True),
+        'percentca': fields.float('Evolution %', readonly=True),
+
     }
     _order = 'section_id'
 
@@ -100,7 +100,9 @@ class avancement_ca_client_list(osv.osv):
 
     def _select(self):
         select_str = """
-            select case when ai.section_id is not null then ai.section_id
+            select id, section_id, qty_annee, qty_prev_annee, balance_annee,balance_prev_annee,
+             CASE when balance_prev_annee =0 then 100 else (((balance_annee - balance_prev_annee) / balance_prev_annee) * 100) +100 end as percentca
+             from (select case when ai.section_id is not null then ai.section_id
                      when rp.section_id is not null then rp.section_id
                      else 36 end id,
                      case when ai.section_id is not null then ai.section_id
@@ -113,13 +115,9 @@ class avancement_ca_client_list(osv.osv):
                     CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
                     THEN - l.quantity ELSE l.quantity end else 0 end ) qty_prev_annee ,
                 sum(CASE when EXTRACT (YEAR FROM l.date) = EXTRACT (YEAR FROM CURRENT_DATE) then
-                    l.debit else 0 end ) debit_annee,
+                    coalesce(l.credit, 0.0) - coalesce(l.debit, 0.0) else 0 end ) balance_annee,
                 sum(CASE when EXTRACT (YEAR FROM l.date) = EXTRACT (YEAR FROM CURRENT_DATE) - 1 then
-                    l.debit else 0 end ) debit_prev_annee,
-                sum(CASE when EXTRACT (YEAR FROM l.date) = EXTRACT (YEAR FROM CURRENT_DATE) then
-                    l.credit else 0 end ) credit_annee,
-                sum(CASE when EXTRACT (YEAR FROM l.date) = EXTRACT (YEAR FROM CURRENT_DATE) - 1 then
-                     l.credit else 0 end ) credit_prev_annee
+                    coalesce(l.credit, 0.0) - coalesce(l.debit, 0.0) else 0 end ) balance_prev_annee
             from
                 account_move_line l
                 left join account_account a on (l.account_id = a.id)
@@ -134,7 +132,7 @@ class avancement_ca_client_list(osv.osv):
                 group by
               case when ai.section_id is not null then ai.section_id
                      when rp.section_id is not null then rp.section_id
-                     else 36 end
+                     else 36 end) sub
         """
         return select_str
 

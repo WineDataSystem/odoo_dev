@@ -229,10 +229,9 @@
                      <field name="section_id" />
                      <field name="qty_annee" />
                      <field name="qty_prev_annee"/>
-                     <field name="debit_annee" />
-                     <field name="debit_prev_annee"/>
-                     <field name="credit_annee" />
-                     <field name="credit_prev_annee" />
+                     <field name="balance_annee" />
+                     <field name="balance_prev_annee"/>
+                     <field name="percentca"/>
                  </tree>
              </field>
         </record>
