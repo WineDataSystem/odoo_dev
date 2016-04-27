@@ -23,7 +23,7 @@ from openerp.osv import fields,osv
 class res_partner(osv.osv):
     _inherit = 'res.partner'
 
-    def _pos_count(self, cr, uid, ids, field_name, arg, context=None):
+    def _pos_amount(self, cr, uid, ids, field_name, arg, context=None):
         res = dict(map(lambda x: (x,0), ids))
 
         try:
@@ -43,6 +43,6 @@ class res_partner(osv.osv):
         return res
 
     _columns = {
-        'pos_amount': fields.function(_pos_count, string='Valeur des POS Order', type='float'),
+        'pos_amount': fields.function(_pos_amount, string='Valeur des POS Order', type='float'),
         #'pos_ids': fields.one2many('pos.order','partner_id','POS Order')
     }

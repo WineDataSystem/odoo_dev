@@ -20,7 +20,7 @@
                     <field name="currency_id" invisible="not context.get('currency_id_visible', False)"/>
                     <field name="debit" invisible="1"/>
                     <field name="credit" invisible="1"/>
-                    <field name="balance"/>
+                    <field name="balance" sum="Somme balance N"/>
                     <field name="move_state" invisible="1"/>
                     <field name="partner_id" invisible="1"/>
                     <field name="section_id" invisible="1"/>
@@ -240,10 +240,10 @@
                  <tree create="false">
                      <field name="section_id" />
                      <field name="partner_id" />
-                     <field name="qty_annee" />
-                     <field name="qty_prev_annee"/>
-                     <field name="balance_annee" />
-                     <field name="balance_prev_annee"/>
+                     <field name="qty_annee" sum="Somme qty N"/>
+                     <field name="qty_prev_annee" sum="Somme qty N-1"/>
+                     <field name="balance_annee" sum="Somme balance N"/>
+                     <field name="balance_prev_annee" sum="Somme balance N-1"/>
                      <field name="percentca"/>
                  </tree>
              </field>
@@ -267,10 +267,10 @@
              <field name="arch" type="xml">
                  <tree create="false">
                      <field name="section_id" />
-                     <field name="qty_annee" />
-                     <field name="qty_prev_annee"/>
-                     <field name="balance_annee" />
-                     <field name="balance_prev_annee"/>
+                     <field name="qty_annee" sum="Somme qty N"/>
+                     <field name="qty_prev_annee" sum="Somme qty N-1"/>
+                     <field name="balance_annee" sum="Somme balance N"/>
+                     <field name="balance_prev_annee" sum="Somme balance N-1"/>
                      <field name="percentca"/>
                      <!--<button name="action_avancement_ca_cust_salesteam_list" string="Clients" type="object" />-->
                  </tree>
@@ -361,7 +361,7 @@
                     <field name="pos_reference"/>
                     <field name="product_id"/>
                     <field name="qty"/>
-                    <field name="price_subtotal"/>
+                    <field name="price_subtotal" />
                     <field name="state"/>
                 </tree>
             </field>
@@ -407,8 +407,8 @@
                     <field name="partner_id"/>
                     <field name="nomcat"/>
                     <field name="categ_id" invisible="1"/>
-                    <field name="ca_annee"/>
-                    <field name="ca_prev_annee"/>
+                    <field name="ca_prev_annee" />
+                    <field name="ca_annee" />
                     <field name="percentca"/>
                     <field name="invoicenb"/>
                     <button type="action" name="%(action_wds_lignes_fac_list)d" string="Detail" attrs="{'invisible':[('categ_id','&lt;&gt;', 0)]}" />
@@ -448,9 +448,9 @@
                 <tree editable="top" create="false">
                     <field name="partner_id"/>
                     <field name="invoicenb"/>
-                    <field name="ca_prev_annee"/>
-                    <field name="ca_annee"/>
-                    <field name="vol_annee"/>
+                    <field name="ca_prev_annee" sum="Somme CA N-1"/>
+                    <field name="ca_annee" sum="Somme CA annee"/>
+                    <field name="vol_annee" sum="Somme Vol annee"/>
                     <field name="percentca"/>
                     <button type="action" name="%(action_wds_evol_ca_list)d" string="Detail"/>
                 </tree>
@@ -522,9 +522,9 @@
                 <tree editable="top" create="false">
                     <field name="categ_id"/>
                     <field name="invoicenb"/>
-                    <field name="ca_prev_annee"/>
-                    <field name="ca_annee"/>
-                    <field name="vol_annee"/>
+                    <field name="ca_prev_annee" sum="Somme CA N-1"/>
+                    <field name="ca_annee" sum="Somme CA annee"/>
+                    <field name="vol_annee" sum="Somme Vol annee"/>
                     <field name="percentca"/>
                     <button type="action" name="%(action_ca_40_produits_list_all)d" string="Detail"/>
                 </tree>
