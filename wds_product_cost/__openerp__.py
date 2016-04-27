@@ -3,7 +3,7 @@
     'name': "WDS Coût Produits",
 
     'summary': """
-        Menu de suivi d'activité""",
+        Menu Ventes/Articles""",
 
     'description': """
         Création d'une liste qui permet de gérer les couts de revient des produits

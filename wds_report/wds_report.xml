@@ -71,7 +71,8 @@
                     <field name="date"/>
                     <field name="date_created"/>
                     <field name="date_maturity"/>
-                    <filter string="This F.Year" name="thisyear" domain="['|', ('date', '=', False), '&amp;',('date','&lt;=', time.strftime('%%Y-12-31')),('date','&gt;=',time.strftime('%%Y-01-01'))]" help="Journal Entries with period in current year"/>
+                    <filter string="Annéé N" name="thisyear" domain="['|', ('date', '=', False), '&amp;',('date','&lt;=', time.strftime('%%Y-12-31')),('date','&gt;=',time.strftime('%%Y-01-01'))]" help="Journal Entries with period in current year"/>
+                    <filter string="Année N-1" name="lastyear" domain="['|', ('date', '=', False), '&amp;',('date','&lt;=', (context_today()-relativedelta(years=1)).strftime('%%Y-12-31')),('date','&gt;=',(context_today()-relativedelta(years=1)).strftime('%%Y-01-01'))]" help="Journal Entries with period in current year"/>
                     <filter string="This Period" name="period" context="{'period':'current_period'}" help="Journal Entries with period in current period"/>
                     <separator/>
                     <filter string="Unposted" domain="[('move_state','=','draft')]" help = "entries"/>
@@ -99,7 +100,7 @@
                         <filter string="Catégorie.Produits" context="{'group_by':'categ_id'}"/>
                         <filter string="Journal" name="group_journal" context="{'group_by':'journal_id'}"/>
                         <!--<filter string="Acc.Type" context="{'group_by':'user_type'}" name="usertype"/>-->
-                        <filter string="typref" context="{'group_by':'typref'}" name="typref"/>
+                        <filter string="Type de Vente" context="{'group_by':'typref'}" name="typref"/>
                         <filter string="Int.Type" context="{'group_by':'type'}"/>
                         <filter string="Company" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
                         <separator/>
@@ -271,7 +272,7 @@
                      <field name="balance_annee" />
                      <field name="balance_prev_annee"/>
                      <field name="percentca"/>
-                   <!--  <button type="action" name="%(action_avancement_ca_cust_salesteam_list)d" string="Detail" />-->
+                     <!--<button name="action_avancement_ca_cust_salesteam_list" string="Clients" type="object" />-->
                  </tree>
              </field>
         </record>

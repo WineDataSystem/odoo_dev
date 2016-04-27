@@ -71,10 +71,10 @@ class avancement_ca_client_list(osv.osv):
         # 'date': fields.date('Date', readonly=True),
         'id': fields.many2one('crm.case.section', 'Sales Team'),
         'section_id': fields.many2one('crm.case.section', 'Sales Team'),
-        'qty_annee': fields.float('Quantité Année en cours', readonly=True),
-        'qty_prev_annee': fields.float('Quantité Année précédente', readonly=True),
-        'balance_annee': fields.float('Balance Année en cours', readonly=True),
-        'balance_prev_annee': fields.float('Balance Année précédente', readonly=True),
+        'qty_annee': fields.float('Quantité N', readonly=True),
+        'qty_prev_annee': fields.float('Quantité N-1', readonly=True),
+        'balance_annee': fields.float('CA N', readonly=True),
+        'balance_prev_annee': fields.float('CA N-1', readonly=True),
         'percentca': fields.float('Evolution %', readonly=True),
 
     }
@@ -136,6 +136,25 @@ class avancement_ca_client_list(osv.osv):
         """
         return select_str
 
+    def action_avancement_ca_cust_salesteam_list(self, cr, uid, ids, context=None):
+        if context is None: context = {}
+        if context.get('active_model') != self._name:
+            context.update(active_ids=ids, active_model=self._name)
+        section_id = self.pool.get("avancement.ca.sales.team.list").create(
+            cr, uid, {}, context=context)
+        return {
+            'name': _("Avancement CA par client dans sales Team"),
+            'view_mode': 'list',
+            'view_id': False,
+            'view_type': 'list',
+            'res_model': 'avancement.ca.cust.salesteam.list',
+            'res_id': section_id,
+            'type': 'ir.actions.act_window',
+            'nodestroy': True,
+            'target': 'new',
+            'domain': '[]',
+            'context': context
+        }
 
     def init(self, cr):
         # self._table = account_invoice_report
