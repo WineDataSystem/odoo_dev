@@ -42,6 +42,7 @@ class wds_account_ventes_report(osv.osv):
         'balance': fields.float('Montant', readonly=True),
         'currency_id': fields.many2one('res.currency', 'Monnaie', readonly=True),
         'country_id': fields.many2one('res.country', 'Pays',readonly=True),
+        'country_group_id': fields.many2one('res.country.group', 'Groupe Pays', readonly=True),
         'amount_currency': fields.float('Amount Currency', digits_compute=dp.get_precision('Account'), readonly=True),
         'period_id': fields.many2one('account.period', 'Période', readonly=True),
         'account_id': fields.many2one('account.account', 'Compte', readonly=True),
@@ -148,6 +149,7 @@ class wds_account_ventes_report(osv.osv):
                 l.quantity as quantity,
                 l.currency_id as currency_id,
                 case when rp.country_id is NULL or rp.country_id=0 then 76 else rp.country_id end country_id,
+                case when res_country_group_id is NULL or res_country_group_id=0 then 1 else res_country_group_id end country_group_id,
                 l.amount_currency as amount_currency,
                 l.debit as debit,
                 l.credit as credit,
@@ -160,6 +162,7 @@ class wds_account_ventes_report(osv.osv):
                 left join account_invoice ai on l.ref = ai.number
                 left join pos_order po on l.ref = po.pos_reference
                 left join res_partner rp on l.partner_id= rp.id
+                left join res_country_res_country_group_rel rcrcg on rp.country_id=rcrcg.res_country_id
                 left join product_product pp on l.product_id=pp.id
                 left join product_template pt on pp.product_tmpl_id=pt.id
                 where l.state != 'draft' and a.code like '70%'

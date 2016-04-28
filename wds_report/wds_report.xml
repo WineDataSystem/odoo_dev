@@ -13,6 +13,7 @@
                     <field name="date_maturity" invisible="1"/>
                     <field name="ref" invisible="1"/>
                     <field name="typref" string="Type de Vente"/>
+                    <field name="country_group_id"/>
                     <field name="fiscal_position" />
                     <field name="nbr" sum="# of Entries "/>
                     <field name="quantity" sum="# of Products Qty " invisible="not context.get('quantity_visible', False)"/>
@@ -44,6 +45,7 @@
                     <field name="user_type" type="row"/>
                     <field name="period_id" type="col"/>
                     <field name="typref" type="row"/>
+                     <field name="country_group_id" type="row"/>
                     <field name="fiscal_position" type="row"/>
                      <!--<field name="debit" type="measure"/>
                     <field name="credit" type="measure"/>-->
@@ -71,7 +73,7 @@
                     <field name="date"/>
                     <field name="date_created"/>
                     <field name="date_maturity"/>
-                    <filter string="Annéé N" name="thisyear" domain="['|', ('date', '=', False), '&amp;',('date','&lt;=', time.strftime('%%Y-12-31')),('date','&gt;=',time.strftime('%%Y-01-01'))]" help="Journal Entries with period in current year"/>
+                    <filter string="Année N" name="thisyear" domain="['|', ('date', '=', False), '&amp;',('date','&lt;=', time.strftime('%%Y-12-31')),('date','&gt;=',time.strftime('%%Y-01-01'))]" help="Journal Entries with period in current year"/>
                     <filter string="Année N-1" name="lastyear" domain="['|', ('date', '=', False), '&amp;',('date','&lt;=', (context_today()-relativedelta(years=1)).strftime('%%Y-12-31')),('date','&gt;=',(context_today()-relativedelta(years=1)).strftime('%%Y-01-01'))]" help="Journal Entries with period in current year"/>
                     <filter string="This Period" name="period" context="{'period':'current_period'}" help="Journal Entries with period in current period"/>
                     <separator/>
@@ -101,6 +103,7 @@
                         <filter string="Journal" name="group_journal" context="{'group_by':'journal_id'}"/>
                         <!--<filter string="Acc.Type" context="{'group_by':'user_type'}" name="usertype"/>-->
                         <filter string="Type de Vente" context="{'group_by':'typref'}" name="typref"/>
+                         <filter string="Groupe Pays" context="{'group_by':'country_group_id'}" name="groupe_pays"/>
                         <filter string="Int.Type" context="{'group_by':'type'}"/>
                         <filter string="Company" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
                         <separator/>
