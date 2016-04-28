@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+	<data>
+		<record id="product_brand_search_form_view" model="ir.ui.view">
+			<field name="name">wds.product.brand.search.form</field>
+			<field name="model">wds.product.brand</field>
+			<field name="arch" type="xml">
+				<search string="Product Brand">
+					<field name="name"/>
+					<field name="partner_id"/>
+				</search>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_product_brand_form">
+			<field name="name">wds.product.brand.form</field>
+			<field name="model">wds.product.brand</field>
+			<field name="arch" type="xml">
+				<form string="Product Brand" version="7.0">
+					<sheet>
+						<field name="logo" widget="image" class="oe_avatar oe_left"/>
+						<div class="oe_title">
+							<div class="oe_edit_only">
+								<label for="name" string="Brand Name"/>
+							</div>
+							<h1 style="width:100%%">
+								<field name="name" style="width:100%%"/>
+							</h1>
+						</div>
+						<group>
+							<field name="partner_id" style="width:40%%"/>
+						</group>
+						<group string="Description">
+							<field name="description" nolabel="1"/>
+						</group>
+						<!-- tabs  -->
+						<notebook>
+							<page string="Wines"  >
+								<field name="id" invisible="1" />
+								<field name="product_wine_ids" mode="kanban" context="{'default_partner_id': partner_id,'default_brand_id': id,}">
+									<kanban>
+										<field name="logo"/>
+										<field name="name"/>
+										<templates>
+											<t t-name="kanban-box">
+												<div style="position: relative">
+														<a t-if="! read_only_mode" type="delete"
+															style="position: absolute; right: 0; padding: 4px; diplay: inline-block">X</a>
+												</div>
+												<div class="oe_kanban_vignette oe_semantic_html_override">
+													<a type="object" name="get_wines" >
+														<img t-att-src="kanban_image('wds.product.wine', 'logo', record.id.value)" class="oe_kanban_image"/>
+													</a>
+													<div class="oe_kanban_details">
+														<h4>
+															<a type="object" name="get_wines">
+																<field name="name"/>
+															</a>
+														</h4>
+														<div name="tags"/>
+														<ul>
+															<li>
+																<field name="appellation_id"></field>
+															</li>
+															<li>
+																<field name="product_count"></field> Vintages
+															</li>
+															
+														</ul>
+													</div>
+												</div>
+											</t>
+										</templates>
+									</kanban>
+								</field>
+							</page>
+							<page string="Vintages"  >
+								<field name="product_vintage_ids" mode="kanban" ><!--product_template_ids-->
+									<kanban quick_create="false" create="false">
+										<field name="image_small"/>
+										<field name="list_price"/>
+										<templates>
+											<t t-name="kanban-box">
+												<div class="oe_kanban_vignette oe_semantic_html_override">
+													<a type="open">
+														<img t-att-src="kanban_image('product.template', 'image_small', record.id.value)" class="oe_kanban_image"/>
+													</a>
+													<div class="oe_kanban_details">
+														<h4>
+															<a type="open">
+																<field name="name"/>
+															</a>
+														</h4>
+														<div name="tags"/>
+														<ul>
+															<li>
+																Price:
+																<field name="list_price"></field>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</t>
+										</templates>
+									</kanban>
+								</field>
+							</page>
+
+						</notebook>
+					</sheet>
+					<footer>
+						<!--<button name="write" string="Save" type="object"
+						class="oe_highlight oe_edit_only" style="color:red" />-->
+					</footer>
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_product_brand_tree">
+			<field name="name">wds.product.brand.tree</field>
+			<field name="model">wds.product.brand</field>
+			<field name="arch" type="xml">
+				<tree string="wds.product.brand">
+					<field name="name"/>
+					<field name="product_count"/>
+					<field name="partner_id"/>
+				</tree>
+			</field>
+		</record>
+		<record id="product_search_form_view" model="ir.ui.view">
+			<field name="name">product.search.form</field>
+			<field name="model">product.product</field>
+			<field name="inherit_id" ref="product.product_search_form_view"/>
+			<field name="arch" type="xml">
+
+				<group string='Group by...' position="inside">
+					<filter string="Brand" name="groupby_brand" domain="[]" context="{'group_by' : 'product_brand_id'}"/>
+				</group>
+			</field>
+		</record>
+		<!--<record model="ir.ui.view" id="product_template_form_brand_add">
+			<field name="name">product.template.product.form</field>
+			<field name="model">product.template</field>
+			<field name="inherit_id" ref="product.product_template_form_view" />
+			<field name="arch" type="xml">
+				<field name="sale_ok" position="before"  >
+					<div>
+						<h3>
+							<field name="product_brand_id" placeholder="Marque" />
+						</h3>
+					</div>
+			</field>
+			</field>
+		</record>-->
+		<record id="product_brand_kanban" model="ir.ui.view">
+			<field name="name">wds.product.brand.kanban</field>
+			<field name="model">wds.product.brand</field>
+			<field name="type">kanban</field>
+			<field name="arch" type="xml">
+				<kanban   version="7.0" >
+					<field name="name" />
+					<field name="description" />
+					<field name="partner_id" />
+					<field name="product_count" />
+					<field name="logo" />
+					<field name="product_template_ids" />
+					<templates>
+						<t t-name="kanban-box">
+							<a type="object" name="get_brand">
+								<img  t-att-src="kanban_image('wds.product.brand', 'logo', record.id.value)" style="height:130px; width:280px;"/>
+							</a>
+							<div t-attf-class="oe_kanban_card" style="cursor:default; height:40px; width:280px">
+								<div class="oe_kanban_left"
+								style="color:black">
+									<h4>
+										<a type="object" name="get_brand">
+											<field name="name_short"></field>
+										</a>
+									</h4>
+								</div>
+								<!--style="text-align:right; padding-right: 5px; color:rgb(134,11,17); font-weight:bold;"-->
+								<div style="color:black" class="oe_kanban_right">
+									<a t-if="record.product_count.raw_value gt 0" name="get_products"
+									type="object" style="margin-right: 10px">
+										<span t-if="record.product_count.raw_value gt 1">
+											<field name="product_count" />
+											Wines...
+										</span>
+										<span t-if="record.product_count.raw_value lt 2">
+											<field name="product_count" />
+											Wine...
+										</span>
+									</a>
+								</div>
+							</div>
+						</t>
+					</templates>
+				</kanban>
+			</field>
+		</record>
+		<record model="ir.actions.act_window" id="action_product_brand">
+			<field name="name">Brand</field>
+			<field name="res_model">wds.product.brand</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,kanban,form</field>
+		</record>
+		<menuitem name="Brand management" id="menu_product_brand" action="action_product_brand" parent="product.prod_config_main"/>
+	</data>
+</openerp>

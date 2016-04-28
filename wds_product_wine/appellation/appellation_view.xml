@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<!--appellation-->
+		<record id="wds_appellation_search_view" model="ir.ui.view">
+			<field name="name">wds.appellation.search</field>
+			<field name="model">wds.appellation</field>
+			<field name="arch" type="xml">
+				<search string="Wine appellation">
+					<field name="name" 				 string="Wine appellation"/>
+					<field name="appellation_type_id" string="Wine appellation Type"/>
+				</search>
+			</field>
+		</record>
+		<record id="wine_appellation_form_view" model="ir.ui.view">
+			<field name="name">wds.appellation.form</field>
+			<field name="model">wds.appellation</field>
+			<field name="arch" type="xml">
+				<form string="Wine appellation" version="7.0">
+					<sheet>
+						<div class="width:100%%">
+							<h1>
+								<field name="complete_name" nolabel="1"/>
+							</h1>
+						</div>
+						<group>
+							<group >
+								<field name="name"/>
+								<field name="appellation_type_id"/>
+							</group>
+							<group  >
+								<field name="region_id"/>
+								<field name="country_id" readonly="1"/>
+							</group>
+						</group>
+						<newline/>
+						<!--<group class="oe_left">
+							<field name="vintage_ids">
+								<tree  string="Vintage" >
+									<field name="vintage"/>
+									<field name="name"/>
+									<field name="classification_ids" widget="many2many_tags"/>
+								</tree>
+							</field>
+					</group>-->
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		<record id="wine_appellation_tree_view" model="ir.ui.view">
+			<field name="name">wds.appellation.tree</field>
+			<field name="model">wds.appellation</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Wine appellations">
+					<field name="complete_name"/>
+					<field name="name"/>
+					<field name="appellation_type_id"/>
+					<field name="region_id"/>
+					<field name="country_id" readonly="1"/>
+				</tree>
+			</field>
+		</record>
+		
+		<!--wds_region-->
+		<record id="wds_region_search_view" model="ir.ui.view">
+			<field name="name">wds.region.search</field>
+			<field name="model">wds.region</field>
+			<field name="arch" type="xml">
+				<search string="Wine appellation">
+					<field name="country_id" 	string="Country" />
+				</search>
+			</field>
+		</record>
+		<record id="wds_region_form_view" model="ir.ui.view">
+			<field name="name">wds.region.form</field>
+			<field name="model">wds.region</field>
+			<field name="arch" type="xml">
+				<form string="wine region" version="7.0">
+					<sheet>
+						<div class="oe_title">
+							<label for="name" class="oe_edit_only"/>
+							<h1>
+								<field name="name"/>
+							</h1>
+						</div>
+						<group name="name" col="4" class="oe_left">
+							<field name="country_id"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record id="wds_region_tree_view" model="ir.ui.view">
+			<field name="name">wds.region.tree</field>
+			<field name="model">wds.region</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree  string="Region">
+					<field name="name"/>
+					<field name="country_id"/>
+				</tree>
+			</field>
+		</record>
+	</data>
+</openerp>

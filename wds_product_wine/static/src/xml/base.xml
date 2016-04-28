@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+	<t t-extend="UserMenu" >
+		<t t-jquery="ul.dropdown-menu" t-operation="replace">
+			<ul class="dropdown-menu">
+				<li>
+					<a href="#" data-menu="settings">Profile</a>
+				</li>
+				<li>
+					<a href="#" data-menu="about">About</a>
+				</li>
+				<!--<li><a href="#" data-menu="help">Help</a></li>-->
+				<li>
+					<a href="#" data-menu="logout">Log out</a>
+				</li>
+			</ul>
+		</t>
+	</t>
+	<t t-extend="WebClient.announcement_bar" >
+		<t t-jquery="table.oe_webclient" t-operation="replace"></t>
+	</t>
+	<!-- Templates modified at the web start, before loading of a database. -->
+	<!-- Remove the Manage database link, but keep the Powered by OpenERP-->
+	<t t-extend="Login">
+		<t t-jquery="div.oe_login_footer" t-operation="replace">
+			<div class="oe_login_footer">
+				<a href="http://www.winedatasystem.com" target="_blank">
+					<span>Wine Data System</span>
+				</a>
+			</div>
+		</t>
+	</t>
+	<t t-extend="UserMenu.about">
+		<t t-jquery="div.oe_about" t-operation="replace">
+			<div class="oe_about">
+				<a class="oe_activate_debug_mode oe_right" href="?debug" style="background-color: white; padding:2px 6px; border-radius: 10px;">Activate the developer mode</a>
+				<img class="oe_logo" src="/WDS_Core/static/src/img/logo.png"/>
+				<h3>
+				Version
+				<t t-esc="version_info.server_version"/>
+				</h3>
+				<div class="oe_bottom">
+					<h1 style="text-align: center; font-size: 39px;">Services dedicated to the Wine Merchants</h1>
+					<p style="line-height: 20px;text-align: center;">
+						WineDataSystem offers software and services
+						<br/>
+						enabling wine suppliers to increase their sales through
+						<br/>
+						innovative management of product information and customer relationships.
+					</p>
+				</div>
+			</div>
+		</t>
+	</t>
+</templates>

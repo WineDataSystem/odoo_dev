@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+	<t t-name="WDS_Core_SearchExtension">
+		<div class="ui-toolbar" style="margin-bottom:0px;">
+			<div class="oe_form_char_section">
+				<div class="oe_form_dropdown_section">
+					<h4>Vintage :</h4>
+					<select multiple="multiple" class="oe_select_vintage"></select>
+				</div>
+			</div>
+		</div>
+	</t>
+	<t t-name="WDS_Core_SearchvariantExtension">
+		<div class="ui-toolbar"  style="margin-bottom:0px;">
+			<div class="oe_form_char_section">
+				<div class="oe_form_dropdown_section">
+					<h4>Vintage :</h4>
+					<select style="font-size:5;" multiple="multiple" class="oe_select_variant"></select>
+				</div>
+			</div>
+		</div>
+	</t>
+	<t t-name="WDS_Core_SearchvariantPopupExtension">
+		<div class="ui-toolbar"  style="margin-bottom:0px;">
+			<div class="oe_form_char_section">
+				<div class="oe_form_dropdown_section">
+					<h4>Vintage :</h4>
+					<select style="font-size:9;" multiple="multiple" class="oe_select_variant"></select>
+				</div>
+			</div>
+		</div>
+	</t>
+</templates>
+
+
+
+
+
+<!--
+
+
+<div class="modal-body oe_act_window">
+                <div class="in" aria-hidden="false">
+        			<table style="width:100%">
+           				 <tbody>
+           				 	<tr style="width:100%">
+            					<td style="width:100%">
+                						<div class="oe_popup_search" style="width:100%">
+                							<div class="oe_searchview">
+									    		<div class="oe_searchview_facets">
+									    			<div class="oe_searchview_input" contenteditable="true" tabindex="0"></div>
+									    		</div>
+									   		<div class="oe_searchview_clear"></div>
+									    <div class="oe_searchview_unfold_drawer" title="Advanced Search..."></div>
+									    <button class="oe_searchview_search" title="Search Again" type="button">Search</button>
+										<div class="oe-autocomplete" style="width: 400px; display: none;">
+										<ul></ul>
+										</div></div><div class="oe_searchview_drawer" style="display:none;">
+ 										<div class="col-md-7">
+ 											<div class="oe_searchview_custom oe_searchview_section" style="display: none;"></div>
+											<div class="oe_searchview_filters oe_searchview_section"></div>
+										</div>
+										<div class="col-md-5"><div class="oe_searchview_savefilter"></div>
+											<div class="oe_searchview_advanced"></div>
+										</div>
+            					</td>
+        					</tr>
+        				</tbody>
+        			</table>
+        <div class="oe_popup_form" style="width:100%"></div>
+    </div>
+</div>-->

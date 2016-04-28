@@ -1,0 +1,16 @@
+<templates>
+	
+<div t-name="WDS_Core.action" class="oe_WDS_Core oe_WDS_Core_stopped">
+	<!--<div class="ui-toolbar" style="margin-bottom:0px;">
+    <h4 class="oe_WDS_Core_timer">00:00:00</h4>
+    <p class="oe_WDS_Core_start">
+        <button type="button">Start</button>
+    </p>
+    <p class="oe_WDS_Core_stop">
+        <button type="button">Stop</button>
+    </p>
+    <ol class="oe_WDS_Core_saved"></ol>
+</div>-->
+<iframe name="BigWinePriceList" src="/bigwine/offer-list" width="100%%" style="border:0" height="100%%" >Votre navigateur ne supporte pas les iframes</iframe>
+</div>
+</templates>
