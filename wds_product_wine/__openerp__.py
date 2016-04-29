@@ -29,8 +29,8 @@
                        'vintage/product_data.xml',
                        'vintage/product_view.xml',
                        'vintage/press_view.xml',
-                       'offers/product_product_view.xml',
-                       'offers/product_product_data.xml',
+                       'product/product_product_view.xml',
+                       'product/product_product_data.xml',
                         'menu_view.xml',
 
                        #

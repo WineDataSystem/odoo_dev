@@ -66,7 +66,7 @@ class product_product(osv.Model):
                 #offers:
                 # 'offer_ids'             :fields.one2many('pricelist.partnerinfo','product_id','Offers',help="List of offers related to current product "),
                 #Offer fields:
-                        'format'                : fields.many2one('wds.bottle.size','Format',track_visibility='onchange',),
+                'format'                : fields.many2one('wds.bottle.size','Format',track_visibility='onchange',),
                 'label'                 : fields.many2one( 'wds.label','Label',track_visibility='onchange',),
                 'has_logo_pregnant'     : fields.boolean('Logo Pregnant',help="Has logo pregnant ?"),
                 'winetax'               : fields.many2one('wds.winetax','Wine Tax',track_visibility='onchange',),#Régie

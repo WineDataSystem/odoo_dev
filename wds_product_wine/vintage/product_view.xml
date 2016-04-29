@@ -28,6 +28,7 @@
 		<field name="inherit_id" ref="product.product_template_form_view"/>
 		<field eval="7" name="priority"/>
 		<field name="arch" type="xml">
+			<!--<field name="w_iswine"/>-->
 			<!--<field name="seller_ids" position="replace">-->
 				<!--<field name="id" invisible="1"/>-->
 				<!--<field name='seller_ids' context="{'default_product_tmpl_id':id}"/>-->
@@ -35,18 +36,19 @@
 			<field name="name" position="replace">
 				<field name="name" readonly="1" class="oe_inline"/>
 			</field>
+
 			<xpath expr="//div[@class='oe_left']/div[@class='oe_title']" position="inside">
-				<separator string=" "/>
-				<newline/>
-				<label class="oe_edit_only" for="vintage" string="Product Vintage"/>
-				<h3  >
+				<separator string=" " attrs="{'invisible':[('w_iswine','=',False)]}"/>
+				<newline attrs="{'invisible':[('w_iswine','=',False)]}"/>
+				<label class="oe_edit_only" for="vintage" string="Product Vintage" attrs="{'invisible':[('w_iswine','=',False)]}"/>
+				<h3 attrs="{'invisible':[('w_iswine','=',False)]}">
 					<field name="vintage" placeholder="Vintage..." on_change="onchange_vintage(product_wine_id,vintage)" class="oe_inline" readonly="context.get('variant_ok',False)"/>
 				</h3>
 			</xpath>
 			<field name="sale_ok" 		position="replace"/>
 			<label  for="sale_ok" 		position="replace"/>
 			<xpath expr="//div/div[@name='options']/div" position="inside">
-				<div>
+				<div attrs="{'invisible':[('w_iswine','=',False)]}">
 					<h3>
 						<field name="product_brand_id" placeholder="--Marque--" readonly="context.get('variant_ok',False)" />
 						<field name="product_wine_id" on_change="onchange_vintage(product_wine_id,vintage)" placeholder="wine" readonly="context.get('variant_ok',False)" />
@@ -55,9 +57,9 @@
 			</xpath>
 			<xpath expr="//div[@class='oe_chatter']"  		position="after">
 				<footer class="oe_edit_only" >
-					<!--<button name="write" string="Save" type="object" class="oe_highlight oe_edit_only" style="color:red" />
+					<button name="write" string="Save" type="object" class="oe_highlight oe_edit_only" style="color:red" />
 					or
-					<button string="Cancel" class="oe_link oe_edit_only" special="cancel"/>-->
+					<button string="Cancel" class="oe_link oe_edit_only" special="cancel"/>
 				</footer>
 			</xpath>
 			<field name="active"  position="after">
@@ -65,7 +67,7 @@
 				<!--<field name="purchase_ok" attrs="{'readonly': [('is_product_variant', '=', False)]}"/>-->
 			</field>
 			<xpath expr="//page[@string='Information']" position="before">
-				<page string="Viticulture">
+				<page string="Viticulture" attrs="{'invisible':[('w_iswine','=',False)]}">
 					<group name="viticulture">
 						<group name="left">
 							<field name="classification_id"   placeholder="--Select--"/>
@@ -73,7 +75,7 @@
 						</group >
 					</group>
 				</page>
-				<page string="Press"   	>
+				<page string="Press" attrs="{'invisible':[('w_iswine','=',False)]}">
 					<group name="Press" colspan="4" cols="4">
 						<field name="id" invisible="1"/>
 						<field name="press_ids" context="{'default_product_id':id}" nolabel="1" colspan="4">

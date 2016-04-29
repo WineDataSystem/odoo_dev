@@ -114,91 +114,91 @@ class product_template(osv.Model):
         else:
             name2=ustr(vintage)
         return self.write(cr,uid,ids,{'name':name2},context=context)
-#     def name_get(self, cr, uid, ids, context=None):
-#         if isinstance(ids, (list, tuple)) and not len(ids):
-#             return []
-#         if isinstance(ids, (long, int)):
-#             ids = [ids]
-#         reads = self.read(cr, uid, ids, ['name','parent_id'], context=context)
-#         res = []
-#         for record in reads:
-#             name = record['name']
-#             if record['parent_id']:
-#                 name = record['parent_id'][1]+' - '+name
-#             res.append((record['id'], name))
-#         return res
-
-#     def _name_get_fnc(self, cr, uid, ids, prop, unknow_none, context=None):
-#         res = self.name_get(cr, uid, ids, context=context)
-#         return dict(res)
-
-#     def add_vine(self, cr, uid, ids, context=None):
-#         ids = ids[0]
-#         if context!=None:
-#             ctx = dict(context)
-#             ctx.update({
-#                         'parent_id':ids,
-#                         })
-#         else:
-#             ctx=({
-#                   'parent_id':ids,
-#                   })
-#         action = {
-#                 'type'      : 'ir.actions.act_window',
-#                 'name'      : 'Vine',
-#                 'view_type' : 'form',
-#                 'view_mode' : 'form',
-#                 'res_model' : 'product.template',
-#                 'context'   : ctx,
-#                 'target'    :'new',
-#                 }
-#         return action
-
-#     def add_vintage(self, cr, uid, ids, context=None):
-#         ids = ids[0]
-#         if context!=None:
-#             ctx = dict(context)
-#             ctx.update({
-#                         'parent_id':ids,
-#                         })
-#         else:
-#             ctx=({
-#                     'parent_id':ids,
-#                     })
-#         action = {
-#                 'type'      : 'ir.actions.act_window',
-#                 'name'      : 'Vintage',
-#                 'view_type' : 'form',
-#                 'view_mode' : 'form',
-#                 'res_model' : 'product.template',
-#                 'context'   : ctx,
-#                 'target'    :'new',
-#                 }
-#         return action
-
-#     def add_offer(self, cr, uid, ids, context=None):
-#         ids = ids[0]
-#         if context!=None:
-#             ctx = dict(context)
-#             ctx.update({
-#                         'parent_id':ids,
-#                         'is_offer': True
-#                         })
-#         else:
-#             ctx=({
-#                     'parent_id':ids,
-#                     'is_offer': True
-#                     })
-#         action = {
-#                 'type'      : 'ir.actions.act_window',
-#                 'name'      : 'Price Offer',
-#                 'view_type' : 'form',
-#                 'view_mode' : 'form',
-#                 'res_model' : 'product.template',
-#                 'context'   : ctx,
-#                 'target'    :'new',
-#                 }
-#         return action
+    # def name_get(self, cr, uid, ids, context=None):
+    #     if isinstance(ids, (list, tuple)) and not len(ids):
+    #         return []
+    #     if isinstance(ids, (long, int)):
+    #         ids = [ids]
+    #     reads = self.read(cr, uid, ids, ['name','parent_id'], context=context)
+    #     res = []
+    #     for record in reads:
+    #         name = record['name']
+    #         if record['parent_id']:
+    #             name = record['parent_id'][1]+' - '+name
+    #         res.append((record['id'], name))
+    #     return res
+    #
+    # def _name_get_fnc(self, cr, uid, ids, prop, unknow_none, context=None):
+    #     res = self.name_get(cr, uid, ids, context=context)
+    #     return dict(res)
+    #
+    # def add_vine(self, cr, uid, ids, context=None):
+    #     ids = ids[0]
+    #     if context!=None:
+    #         ctx = dict(context)
+    #         ctx.update({
+    #                     'parent_id':ids,
+    #                     })
+    #     else:
+    #         ctx=({
+    #               'parent_id':ids,
+    #               })
+    #     action = {
+    #             'type'      : 'ir.actions.act_window',
+    #             'name'      : 'Vine',
+    #             'view_type' : 'form',
+    #             'view_mode' : 'form',
+    #             'res_model' : 'product.template',
+    #             'context'   : ctx,
+    #             'target'    :'new',
+    #             }
+    #     return action
+    #
+    # def add_vintage(self, cr, uid, ids, context=None):
+    #     ids = ids[0]
+    #     if context!=None:
+    #         ctx = dict(context)
+    #         ctx.update({
+    #                     'parent_id':ids,
+    #                     })
+    #     else:
+    #         ctx=({
+    #                 'parent_id':ids,
+    #                 })
+    #     action = {
+    #             'type'      : 'ir.actions.act_window',
+    #             'name'      : 'Vintage',
+    #             'view_type' : 'form',
+    #             'view_mode' : 'form',
+    #             'res_model' : 'product.template',
+    #             'context'   : ctx,
+    #             'target'    :'new',
+    #             }
+    #     return action
+    #
+    # def add_offer(self, cr, uid, ids, context=None):
+    #     ids = ids[0]
+    #     if context!=None:
+    #         ctx = dict(context)
+    #         ctx.update({
+    #                     'parent_id':ids,
+    #                     'is_offer': True
+    #                     })
+    #     else:
+    #         ctx=({
+    #                 'parent_id':ids,
+    #                 'is_offer': True
+    #                 })
+    #     action = {
+    #             'type'      : 'ir.actions.act_window',
+    #             'name'      : 'Price Offer',
+    #             'view_type' : 'form',
+    #             'view_mode' : 'form',
+    #             'res_model' : 'product.template',
+    #             'context'   : ctx,
+    #             'target'    :'new',
+    #             }
+    #     return action
 
     def show_sub_products(self, cr, uid, ids, context=None):
         ids = ids[0]
@@ -215,6 +215,7 @@ class product_template(osv.Model):
         return action
 
     _columns = {
+                'w_iswine'              : fields.boolean('Select if wine'),
                 'vintage'               : fields.selection([(num, str(num)) for num in sorted(range(1900,int(now())+1), reverse=True)], 'Vintage',),
                 'alcoholic_strength'    : fields.float(ustr('Alcoholic strength (%vol.)')),
                 'classification_id'     : fields.many2one('wds.classification', 'Classification',track_visibility='onchange', ),

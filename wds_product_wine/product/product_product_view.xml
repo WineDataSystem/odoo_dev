@@ -34,11 +34,12 @@
 				<!--</xpath>-->
 				<xpath expr="//notebook" position="before">
 					<group>
-						<group>
-							<field name="w_iswine" 	/>
-							<field name="format" 		 placeholder="Format..."/>
-							<field name="winetax" 		 placeholder="Winetax..."/>
-							<h1>
+						<field name="w_iswine"/>
+						<group attrs="{'invisible':[('w_iswine','=',False)]}">
+
+							<field name="format" placeholder="Format..." attrs="{'invisible':[('w_iswine','=',False)]}"/>
+							<field name="winetax" placeholder="Winetax..." />
+							<h1 attrs="{'invisible':[('w_iswine','=',False)]}">
 								<field name="has_logo_pregnant"/>
 								<img src="wds_product_wine/static/src/img/logo_pregnant.png"
 								width="40" height="40" title="Logo Pregnant"
@@ -50,7 +51,7 @@
 								/>
 							</h1>
 						</group>
-						<group>
+						<group attrs="{'invisible':[('w_iswine','=',False)]}">
 							<field name="conditioning" 	 placeholder="Conditioning..."/>
 							<field name="package_type"   placeholder="Package Type..." />
 							<field name="label" 		 placeholder="Label..."  		/>
@@ -81,10 +82,6 @@
 				</tree>
 			</field>
 		</record>
-		
-		
-		
-		
-		
+
 	</data>
 </openerp>
