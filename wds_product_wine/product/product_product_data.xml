@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<!--
+		Resource: wds.bottle.size
+		-->
+		<record id="wds_bottle_size_36_3cl"  model="wds.bottle.size">
+			<field name="name">36.3cl</field><!--   -->
+		</record>
+		<record id="wds_bottle_size_37_5cl"  model="wds.bottle.size">
+			<field name="name">37.5cl</field><!--   -->
+		</record>
+		<record id="wds_bottle_size_50cl"  model="wds.bottle.size">
+			<field name="name">50cl</field><!--   -->
+		</record>
+		<record id="wds_bottle_size_75cl"  model="wds.bottle.size">
+			<field name="name">75cl</field><!--   -->
+		</record>
+		<record id="wds_bottle_size_150cl"  model="wds.bottle.size">
+			<field name="name">150cl</field><!--   -->
+		</record>
+		<record id="wds_bottle_size_300cl"  model="wds.bottle.size">
+			<field name="name">300cl</field><!--   -->
+		</record>
+		<record id="wds_bottle_size_450cl"  model="wds.bottle.size">
+			<field name="name">450cl</field><!--   -->
+		</record>
+		<record id="wds_bottle_size_600cl"  model="wds.bottle.size">
+			<field name="name">600cl</field><!--   -->
+		</record>
+		<!--
+		Resource: product.attribute
+		-->
+		<record id="product_attribute_id_1" 	model="product.attribute">
+			<field name="name">Vintage</field>
+		</record>
+	</data>
+</openerp>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<!--
+		Resource: wds.color
+		-->
+		<record id="wds_color_red" 	model="wds.color">
+			<field name="name">Red</field>
+		</record>
+		<record id="wds_color_rose" 	model="wds.color">
+			<field name="name">Rose</field>
+		</record>
+		<record id="wds_color_claret" 	model="wds.color">
+			<field name="name">Claret</field>
+		</record>
+		<record id="wds_color_white" 	model="wds.color">
+			<field name="name">White</field>
+		</record>
+		<!--
+		Resource: product.category
+		-->
+		<record id="product.product_category_all" model="product.category">
+			<field name="name">All wines</field>
+		</record>
+		<record id="product_category_11" model="product.category">
+			<field name="parent_id" ref="product.product_category_all"/>
+			<field name="name">Wine</field>
+		</record>
+		<record id="product_category_12" model="product.category">
+			<field name="parent_id" ref="product_category_11"/>
+			<field name="name">White</field>
+		</record>
+		<record id="product_category_13" model="product.category">
+			<field name="parent_id" ref="product_category_11"/>
+			<field name="name">Red</field>
+		</record>
+		<record id="product_category_14" model="product.category">
+			<field name="parent_id" ref="product_category_11"/>
+			<field name="name">Rosé</field>
+		</record>
+		<record id="product_category_15" model="product.category">
+			<field name="parent_id" ref="product_category_11"/>
+			<field name="name">Sparkling</field>
+		</record>
+		<record id="product_category_16" model="product.category">
+			<field name="parent_id" ref="product_category_11"/>
+			<field name="name">Dessert</field>
+		</record>
+		<!--3rd Step-->
+		<record id="product_category_17" model="product.category">
+			<field name="parent_id" ref="product_category_13"/>
+			<field name="name">Fruity-Dry Red</field>
+		</record>
+		<record id="product_category_18" model="product.category">
+			<field name="parent_id" ref="product_category_13"/>
+			<field name="name">Sweet Red</field>
+		</record>
+		<record id="product_category_19" model="product.category">
+			<field name="parent_id" ref="product_category_13"/>
+			<field name="name">Herbal-Dry red</field>
+		</record>
+		<record id="product_category_20" model="product.category">
+			<field name="parent_id" ref="product_category_12"/>
+			<field name="name">dry White</field>
+		</record>
+		<record id="product_category_21" model="product.category">
+			<field name="parent_id" ref="product_category_12"/>
+			<field name="name">Sweet White</field>
+		</record>
+		<record id="product_category_22" model="product.category">
+			<field name="parent_id" ref="product_category_14"/>
+			<field name="name">Off-dry Rosé</field>
+		</record>
+		<record id="product_category_23" model="product.category">
+			<field name="parent_id" ref="product_category_14"/>
+			<field name="name">Dry Rosé</field>
+		</record>
+		<record id="product_category_24" model="product.category">
+			<field name="parent_id" ref="product_category_15"/>
+			<field name="name">Rosé Sparkling</field>
+		</record>
+		<record id="product_category_25" model="product.category">
+			<field name="parent_id" ref="product_category_15"/>
+			<field name="name">Red Sparkling</field>
+		</record>
+		<record id="product_category_26" model="product.category">
+			<field name="parent_id" ref="product_category_15"/>
+			<field name="name">White Sparkling</field>
+		</record>
+		<record id="product_category_27" model="product.category">
+			<field name="parent_id" ref="product_category_16"/>
+			<field name="name">Fortified Red Wine</field>
+		</record>
+		<record id="product_category_28" model="product.category">
+			<field name="parent_id" ref="product_category_16"/>
+			<field name="name">Fortified White Wine</field>
+		</record>
+		<record id="product_category_28" model="product.category">
+			<field name="parent_id" ref="product_category_16"/>
+			<field name="name">Nutty oxidized Fortified</field>
+		</record>
+
+	</data>
+</openerp>

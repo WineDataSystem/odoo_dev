@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<!--
+		Resource: wds.press.comment.priority
+		-->
+		<record id="wds_press_comment_priority_1"  model="wds.press.comment.priority">
+			<field name="name">Priority 1</field><!--   -->
+		</record>
+		<record id="wds_press_comment_priority_2"  model="wds.press.comment.priority">
+			<field name="name">Priority 2</field><!--   -->
+		</record>
+		<record id="wds_press_comment_priority_3"  model="wds.press.comment.priority">
+			<field name="name">Priority 3</field><!--   -->
+		</record>
+		<record id="wds_press_comment_priority_check"  model="wds.press.comment.priority">
+			<field name="name">Check</field><!--   -->
+		</record>
+		<!--
+		Resource: wds.press.comment.type
+		-->
+		<record id="wds_press_comment_type_1"  model="wds.press.comment.type">
+			<field name="name">Press Comment</field><!-- Commentaire de presse  -->
+		</record>
+		<!--
+		Resource: wds.classification
+		-->
+		<record id="wds_classification_first_big_vintage_rated_a" 	model="wds.classification">
+			<field name="name">Premier Grand Cru Classé A</field><!--Premier Grand Cru Classé A -->
+		</record>
+		<record id="wds_classification_first_big_vintage_rated_b" 	model="wds.classification">
+			<field name="name">Premier Grand Cru Classé B</field><!--Premier Grand Cru Classé B -->
+		</record>
+		<record id="wds_classification_big_vintage_rated" 			model="wds.classification">
+			<field name="name">Grand Cru Classé</field><!--Grand Cru Classé -->
+		</record>
+		<record id="wds_classification_vintage_rated" 				model="wds.classification">
+			<field name="name">Cru Classé</field><!-- Cru Classé-->
+		</record>
+		<record id="wds_classification_first_big_vintage_rated" 		model="wds.classification">
+			<field name="name">Premier Grand Cru Classé</field><!--Premier Grand Cru Classé -->
+		</record>
+		<record id="wds_classification_second_big_vintage_rated" 	model="wds.classification">
+			<field name="name">Deuxième Grand Cru Classé</field><!--Deuxième Grand Cru Classé -->
+		</record>
+		<record id="wds_classification_third_big_vintage_rated" 		model="wds.classification">
+			<field name="name">Troisième Grand Cru Classé</field><!-- Troisième Grand Cru Classé-->
+		</record>
+		<record id="wds_classification_fourth_big_vintage_rated" 	model="wds.classification">
+			<field name="name">Quatrième Grand Cru Classé</field><!--Quatrième Grand Cru Classé -->
+		</record>
+		<record id="wds_classification_fifth_big_vintage_rated" 		model="wds.classification">
+			<field name="name">Cinquième Grand Cru Classé</field><!--Cinquième Grand Cru Classé -->
+		</record>
+		<record id="wds_classification_vintage_bourgeois_exceptionnel" model="wds.classification">
+			<field name="name">Cru Bourgeois Exceptionnel</field><!--Cru Bourgeois Exceptionnel -->
+		</record>
+		<record id="wds_classification_vintage_bourgeois_superior" 	model="wds.classification">
+			<field name="name">-Cru Bourgeois Supérieur</field><!--Cru Bourgeois Supérieur -->
+		</record>
+		<record id="wds_classification_vintage_bourgeois" 			model="wds.classification">
+			<field name="name">Cru Bourgeois</field><!--Cru Bourgeois -->
+		</record>
+		<record id="wds_classification_big_vintage" 					model="wds.classification">
+			<field name="name">Grand Cru</field><!--Grand Cru -->
+		</record>
+
+	</data>
+</openerp>

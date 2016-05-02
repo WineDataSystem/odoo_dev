@@ -1,0 +1,4083 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* wds_product_wine
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-09-24 13:24+0000\n"
+"PO-Revision-Date: 2014-09-24 13:24+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+msgid "*Product Template, Supplier: Association"
+msgstr "*Product Template, Supplier: Association"
+
+#. module: wds_product_wine
+#: view:res.partner:wds_product_wine.view_partner_form
+msgid "--Contact-Référentiel--"
+msgstr "--Contact-Référentiel--"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+#: view:product.template:wds_product_wine.product_inherited_template_form_view
+#: view:product.wine:wds_product_wine.view_product_wine_form
+msgid "--Marque--"
+msgstr "--Marque--"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+msgid "--Product-Referential--"
+msgstr "--Product-Referential--"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+#: view:product.template:wds_product_wine.product_inherited_template_form_view
+#: view:product.wine:wds_product_wine.view_product_wine_form
+#: view:product.wine:wds_product_wine.view_product_wine_tree
+#: view:wds.catalog:wds_product_wine.wine_catalog_form_view
+#: view:wds.press:wds_product_wine.wds_press_form_view
+#: view:wds.wine.type:wds_product_wine.wds_wine_type_form_view
+msgid "--Select--"
+msgstr "--Select--"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+msgid "--Supplier--"
+msgstr "--Supplier--"
+
+#. module: wds_product_wine
+#: view:product.wine:wds_product_wine.view_product_wine_form
+msgid "--Unique Import Id--"
+msgstr "--Unique Import Id--"
+
+#. module: wds_product_wine
+#: model:wds.classification,name:wds_product_wine.wds_classification_vintage_bourgeois_superior
+msgid "-Cru Bourgeois Supérieur"
+msgstr "-Cru Bourgeois Supérieur"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,Rearing_tank:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,barrel_aging:0
+#: selection:product.product,conditioning:0
+#: selection:product.product,new_barrels:0
+#: selection:product.product,service_temperature:0
+#: selection:wds.assembly,percentage:0
+msgid "10"
+msgstr "10"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,Rearing_tank:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,barrel_aging:0
+#: selection:product.product,conditioning:0
+#: selection:product.product,new_barrels:0
+#: selection:product.product,service_temperature:0
+#: selection:wds.assembly,percentage:0
+msgid "11"
+msgstr "11"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,Rearing_tank:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,barrel_aging:0
+#: selection:product.product,conditioning:0
+#: selection:product.product,new_barrels:0
+#: selection:product.product,service_temperature:0
+#: selection:wds.assembly,percentage:0
+msgid "12"
+msgstr "12"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,Rearing_tank:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,barrel_aging:0
+#: selection:product.product,conditioning:0
+#: selection:product.product,new_barrels:0
+#: selection:product.product,service_temperature:0
+#: selection:wds.assembly,percentage:0
+msgid "13"
+msgstr "13"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,Rearing_tank:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,barrel_aging:0
+#: selection:product.product,conditioning:0
+#: selection:product.product,new_barrels:0
+#: selection:product.product,service_temperature:0
+#: selection:wds.assembly,percentage:0
+msgid "14"
+msgstr "14"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,Rearing_tank:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,barrel_aging:0
+#: selection:product.product,conditioning:0
+#: selection:product.product,new_barrels:0
+#: selection:product.product,service_temperature:0
+#: selection:wds.assembly,percentage:0
+msgid "15"
+msgstr "15"
+
+#. module: wds_product_wine
+#: selection:wds.available.format,price_range:0
+msgid "15-100€"
+msgstr "15-100€"
+
+#. module: wds_product_wine
+#: model:wds.bottle.size,name:wds_product_wine.wds_bottle_size_150cl
+msgid "150cl"
+msgstr "150cl"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,Rearing_tank:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,barrel_aging:0
+#: selection:product.product,conditioning:0
+#: selection:product.product,new_barrels:0
+#: selection:product.product,service_temperature:0
+#: selection:wds.assembly,percentage:0
+msgid "16"
+msgstr "16"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,Rearing_tank:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,barrel_aging:0
+#: selection:product.product,conditioning:0
+#: selection:product.product,new_barrels:0
+#: selection:product.product,service_temperature:0
+#: selection:wds.assembly,percentage:0
+msgid "17"
+msgstr "17"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,Rearing_tank:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,barrel_aging:0
+#: selection:product.product,conditioning:0
+#: selection:product.product,new_barrels:0
+#: selection:product.product,service_temperature:0
+#: selection:wds.assembly,percentage:0
+msgid "18"
+msgstr "18"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,Rearing_tank:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,barrel_aging:0
+#: selection:product.product,conditioning:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "19"
+msgstr "19"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1900"
+msgstr "1900"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1901"
+msgstr "1901"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1902"
+msgstr "1902"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1903"
+msgstr "1903"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1904"
+msgstr "1904"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1905"
+msgstr "1905"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1906"
+msgstr "1906"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1907"
+msgstr "1907"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1908"
+msgstr "1908"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1909"
+msgstr "1909"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1910"
+msgstr "1910"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1911"
+msgstr "1911"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1912"
+msgstr "1912"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1913"
+msgstr "1913"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1914"
+msgstr "1914"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1915"
+msgstr "1915"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1916"
+msgstr "1916"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1917"
+msgstr "1917"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1918"
+msgstr "1918"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1919"
+msgstr "1919"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1920"
+msgstr "1920"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1921"
+msgstr "1921"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1922"
+msgstr "1922"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1923"
+msgstr "1923"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1924"
+msgstr "1924"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1925"
+msgstr "1925"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1926"
+msgstr "1926"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1927"
+msgstr "1927"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1928"
+msgstr "1928"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1929"
+msgstr "1929"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1930"
+msgstr "1930"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1931"
+msgstr "1931"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1932"
+msgstr "1932"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1933"
+msgstr "1933"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1934"
+msgstr "1934"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1935"
+msgstr "1935"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1936"
+msgstr "1936"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1937"
+msgstr "1937"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1938"
+msgstr "1938"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1939"
+msgstr "1939"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1940"
+msgstr "1940"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1941"
+msgstr "1941"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1942"
+msgstr "1942"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1943"
+msgstr "1943"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1944"
+msgstr "1944"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1945"
+msgstr "1945"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1946"
+msgstr "1946"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1947"
+msgstr "1947"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1948"
+msgstr "1948"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1949"
+msgstr "1949"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1950"
+msgstr "1950"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1951"
+msgstr "1951"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1952"
+msgstr "1952"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1953"
+msgstr "1953"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1954"
+msgstr "1954"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1955"
+msgstr "1955"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1956"
+msgstr "1956"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1957"
+msgstr "1957"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1958"
+msgstr "1958"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1959"
+msgstr "1959"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1960"
+msgstr "1960"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1961"
+msgstr "1961"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1962"
+msgstr "1962"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1963"
+msgstr "1963"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1964"
+msgstr "1964"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1965"
+msgstr "1965"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1966"
+msgstr "1966"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1967"
+msgstr "1967"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1968"
+msgstr "1968"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1969"
+msgstr "1969"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1970"
+msgstr "1970"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1971"
+msgstr "1971"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1972"
+msgstr "1972"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1973"
+msgstr "1973"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1974"
+msgstr "1974"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1975"
+msgstr "1975"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1976"
+msgstr "1976"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1977"
+msgstr "1977"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1978"
+msgstr "1978"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1979"
+msgstr "1979"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1980"
+msgstr "1980"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1981"
+msgstr "1981"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1982"
+msgstr "1982"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1983"
+msgstr "1983"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1984"
+msgstr "1984"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1985"
+msgstr "1985"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1986"
+msgstr "1986"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1987"
+msgstr "1987"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1988"
+msgstr "1988"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1989"
+msgstr "1989"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1990"
+msgstr "1990"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1991"
+msgstr "1991"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1992"
+msgstr "1992"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1993"
+msgstr "1993"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1994"
+msgstr "1994"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1995"
+msgstr "1995"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1996"
+msgstr "1996"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1997"
+msgstr "1997"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1998"
+msgstr "1998"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "1999"
+msgstr "1999"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,Rearing_tank:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,barrel_aging:0
+#: selection:product.product,conditioning:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "20"
+msgstr "20"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "2000"
+msgstr "2000"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "2001"
+msgstr "2001"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "2002"
+msgstr "2002"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "2003"
+msgstr "2003"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "2004"
+msgstr "2004"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "2005"
+msgstr "2005"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "2006"
+msgstr "2006"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "2007"
+msgstr "2007"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "2008"
+msgstr "2008"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "2009"
+msgstr "2009"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "2010"
+msgstr "2010"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "2011"
+msgstr "2011"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "2012"
+msgstr "2012"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "2013"
+msgstr "2013"
+
+#. module: wds_product_wine
+#: selection:product.product,best_tasting_id:0
+#: selection:product.template,vintage:0
+#: selection:wds.medal,year:0
+msgid "2014"
+msgstr "2014"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,Rearing_tank:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,barrel_aging:0
+#: selection:product.product,conditioning:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "21"
+msgstr "21"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,Rearing_tank:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,barrel_aging:0
+#: selection:product.product,conditioning:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "22"
+msgstr "22"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,Rearing_tank:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,barrel_aging:0
+#: selection:product.product,conditioning:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "23"
+msgstr "23"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,Rearing_tank:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,barrel_aging:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "24"
+msgstr "24"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,Rearing_tank:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,barrel_aging:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "25"
+msgstr "25"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,Rearing_tank:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,barrel_aging:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "26"
+msgstr "26"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,Rearing_tank:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,barrel_aging:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "27"
+msgstr "27"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,Rearing_tank:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,barrel_aging:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "28"
+msgstr "28"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,Rearing_tank:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,barrel_aging:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "29"
+msgstr "29"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,Rearing_tank:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,barrel_aging:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "30"
+msgstr "30"
+
+#. module: wds_product_wine
+#: model:wds.bottle.size,name:wds_product_wine.wds_bottle_size_300cl
+msgid "300cl"
+msgstr "300cl"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,Rearing_tank:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,barrel_aging:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "31"
+msgstr "31"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,Rearing_tank:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,barrel_aging:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "32"
+msgstr "32"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,Rearing_tank:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,barrel_aging:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "33"
+msgstr "33"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,Rearing_tank:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,barrel_aging:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "34"
+msgstr "34"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,Rearing_tank:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,barrel_aging:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "35"
+msgstr "35"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "36"
+msgstr "36"
+
+#. module: wds_product_wine
+#: model:wds.bottle.size,name:wds_product_wine.wds_bottle_size_36_3cl
+msgid "36.3cl"
+msgstr "36.3cl"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "37"
+msgstr "37"
+
+#. module: wds_product_wine
+#: model:wds.bottle.size,name:wds_product_wine.wds_bottle_size_37_5cl
+msgid "37.5cl"
+msgstr "37.5cl"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "38"
+msgstr "38"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "39"
+msgstr "39"
+
+#. module: wds_product_wine
+#: selection:wds.available.format,price_range:0
+msgid "4-8€"
+msgstr "4-8€"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "40"
+msgstr "40"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "41"
+msgstr "41"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "42"
+msgstr "42"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "43"
+msgstr "43"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "44"
+msgstr "44"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "45"
+msgstr "45"
+
+#. module: wds_product_wine
+#: model:wds.bottle.size,name:wds_product_wine.wds_bottle_size_450cl
+msgid "450cl"
+msgstr "450cl"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "46"
+msgstr "46"
+
+#. module: wds_product_wine
+#: selection:pricelist.partnerinfo,conditioning:0
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "47"
+msgstr "47"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "48"
+msgstr "48"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "49"
+msgstr "49"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "50"
+msgstr "50"
+
+#. module: wds_product_wine
+#: model:wds.bottle.size,name:wds_product_wine.wds_bottle_size_50cl
+msgid "50cl"
+msgstr "50cl"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "51"
+msgstr "51"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "52"
+msgstr "52"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "53"
+msgstr "53"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "54"
+msgstr "54"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "55"
+msgstr "55"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "56"
+msgstr "56"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "57"
+msgstr "57"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "58"
+msgstr "58"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "59"
+msgstr "59"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "60"
+msgstr "60"
+
+#. module: wds_product_wine
+#: model:wds.bottle.size,name:wds_product_wine.wds_bottle_size_600cl
+msgid "600cl"
+msgstr "600cl"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "61"
+msgstr "61"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "62"
+msgstr "62"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "63"
+msgstr "63"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "64"
+msgstr "64"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "65"
+msgstr "65"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "66"
+msgstr "66"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "67"
+msgstr "67"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "68"
+msgstr "68"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "69"
+msgstr "69"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "70"
+msgstr "70"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "71"
+msgstr "71"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "72"
+msgstr "72"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "73"
+msgstr "73"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "74"
+msgstr "74"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "75"
+msgstr "75"
+
+#. module: wds_product_wine
+#: model:wds.bottle.size,name:wds_product_wine.wds_bottle_size_75cl
+msgid "75cl"
+msgstr "75cl"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "76"
+msgstr "76"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "77"
+msgstr "77"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "78"
+msgstr "78"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "79"
+msgstr "79"
+
+#. module: wds_product_wine
+#: selection:wds.available.format,price_range:0
+msgid "8-15€"
+msgstr "8-15€"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "80"
+msgstr "80"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "81"
+msgstr "81"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "82"
+msgstr "82"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "83"
+msgstr "83"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "84"
+msgstr "84"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "85"
+msgstr "85"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "86"
+msgstr "86"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "87"
+msgstr "87"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "88"
+msgstr "88"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "89"
+msgstr "89"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "90"
+msgstr "90"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "91"
+msgstr "91"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "92"
+msgstr "92"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "93"
+msgstr "93"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "94"
+msgstr "94"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "95"
+msgstr "95"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "96"
+msgstr "96"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "97"
+msgstr "97"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "98"
+msgstr "98"
+
+#. module: wds_product_wine
+#: selection:product.product,aging_potential:0
+#: selection:product.product,new_barrels:0
+#: selection:wds.assembly,percentage:0
+msgid "99"
+msgstr "99"
+
+#. module: wds_product_wine
+#: selection:wds.available.format,price_range:0
+msgid "<4€"
+msgstr "<4€"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,help:wds_product_wine.action_wine_offers
+msgid "<p class=\"oe_view_nocontent_create\">\n"
+"				Click to create a Offer that will be converted into a sale order.\n"
+"			</p>\n"
+"		"
+msgstr "<p class=\"oe_view_nocontent_create\">\n"
+"				Click to create a Offer that will be converted into a sale order.\n"
+"			</p>\n"
+"		"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,help:wds_product_wine.product_normal_action
+msgid "<p class=\"oe_view_nocontent_create\">\n"
+"                Click to define a new product.\n"
+"              </p><p>\n"
+"                You must define a product for everything you buy or sell,\n"
+"                whether it's a physical product, a consumable or service.\n"
+"              </p>\n"
+"            "
+msgstr "<p class=\"oe_view_nocontent_create\">\n"
+"                Cliquez pour ajouter un nouvel article.\n"
+"              </p><p>\n"
+"Vous devez définir un article pour tout ce que vous vendez ou achetez,\n"
+"qu'il s'agisse d'un produit physique, d'un consommable ou d'un service.\n"
+"              </p>\n"
+"            "
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,help:wds_product_wine.action_wds_vintages
+msgid "<p>Here is a list of Vintages.</p>\n"
+"			"
+msgstr "<p>Here is a list of Vintages.</p>\n"
+"			"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,help:wds_product_wine.action_wds_wine_broker
+msgid "<p>Here is a list of Wine Broker.</p>\n"
+"			"
+msgstr "<p>Here is a list of Wine Broker.</p>\n"
+"			"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,help:wds_product_wine.action_wds_wine_wine_merchant
+msgid "<p>Here is a list of Wine Merchant.</p>\n"
+"			"
+msgstr "<p>Here is a list of Wine Merchant.</p>\n"
+"			"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,help:wds_product_wine.action_wds_wine_producer
+msgid "<p>Here is a list of Wine Producer.</p>\n"
+"			"
+msgstr "<p>Here is a list of Wine Producer.</p>\n"
+"			"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,help:wds_product_wine.action_wds_winerys
+msgid "<p>Here is a list of Winerys.</p>\n"
+"			"
+msgstr "<p>Here is a list of Winerys.</p>\n"
+"			"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,help:wds_product_wine.action_wds_wine
+msgid "<p>Here is a list of Wines.</p>\n"
+"			"
+msgstr "<p>Here is a list of Wines.</p>\n"
+"			"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,help:wds_product_wine.wds_catalog_action
+msgid "<p>Here is a list of catalogs.</p>\n"
+"			"
+msgstr "<p>Here is a list of catalogs.</p>\n"
+"			"
+
+#. module: wds_product_wine
+#: selection:wds.available.format,price_range:0
+msgid ">100€"
+msgstr ">100€"
+
+#. module: wds_product_wine
+#: model:ir.ui.menu,name:wds_product_wine.wds_to_verify_id
+msgid "A vérifier"
+msgstr "A vérifier"
+
+#. module: wds_product_wine
+#. openerp-web
+#: code:addons/wds_product_wine/static/src/xml/base.xml:10
+#, python-format
+msgid "About"
+msgstr "About"
+
+#. module: wds_product_wine
+#: model:ir.ui.menu,name:wds_product_wine.wds_menu_id
+msgid "Accueil"
+msgstr "Accueil"
+
+#. module: wds_product_wine
+#. openerp-web
+#: code:addons/wds_product_wine/static/src/xml/base.xml:36
+#, python-format
+msgid "Activate the developer mode"
+msgstr "Activate the developer mode"
+
+#. module: wds_product_wine
+#: field:wds.catalog,active:0
+#: field:wds.wine.type,active:0
+msgid "Active"
+msgstr "Active"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,active:0
+msgid "Active "
+msgstr "Active "
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+#: view:res.partner:wds_product_wine.view_partner_form
+msgid "Address"
+msgstr "Adresse"
+
+#. module: wds_product_wine
+#: field:res.partner,address_owner_id:0
+msgid "Adress Owner"
+msgstr "Adress Owner"
+
+#. module: wds_product_wine
+#: field:product.product,aging_potential:0
+msgid "Aging potential (years)"
+msgstr "Aging potential (years)"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,alcoholic_strength:0
+#: field:product.product,alcoholic_strength:0
+#: field:product.template,alcoholic_strength:0
+msgid "Alcoholic strength (%vol.)"
+msgstr "Alcoholic strength (%vol.)"
+
+#. module: wds_product_wine
+#: model:ir.ui.menu,name:wds_product_wine.menu_sales_all
+msgid "All"
+msgstr "All"
+
+#. module: wds_product_wine
+#: field:product.product,allergen_ids:0
+msgid "Allergens"
+msgstr "Allergens"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.wds_appellation_action
+#: field:pricelist.partnerinfo,appelation_id:0
+#: field:product.wine,appelation_id:0
+msgid "appellation"
+msgstr "appellation"
+
+#. module: wds_product_wine
+#: model:ir.ui.menu,name:wds_product_wine.wds_submenu_wine_Appellation
+msgid "Appellations"
+msgstr "Appellations"
+
+#. module: wds_product_wine
+#: field:product.product,aroma_ids:0
+msgid "Aroma"
+msgstr "Aroma"
+
+#. module: wds_product_wine
+#: field:product.product,assembling_date:0
+msgid "Assembling Date"
+msgstr "Assembling Date"
+
+#. module: wds_product_wine
+#: field:product.product,assembly_ids:0
+msgid "Assembly"
+msgstr "Assembly"
+
+#. module: wds_product_wine
+#: field:product.product,available_format_ids:0
+msgid "Available Formats"
+msgstr "Available Formats"
+
+#. module: wds_product_wine
+#: field:wds.available.format,name:0
+msgid "Available Sizes"
+msgstr "Available Sizes"
+
+#. module: wds_product_wine
+#: model:ir.ui.menu,name:wds_product_wine.wds_submenu_bottle_size_id
+msgid "Available size"
+msgstr "Available size"
+
+#. module: wds_product_wine
+#: field:product.product,average_age:0
+msgid "Average age of the vines (years)"
+msgstr "Average age of the vines (years)"
+
+#. module: wds_product_wine
+#: field:product.product,average_yield:0
+msgid "Average yield (hl / ha)"
+msgstr "Average yield (hl / ha)"
+
+#. module: wds_product_wine
+#: model:wds.package.type,name:wds_product_wine.wds_type_BTL
+msgid "BTL"
+msgstr "BTL"
+
+#. module: wds_product_wine
+#: field:wds.available.format,barcode:0
+msgid "Barcode"
+msgstr "Barcode"
+
+#. module: wds_product_wine
+#: field:product.product,barrel_aging:0
+msgid "Barrel aging (months)"
+msgstr "Barrel aging (months)"
+
+#. module: wds_product_wine
+#: field:product.product,best_tasting_id:0
+msgid "Best-tasting"
+msgstr "Best-tasting"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,birthdate:0
+msgid "Birthdate"
+msgstr "Birthdate"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.action_wine_offers_bc
+msgid "Bon de commande"
+msgstr "Bon de commande"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.action_wds_bottle_size
+msgid "Bottle Size"
+msgstr "Format Bouteille"
+
+#. module: wds_product_wine
+#: field:product.product,bottling_date:0
+msgid "Bottling Date"
+msgstr "Bottling Date"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.action_product_brand
+#: model:ir.actions.act_window,name:wds_product_wine.action_wine_brand
+#: view:product.product:wds_product_wine.product_search_form_view
+#: field:product.template,product_brand_id:0
+msgid "Brand"
+msgstr "Brand"
+
+#. module: wds_product_wine
+#: view:wds.product.brand:wds_product_wine.view_product_brand_form
+#: field:wds.product.brand,name:0
+msgid "Brand Name"
+msgstr "Brand Name"
+
+#. module: wds_product_wine
+#: model:ir.ui.menu,name:wds_product_wine.menu_product_brand
+msgid "Brand management"
+msgstr "Brand management"
+
+#. module: wds_product_wine
+#: field:wds.product.brand,name_short:0
+msgid "Brand short Name"
+msgstr "Brand short Name"
+
+#. module: wds_product_wine
+#: view:res.partner:wds_product_wine.view_partner_form
+#: field:res.partner,brand_ids:0
+msgid "Brands"
+msgstr "Brands"
+
+#. module: wds_product_wine
+#: view:res.partner:wds_product_wine.res_partner_kanban_view
+msgid "Broker,"
+msgstr "Broker,"
+
+#. module: wds_product_wine
+#: model:wds.package.type,name:wds_product_wine.wds_type_CBN
+msgid "CBN"
+msgstr "CBN"
+
+#. module: wds_product_wine
+#: model:wds.package.type,name:wds_product_wine.wds_type_CBO
+msgid "CBO"
+msgstr "CBO"
+
+#. module: wds_product_wine
+#: model:wds.package.type,name:wds_product_wine.wds_type_CBOP
+msgid "CBOP"
+msgstr "CBOP"
+
+#. module: wds_product_wine
+#: model:wds.winetax,name:wds_product_wine.wds_winetax_CRD
+msgid "CRD"
+msgstr "CRD"
+
+#. module: wds_product_wine
+#: model:wds.package.type,name:wds_product_wine.wds_type_CTD
+msgid "CTD"
+msgstr "CTD"
+
+#. module: wds_product_wine
+#: model:wds.package.type,name:wds_product_wine.wds_type_CTN
+msgid "CTN"
+msgstr "CTN"
+
+#. module: wds_product_wine
+#: field:product.product,cardboard_x12:0
+msgid "Cardboard (x12)"
+msgstr "Cardboard (x12)"
+
+#. module: wds_product_wine
+#: field:product.product,cardboard_x6:0
+msgid "Cardboard (x6)"
+msgstr "Cardboard (x6)"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,catalog_ids:0
+#: field:product.wine,catalog_ids:0
+msgid "Catalog"
+msgstr "Catalog"
+
+#. module: wds_product_wine
+#: view:res.partner:wds_product_wine.res_partner_kanban_view
+msgid "Cellar,"
+msgstr "Cellar,"
+
+#. module: wds_product_wine
+#: view:res.partner:wds_product_wine.view_partner_form
+msgid "Cellars"
+msgstr "Cellars"
+
+#. module: wds_product_wine
+#: field:res.partner,ceo:0
+msgid "Ceo"
+msgstr "Ceo"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.action_wds_wine_cellar
+#: model:ir.ui.menu,name:wds_product_wine.menu_sales_chais
+#: view:res.partner:wds_product_wine.view_partner_form
+msgid "Chais"
+msgstr "Chais"
+
+#. module: wds_product_wine
+#: model:wds.press.comment.priority,name:wds_product_wine.wds_press_comment_priority_check
+msgid "Check"
+msgstr "Check"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_search_view
+#: selection:pricelist.partnerinfo,state:0
+msgid "Checked"
+msgstr "Checked"
+
+#. module: wds_product_wine
+#: field:res.partner,child_contact_ids:0
+msgid "Child Partner"
+msgstr "Child Partner"
+
+#. module: wds_product_wine
+#: field:wds.wine.type,child_id:0
+msgid "Child Types"
+msgstr "Child Types"
+
+#. module: wds_product_wine
+#: model:wds.classification,name:wds_product_wine.wds_classification_fifth_big_vintage_rated
+msgid "Cinquième Grand Cru Classé"
+msgstr "Cinquième Grand Cru Classé"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+#: field:pricelist.partnerinfo,city:0
+#: view:res.partner:wds_product_wine.view_partner_form
+msgid "City"
+msgstr "Ville"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,classification_id:0
+#: field:product.template,classification_id:0
+msgid "Classification"
+msgstr "Classification"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.wds_wine_color
+#: field:pricelist.partnerinfo,color_id:0
+#: field:product.wine,color_id:0
+msgid "Color"
+msgstr "Color"
+
+#. module: wds_product_wine
+#: field:wds.color,color_code:0
+msgid "Color Code"
+msgstr "Color Code"
+
+#. module: wds_product_wine
+#: field:wds.catalog,comment:0
+#: field:wds.press,comment:0
+#: field:wds.text,comment:0
+msgid "Comment"
+msgstr "Comment"
+
+#. module: wds_product_wine
+#: field:wds.press,name:0
+#: field:wds.text,name:0
+msgid "Comment type"
+msgstr "Comment type"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,company_id:0
+msgid "Company"
+msgstr "Company"
+
+#. module: wds_product_wine
+#: field:wds.medal,name:0
+msgid "Competition"
+msgstr "Competition"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,conditioning:0
+#: field:product.product,conditioning:0
+msgid "Conditioning"
+msgstr "Conditioning"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+#: view:product.product:wds_product_wine.product_inherited_normal_form_view
+msgid "Conditioning..."
+msgstr "Conditioning..."
+
+#. module: wds_product_wine
+#: model:ir.ui.menu,name:wds_product_wine.wds_menu_partner_tools
+#: model:ir.ui.menu,name:wds_product_wine.wds_submenu_Configuration
+#: model:ir.ui.menu,name:wds_product_wine.wds_menu_accueil_Configuration
+msgid "Configuration"
+msgstr "Configuration"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.action_group_contact
+#: model:ir.ui.menu,name:wds_product_wine.menu_sales_contact
+#: model:ir.ui.menu,name:wds_product_wine.wds_menu_partner_contact
+msgid "Contact"
+msgstr "Contact"
+
+#. module: wds_product_wine
+#: model:ir.ui.menu,name:wds_product_wine.wds_submenu_wine_color
+msgid "Couleurs"
+msgstr "Couleurs"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+#: field:pricelist.partnerinfo,country_id:0
+#: view:res.partner:wds_product_wine.view_partner_form
+#: field:wds.appellation,country_id:0
+#: view:wds.region:wds_product_wine.wds_region_search_view
+#: field:wds.region,country_id:0
+msgid "Country"
+msgstr "Pays"
+
+#. module: wds_product_wine
+#: model:ir.ui.menu,name:wds_product_wine.menu_sales_courtier
+msgid "Courtiers"
+msgstr "Courtiers"
+
+#. module: wds_product_wine
+#. openerp-web
+#: code:addons/wds_product_wine/static/src/js/listview.js:139
+#, python-format
+msgid "Create \"<strong>%s</strong>\""
+msgstr "Create \"<strong>%s</strong>\""
+
+#. module: wds_product_wine
+#. openerp-web
+#: code:addons/wds_product_wine/static/src/js/listview.js:152
+#, python-format
+msgid "Create and Edit..."
+msgstr "Create and Edit..."
+
+#. module: wds_product_wine
+#: field:import.product,create_uid:0
+#: field:wds.product.brand,create_uid:0
+#: field:product.wine,create_uid:0
+#: field:publisher_warranty.contract,create_uid:0
+#: field:wds.agriculture_bio,create_uid:0
+#: field:wds.allergen,create_uid:0
+#: field:wds.appellation,create_uid:0
+#: field:wds.appellation.type,create_uid:0
+#: field:wds.aroma,create_uid:0
+#: field:wds.assembly,create_uid:0
+#: field:wds.available.format,create_uid:0
+#: field:wds.bottle.size,create_uid:0
+#: field:wds.catalog,create_uid:0
+#: field:wds.classification,create_uid:0
+#: field:wds.color,create_uid:0
+#: field:wds.competition,create_uid:0
+#: field:wds.grape,create_uid:0
+#: field:wds.harvest_type,create_uid:0
+#: field:wds.hierarchy,create_uid:0
+#: field:wds.label,create_uid:0
+#: field:wds.medal,create_uid:0
+#: field:wds.medal.type,create_uid:0
+#: field:wds.package.type,create_uid:0
+#: field:wds.plugging,create_uid:0
+#: field:wds.press,create_uid:0
+#: field:wds.press.comment.priority,create_uid:0
+#: field:wds.press.comment.type,create_uid:0
+#: field:wds.priority,create_uid:0
+#: field:wds.region,create_uid:0
+#: field:wds.sort_method,create_uid:0
+#: field:wds.terroir,create_uid:0
+#: field:wds.text,create_uid:0
+#: field:wds.visual_aspect,create_uid:0
+#: field:wds.wine.type,create_uid:0
+#: field:wds.winetax,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: wds_product_wine
+#: field:import.product,create_date:0
+#: field:wds.product.brand,create_date:0
+#: field:product.wine,create_date:0
+#: field:publisher_warranty.contract,create_date:0
+#: field:wds.agriculture_bio,create_date:0
+#: field:wds.allergen,create_date:0
+#: field:wds.appellation,create_date:0
+#: field:wds.appellation.type,create_date:0
+#: field:wds.aroma,create_date:0
+#: field:wds.assembly,create_date:0
+#: field:wds.available.format,create_date:0
+#: field:wds.bottle.size,create_date:0
+#: field:wds.catalog,create_date:0
+#: field:wds.classification,create_date:0
+#: field:wds.color,create_date:0
+#: field:wds.competition,create_date:0
+#: field:wds.grape,create_date:0
+#: field:wds.harvest_type,create_date:0
+#: field:wds.hierarchy,create_date:0
+#: field:wds.label,create_date:0
+#: field:wds.medal,create_date:0
+#: field:wds.medal.type,create_date:0
+#: field:wds.package.type,create_date:0
+#: field:wds.plugging,create_date:0
+#: field:wds.press,create_date:0
+#: field:wds.press.comment.priority,create_date:0
+#: field:wds.press.comment.type,create_date:0
+#: field:wds.priority,create_date:0
+#: field:wds.region,create_date:0
+#: field:wds.sort_method,create_date:0
+#: field:wds.terroir,create_date:0
+#: field:wds.text,create_date:0
+#: field:wds.visual_aspect,create_date:0
+#: field:wds.wine.type,create_date:0
+#: field:wds.winetax,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: wds_product_wine
+#: model:wds.classification,name:wds_product_wine.wds_classification_vintage_bourgeois
+msgid "Cru Bourgeois"
+msgstr "Cru Bourgeois"
+
+#. module: wds_product_wine
+#: model:wds.classification,name:wds_product_wine.wds_classification_vintage_bourgeois_exceptionnel
+msgid "Cru Bourgeois Exceptionnel"
+msgstr "Cru Bourgeois Exceptionnel"
+
+#. module: wds_product_wine
+#: model:wds.classification,name:wds_product_wine.wds_classification_vintage_rated
+msgid "Cru Classé"
+msgstr "Cru Classé"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.action_wds_customer
+#: field:pricelist.partnerinfo,customer:0
+msgid "Customer"
+msgstr "Customer"
+
+#. module: wds_product_wine
+#: model:wds.package.type,name:wds_product_wine.wds_type_Cuve
+msgid "Cuve"
+msgstr "Cuve"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+#: field:pricelist.partnerinfo,date:0
+#: field:pricelist.partnerinfo,date_import:0
+#: field:wds.press,date:0
+#: field:wds.text,date:0
+msgid "Date"
+msgstr "Date"
+
+#. module: wds_product_wine
+#: help:pricelist.partnerinfo,message_last_post:0
+msgid "Date of the last message posted on the record."
+msgstr "Date of the last message posted on the record."
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_search_view
+msgid "Date(month)"
+msgstr "Date(month)"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_search_view
+msgid "Date(year)"
+msgstr "Date(year)"
+
+#. module: wds_product_wine
+#: selection:product.product,maceration_time_type:0
+msgid "Days"
+msgstr "Days"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.base_partner_merge_automatic_act2
+#: model:ir.ui.menu,name:wds_product_wine.partner_merge_automatic_menu2
+msgid "Deduplicate Contacts"
+msgstr "Deduplicate Contacts"
+
+#. module: wds_product_wine
+#: field:res.partner,address_ids:0
+msgid "Delivery Address"
+msgstr "Delivery Address"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,description:0
+#: view:wds.product.brand:wds_product_wine.view_product_brand_form
+#: field:wds.product.brand,description:0
+#: view:product.wine:wds_product_wine.view_product_wine_form
+#: field:product.wine,description:0
+msgid "Description"
+msgstr "Description"
+
+#. module: wds_product_wine
+#: model:product.category,name:wds_product_wine.product_category_16
+msgid "Dessert"
+msgstr "Dessert"
+
+#. module: wds_product_wine
+#: model:wds.classification,name:wds_product_wine.wds_classification_second_big_vintage_rated
+msgid "Deuxième Grand Cru Classé"
+msgstr "Deuxième Grand Cru Classé"
+
+#. module: wds_product_wine
+#: model:product.category,name:wds_product_wine.product_category_23
+msgid "Dry Rosé"
+msgstr "Dry Rosé"
+
+#. module: wds_product_wine
+#: view:product.product:wds_product_wine.product_inherited_normal_form_view
+#: view:product.supplierinfo:wds_product_wine.product_supplierinfo_form_view2
+#: view:product.template:wds_product_wine.product_inherited_template_form_view
+msgid "Détails"
+msgstr "Détails"
+
+#. module: wds_product_wine
+#: model:ir.ui.menu,name:wds_product_wine.wds_sample_id
+msgid "Echantillon"
+msgstr "Echantillon"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,email:0
+msgid "Email"
+msgstr "Email"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,employee:0
+msgid "Employee"
+msgstr "Employee"
+
+#. module: wds_product_wine
+#: constraint:res.partner:0
+msgid "Error ! You cannot create recursive Wine Product."
+msgstr "Error ! You cannot create recursive Wine Product."
+
+#. module: wds_product_wine
+#: constraint:wds.wine.type:0
+msgid "Error ! You cannot create recursive wine type."
+msgstr "Error ! You cannot create recursive wine type."
+
+#. module: wds_product_wine
+#: code:addons/wds_product_wine/wizard/c2c_import_pricelist.py:56
+#, python-format
+msgid "Error during pricelist import"
+msgstr "Error during pricelist import"
+
+#. module: wds_product_wine
+#: code:addons/wds_product_wine/wizard/c2c_export_pricelist.py:102
+#, python-format
+msgid "Export Pricelist error"
+msgstr "Export Pricelist error"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,fax:0
+msgid "Fax"
+msgstr "Fax"
+
+#. module: wds_product_wine
+#: view:res.partner:wds_product_wine.view_partner_form
+msgid "Fax:"
+msgstr "Fax :"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,message_follower_ids:0
+msgid "Followers"
+msgstr "Followers"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,format:0
+#: field:product.product,format:0
+msgid "Format"
+msgstr "Format"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+#: view:product.product:wds_product_wine.product_inherited_normal_form_view
+msgid "Format..."
+msgstr "Format..."
+
+#. module: wds_product_wine
+#: model:product.category,name:wds_product_wine.product_category_27
+msgid "Fortified Red Wine"
+msgstr "Fortified Red Wine"
+
+#. module: wds_product_wine
+#: model:product.category,name:wds_product_wine.product_category_17
+msgid "Fruity-Dry Red"
+msgstr "Fruity-Dry Red"
+
+#. module: wds_product_wine
+#: help:wds.wine.type,sequence:0
+msgid "Gives the sequence order when displaying a list of wine types."
+msgstr "Gives the sequence order when displaying a list of wine types."
+
+#. module: wds_product_wine
+#: model:wds.classification,name:wds_product_wine.wds_classification_big_vintage
+msgid "Grand Cru"
+msgstr "Grand Cru"
+
+#. module: wds_product_wine
+#: model:wds.classification,name:wds_product_wine.wds_classification_big_vintage_rated
+msgid "Grand Cru Classé"
+msgstr "Grand Cru Classé"
+
+#. module: wds_product_wine
+#: field:wds.assembly,name:0
+msgid "Grape"
+msgstr "Grape"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_search_view
+msgid "Group By"
+msgstr "Group By"
+
+#. module: wds_product_wine
+#: view:product.product:wds_product_wine.product_search_form_view
+msgid "Group by..."
+msgstr "Group by..."
+
+#. module: wds_product_wine
+#: field:product.product,harvest_end_date:0
+msgid "Harvest End Date"
+msgstr "Harvest End Date"
+
+#. module: wds_product_wine
+#: field:product.product,harvest_start_date:0
+msgid "Harvest Start Date"
+msgstr "Harvest Start Date"
+
+#. module: wds_product_wine
+#: help:product.product,has_logo_pregnant:0
+msgid "Has logo pregnant ?"
+msgstr "Has logo pregnant ?"
+
+#. module: wds_product_wine
+#: model:product.category,name:wds_product_wine.product_category_19
+msgid "Herbal-Dry red"
+msgstr "Herbal-Dry red"
+
+#. module: wds_product_wine
+#: field:product.product,hide_price:0
+msgid "Hide Price"
+msgstr "Hide Price"
+
+#. module: wds_product_wine
+#: field:res.partner,history:0
+msgid "History"
+msgstr "History"
+
+#. module: wds_product_wine
+#: help:pricelist.partnerinfo,message_summary:0
+msgid "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+msgstr "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+
+#. module: wds_product_wine
+#: selection:product.product,maceration_time_type:0
+msgid "Hours"
+msgstr "Hours"
+
+#. module: wds_product_wine
+#: field:import.product,id:0
+#: field:pricelist.partnerinfo,unique_import_id:0
+#: field:wds.product.brand,id:0
+#: field:product.wine,id:0
+#: field:wds.agriculture_bio,id:0
+#: field:wds.allergen,id:0
+#: field:wds.appellation,id:0
+#: field:wds.appellation.type,id:0
+#: field:wds.aroma,id:0
+#: field:wds.assembly,id:0
+#: field:wds.available.format,id:0
+#: field:wds.bottle.size,id:0
+#: field:wds.catalog,id:0
+#: field:wds.classification,id:0
+#: field:wds.color,id:0
+#: field:wds.competition,id:0
+#: field:wds.grape,id:0
+#: field:wds.harvest_type,id:0
+#: field:wds.hierarchy,id:0
+#: field:wds.label,id:0
+#: field:wds.medal,id:0
+#: field:wds.medal.type,id:0
+#: field:wds.package.type,id:0
+#: field:wds.plugging,id:0
+#: field:wds.press,id:0
+#: field:wds.press.comment.priority,id:0
+#: field:wds.press.comment.type,id:0
+#: field:wds.priority,id:0
+#: field:wds.region,id:0
+#: field:wds.sort_method,id:0
+#: field:wds.terroir,id:0
+#: field:wds.text,id:0
+#: field:wds.visual_aspect,id:0
+#: field:wds.wine.type,id:0
+#: field:wds.winetax,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: wds_product_wine
+#: help:pricelist.partnerinfo,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr "If checked new messages require your attention."
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,image:0
+#: field:pricelist.partnerinfo,image_medium:0
+msgid "Image"
+msgstr "Image"
+
+#. module: wds_product_wine
+#: field:wds.color,image_glass:0
+msgid "Image Glass"
+msgstr "Image Glass"
+
+#. module: wds_product_wine
+#: field:wds.color,image_bottle:0
+msgid "Image bottle"
+msgstr "Image bottle"
+
+#. module: wds_product_wine
+#: model:ir.ui.menu,name:wds_product_wine.import_product_id
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+msgid "Import"
+msgstr "Import"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.action_import_product
+msgid "Import Product"
+msgstr "Import Product"
+
+#. module: wds_product_wine
+#: code:addons/wds_product_wine/wizard/c2c_import_pricelist.py:197
+#, python-format
+msgid "Imported Product"
+msgstr "Imported Product"
+
+#. module: wds_product_wine
+#: code:addons/wds_product_wine/wizard/c2c_export_pricelist.py:102
+#, python-format
+msgid "Impossible to export the pricelist as Excel file. Please install PyExcelerator to enable this function."
+msgstr "Impossible to export the pricelist as Excel file. Please install PyExcelerator to enable this function."
+
+#. module: wds_product_wine
+#: field:product.product,new_barrels:0
+msgid "Including new barrels (%)"
+msgstr "Including new barrels (%)"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+msgid "Information"
+msgstr "Information"
+
+#. module: wds_product_wine
+#: model:ir.model,name:wds_product_wine.model_product_supplierinfo
+msgid "Information about a product supplier"
+msgstr "Information sur le fournisseur de l'article"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,categ_id:0
+msgid "Internal Category"
+msgstr "Internal Category"
+
+#. module: wds_product_wine
+#: field:wds.catalog,is_deleted:0
+#: field:wds.wine.type,is_deleted:0
+msgid "Is Deleted"
+msgstr "Is Deleted"
+
+#. module: wds_product_wine
+#: field:wds.catalog,is_modified:0
+#: field:wds.wine.type,is_modified:0
+msgid "Is Modified"
+msgstr "Is Modified"
+
+#. module: wds_product_wine
+#: field:wds.catalog,is_private:0
+msgid "Is Private"
+msgstr "Is Private"
+
+#. module: wds_product_wine
+#: field:product.template,is_vintage:0
+msgid "Is Vintage"
+msgstr "Is Vintage"
+
+#. module: wds_product_wine
+#: field:product.wine,is_wine:0
+msgid "Is Wine"
+msgstr "Is Wine"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,message_is_follower:0
+msgid "Is a Follower"
+msgstr "Is a Follower"
+
+#. module: wds_product_wine
+#: field:product.category,is_vintage:0
+msgid "Is a Vintage"
+msgstr "Is a Vintage"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,is_archived:0
+msgid "Is archived"
+msgstr "Is archived"
+
+#. module: wds_product_wine
+#: field:wds.hierarchy,is_by_default:0
+msgid "Is by Default"
+msgstr "Is by Default"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,is_company:0
+msgid "Is company"
+msgstr "Is company"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,function:0
+msgid "Job Position"
+msgstr "Job Position"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,label:0
+#: field:product.product,label:0
+msgid "Label"
+msgstr "Label"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+#: view:product.product:wds_product_wine.product_inherited_normal_form_view
+msgid "Label..."
+msgstr "Label..."
+
+#. module: wds_product_wine
+#: field:wds.press,lang_id:0
+#: field:wds.text,lang_id:0
+msgid "Language"
+msgstr "Language"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,message_last_post:0
+msgid "Last Message Date"
+msgstr "Last Message Date"
+
+#. module: wds_product_wine
+#: field:import.product,write_uid:0
+#: field:wds.product.brand,write_uid:0
+#: field:product.wine,write_uid:0
+#: field:publisher_warranty.contract,write_uid:0
+#: field:wds.agriculture_bio,write_uid:0
+#: field:wds.allergen,write_uid:0
+#: field:wds.appellation,write_uid:0
+#: field:wds.appellation.type,write_uid:0
+#: field:wds.aroma,write_uid:0
+#: field:wds.assembly,write_uid:0
+#: field:wds.available.format,write_uid:0
+#: field:wds.bottle.size,write_uid:0
+#: field:wds.catalog,write_uid:0
+#: field:wds.classification,write_uid:0
+#: field:wds.color,write_uid:0
+#: field:wds.competition,write_uid:0
+#: field:wds.grape,write_uid:0
+#: field:wds.harvest_type,write_uid:0
+#: field:wds.hierarchy,write_uid:0
+#: field:wds.label,write_uid:0
+#: field:wds.medal,write_uid:0
+#: field:wds.medal.type,write_uid:0
+#: field:wds.package.type,write_uid:0
+#: field:wds.plugging,write_uid:0
+#: field:wds.press,write_uid:0
+#: field:wds.press.comment.priority,write_uid:0
+#: field:wds.press.comment.type,write_uid:0
+#: field:wds.priority,write_uid:0
+#: field:wds.region,write_uid:0
+#: field:wds.sort_method,write_uid:0
+#: field:wds.terroir,write_uid:0
+#: field:wds.text,write_uid:0
+#: field:wds.visual_aspect,write_uid:0
+#: field:wds.wine.type,write_uid:0
+#: field:wds.winetax,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: wds_product_wine
+#: field:import.product,write_date:0
+#: field:wds.product.brand,write_date:0
+#: field:product.wine,write_date:0
+#: field:publisher_warranty.contract,write_date:0
+#: field:wds.agriculture_bio,write_date:0
+#: field:wds.allergen,write_date:0
+#: field:wds.appellation,write_date:0
+#: field:wds.appellation.type,write_date:0
+#: field:wds.aroma,write_date:0
+#: field:wds.assembly,write_date:0
+#: field:wds.available.format,write_date:0
+#: field:wds.bottle.size,write_date:0
+#: field:wds.catalog,write_date:0
+#: field:wds.classification,write_date:0
+#: field:wds.color,write_date:0
+#: field:wds.competition,write_date:0
+#: field:wds.grape,write_date:0
+#: field:wds.harvest_type,write_date:0
+#: field:wds.hierarchy,write_date:0
+#: field:wds.label,write_date:0
+#: field:wds.medal,write_date:0
+#: field:wds.medal.type,write_date:0
+#: field:wds.package.type,write_date:0
+#: field:wds.plugging,write_date:0
+#: field:wds.press,write_date:0
+#: field:wds.press.comment.priority,write_date:0
+#: field:wds.press.comment.type,write_date:0
+#: field:wds.priority,write_date:0
+#: field:wds.region,write_date:0
+#: field:wds.sort_method,write_date:0
+#: field:wds.terroir,write_date:0
+#: field:wds.text,write_date:0
+#: field:wds.visual_aspect,write_date:0
+#: field:wds.wine.type,write_date:0
+#: field:wds.winetax,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: wds_product_wine
+#: field:res.partner,parent_left:0
+#: field:wds.wine.type,parent_left:0
+msgid "Left Parent"
+msgstr "Left Parent"
+
+#. module: wds_product_wine
+#: field:wds.press,link:0
+#: field:wds.text,link:0
+msgid "Link"
+msgstr "Link"
+
+#. module: wds_product_wine
+#: help:product.product,offer_ids:0
+msgid "List of offers related to current product "
+msgstr "List of offers related to current product "
+
+#. module: wds_product_wine
+#. openerp-web
+#: code:addons/wds_product_wine/static/src/xml/base.xml:14
+#, python-format
+msgid "Log out"
+msgstr "Log out"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,logo:0
+#: field:wds.product.brand,logo:0
+#: field:product.wine,logo:0
+msgid "Logo File"
+msgstr "Logo File"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,has_logo_pregnant:0
+#: field:product.product,has_logo_pregnant:0
+msgid "Logo Pregnant"
+msgstr "Logo Pregnant"
+
+#. module: wds_product_wine
+#: field:product.product,maceration_time:0
+msgid "Maceration time"
+msgstr "Maceration time"
+
+#. module: wds_product_wine
+#: field:product.product,maceration_time_type:0
+msgid "Maceration time type"
+msgstr "Maceration time type"
+
+#. module: wds_product_wine
+#: model:ir.actions.server,name:wds_product_wine.action_mark_as_needed
+msgid "Mark As Needed"
+msgstr "Mark As Needed"
+
+#. module: wds_product_wine
+#: model:ir.ui.menu,name:wds_product_wine.wds_submenu_marque
+#: field:pricelist.partnerinfo,brand_id:0
+#: field:product.wine,brand_id:0
+msgid "Marque"
+msgstr "Marque"
+
+#. module: wds_product_wine
+#: help:pricelist.partnerinfo,time:0
+msgid "Measured time in milliseconds"
+msgstr "Measured time in milliseconds"
+
+#. module: wds_product_wine
+#: field:wds.medal,medal_type:0
+msgid "Medal Type"
+msgstr "Medal Type"
+
+#. module: wds_product_wine
+#: field:product.product,medal_ids:0
+msgid "Medals"
+msgstr "Medals"
+
+#. module: wds_product_wine
+#: field:wds.color,image_medium_bottle:0
+#: field:wds.color,image_medium_glass:0
+msgid "Medium-sized image"
+msgstr "Medium-sized image"
+
+#. module: wds_product_wine
+#: view:res.partner:wds_product_wine.res_partner_kanban_view
+msgid "Merchant,"
+msgstr "Merchant,"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,message_ids:0
+msgid "Messages"
+msgstr "Messages"
+
+#. module: wds_product_wine
+#: help:pricelist.partnerinfo,message_ids:0
+msgid "Messages and communication history"
+msgstr "Messages and communication history"
+
+#. module: wds_product_wine
+#: model:ir.ui.menu,name:wds_product_wine.wds_submenu_vintage_id
+#: model:ir.ui.menu,name:wds_product_wine.wds_subsubmenu_vintage_id
+msgid "Millésime"
+msgstr "Millésime"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,mobile:0
+msgid "Mobile"
+msgstr "Mobile"
+
+#. module: wds_product_wine
+#: view:res.partner:wds_product_wine.view_partner_form
+msgid "Mobile:"
+msgstr "Portable :"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_search_view
+msgid "Month"
+msgstr "Month"
+
+#. module: wds_product_wine
+#: field:import.product,name:0
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_tree_view_id
+#: view:product.supplierinfo:wds_product_wine.product_supplierinfo_form_view2
+#: field:res.partner,complete_name:0
+#: field:wds.appellation,complete_name:0
+#: field:wds.appellation,name:0
+#: field:wds.aroma,name:0
+#: view:wds.catalog:wds_product_wine.wine_catalog_form_view
+#: field:wds.catalog,name:0
+#: view:wds.color:wds_product_wine.wine_color_form_view
+#: field:wds.label,name:0
+#: field:wds.package.type,name:0
+#: field:wds.visual_aspect,name:0
+#: field:wds.wine.type,complete_name:0
+#: field:wds.wine.type,name:0
+#: field:wds.winetax,name:0
+msgid "Name"
+msgstr "Name"
+
+#. module: wds_product_wine
+#: view:res.partner:wds_product_wine.view_partner_form
+msgid "Name from ref"
+msgstr "Name from ref"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_search_view
+#: field:pricelist.partnerinfo,is_needed:0
+msgid "Needed"
+msgstr "Needed"
+
+#. module: wds_product_wine
+#: selection:product.product,appel_offres:0
+msgid "No"
+msgstr "No"
+
+#. module: wds_product_wine
+#: field:wds.press,note:0
+#: field:wds.text,note:0
+msgid "Note"
+msgstr "Note"
+
+#. module: wds_product_wine
+#: field:res.partner,vinyard_numenr:0
+msgid "Numenr"
+msgstr "Numenr"
+
+#. module: wds_product_wine
+#: model:product.category,name:wds_product_wine.product_category_28
+msgid "Nutty oxidized Fortified"
+msgstr "Nutty oxidized Fortified"
+
+#. module: wds_product_wine
+#: model:ir.ui.menu,name:wds_product_wine.menu_sales_negociant
+msgid "Négociant"
+msgstr "Négociant"
+
+#. module: wds_product_wine
+#: model:product.category,name:wds_product_wine.product_category_22
+msgid "Off-dry Rosé"
+msgstr "Off-dry Rosé"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.action_wine_offers
+msgid "Offer"
+msgstr "Offer"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+msgid "Offer Date"
+msgstr "Offer Date"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+msgid "Offer Date..."
+msgstr "Offer Date..."
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,product_id:0
+msgid "Offer Product"
+msgstr "Offer Product"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+msgid "Offer Reference"
+msgstr "Offer Reference"
+
+#. module: wds_product_wine
+#: code:addons/wds_product_wine/offers/offer.py:236
+#, python-format
+msgid "Offer created"
+msgstr "Offer created"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.action_pricelist_partnerinfo
+#: view:product.product:wds_product_wine.product_inherited_normal_form_view
+#: field:product.product,offer_ids:0
+msgid "Offers"
+msgstr "Offers"
+
+#. module: wds_product_wine
+#: model:ir.ui.menu,name:wds_product_wine.wds_offer_id
+msgid "Offres"
+msgstr "Offres"
+
+#. module: wds_product_wine
+#: field:wds.color,sequence:0
+#: field:wds.hierarchy,order:0
+msgid "Order"
+msgstr "Order"
+
+#. module: wds_product_wine
+#: field:product.product,agriculture_bio_id:0
+msgid "Organic farming / rational"
+msgstr "Organic farming / rational"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.action_wds_owner
+msgid "Owner"
+msgstr "Owner"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,package_type:0
+#: field:product.product,package_type:0
+msgid "Package Type"
+msgstr "Package Type"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+#: view:product.product:wds_product_wine.product_inherited_normal_form_view
+msgid "Package Type..."
+msgstr "Package Type..."
+
+#. module: wds_product_wine
+#: field:res.partner,parent_contact_id:0
+msgid "Parent Partner"
+msgstr "Parent Partner"
+
+#. module: wds_product_wine
+#: field:wds.wine.type,parent_id:0
+msgid "Parent Typr"
+msgstr "Parent Typr"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.action_group_all
+#: model:ir.ui.menu,name:wds_product_wine.wds_menu_partner_top__top_id
+msgid "Partenaires"
+msgstr "Partenaires"
+
+#. module: wds_product_wine
+#: model:ir.model,name:wds_product_wine.model_res_partner
+#: field:wds.product.brand,partner_id:0
+#: field:product.wine,partner_id:0
+#: field:wds.press,partner_id:0
+#: field:wds.text,partner_id:0
+msgid "Partner"
+msgstr "Partenaire"
+
+#. module: wds_product_wine
+#: field:wds.assembly,percentage:0
+msgid "Percentage"
+msgstr "Percentage"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,phone:0
+msgid "Phone"
+msgstr "Phone"
+
+#. module: wds_product_wine
+#: view:res.partner:wds_product_wine.view_partner_form
+msgid "Phone:"
+msgstr "Téléphone :"
+
+#. module: wds_product_wine
+#: field:res.partner,pitch:0
+msgid "Pitch"
+msgstr "Pitch"
+
+#. module: wds_product_wine
+#: field:product.product,plenting_density:0
+msgid "Planting density (trees / ha)"
+msgstr "Planting density (trees / ha)"
+
+#. module: wds_product_wine
+#: field:product.product,plugging_id:0
+msgid "Plugging"
+msgstr "Plugging"
+
+#. module: wds_product_wine
+#: model:wds.classification,name:wds_product_wine.wds_classification_first_big_vintage_rated
+msgid "Premier Grand Cru Classé"
+msgstr "Premier Grand Cru Classé"
+
+#. module: wds_product_wine
+#: model:wds.classification,name:wds_product_wine.wds_classification_first_big_vintage_rated_a
+msgid "Premier Grand Cru Classé A"
+msgstr "Premier Grand Cru Classé A"
+
+#. module: wds_product_wine
+#: model:wds.classification,name:wds_product_wine.wds_classification_first_big_vintage_rated_b
+msgid "Premier Grand Cru Classé B"
+msgstr "Premier Grand Cru Classé B"
+
+#. module: wds_product_wine
+#: view:product.template:wds_product_wine.product_inherited_template_form_view
+msgid "Press"
+msgstr "Press"
+
+#. module: wds_product_wine
+#: model:wds.press.comment.type,name:wds_product_wine.wds_press_comment_type_1
+msgid "Press Comment"
+msgstr "Press Comment"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.action_wds_presse
+#: model:ir.ui.menu,name:wds_product_wine.wds_subsubmenu_presse_id
+msgid "Presse"
+msgstr "Presse"
+
+#. module: wds_product_wine
+#: view:product.template:wds_product_wine.product_inherited_template_form_view
+#: field:product.template,press_ids:0
+msgid "Presses"
+msgstr "Presses"
+
+#. module: wds_product_wine
+#: field:wds.available.format,price_range:0
+msgid "Price range"
+msgstr "Price range"
+
+#. module: wds_product_wine
+#: view:wds.product.brand:wds_product_wine.view_product_brand_form
+#: view:product.wine:wds_product_wine.view_product_wine_form
+msgid "Price:"
+msgstr "Price:"
+
+#. module: wds_product_wine
+#: view:product.supplierinfo:wds_product_wine.product_supplierinfo_form_view2
+msgid "Pricelist"
+msgstr "Liste de prix"
+
+#. module: wds_product_wine
+#: field:wds.medal,priority:0
+#: field:wds.press,priority:0
+#: field:wds.text,priority:0
+msgid "Priority"
+msgstr "Priority"
+
+#. module: wds_product_wine
+#: model:wds.press.comment.priority,name:wds_product_wine.wds_press_comment_priority_1
+msgid "Priority 1"
+msgstr "Priority 1"
+
+#. module: wds_product_wine
+#: model:wds.press.comment.priority,name:wds_product_wine.wds_press_comment_priority_2
+msgid "Priority 2"
+msgstr "Priority 2"
+
+#. module: wds_product_wine
+#: model:wds.press.comment.priority,name:wds_product_wine.wds_press_comment_priority_3
+msgid "Priority 3"
+msgstr "Priority 3"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+msgid "Prix..."
+msgstr "Prix..."
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.crm_case_category_act_oppor11_wine
+#: model:ir.ui.menu,name:wds_product_wine.wds_process_id
+msgid "Processus"
+msgstr "Processus"
+
+#. module: wds_product_wine
+#: view:res.partner:wds_product_wine.res_partner_kanban_view
+msgid "Producer,"
+msgstr "Producer,"
+
+#. module: wds_product_wine
+#: model:ir.model,name:wds_product_wine.model_product_product
+#: field:product.supplierinfo,product_id:0
+#: field:wds.assembly,product_id:0
+#: field:wds.available.format,product_id:0
+#: field:wds.catalog,product_ids:0
+#: field:wds.medal,product_id:0
+#: field:wds.press,product_id:0
+#: field:wds.text,product_id:0
+msgid "Product"
+msgstr "Article"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+#: view:product.wine:wds_product_wine.view_product_wine_form
+msgid "Product appellation"
+msgstr "Product appellation"
+
+#. module: wds_product_wine
+#: view:wds.product.brand:wds_product_wine.product_brand_search_form_view
+#: view:wds.product.brand:wds_product_wine.view_product_brand_form
+msgid "Product Brand"
+msgstr "Product Brand"
+
+#. module: wds_product_wine
+#: model:ir.model,name:wds_product_wine.model_product_category
+msgid "Product Category"
+msgstr "Catégorie d'articles"
+
+#. module: wds_product_wine
+#: field:wds.product.brand,product_count:0
+#: field:product.wine,product_count:0
+msgid "Product Count"
+msgstr "Product Count"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+#: view:product.wine:wds_product_wine.view_product_wine_form
+msgid "Product Name"
+msgstr "Product Name"
+
+#. module: wds_product_wine
+#: model:ir.model,name:wds_product_wine.model_product_template
+msgid "Product Template"
+msgstr "Product Template"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.product_normal_action
+msgid "Product Variants"
+msgstr "Product Variants"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+#: view:product.template:wds_product_wine.product_inherited_template_form_view
+msgid "Product Vintage"
+msgstr "Product Vintage"
+
+#. module: wds_product_wine
+#: view:product.wine:wds_product_wine.product_wine_search_form_view
+#: view:product.wine:wds_product_wine.view_product_wine_form
+msgid "Product wine"
+msgstr "Product wine"
+
+#. module: wds_product_wine
+#: model:ir.ui.menu,name:wds_product_wine.wds_submenu_sub_winery_id
+msgid "Producteur"
+msgstr "Producteur"
+
+#. module: wds_product_wine
+#: field:product.product,production_area:0
+msgid "Production area (ha)"
+msgstr "Production area (ha)"
+
+#. module: wds_product_wine
+#: field:wds.product.brand,product_template_ids:0
+#: field:product.wine,product_template_ids:0
+#: view:wds.catalog:wds_product_wine.wine_catalog_form_view
+msgid "Products"
+msgstr "Products"
+
+#. module: wds_product_wine
+#: model:ir.ui.menu,name:wds_product_wine.wds_submenu_vine
+msgid "Produit"
+msgstr "Produit"
+
+#. module: wds_product_wine
+#. openerp-web
+#: code:addons/wds_product_wine/static/src/xml/base.xml:7
+#, python-format
+msgid "Profile"
+msgstr "Profile"
+
+#. module: wds_product_wine
+#: model:ir.ui.menu,name:wds_product_wine.wds_submenu_sub_winery_marque_id
+msgid "Propriétés"
+msgstr "Propriétés"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+msgid "Qt..."
+msgstr "Qt..."
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,quantity:0
+#: field:wds.available.format,quantity:0
+msgid "Quantity"
+msgstr "Quantity"
+
+#. module: wds_product_wine
+#: model:wds.classification,name:wds_product_wine.wds_classification_fourth_big_vintage_rated
+msgid "Quatrième Grand Cru Classé"
+msgstr "Quatrième Grand Cru Classé"
+
+#. module: wds_product_wine
+#: field:product.product,Rearing_tank:0
+msgid "Rearing tank (months)"
+msgstr "Rearing tank (months)"
+
+#. module: wds_product_wine
+#: model:ir.ui.menu,name:wds_product_wine.wds_menu_partner_find
+#: model:ir.ui.menu,name:wds_product_wine.wds_menu_Rechercher_id
+#: model:ir.ui.menu,name:wds_product_wine.wds_submenu_wine_id
+msgid "Rechercher"
+msgstr "Rechercher"
+
+#. module: wds_product_wine
+#: model:product.category,name:wds_product_wine.product_category_13
+#: model:wds.color,name:wds_product_wine.wds_color_red
+msgid "Red"
+msgstr "Red"
+
+#. module: wds_product_wine
+#: model:product.category,name:wds_product_wine.product_category_25
+msgid "Red Sparkling"
+msgstr "Red Sparkling"
+
+#. module: wds_product_wine
+#: field:product.product,reducing_sugars:0
+msgid "Reducing sugars (g/L)"
+msgstr "Reducing sugars (g/L)"
+
+#. module: wds_product_wine
+#: field:product.wine,refcour:0
+msgid "Ref Cour"
+msgstr "Ref Cour"
+
+#. module: wds_product_wine
+#: field:wds.appellation,region_id:0
+#: view:wds.region:wds_product_wine.wds_region_tree_view
+msgid "Region"
+msgstr "Region"
+
+#. module: wds_product_wine
+#: field:res.partner,parent_right:0
+#: field:wds.wine.type,parent_right:0
+msgid "Right Parent"
+msgstr "Right Parent"
+
+#. module: wds_product_wine
+#: model:product.category,name:wds_product_wine.product_category_14
+#: model:wds.color,name:wds_product_wine.wds_color_rose
+msgid "Rosé"
+msgstr "Rosé"
+
+#. module: wds_product_wine
+#: model:product.category,name:wds_product_wine.product_category_24
+msgid "Rosé Sparkling"
+msgstr "Rosé Sparkling"
+
+#. module: wds_product_wine
+#: field:product.product,so2free:0
+msgid "SO ² free (mg/L)"
+msgstr "SO ² free (mg/L)"
+
+#. module: wds_product_wine
+#: field:product.product,so2total:0
+msgid "SO ² total (mg/L)"
+msgstr "SO ² total (mg/L)"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,list_price:0
+msgid "Sale Price"
+msgstr "Sale Price"
+
+#. module: wds_product_wine
+#: model:ir.ui.menu,name:wds_product_wine.menu_custom_native
+msgid "Sales_native"
+msgstr "Sales_native"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,user_id:0
+msgid "Salesperson"
+msgstr "Salesperson"
+
+#. module: wds_product_wine
+#: view:wds.press:wds_product_wine.wds_press_form_view
+msgid "Save"
+msgstr "Save"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_search_view
+msgid "Search"
+msgstr "Search"
+
+#. module: wds_product_wine
+#. openerp-web
+#: code:addons/wds_product_wine/static/src/js/listview.js:118
+#, python-format
+msgid "Search More..."
+msgstr "Search More..."
+
+#. module: wds_product_wine
+#: help:product.template,product_brand_id:0
+msgid "Select a brand for this product."
+msgstr "Select a brand for this product."
+
+#. module: wds_product_wine
+#: help:product.template,product_wine_id:0
+msgid "Select a wine for this product."
+msgstr "Select a wine for this product."
+
+#. module: wds_product_wine
+#: help:wds.product.brand,partner_id:0
+msgid "Select a winery for this brand if it exists."
+msgstr "Select a winery for this brand if it exists."
+
+#. module: wds_product_wine
+#: help:product.wine,partner_id:0
+msgid "Select a winery for this wine if it exists."
+msgstr "Select a winery for this wine if it exists."
+
+#. module: wds_product_wine
+#: field:product.product,select_barrel_aging:0
+msgid "Select barrel aging"
+msgstr "Select barrel aging"
+
+#. module: wds_product_wine
+#: field:product.product,select_Rearing_tank:0
+msgid "Select rearing tank"
+msgstr "Select rearing tank"
+
+#. module: wds_product_wine
+#: field:res.partner,sequence:0
+#: field:wds.catalog,sequence:0
+#: field:wds.wine.type,sequence:0
+msgid "Sequence"
+msgstr "Sequence"
+
+#. module: wds_product_wine
+#: field:product.product,service_temperature:0
+msgid "Service temperature (°C)"
+msgstr "Service temperature (°C)"
+
+#. module: wds_product_wine
+#. openerp-web
+#: code:addons/wds_product_wine/static/src/xml/base.xml:43
+#, python-format
+msgid "Services dedicated to the Wine Merchants"
+msgstr "Services dedicated to the Wine Merchants"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,image_small:0
+#: field:wds.color,image_small_bottle:0
+#: field:wds.color,image_small_glass:0
+msgid "Small-sized image"
+msgstr "Small-sized image"
+
+#. module: wds_product_wine
+#: help:pricelist.partnerinfo,image_small:0
+msgid "Small-sized image of the product. It is automatically resized as a 64x64px image, with aspect ratio preserved. Use this field anywhere a small image is required."
+msgstr "Small-sized image of the product. It is automatically resized as a 64x64px image, with aspect ratio preserved. Use this field anywhere a small image is required."
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.action_group_organisation
+#: model:ir.ui.menu,name:wds_product_wine.wds_menu_partner_company
+msgid "Société"
+msgstr "Société"
+
+#. module: wds_product_wine
+#: field:product.product,sort_method_id:0
+msgid "Sort method"
+msgstr "Sort method"
+
+#. module: wds_product_wine
+#: model:product.category,name:wds_product_wine.product_category_15
+msgid "Sparkling"
+msgstr "Sparkling"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,standard_price:0
+msgid "Standard Price"
+msgstr "Standard Price"
+
+#. module: wds_product_wine
+#. openerp-web
+#: code:addons/wds_product_wine/static/src/xml/web_example.xml:7
+#, python-format
+msgid "Start"
+msgstr "Start"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+#: field:pricelist.partnerinfo,state:0
+#: field:pricelist.partnerinfo,state_id:0
+#: view:res.partner:wds_product_wine.view_partner_form
+msgid "State"
+msgstr "État"
+
+#. module: wds_product_wine
+#. openerp-web
+#: code:addons/wds_product_wine/static/src/xml/web_example.xml:10
+#, python-format
+msgid "Stop"
+msgstr "Stop"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,street:0
+msgid "Street"
+msgstr "Street"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+#: view:res.partner:wds_product_wine.view_partner_form
+msgid "Street..."
+msgstr "Rue..."
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,street2:0
+msgid "Street2"
+msgstr "Street2"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,message_summary:0
+msgid "Summary"
+msgstr "Summary"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.action_wds_supplier
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_search_view
+#: field:pricelist.partnerinfo,is_supplier:0
+#: field:pricelist.partnerinfo,supplier:0
+#: field:pricelist.partnerinfo,supplier_id:0
+#: help:pricelist.partnerinfo,supplier_id:0
+msgid "Supplier"
+msgstr "Supplier"
+
+#. module: wds_product_wine
+#: help:pricelist.partnerinfo,supplier:0
+msgid "Supplier of this product"
+msgstr "Supplier of this product"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+msgid "Supplier-Product"
+msgstr "Supplier-Product"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+msgid "Supplier-Product/Info"
+msgstr "Supplier-Product/Info"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+msgid "Supplier..."
+msgstr "Supplier..."
+
+#. module: wds_product_wine
+#: model:product.category,name:wds_product_wine.product_category_18
+msgid "Sweet Red"
+msgstr "Sweet Red"
+
+#. module: wds_product_wine
+#: model:product.category,name:wds_product_wine.product_category_21
+msgid "Sweet White"
+msgstr "Sweet White"
+
+#. module: wds_product_wine
+#: model:wds.package.type,name:wds_product_wine.wds_type_TB
+msgid "TB"
+msgstr "TB"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,vat:0
+msgid "TIN"
+msgstr "TIN"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,category_id:0
+msgid "Tags"
+msgstr "Tags"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+#: view:res.partner:wds_product_wine.view_partner_form
+msgid "Tags..."
+msgstr "Étiquettes..."
+
+#. module: wds_product_wine
+#: field:product.product,terroir_ids:0
+#: field:res.partner,terroir:0
+msgid "Terroir"
+msgstr "Terroir"
+
+#. module: wds_product_wine
+#: view:wds.press:wds_product_wine.wds_press_form_view
+msgid "Text"
+msgstr "Text"
+
+#. module: wds_product_wine
+#: field:product.product,text_ids:0
+msgid "Textes"
+msgstr "Textes"
+
+#. module: wds_product_wine
+#: help:pricelist.partnerinfo,quantity:0
+msgid "The quantity.*values: -'?': don't ask about quantity"
+msgstr "The quantity.*values: -'?': don't ask about quantity"
+
+#. module: wds_product_wine
+#: help:wds.catalog,image:0
+msgid "This field holds the image used as bottle image for the product, limited to 1024x1024px."
+msgstr "This field holds the image used as bottle image for the product, limited to 1024x1024px."
+
+#. module: wds_product_wine
+#: help:pricelist.partnerinfo,image:0
+msgid "This field holds the image used as image for the product, limited to 1024x1024px."
+msgstr "This field holds the image used as image for the product, limited to 1024x1024px."
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,time:0
+msgid "Time"
+msgstr "Time"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,title:0
+msgid "Title"
+msgstr "Title"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.crm_case_category_act_oppor11_to_check
+#: selection:pricelist.partnerinfo,state:0
+msgid "To Check"
+msgstr "To Check"
+
+#. module: wds_product_wine
+#: field:product.product,total_acidity:0
+msgid "Total acidity (g/L)"
+msgstr "Total acidity (g/L)"
+
+#. module: wds_product_wine
+#: model:wds.classification,name:wds_product_wine.wds_classification_third_big_vintage_rated
+msgid "Troisième Grand Cru Classé"
+msgstr "Troisième Grand Cru Classé"
+
+#. module: wds_product_wine
+#: field:res.partner,type_wm:0
+#: field:wds.appellation,appelation_type_id:0
+msgid "Type"
+msgstr "Type"
+
+#. module: wds_product_wine
+#: field:product.product,harvest_type_id:0
+msgid "Type of harvest"
+msgstr "Type of harvest"
+
+#. module: wds_product_wine
+#: field:product.product,unique_import_id:0
+msgid "Unique Import Id"
+msgstr "Unique Import Id"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,message_unread:0
+msgid "Unread Messages"
+msgstr "Unread Messages"
+
+#. module: wds_product_wine
+#: code:addons/wds_product_wine/wizard/c2c_import_pricelist.py:73
+#, python-format
+msgid "UserError"
+msgstr "UserError"
+
+#. module: wds_product_wine
+#: model:wds.package.type,name:wds_product_wine.wds_type_VRAC
+msgid "VRAC"
+msgstr "VRAC"
+
+#. module: wds_product_wine
+#: code:addons/wds_product_wine/wizard/c2c_import_pricelist.py:56
+#, python-format
+msgid "Value \"%s\" cannot be converted to %s."
+msgstr "Value \"%s\" cannot be converted to %s."
+
+#. module: wds_product_wine
+#: model:ir.ui.menu,name:wds_product_wine.wds_subsubmenu_variant_id
+#: view:product.template:wds_product_wine.product_template_form_view_variant_button2
+msgid "Variants"
+msgstr "Variantes"
+
+#. module: wds_product_wine
+#. openerp-web
+#: code:addons/wds_product_wine/static/src/xml/base.xml:38
+#, python-format
+msgid "Version"
+msgstr "Version"
+
+#. module: wds_product_wine
+#: field:product.product,appel_offres:0
+msgid "Vigneron Independent"
+msgstr "Vigneron Independent"
+
+#. module: wds_product_wine
+#: model:ir.ui.menu,name:wds_product_wine.wds_menu_vins_id
+#: model:ir.ui.menu,name:wds_product_wine.wds_submenu_wine_wine_id
+msgid "Vins"
+msgstr "Vins"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+#: field:pricelist.partnerinfo,product_tmpl_id:0
+#: field:pricelist.partnerinfo,vintage:0
+#: field:pricelist.partnerinfo,vintage_2:0
+#: model:product.attribute,name:wds_product_wine.product_attribute_id_1
+#: field:product.product,attribute_value_related_ids:0
+#: field:product.template,vintage:0
+msgid "Vintage"
+msgstr "Vintage"
+
+#. module: wds_product_wine
+#. openerp-web
+#: code:addons/wds_product_wine/static/src/xml/offer_quicksearch.xml:25
+#: code:addons/wds_product_wine/static/src/xml/variant_quicksearch.xml:7
+#, python-format
+msgid "Vintage :"
+msgstr "Vintage :"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+#: view:product.template:wds_product_wine.product_inherited_template_form_view
+msgid "Vintage..."
+msgstr "Vintage..."
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.action_wds_vintages
+#: view:wds.product.brand:wds_product_wine.view_product_brand_form
+#: field:wds.product.brand,product_vintage_ids:0
+#: view:product.wine:wds_product_wine.view_product_wine_form
+msgid "Vintages"
+msgstr "Vintages"
+
+#. module: wds_product_wine
+#: view:product.wine:wds_product_wine.product_wine_kanban
+msgid "Vintages..."
+msgstr "Vintages..."
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,vinyard:0
+msgid "Vinyard"
+msgstr "Vinyard"
+
+#. module: wds_product_wine
+#: field:product.product,visual_aspect_id:0
+msgid "Visual Aspect"
+msgstr "Visual Aspect"
+
+#. module: wds_product_wine
+#: view:product.template:wds_product_wine.product_inherited_template_form_view
+msgid "Viticulture"
+msgstr "Viticulture"
+
+#. module: wds_product_wine
+#: view:import.product:wds_product_wine.import_product_form_view
+msgid "Votre navigateur ne supporte pas les iframes"
+msgstr "Votre navigateur ne supporte pas les iframes"
+
+#. module: wds_product_wine
+#: field:product.wine,wds:0
+msgid "WDS"
+msgstr "WDS"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,website:0
+msgid "Website"
+msgstr "Website"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,website_message_ids:0
+msgid "Website Messages"
+msgstr "Website Messages"
+
+#. module: wds_product_wine
+#: help:pricelist.partnerinfo,website_message_ids:0
+msgid "Website communication history"
+msgstr "Website communication history"
+
+#. module: wds_product_wine
+#: model:product.category,name:wds_product_wine.product_category_12
+msgid "White"
+msgstr "White"
+
+#. module: wds_product_wine
+#: model:product.category,name:wds_product_wine.product_category_26
+msgid "White Sparkling"
+msgstr "White Sparkling"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+#: field:pricelist.partnerinfo,product_wine_id:0
+#: model:product.category,name:wds_product_wine.product_category_11
+msgid "Wine"
+msgstr "Wine"
+
+#. module: wds_product_wine
+#: view:wds.appellation:wds_product_wine.wine_appelation_form_view
+#: view:wds.appellation:wds_product_wine.wds_appelation_search_view
+#: view:wds.region:wds_product_wine.wds_region_search_view
+msgid "Wine appellation"
+msgstr "Wine appellation"
+
+#. module: wds_product_wine
+#: view:wds.appellation:wds_product_wine.wds_appelation_search_view
+msgid "Wine appellation Type"
+msgstr "Wine appellation Type"
+
+#. module: wds_product_wine
+#: view:wds.appellation:wds_product_wine.wine_appelation_tree_view
+msgid "Wine Appelations"
+msgstr "Wine Appelations"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.action_wds_wine_broker
+#: field:res.partner,wine_broker:0
+msgid "Wine Broker"
+msgstr "Wine Broker"
+
+#. module: wds_product_wine
+#: field:res.partner,wine_cellar:0
+msgid "Wine Cellar"
+msgstr "Wine Cellar"
+
+#. module: wds_product_wine
+#. openerp-web
+#: code:addons/wds_product_wine/static/src/xml/base.xml:28
+#, python-format
+msgid "Wine Data System"
+msgstr "Wine Data System"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,hierarchy_id:0
+#: field:product.wine,hierarchy_id:0
+msgid "Wine Hierarchy"
+msgstr "Wine Hierarchy"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.action_wds_wine_wine_merchant
+#: field:res.partner,wine_merchant:0
+msgid "Wine Merchant"
+msgstr "Wine Merchant"
+
+#. module: wds_product_wine
+#: field:product.wine,name:0
+msgid "Wine Name"
+msgstr "Wine Name"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.action_wds_wine_producer
+#: field:res.partner,wine_producer:0
+msgid "Wine Producer"
+msgstr "Wine Producer"
+
+#. module: wds_product_wine
+#: field:product.wine,name_short:0
+msgid "Wine Short Name"
+msgstr "Wine Short Name"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,winetax:0
+#: field:product.product,winetax:0
+msgid "Wine Tax"
+msgstr "Wine Tax"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,wine_type_id:0
+#: field:product.wine,wine_type_id:0
+msgid "Wine Type"
+msgstr "Wine Type"
+
+#. module: wds_product_wine
+#: model:ir.model,name:wds_product_wine.model_wds_appelation
+msgid "Wine appellation"
+msgstr "Wine appellation"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,wine_broker:0
+msgid "Wine broker"
+msgstr "Wine broker"
+
+#. module: wds_product_wine
+#: view:wds.catalog:wds_product_wine.wine_catalog_form_view
+#: view:wds.catalog:wds_product_wine.wine_catalog_tree_view
+msgid "Wine catalog"
+msgstr "Wine catalog"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,wine_cellar:0
+msgid "Wine cellar"
+msgstr "Wine cellar"
+
+#. module: wds_product_wine
+#: view:wds.color:wds_product_wine.wine_color_form_view
+#: view:wds.color:wds_product_wine.wine_color_tree_view
+msgid "Wine color"
+msgstr "Wine color"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,wine_merchant:0
+msgid "Wine merchant"
+msgstr "Wine merchant"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,wine_producer:0
+msgid "Wine producer"
+msgstr "Wine producer"
+
+#. module: wds_product_wine
+#: view:wds.wine.type:wds_product_wine.wds_wine_type_form_view
+#: view:wds.wine.type:wds_product_wine.wds_wine_type_list_view
+#: view:wds.wine.type:wds_product_wine.wds_wine_type_search_view
+#: view:wds.wine.type:wds_product_wine.wds_wine_type_tree_view
+msgid "Wine type"
+msgstr "Wine type"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+#: view:wds.product.brand:wds_product_wine.product_brand_kanban
+msgid "Wine..."
+msgstr "Wine..."
+
+#. module: wds_product_wine
+#. openerp-web
+#: code:addons/wds_product_wine/static/src/xml/base.xml:44
+#, python-format
+msgid "WineDataSystem offers software and services"
+msgstr "WineDataSystem offers software and services"
+
+#. module: wds_product_wine
+#: view:res.partner:wds_product_wine.view_partner_form
+msgid "Winery"
+msgstr "Winery"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.action_wds_winerys
+msgid "Winerys"
+msgstr "Winerys"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.action_wds_wine
+#: view:wds.product.brand:wds_product_wine.view_product_brand_form
+#: field:wds.product.brand,product_wine_ids:0
+msgid "Wines"
+msgstr "Wines"
+
+#. module: wds_product_wine
+#: view:wds.product.brand:wds_product_wine.product_brand_kanban
+msgid "Wines..."
+msgstr "Wines..."
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+#: view:product.product:wds_product_wine.product_inherited_normal_form_view
+msgid "Winetax..."
+msgstr "Winetax..."
+
+#. module: wds_product_wine
+#: field:product.product,wooden_case_x12:0
+msgid "Wooden Case (x12)"
+msgstr "Wooden Case (x12)"
+
+#. module: wds_product_wine
+#: field:product.product,wooden_case_x6:0
+msgid "Wooden Case (x6)"
+msgstr "Wooden Case (x6)"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_search_view
+msgid "Year"
+msgstr "Year"
+
+#. module: wds_product_wine
+#: field:wds.medal,year:0
+msgid "Years"
+msgstr "Years"
+
+#. module: wds_product_wine
+#: selection:product.product,appel_offres:0
+msgid "Yes"
+msgstr "Yes"
+
+#. module: wds_product_wine
+#: code:addons/wds_product_wine/wizard/c2c_import_pricelist.py:73
+#, python-format
+msgid "You need to select a file!"
+msgstr "You need to select a file!"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+#: view:res.partner:wds_product_wine.view_partner_form
+msgid "ZIP"
+msgstr "Code postal"
+
+#. module: wds_product_wine
+#: field:pricelist.partnerinfo,zip:0
+msgid "Zip"
+msgstr "Zip"
+
+#. module: wds_product_wine
+#: model:wds.winetax,name:wds_product_wine.wds_winetax_acquit
+msgid "acquit"
+msgstr "acquit"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.wds_catalog_action
+msgid "catalog"
+msgstr "catalog"
+
+#. module: wds_product_wine
+#: model:wds.color,name:wds_product_wine.wds_color_claret
+msgid "claret"
+msgstr "claret"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+msgid "describe the offer characteristics..."
+msgstr "describe the offer characteristics..."
+
+#. module: wds_product_wine
+#: model:product.category,name:wds_product_wine.product_category_20
+msgid "dry White"
+msgstr "dry White"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+msgid "e.g. +32.81.81.37.00"
+msgstr "e.g. +32.81.81.37.00"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+#: view:res.partner:wds_product_wine.view_partner_form
+msgid "e.g. Sales Director"
+msgstr "ex : directeur commercial"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+msgid "e.g. www.openerp.com"
+msgstr "e.g. www.openerp.com"
+
+#. module: wds_product_wine
+#. openerp-web
+#: code:addons/wds_product_wine/static/src/xml/base.xml:46
+#, python-format
+msgid "enabling wine suppliers to increase their sales through"
+msgstr "enabling wine suppliers to increase their sales through"
+
+#. module: wds_product_wine
+#: field:wds.catalog,image:0
+msgid "image"
+msgstr "image"
+
+#. module: wds_product_wine
+#. openerp-web
+#: code:addons/wds_product_wine/static/src/xml/base.xml:48
+#, python-format
+msgid "innovative management of product information and customer relationships."
+msgstr "innovative management of product information and customer relationships."
+
+#. module: wds_product_wine
+#: field:wds.agriculture_bio,name:0
+#: field:wds.allergen,name:0
+#: field:wds.appellation.type,name:0
+#: field:wds.bottle.size,name:0
+#: field:wds.classification,name:0
+#: field:wds.color,name:0
+#: field:wds.competition,name:0
+#: field:wds.grape,name:0
+#: field:wds.harvest_type,name:0
+#: field:wds.hierarchy,name:0
+#: field:wds.medal.type,name:0
+#: field:wds.plugging,name:0
+#: field:wds.press.comment.priority,name:0
+#: field:wds.press.comment.type,name:0
+#: field:wds.priority,name:0
+#: field:wds.region,name:0
+#: field:wds.sort_method,name:0
+#: field:wds.terroir,name:0
+msgid "name"
+msgstr "name"
+
+#. module: wds_product_wine
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_form_view_id
+#: view:pricelist.partnerinfo:wds_product_wine.pricelist_partnerinfo_tree_view_id
+msgid "pricelist.partnerinfo"
+msgstr "pricelist.partnerinfo"
+
+#. module: wds_product_wine
+#: view:product.product:wds_product_wine.product_inherited_normal_form_view
+msgid "pricelist.partnerinfo:Offers"
+msgstr "pricelist.partnerinfo:Offers"
+
+#. module: wds_product_wine
+#: view:wds.product.brand:wds_product_wine.view_product_brand_tree
+msgid "wds.product.brand"
+msgstr "wds.product.brand"
+
+#. module: wds_product_wine
+#: view:product.wine:wds_product_wine.view_product_wine_tree
+msgid "product.wine"
+msgstr "product.wine"
+
+#. module: wds_product_wine
+#: field:res.partner,surface:0
+msgid "surface"
+msgstr "surface"
+
+#. module: wds_product_wine
+#: view:product.wine:wds_product_wine.product_wine_kanban
+msgid "vintage..."
+msgstr "vintage..."
+
+#. module: wds_product_wine
+#: model:wds.color,name:wds_product_wine.wds_color_white
+msgid "white"
+msgstr "white"
+
+#. module: wds_product_wine
+#: model:ir.actions.act_window,name:wds_product_wine.action_product_wine
+#: view:product.template:wds_product_wine.product_inherited_template_form_view
+#: field:product.template,product_wine_id:0
+msgid "wine"
+msgstr "wine"
+
+#. module: wds_product_wine
+#: model:ir.ui.menu,name:wds_product_wine.menu_product_wine
+msgid "wine management"
+msgstr "wine management"
+
+#. module: wds_product_wine
+#: view:wds.region:wds_product_wine.wds_region_form_view
+msgid "wine region"
+msgstr "wine region"
+
+#. module: wds_product_wine
+#: view:wds.bottle.size:wds_product_wine.wds_bottle_size_tree_view
+msgid "wds.bottle.size"
+msgstr "wds.bottle.size"
+

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<!--vintage-->
+		<record id="product_inherited_normal_form_view" model="ir.ui.view">
+			<field name="name">product.normal.form</field>
+			<field name="model">product.product</field>
+			<field name="inherit_id" ref="product.product_normal_form_view"/>
+			<field name="arch" type="xml">
+				<!--<field name="vintage" position="replace">-->
+					<!--<field name="vintage" placeholder="Vintage..." on_change="onchange_vintage(product_wine_id,vintage)" class="oe_inline" readonly="context.get('variant_ok',False)"/>-->
+				<!--</field>-->
+				<!--<field name="product_brand_id" position="replace">-->
+					<!--<field name="product_brand_id" placeholder="Marque" readonly="context.get('variant_ok',False)" />-->
+				<!--</field>-->
+				<!--<field name="product_wine_id" position="replace">-->
+					<!--<field name="product_wine_id" on_change="onchange_vintage(product_wine_id,vintage)" placeholder="wine" readonly="context.get('variant_ok',False)" />-->
+				<!--</field>-->
+
+				<!--<xpath expr="//notebook" 	position="inside">-->
+					<!--<page string="Offers">-->
+						<!--<field name="offer_ids">-->
+							<!--<tree string="pricelist.partnerinfo:Offers" editable="bottom">-->
+								<!--<button name="show_offers" class="oe_link oe_read_only"-->
+								<!--string="Détails" type="object" icon="terp-stock_zoom" />-->
+								<!--<field name="name" readonly="0"/>-->
+								<!--<field name="supplier_id"/>-->
+								<!--<field name="quantity" />-->
+								<!--<field name="price" readonly="0"/>-->
+								<!--<field name="date"/>-->
+							<!--</tree>-->
+						<!--</field>-->
+					<!--</page>-->
+				<!--</xpath>-->
+				<xpath expr="//notebook" position="before">
+					<group>
+						<field name="w_iswine"/>
+						<group attrs="{'invisible':[('w_iswine','=',False)]}">
+
+							<field name="format" placeholder="Format..." attrs="{'invisible':[('w_iswine','=',False)]}"/>
+							<field name="winetax" placeholder="Winetax..." />
+							<h1 attrs="{'invisible':[('w_iswine','=',False)]}">
+								<field name="has_logo_pregnant"/>
+								<img src="wds_product_wine/static/src/img/logo_pregnant.png"
+								width="40" height="40" title="Logo Pregnant"
+								attrs="{'invisible':[('has_logo_pregnant','=',False)]}"
+								/>
+								<img src="wds_product_wine/static/src/img/logo_pregnant_false.jpg"
+								width="40" height="40" title="Logo Pregnant"
+								attrs="{'invisible':[('has_logo_pregnant','=',True)]}"
+								/>
+							</h1>
+						</group>
+						<group attrs="{'invisible':[('w_iswine','=',False)]}">
+							<field name="conditioning" 	 placeholder="Conditioning..."/>
+							<field name="package_type"   placeholder="Package Type..." />
+							<field name="label" 		 placeholder="Label..."  		/>
+						</group>
+					</group>
+				</xpath>
+			</field>
+		</record>
+		<record id="product_inherited_product_tree_view" model="ir.ui.view">
+			<field name="name">product.product.tree</field>
+			<field name="model">product.product</field>
+			<field name="inherit_id" ref="product.product_product_tree_view"/>
+			<field name="arch" type="xml">
+				<field name="name" position="after" >
+					<field name="format" />
+					<field name="winetax" />
+					<field name="conditioning"/>
+					<field name="package_type" />
+				</field>
+			</field>
+		</record>
+		<record id="wds_bottle_size_tree_view" model="ir.ui.view">
+			<field name="name">wds.bottle.size.tree</field>
+			<field name="model">wds.bottle.size</field>
+			<field name="arch" type="xml">
+				<tree string="wds.bottle.size" editable="bottom" >
+					<field name="name" />
+				</tree>
+			</field>
+		</record>
+
+	</data>
+</openerp>
