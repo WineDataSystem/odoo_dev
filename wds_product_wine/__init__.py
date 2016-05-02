@@ -4,7 +4,7 @@ import appellation
 import vintage
 import wine
 import brand
-import offers
+import product
 # import import_product#From iframe
 #import import_offer
 

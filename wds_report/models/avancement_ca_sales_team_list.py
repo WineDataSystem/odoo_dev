@@ -102,7 +102,7 @@ class avancement_ca_client_list(osv.osv):
 
     def _select(self):
         select_str = """
-            select id, section_id, qty_annee, qty_prev_annee, balance_annee,balance_prev_annee,
+            select id, section_id, qty_annee, qty_prev_annee,qtye_annee, qtye_prev_annee, balance_annee,balance_prev_annee,
              CASE when balance_prev_annee =0 then 100 else (((balance_annee - balance_prev_annee) / balance_prev_annee) * 100) +100 end as percentca
              from (select case when ai.section_id is not null then ai.section_id
                      when rp.section_id is not null then rp.section_id

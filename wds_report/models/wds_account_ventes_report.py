@@ -129,9 +129,9 @@ class wds_account_ventes_report(osv.osv):
                 case when ai.fiscal_position is NULL then 4
                 when ai.fiscal_position=0 then 4
                 else ai.fiscal_position end fiscal_position,
-                am.ref as ref,
-                case when substring(am.ref, 1 , 1)= 'F' or upper(substring(am.ref, 1 , 2))='SO' then '1-FAC'
-                     when substring(am.ref, 1 , 1)in ('M','N','P') then '2-POS' else '3-AUT' end as typref,
+                case when am.name is not NULL then am.name else l.ref end as ref,
+                case when substring(l.ref, 1 , 1)= 'F' or upper(substring(l.ref, 1 , 2))='SO' then '1-FAC'
+                     when substring(l.ref, 1 , 1)in ('M','N','P') then '2-POS' else '3-AUT' end as typref,
                 am.state as move_state,
                 l.state as move_line_state,
                 l.reconcile_id as reconcile_id,
@@ -154,8 +154,9 @@ class wds_account_ventes_report(osv.osv):
                 1 as nbr,
                 l.quantity as quantity,
                 l.currency_id as currency_id,
-                case when rp.country_id is NULL or rp.country_id=0 then 76 else rp.country_id end country_id,
-
+                case when rp.country_id is NULL or rp.country_id=0 then 76
+                when ai.fiscal_position=0 then 76
+                else rp.country_id end country_id,
                 l.amount_currency as amount_currency,
                 l.debit as debit,
                 l.credit as credit,
@@ -163,12 +164,11 @@ class wds_account_ventes_report(osv.osv):
             from
                 account_move_line l
                 left join account_account a on (l.account_id = a.id)
-                left join account_move am on (am.id=l.move_id)
+                left join account_move am on (am.id=l.move_id) and l.ref not like 'POS%'
                 left join account_period p on (am.period_id=p.id)
-                left join account_invoice ai on l.ref = ai.number
+                left join account_invoice ai on (case when am.name is not null then am.name else l.ref end) = ai.number
                 left join pos_order po on l.ref = po.pos_reference
                 left join res_partner rp on l.partner_id= rp.id
-
                 left join product_product pp on l.product_id=pp.id
                 left join product_template pt on pp.product_tmpl_id=pt.id
                 where l.state != 'draft' and a.code like '70%'
