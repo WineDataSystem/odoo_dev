@@ -129,7 +129,7 @@ class wds_account_ventes_report(osv.osv):
                 case when ai.fiscal_position is NULL then 4
                 when ai.fiscal_position=0 then 4
                 else ai.fiscal_position end fiscal_position,
-                case when am.name is not NULL then am.name else l.ref end as ref,
+                case when l.ref not like 'POS%' then am.name else l.ref end as ref,
                 case when substring(l.ref, 1 , 1)= 'F' or upper(substring(l.ref, 1 , 2))='SO' then '1-FAC'
                      when substring(l.ref, 1 , 1)in ('M','N','P') then '2-POS' else '3-AUT' end as typref,
                 am.state as move_state,
@@ -164,9 +164,9 @@ class wds_account_ventes_report(osv.osv):
             from
                 account_move_line l
                 left join account_account a on (l.account_id = a.id)
-                left join account_move am on (am.id=l.move_id) and l.ref not like 'POS%'
+                left join account_move am on (am.id=l.move_id)
                 left join account_period p on (am.period_id=p.id)
-                left join account_invoice ai on (case when am.name is not null then am.name else l.ref end) = ai.number
+                left join account_invoice ai on (case when l.ref not like 'POS%' then am.name else l.ref end) = ai.number
                 left join pos_order po on l.ref = po.pos_reference
                 left join res_partner rp on l.partner_id= rp.id
                 left join product_product pp on l.product_id=pp.id
