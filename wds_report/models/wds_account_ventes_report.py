@@ -111,6 +111,7 @@ class wds_account_ventes_report(osv.osv):
             domain = domain
         return super(wds_account_ventes_report, self).read_group(cr, uid, domain, fields, groupby, offset, limit, context, orderby,lazy)
 
+
     def init(self, cr):
         tools.drop_view_if_exists(cr, 'wds_account_ventes_report')
         cr.execute("""
