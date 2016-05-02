@@ -72,8 +72,8 @@ class avancement_ca_client_list(osv.osv):
         'id': fields.integer('Id', readonly=True),
         'section_id': fields.many2one('crm.case.section', 'Sales Team'),
         'partner_id': fields.many2one('res.partner', 'Partenaire', readonly=True),
-        'qty_annee': fields.float('Quantité Année en cours', readonly=True),
-        'qty_prev_annee': fields.float('Quantité Année précédente', readonly=True),
+        'qty_annee': fields.float('Qté Eq75 N', readonly=True),
+        'qty_prev_annee': fields.float('Qté Eq75 N-1', readonly=True),
         'balance_annee': fields.float('Balance Année en cours', readonly=True),
         'balance_prev_annee': fields.float('Balance Année précédente', readonly=True),
         'percentca': fields.float('Evolution %', readonly=True),
@@ -111,10 +111,10 @@ class avancement_ca_client_list(osv.osv):
                      else 36 end section_id,l.partner_id,
                 sum(CASE when EXTRACT (YEAR FROM l.date) = EXTRACT (YEAR FROM CURRENT_DATE) then
                     CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
-                    THEN - l.quantity ELSE l.quantity end else 0 end ) qty_annee ,
+                    THEN - (l.quantity*factor/0.75) ELSE (l.quantity*factor/0.75) end else 0 end ) qty_annee ,
                 sum(CASE when EXTRACT (YEAR FROM l.date) = EXTRACT (YEAR FROM CURRENT_DATE)- 1 then
                     CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
-                    THEN - l.quantity ELSE l.quantity end else 0 end ) qty_prev_annee ,
+                    THEN - (l.quantity*factor/0.75) ELSE (l.quantity*factor/0.75) end else 0 end ) qty_prev_annee ,
                 sum(CASE when EXTRACT (YEAR FROM l.date) = EXTRACT (YEAR FROM CURRENT_DATE) then
                     coalesce(l.credit, 0.0) - coalesce(l.debit, 0.0) else 0 end ) balance_annee,
                 sum(CASE when EXTRACT (YEAR FROM l.date) = EXTRACT (YEAR FROM CURRENT_DATE) - 1 then
@@ -129,6 +129,7 @@ class avancement_ca_client_list(osv.osv):
                 left join res_partner rp on l.partner_id= rp.id
                 left join product_product pp on l.product_id=pp.id
                 left join product_template pt on pp.product_tmpl_id=pt.id
+                left join product_uom u on pt.uom_id = u.id
                 where l.state != 'draft' and a.code like '70%'
                 group by
               case when ai.section_id is not null then ai.section_id

@@ -76,7 +76,8 @@ class ca_40_produits_list(osv.osv):
         'invoicenb': fields.float('Nbr factures', readonly=True),
         'company_id': fields.many2one('res.company', 'Societe', readonly=True),
         'user_id': fields.many2one('res.users', 'Vendeur', readonly=True),
-        'vol_annee': fields.float('Quantité Année en cours', readonly=True),
+        'vol_annee': fields.float('Qté N', readonly=True),
+        'vole_annee': fields.float('Qté Eq75 N', readonly=True),
         'ca_annee': fields.float('CA ', readonly=True),
         'ca_prev_annee': fields.float('CA N-1', readonly=True),
         'percentca': fields.float('Evolution % CA', readonly=True),
@@ -104,15 +105,15 @@ class ca_40_produits_list(osv.osv):
     }
 
     def _select(self):
-        select_str = """ select sub2.id,  product_id,facteur1,facteur2,categ_id, invoicenb , ca_prev_annee , ca_annee, vol_annee, percentca from
-        (SELECT sub.id, sub.product_id,sub.facteur1,sub.facteur2,categ_id,sub.invoicenb,sub.currency_id,sub.ca_annee, sub.ca_prev_annee, sub.vol_annee,
+        select_str = """ select sub2.id,  product_id,facteur1,facteur2,categ_id, invoicenb , ca_prev_annee , ca_annee, vol_annee,vole_annee, percentca from
+        (SELECT sub.id, sub.product_id,sub.facteur1,sub.facteur2,categ_id,sub.invoicenb,sub.currency_id,sub.ca_annee, sub.ca_prev_annee, sub.vol_annee,sub.vole_annee,
             CASE when sub.ca_prev_annee =0 then 100 else (((sub.ca_annee - sub.ca_prev_annee) / sub.ca_prev_annee) * 100) +100 end as percentca
         """
         return select_str
 
     def _sub_select(self):
         select_str = """
-                SELECT min(ail.product_id) as id, ail.product_id,u.name facteur1, u2.name facteur2,categ_id,
+                SELECT min(ail.product_id) as id, ail.product_id,u2.name facteur1, u.name facteur2,categ_id,
                     count(distinct ai.number) AS invoicenb,
                     ai.currency_id,
                     sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) then
@@ -121,6 +122,9 @@ class ca_40_produits_list(osv.osv):
                     sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) then
                     CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
                     THEN - ail.quantity ELSE ail.quantity end else 0 end ) vol_annee ,
+                    sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) then
+                    CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
+                    THEN (- ail.quantity*u2.factor)/0.75 ELSE (ail.quantity*u2.factor)/0.75 end else 0 end ) vole_annee ,
                     sum(CASE when EXTRACT (YEAR FROM ai.date_invoice) = EXTRACT (YEAR FROM CURRENT_DATE) -1  then
                     CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
                     THEN - ail.price_subtotal  ELSE ail.price_subtotal end else 0 end ) ca_prev_annee

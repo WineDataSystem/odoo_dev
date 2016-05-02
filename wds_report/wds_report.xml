@@ -272,8 +272,10 @@
                      <field name="section_id" />
                      <field name="qty_annee" sum="Somme qty N"/>
                      <field name="qty_prev_annee" sum="Somme qty N-1"/>
-                     <field name="balance_annee" sum="Somme balance N"/>
-                     <field name="balance_prev_annee" sum="Somme balance N-1"/>
+                     <field name="qtye_annee" sum="Somme qty Eq75 N"/>
+                     <field name="qtye_prev_annee" sum="Somme qty Eq75 N-1"/>
+                     <field name="balance_annee" sum="Somme CA N"/>
+                     <field name="balance_prev_annee" sum="Somme CA N-1"/>
                      <field name="percentca"/>
                      <!--<button name="action_avancement_ca_cust_salesteam_list" string="Clients" type="object" />-->
                  </tree>
@@ -497,6 +499,7 @@
                     <field name="ca_annee"/>
                     <field name="vol_annee"/>
                     <field name="facteur1"/>
+                    <field name="vole_annee"/>
                     <field name="categ_id"/>
                     <field name="percentca"/>
                 </tree>

@@ -39,7 +39,7 @@ class wds_account_ventes_report(osv.osv):
         'nbr': fields.integer('# d\'éléments', readonly=True),
         'debit': fields.float('Debit', readonly=True),
         'credit': fields.float('Credit', readonly=True),
-        'balance': fields.float('Montant', readonly=True),
+        'balance': fields.float('CA', readonly=True),
         'currency_id': fields.many2one('res.currency', 'Monnaie', readonly=True),
         'country_id': fields.many2one('res.country', 'Pays',readonly=True),
         'country_group_id': fields.many2one('res.country.group', 'Groupe Pays', readonly=True),
@@ -115,6 +115,11 @@ class wds_account_ventes_report(osv.osv):
         tools.drop_view_if_exists(cr, 'wds_account_ventes_report')
         cr.execute("""
             create or replace view wds_account_ventes_report as (
+            select id, date, date_maturity,date_created,fiscal_position,ref,typref,move_state,reconcile_id,partner_id,
+            section_id,description,product_id,categ_id,product_uom_id,company_id,journal_id,fiscalyear_id,period_id,account_id,type,
+            user_type,nbr,quantity,currency_id,country_id,
+            case when res_country_group_id is NULL or res_country_group_id=0 then 1 else res_country_group_id end country_group_id,
+            amount_currency,debit,credit,balance from (
             select
                 l.id as id,
                 am.date as date,
@@ -149,7 +154,7 @@ class wds_account_ventes_report(osv.osv):
                 l.quantity as quantity,
                 l.currency_id as currency_id,
                 case when rp.country_id is NULL or rp.country_id=0 then 76 else rp.country_id end country_id,
-                case when res_country_group_id is NULL or res_country_group_id=0 then 1 else res_country_group_id end country_group_id,
+
                 l.amount_currency as amount_currency,
                 l.debit as debit,
                 l.credit as credit,
@@ -162,11 +167,11 @@ class wds_account_ventes_report(osv.osv):
                 left join account_invoice ai on l.ref = ai.number
                 left join pos_order po on l.ref = po.pos_reference
                 left join res_partner rp on l.partner_id= rp.id
-                left join res_country_res_country_group_rel rcrcg on rp.country_id=rcrcg.res_country_id
+
                 left join product_product pp on l.product_id=pp.id
                 left join product_template pt on pp.product_tmpl_id=pt.id
                 where l.state != 'draft' and a.code like '70%'
-            )
+            ) y left join res_country_res_country_group_rel rcrcg on country_id=rcrcg.res_country_id)
         """)
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
