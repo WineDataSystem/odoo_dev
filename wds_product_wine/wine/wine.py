@@ -74,12 +74,13 @@ class product_wine(orm.Model):
         'product_template_ids'  : fields.one2many('product.template', 'product_wine_id', 'Products'),
         'product_count'         : fields.function(_product_count, type='integer', string="Product Count"),
         #refs###########################
-        'refcour'               : fields.char('Ref Cour',size=50),
+        # 'refcour'               : fields.char('Ref Cour',size=50),
         #wine###########################
         'wds'                   : fields.char('WDS',size=50),
         'color_id'              : fields.many2one('wds.color','Color', ),
         'appellation_id'         : fields.many2one('wds.appellation','appellation', ),
         'hierarchy_id'          : fields.many2one('wds.hierarchy','Wine Hierarchy',),
+        'grape_id': fields.many2one('wds.grape', 'Grape Variety', ),
         'catalog_ids'           : fields.many2many('wds.catalog', 'wds_product_catalog_2rel','product_id','catalog_id', 'Catalog'),
         'wine_type_id'          : fields.many2one('wds.wine.type','Wine Type',),
         'brand_id'              : fields.many2one('wds.product.brand', 'Marque'),
@@ -235,4 +236,10 @@ class wds_hierarchy(osv.Model):
                 'name'          : fields.char('name', translate=True),
                 'is_by_default' : fields.boolean('Is by Default'),
                 'order'         : fields.integer('Order'),
+                }
+
+class wds_grape(osv.Model):
+    _name ='wds.grape'
+    _columns = {
+                'name'          : fields.char('name', translate=True),
                 }

@@ -48,6 +48,7 @@
 							<field name="partner_id" style="width:40%%"/>
 							<field name="color_id" 		style="width:50%%" 	 placeholder="--Select--" 			 />
 							<field name="hierarchy_id" 	style="width:50%%"   placeholder="--Select--" 			 />
+							<field name="grape_id" 	style="width:50%%"   placeholder="--Select--" 			 />
 							<field name="catalog_ids"  	style="width:50%%" 	 placeholder="--Select--" 			 	widget="many2many_tags"/>
 							<field name="wine_type_id" 	style="width:50%%" 	 placeholder="--Select--" 			 />
 							<field name="wds" 			style="width:50%%" 	 placeholder="--ID-Import--"  />
@@ -93,11 +94,11 @@
 							</page>
 						</notebook>
 					</sheet>
-					<footer class="oe_edit_only" >
-						<!--<button name="write" string="Save" type="object" class="oe_highlight oe_edit_only" style="color:red" />
-						or
-						<button string="Cancel" class="oe_link oe_edit_only" special="cancel"/>-->
-					</footer>
+					<!--<footer class="oe_edit_only" >-->
+						<!--<button name="write" string="Save" type="object" class="oe_highlight oe_edit_only" style="color:red" />-->
+						<!--or-->
+						<!--<button string="Cancel" class="oe_link oe_edit_only" special="cancel"/>-->
+					<!--</footer>-->
 				</form>
 			</field>
 		</record>
@@ -107,12 +108,14 @@
 			<field name="name">wds.product.wine.tree</field>
 			<field name="model">wds.product.wine</field>
 			<field name="arch" type="xml">
-				<tree string="wds.product.wine">
+				<tree string="wds.product.wine"  editable="bottom">
 					<field name="name"/>
+					<field name="brand_id"/>
 					<field name="partner_id"/>
 					<field name="color_id" 			placeholder="--Select--"/>
 					<field name="appellation_id"  	placeholder="--Select--"/>
-					<field name="hierarchy_id" 			/>
+					<!--<field name="hierarchy_id" 			/>-->
+					<field name="grape_id" 			/>
 					<field name="wine_type_id" 			/>
 
 				</tree>

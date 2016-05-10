@@ -2,13 +2,13 @@
 <openerp>
     <data>
 
-        <record id="action_wds_bottle_size" model="ir.actions.act_window">
-            <field name="name">Bottle Size</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">wds.bottle.size</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree</field>
-        </record>
+        <!--<record id="action_wds_bottle_size" model="ir.actions.act_window">-->
+            <!--<field name="name">Bottle Size</field>-->
+            <!--<field name="type">ir.actions.act_window</field>-->
+            <!--<field name="res_model">wds.bottle.size</field>-->
+            <!--<field name="view_type">form</field>-->
+            <!--<field name="view_mode">tree</field>-->
+        <!--</record>-->
         <!--<record id="action_wds_wine_producer" model="ir.actions.act_window">-->
             <!--<field name="name">Wine Producer</field>-->
             <!--<field name="type">ir.actions.act_window</field>-->
@@ -93,7 +93,7 @@
             <!--</field>-->
         <!--</record>-->
         <record id="action_wds_wine" model="ir.actions.act_window">
-            <field name="name">Wines</field>
+            <field name="name">Produits</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">wds.product.wine</field>
             <field name="domain">[]</field>
@@ -105,24 +105,25 @@
             </field>
         </record>
         <record id="action_wds_vintages" model="ir.actions.act_window">
-            <field name="name">Vintages</field>
+            <field name="name">Vins</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">product.template</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,kanban,form</field>
-            <field name="domain">[]</field><!--('is_vintage','=',True)  _quicksearch-->
+            <!--<field name="domain">[]</field>&lt;!&ndash;('is_vintage','=',True)  _quicksearch&ndash;&gt;-->
+            <field name="domain">[('w_iswine','=',True)]</field>
             <field name="context">{}</field>
             <field name="help" type="html">
                 <p>Here is a list of Vintages.</p>
             </field>
         </record>
-        <record id="action_wds_presse" model="ir.actions.act_window">
-            <field name="name">Presse</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">wds.press</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-        </record>
+            <!--<record id="action_wds_presse" model="ir.actions.act_window">-->
+                <!--<field name="name">Presse</field>-->
+                <!--<field name="type">ir.actions.act_window</field>-->
+                <!--<field name="res_model">wds.press</field>-->
+                <!--<field name="view_type">form</field>-->
+                <!--<field name="view_mode">tree,form</field>-->
+            <!--</record>-->
         <record id="wds_appellation_action" model="ir.actions.act_window">
             <field name="name">appellation</field>
             <field name="type">ir.actions.act_window</field>
@@ -156,11 +157,7 @@
                 <p>Here is a list of catalogs.</p>
             </field>
         </record>
-        <menuitem
-            action="wds_catalog_action"
-            id="product.menu_wds_catalog"
-            parent="base.menu_product"
-            sequence="3" groups="base.group_no_one"/>
+
         <!--###################################Others#########################################-->
         <!--<record model="ir.actions.act_window" id="action_wds_customer">-->
             <!--<field name="name">Customer</field>-->
@@ -314,19 +311,23 @@
         <!--<menuitem name="Configuration"				sequence="3"	id="wds_menu_partner_tools" 			parent="wds_menu_partner_top__top_id" 	groups='base.group_system'/>-->
         <!--<menuitem 									sequence="0"	id='partner_merge_automatic_menu2'     parent="wds_menu_partner_tools"			action='base_partner_merge_automatic_act2'  groups='base.group_system' />-->
 
-        <menuitem name="Vins"					sequence="2"	id="wds_menu_vins_id" parent="base.menu_product" />
 
-        <menuitem name="Millésime"				sequence="0"	id="wds_submenu_vintage_id" 				parent="wds_menu_vins_id" />	
+        <menuitem name="Vins"				    sequence="1"	id="wds_subsubmenu_wine_id" 			parent="base.menu_product"			action="action_wds_vintages"	/>
+
+
+        <menuitem name="Config Vins"		sequence="5"	id="wds_menu_vins_id" parent="base.menu_base_config" />
+
+        <menuitem name="Vin"				sequence="0"	id="wds_submenu_vintage_id" 			parent="wds_menu_vins_id" />
         <!--  <menuitem name="Variants"				sequence="0"		id="wds_subsubmenu_variant_id" 			parent="wds_submenu_vintage_id"			action="product_normal_action2"	/> -->
-        <menuitem name="Millésime"				sequence="1"		id="wds_subsubmenu_vintage_id" 			parent="wds_submenu_vintage_id"			action="action_wds_vintages"	/>
-        <menuitem name="Presse"					sequence="2"		id="wds_subsubmenu_presse_id" 			parent="wds_submenu_vintage_id"			action="action_wds_presse"	/>
-        <menuitem name="Produit"				sequence="1"	id="wds_submenu_vine" 						parent="wds_menu_vins_id" />
-        <menuitem name="Vins"					sequence="0"		id="wds_submenu_wine_wine_id" 			parent="wds_submenu_vine" 			action="action_wds_wine"	/>
-        <menuitem name="Appellations"			sequence="1"		id="wds_submenu_wine_Appellation" 		parent="wds_submenu_vine" 			action="wds_appellation_action"/>
-        <menuitem name="Couleurs"				sequence="2"		id="wds_submenu_wine_color" 				parent="wds_submenu_vine" 			action="wds_wine_color"/>
-        <menuitem name="Marque"					sequence="2"	id="wds_submenu_marque" 					parent="wds_menu_vins_id" />
-        <menuitem name="Propriétés" 				sequence="0"	id="wds_submenu_sub_winery_marque_id" 	parent="wds_submenu_marque"  		action="action_wine_brand"/>
-
+        <menuitem name="Millésime"				sequence="1"	id="wds_subsubmenu_vintage_id" 			parent="wds_submenu_vintage_id"			action="action_wds_vintages"	/>
+        <!--<menuitem name="Presse"					sequence="2"		id="wds_subsubmenu_presse_id" 			parent="wds_submenu_vintage_id"			action="action_wds_presse"	/>-->
+        <menuitem name="Produit"				sequence="1"	id="wds_submenu_wine_product" 			parent="wds_menu_vins_id" />
+        <menuitem name="Produit"					sequence="0"	id="wds_submenu_wine_wine_id" 			parent="wds_submenu_wine_product" 		action="action_wds_wine"	/>
+        <menuitem name="Appellations"			sequence="1"	id="wds_submenu_wine_Appellation" 		parent="wds_submenu_wine_product" 		action="wds_appellation_action"/>
+        <menuitem name="Couleurs"				sequence="2"	id="wds_submenu_wine_color" 			parent="wds_submenu_wine_product" 		action="wds_wine_color"/>
+        <menuitem name="Catalogue"              sequence="3"    id="product.menu_wds_catalog"           parent="wds_submenu_wine_product"       action="wds_catalog_action"/>
+        <menuitem name="Marque"					sequence="2"	id="wds_submenu_marque" 				parent="wds_menu_vins_id" />
+        <menuitem name="Propriétés" 			sequence="0"	id="wds_submenu_sub_winery_marque_id" 	parent="wds_submenu_marque"  		    action="action_wine_brand"/>
 
         <!--&lt;!&ndash;###############deplacement des menus natifs######################&ndash;&gt;-->
         <!--<menuitem id="menu_custom_native" name="Sales_native" parent="base.menu_custom" sequence="51" groups="base.group_no_one"/>-->

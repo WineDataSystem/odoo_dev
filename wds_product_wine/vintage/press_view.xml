@@ -2,40 +2,40 @@
 <openerp>
 	<data>
 
-	
-		<record id="wds_press_form_view" model="ir.ui.view">
-			<field name="name">wds.press.form</field>
-			<field name="model">wds.press</field>
-			<field name="arch" type="xml">
-				<form string="Text" version="7.0">
-					<sheet>
-						<div class="oe_title">
-							<label for="name" class="oe_edit_only"/>
-							<h1>
-								<field name="name"/>
-							</h1>
-							<label for="product_id" class="oe_edit_only"/>
-							<h3>
-								<field name="product_id"/>
-							</h3>
-						</div>
-						<group colspan="4" col="4">
-							<label for="comment" colspan="4"/>
-							<field name="comment" colspan="4" nolabel="1"/>
-							<field name="link" colspan="2" />
-							<field name="note" colspan="2"/>
-							<field name="lang_id" colspan="2" placeholder="--Select--"/>
-							<field name="partner_id" colspan="2" placeholder="--Select--"/>
-							<field name="date" colspan="2"/>
-							<field name="priority" colspan="2" />
-						</group>
-					</sheet>
-					<footer>
-						<button name="write" string="Save" type="object"
-						class="oe_highlight oe_edit_only" style="color:red" />
-					</footer>
-				</form>
-			</field>
-		</record>
+	<!---->
+		<!--<record id="wds_press_form_view" model="ir.ui.view">-->
+			<!--<field name="name">wds.press.form</field>-->
+			<!--<field name="model">wds.press</field>-->
+			<!--<field name="arch" type="xml">-->
+				<!--<form string="Text" version="7.0">-->
+					<!--<sheet>-->
+						<!--<div class="oe_title">-->
+							<!--<label for="name" class="oe_edit_only"/>-->
+							<!--<h1>-->
+								<!--<field name="name"/>-->
+							<!--</h1>-->
+							<!--<label for="product_id" class="oe_edit_only"/>-->
+							<!--<h3>-->
+								<!--<field name="product_id"/>-->
+							<!--</h3>-->
+						<!--</div>-->
+						<!--<group colspan="4" col="4">-->
+							<!--<label for="comment" colspan="4"/>-->
+							<!--<field name="comment" colspan="4" nolabel="1"/>-->
+							<!--<field name="link" colspan="2" />-->
+							<!--<field name="note" colspan="2"/>-->
+							<!--<field name="lang_id" colspan="2" placeholder="&#45;&#45;Select&#45;&#45;"/>-->
+							<!--<field name="partner_id" colspan="2" placeholder="&#45;&#45;Select&#45;&#45;"/>-->
+							<!--<field name="date" colspan="2"/>-->
+							<!--<field name="priority" colspan="2" />-->
+						<!--</group>-->
+					<!--</sheet>-->
+					<!--<footer>-->
+						<!--<button name="write" string="Save" type="object"-->
+						<!--class="oe_highlight oe_edit_only" style="color:red" />-->
+					<!--</footer>-->
+				<!--</form>-->
+			<!--</field>-->
+		<!--</record>-->
 	</data>
 </openerp>

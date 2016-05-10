@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record id="wds_sync_form_view" model="ir.ui.view">
+			<field name="name">wds.sync.form</field>
+			<field name="model">wds.sync</field>
+			<field name="arch" type="xml">
+				<form string="wds.sync" version="7.0">
+					<header>
+						<field name="id" invisible="1"/>
+					</header>
+					<sheet>
+						<group>
+							<group>
+								<button  name="recover_token" string="Sync 1" type="object" class="oe_highlight oe_edit_only"
+								style="color:red" icon="gtk-apply" context="{'required_domain':required_domain,'url':url,'proxy_handler':proxy_handler,'domain_id':domain_id,'user':user,'password':password}"/>
+								<separator string=" "/>
+I								<label string="Step1: Authentication"/>
+								<separator string=" " class="oe_edit_only"/>
+								<field name="url" class="oe_edit_only"/>
+								<field name="proxy_handler" class="oe_edit_only"/>
+								<field name="protocol" class="oe_edit_only"/>
+								<field name="user" class="oe_edit_only"  />
+								<!--on_change="onchange_user(id,user)"-->
+								<field name="password" class="oe_edit_only"/>
+								<field name="required_domain" invisible="1"/>
+								<separator 	attrs="{'invisible':[('required_domain', '=',True)]}"/>
+								<separator 	attrs="{'invisible':[('required_domain', '=',True)]}"/>
+								<separator 	attrs="{'invisible':[('required_domain', '=',True)]}"/>
+								<separator 	attrs="{'invisible':[('required_domain', '=',True)]}"/>
+								<field name="domain_id" class="oe_edit_only" 	attrs="{'invisible':[('required_domain', '=',False)],}"/>
+								<label for="other_step1" colspan="2" />
+								<field name="other_step1" nolabel="1" colspan="2">
+									<tree string="Other.parameters" editable="bottom" >
+										<field name="name" />
+										<field name="value" />
+									</tree>
+								</field>
+							</group>
+							<group>
+								<button name="sync_wine" string="Sync 2" type="object" class="oe_highlight oe_edit_only"
+								style="color:red" icon="gtk-apply" context="{'url_2':url_2,'token':token,'proxy_handler':proxy_handler,'output':output,'device':device,}" />
+								<separator string=" " />
+								<label string="Step2:"/>
+								<separator string=" " />
+								<field name="token" class="oe_edit_only" />
+								<field name="output" class="oe_edit_only"/>
+								<field name="device" class="oe_edit_only" />
+								<field name="url_2" class="oe_edit_only" />
+								<field name="var_t" class="oe_edit_only" />
+								<label for="other_step2" colspan="2"/>
+								<field name="other_step2" nolabel="1" colspan="2">
+									<tree string="Other.parameters" editable="bottom" >
+										<field name="name" />
+										<field name="value" />
+									</tree>
+								</field>
+							</group>
+						</group>
+						<newline/>
+						<group>
+							<notebook>
+								<page string="Winery From WDS API">
+									<button  name="winery_create" string="Create Winerys" type="object" class="oe_highlight oe_left"
+									style="color:red" icon="gtk-apply" context="{'url_2':url_2,'proxy_handler':proxy_handler,'var_t':var_t,'token':token,'output':output,'device':device,}" 
+									attrs="{'invisible':[('wds_winery_ids', '=',[])]}"/>
+									<newline/>
+									<!--<separator string=" "/>
+									<separator string=" "/>
+									<separator string=" "/>
+									<newline/>
+
+									<field name="select_all"  on_change="onchange_select(id,select_all)" attrs="{'invisible':[('wds_winery_ids', '=',[])]}"/>
+									<label for="select_all" string="Select All New Winerys" attrs="{'invisible':[('wds_winery_ids', '=',[])]}"/>
+									<newline/>-->
+									<field name="wds_winery_ids"  nolabel="1">
+										<tree string="wds winery" fonts="bold:exist==False" editable="bottom" toolbar="1" colors="blue:exist==False;grey:exist==False">
+											<field name="choose" invisible="1"/>
+											<field name="name" />
+											<field name="ceo" />
+											<field name="country" />
+											<field name="city" />
+											<field name="zip" />
+											<field name="sequence"	invisible="1"/>
+											<field name="exist" invisible="1"	/>
+										</tree>
+									</field>
+								</page>
+								<page string="Json">
+									<button  name="create_temporary_winery" colspan="1" string="Create" type="object" class="oe_highlight oe_left"
+									style="color:red"  attrs="{'invisible':[('winery_json_text', '=',False)]}"
+									context="{'winery_json_text':winery_json_text,}" />
+									<separator string=" " />
+									<newline/>
+										<label for="winery_json_text" colspan="2" class="oe_edit_only"/>
+										<separator string=" "/>
+										<field name="winery_json_text" colspan="2" nolabel="1" />
+								</page>
+							</notebook>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record model="ir.actions.act_window" id="action_wds_sync_id">
+			<field name="name">Sync Winery From WDS API</field>
+			<field name="res_model">wds.sync</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+		<menuitem name="Parameters"			sequence="1"	id="wds_sync_parameters_id" parent="wds_product.wds_sync_config_id"	  />
+		<menuitem name="Winery Parameters" sequence="1"	id="wds_sync_wine_parameters_id" parent="wds_sync_parameters_id"	action="action_wds_sync_id"/>
+		<record id="wds_winery_tree_view" model="ir.ui.view">
+			<field name="name">wds.winery.tree</field>
+			<field name="model">wds.winery</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="group.file" fonts="bold:exist==False" editable="bottom" toolbar="1" colors="blue:exist==False;grey:exist==False">
+					<field name="choose" invisible="1" />
+					<!--##########################-->
+					<field name="name" />
+					<field name="ceo" />
+					<field name="country" />
+					<field name="ceo" />
+					<field name="city" />
+					<field name="zip" />
+					<field name="gps_lat" />
+					<field name="gps_long" />
+					<field name="surface" />
+					<field name="gps_long" />
+					<field name="surface" />
+					<!--##########################-->
+					<field name="sequence" 	invisible="1"/>
+					<field name="exist" 	invisible="1" />
+					<!--readonly="1"-->
+				</tree>
+			</field>
+		</record>
+		<record model="ir.actions.act_window" id="action_wds_winery_id">
+			<field name="name">Sync Winery From WDS API</field>
+			<field name="res_model">wds.winery</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree</field>
+			<field name="target">current</field>
+		</record>
+		<menuitem name="Winery.API" sequence="2"	id="wds_winery_wine_parameters_id" parent="wds_sync_parameters_id"	action="action_wds_winery_id"/>
+	</data>
+</openerp>
+<!--
+<field name="property" />
+<field name="vintage" />
+<field name="appelation" />
+<field name="color" />
+<field name="type" />
+<field name="classification" />
+<field name="idwm_Property" />
+<field name="idwm_wine" />
+-->

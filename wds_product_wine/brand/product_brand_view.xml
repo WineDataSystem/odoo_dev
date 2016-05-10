@@ -115,17 +115,17 @@
 				</form>
 			</field>
 		</record>
-		<record model="ir.ui.view" id="view_product_brand_tree">
-			<field name="name">wds.product.brand.tree</field>
-			<field name="model">wds.product.brand</field>
-			<field name="arch" type="xml">
-				<tree string="wds.product.brand">
-					<field name="name"/>
-					<field name="product_count"/>
-					<field name="partner_id"/>
-				</tree>
-			</field>
-		</record>
+		<!--<record model="ir.ui.view" id="view_product_brand_tree">-->
+			<!--<field name="name">wds.product.brand.tree</field>-->
+			<!--<field name="model">wds.product.brand</field>-->
+			<!--<field name="arch" type="xml">-->
+				<!--<tree string="wds.product.brand">-->
+					<!--<field name="name"/>-->
+					<!--<field name="product_count"/>-->
+					<!--<field name="partner_id"/>-->
+				<!--</tree>-->
+			<!--</field>-->
+		<!--</record>-->
 		<record id="product_search_form_view" model="ir.ui.view">
 			<field name="name">product.search.form</field>
 			<field name="model">product.product</field>
