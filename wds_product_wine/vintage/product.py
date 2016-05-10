@@ -84,6 +84,7 @@ class product_template(osv.Model):
 
         name=product_wine_id and self.pool.get('wds.product.wine').browse(cr,uid,int(product_wine_id),context=context).name or False
         name3=""
+        w_bio = wds_agriculturaltype
         if name:
             for i in range(len(name)):
                 if name[i] !=" " or (name[i+1] !="1" and name[i+1] !="2" ):
@@ -96,7 +97,7 @@ class product_template(osv.Model):
             name2=ustr(vintage)
         else:
             name2=ustr(now)
-        values['name']=ustr(name2)
+        values['name']=ustr(name2) + " " + w_bio
         return super(product_template,self).create(cr,uid,values,context=context)
 
     def onchange_vintage(self,cr,uid,ids,product_wine_id,vintage,context=None):
@@ -104,7 +105,7 @@ class product_template(osv.Model):
         # name=ustr(name)
         name=product_wine_id and self.pool.get('wds.product.wine').browse(cr,uid,int(product_wine_id),context=context).name or False
         name3=""
-
+        w_bio=ustr(wds_agriculturaltype)
         if name:
             for i in range(len(name)):
                 if name[i] !=" " or (name[i+1] !="1" and name[i+1] !="2" ):
@@ -112,9 +113,9 @@ class product_template(osv.Model):
                 if name[i] ==" " and (name[i+1] =="1" or name[i+1] =="2" ):
                     break
         if name3 and name3!="":
-            name2=ustr(name3+' '+vintage)
+            name2=ustr(name3+' '+vintage+' '+w_bio)
         else:
-            name2=ustr(vintage)
+            name2=ustr(vintage+' '+w_bio)
         return self.write(cr,uid,ids,{'name':name2},context=context)
     # def name_get(self, cr, uid, ids, context=None):
     #     if isinstance(ids, (list, tuple)) and not len(ids):

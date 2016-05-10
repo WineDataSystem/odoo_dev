@@ -34,15 +34,15 @@
 							</group>
 						</group>
 						<newline/>
-						<group class="oe_left">
-							<field name="vintage_ids">
-								<tree  string="Vintage" >
-									<field name="vintage"/>
-									<field name="name"/>
-									<field name="classification_ids" widget="many2many_tags"/>
-								</tree>
-							</field>
-						</group>
+						<!--<group class="oe_left">-->
+							<!--<field name="vintage_ids">-->
+								<!--<tree  string="Vintage" >-->
+									<!--<field name="vintage"/>-->
+									<!--<field name="name"/>-->
+									<!--<field name="classification_ids" widget="many2many_tags"/>-->
+								<!--</tree>-->
+							<!--</field>-->
+						<!--</group>-->
 					</sheet>
 				</form>
 			</field>

@@ -34,63 +34,67 @@
 				<!--<field name='seller_ids' context="{'default_product_tmpl_id':id}"/>-->
 			<!--</field>-->
 			<field name="name" position="replace">
-				<field name="name" readonly="1" class="oe_inline"/>
+				<field name="name" attrs="{'readonly': [('w_iswine', '=', True)]}" class="oe_inline"/>
+				<!--<field name="name" attrs="{'readonly': [('w_iswine', '=', True)], 'required': [('w_iswine', '=', True)]}" readonly="context.get('w_iswine',True)" class="oe_inline"/>-->
+
 			</field>
 
 			<xpath expr="//div[@class='oe_left']/div[@class='oe_title']" position="inside">
-				<separator string=" " attrs="{'invisible':[('w_iswine','=',False)]}"/>
-				<newline attrs="{'invisible':[('w_iswine','=',False)]}"/>
-				<label class="oe_edit_only" for="vintage" string="Product Vintage" attrs="{'invisible':[('w_iswine','=',False)]}"/>
-				<h3 attrs="{'invisible':[('w_iswine','=',False)]}">
-					<field name="vintage" placeholder="Vintage..." on_change="onchange_vintage(product_wine_id,vintage)" class="oe_inline" readonly="context.get('variant_ok',False)"/>
+				<separator string=" " />
+				<field string="Est un vin" name="w_iswine" readonly="context.get('variant_ok',False)"/>
+				<newline attrs="{'invisible':[('w_iswine','=',False)]}" />
+				<label class="oe_edit_only" for="vintage" string="Millésime" attrs="{'invisible':[('w_iswine','=',False)]}" readonly="context.get('variant_ok',False)"/>
+				<h3 >
+					<field name="vintage" placeholder="Vintage..." on_change="onchange_vintage(product_wine_id,vintage)" class="oe_inline" attrs="{'invisible':[('w_iswine','=',False)]}" readonly="context.get('variant_ok',False)"/>
 				</h3>
 			</xpath>
 			<field name="sale_ok" 		position="replace"/>
 			<label  for="sale_ok" 		position="replace"/>
 			<xpath expr="//div/div[@name='options']/div" position="inside">
-				<div attrs="{'invisible':[('w_iswine','=',False)]}">
+				<div >
 					<h3>
-						<field name="product_brand_id" placeholder="--Marque--" readonly="context.get('variant_ok',False)" />
-						<field name="product_wine_id" on_change="onchange_vintage(product_wine_id,vintage)" placeholder="wine" readonly="context.get('variant_ok',False)" />
+						<!--<field name="product_brand_id" placeholder="&#45;&#45;Marque&#45;&#45;" readonly="context.get('variant_ok',False)" />-->
+						<field name="product_wine_id" on_change="onchange_vintage(product_wine_id,vintage)" placeholder="wine" attrs="{'invisible': [('w_iswine', '=', False)], 'required': [('w_iswine', '=', True)]}" readonly="context.get('variant_ok',False)"/>
 					</h3>
 				</div>
 			</xpath>
-			<xpath expr="//div[@class='oe_chatter']"  		position="after">
-				<footer class="oe_edit_only" >
-					<button name="write" string="Save" type="object" class="oe_highlight oe_edit_only" style="color:red" />
-					or
-					<button string="Cancel" class="oe_link oe_edit_only" special="cancel"/>
-				</footer>
-			</xpath>
+			<!--<xpath expr="//div[@class='oe_chatter']"  		position="after">-->
+				<!--<footer class="oe_edit_only" >-->
+					<!--<button name="write" string="Save" type="object" class="oe_highlight oe_edit_only" style="color:red" />-->
+					<!--or-->
+					<!--<button string="Cancel" class="oe_link oe_edit_only" special="cancel"/>-->
+				<!--</footer>-->
+			<!--</xpath>-->
 			<field name="active"  position="after">
 				<field name="sale_ok" />
 				<!--<field name="purchase_ok" attrs="{'readonly': [('is_product_variant', '=', False)]}"/>-->
 			</field>
 			<xpath expr="//page[@string='Information']" position="before">
-				<page string="Viticulture" attrs="{'invisible':[('w_iswine','=',False)]}">
-					<group name="viticulture">
+				<page string="Wine" attrs="{'invisible':[('w_iswine','=',False)]}" >
+					<group name="wine">
 						<group name="left">
-							<field name="classification_id"   placeholder="--Select--"/>
-							<field name="alcoholic_strength"  />
+							<field name="agricultural_type_id"   placeholder="--Select--" readonly="context.get('variant_ok',False)"/>
+							<field name="alcoholic_strength" readonly="context.get('variant_ok',False)" />
+							<field name="winetax"/>
 						</group >
 					</group>
 				</page>
-				<page string="Press" attrs="{'invisible':[('w_iswine','=',False)]}">
-					<group name="Press" colspan="4" cols="4">
-						<field name="id" invisible="1"/>
-						<field name="press_ids" context="{'default_product_id':id}" nolabel="1" colspan="4">
-							<tree string="Presses" editable="bottom">
-								<button name="show_press_form" string="Détails" type="object" icon="terp-stock_zoom" />
-								<field name="lang_id"		placeholder="--Select--"/>
-								<field name="name"/>
-								<field name="partner_id"	placeholder="--Select--"/>
-								<field name="date"/>
-								<field name="note"/>
-								<field name="priority"/>
-							</tree>
-						</field>
-					</group>
-				</page>
+				<!--<page string="Press" >-->
+					<!--<group name="Press" colspan="4" cols="4">-->
+						<!--<field name="id" invisible="1"/>-->
+						<!--<field name="press_ids" context="{'default_product_id':id}" nolabel="1" colspan="4">-->
+							<!--<tree string="Presses" editable="bottom">-->
+								<!--<button name="show_press_form" string="Détails" type="object" icon="terp-stock_zoom" />-->
+								<!--<field name="lang_id"		placeholder="&#45;&#45;Select&#45;&#45;"/>-->
+								<!--<field name="name"/>-->
+								<!--<field name="partner_id"	placeholder="&#45;&#45;Select&#45;&#45;"/>-->
+								<!--<field name="date"/>-->
+								<!--<field name="note"/>-->
+								<!--<field name="priority"/>-->
+							<!--</tree>-->
+						<!--</field>-->
+					<!--</group>-->
+				<!--</page>-->
 			</xpath>
 		</field>
 	</record>
@@ -102,19 +106,20 @@
 			<field name="name" position="after" >
 				<field name="vintage" options='{"no_open":True}' invisible="context.get('vintage',False)" />
 				<field name="alcoholic_strength"  />
-				<field name="classification_id"  />
+				<field name="agricultural_type_id"  />
+				<!--<field name="classification_id"  />-->
 			</field>
 		</field>
 	</record>
-	<!--<record id="product_search_form_view2" model="ir.ui.view">
-	<field name="name">product.template.search</field>
-	<field name="model">product.template</field>
-	<field name="inherit_id" ref="product.product_search_form_view"/>
-	<field name="arch" type="xml">
-	<xpath expr="//group[@string='Group by...']" position="inside">
-	<filter string='Vintage' name="vintage" domain="[]" context="{'group_by' : 'vintage'}"/>
-	</xpath>
-	</field>
-	</record>-->
+	<!--<record id="product_search_form_view2" model="ir.ui.view">&ndash;&gt;-->
+		<!--<field name="name">product.template.search</field>-->
+		<!--<field name="model">product.template</field>-->
+		<!--<field name="inherit_id" ref="product.product_search_form_view"/>-->
+		<!--<field name="arch" type="xml">-->
+		<!--<xpath expr="//group[@string='Group by...']" position="inside">-->
+			<!--<filter string='Vintage' name="vintage" domain="[]" context="{'group_by' : 'vintage'}"/>-->
+		<!--</xpath>-->
+		<!--</field>-->
+	<!--</record>-->
 </data>
 </openerp>

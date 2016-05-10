@@ -11,6 +11,7 @@
                     <field name="product_tmpl_id" readonly="True" />
                     <field name="attribute_value_ids" widget="many2many_tags"/>
                     <field name="standard_price"/>
+                    <!--<field name="datetime"/>-->
                     <field name="lst_price" />
                     <field name="price" invisible="not context.get('pricelist',False)"/>
                     <field name="uom_id" readonly="True"/>
