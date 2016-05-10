@@ -47,34 +47,36 @@ class product_template(osv.Model):
 #                 bool(journal.currency),bool(journal.analytic_journal_id)))
 #         return result
     def create(self,cr,uid,values,context=None):
-#         print "'##############"
-#         print values
-#         print "'##############"
-#         value_proxy=self.pool.get('product.attribute.value')
-#         attr_proxt =self.pool.get('product.attribute')
-#         attrs_ids=attr_proxt.search(cr, uid, ['|',('name', 'like', 'vintage'),('name', 'like', 'Vintage')], limit=1)
-#         if not isinstance(attrs_ids, (int, long)):
-#             attrs_id=attrs_ids[0]
-#         else:
-#             attrs_id=attrs_ids
-#
-#         print '########'
-#         print 'attrs_id: %s' %(attrs_id,)
-#         print '########'
-#
-#         attribute_ids=values.get('attribute_value_ids')[0][2]
-#         value_objs=value_proxy.browse(cr,uid,attribute_ids,context=context)
-#         print '########'
-#         print 'value_objs: %s' %(value_objs,)
-#         print '########'
-#
-#         for value_obj in value_objs:
-#             if value_obj.attribute_id.id == attrs_id:
-#                 values['vintage']=value_obj.name
-#                 print '########'
-#                 print 'vintage: %s' %(values.get('vintage',''),)
-#                 print '########'
 
+        # supprimé dans original
+        # print "'##############"
+        # print values
+        # print "'##############"
+        # value_proxy=self.pool.get('product.attribute.value')
+        # attr_proxt =self.pool.get('product.attribute')
+        # attrs_ids=attr_proxt.search(cr, uid, ['|',('name', 'like', 'vintage'),('name', 'like', 'Vintage')], limit=1)
+        # if not isinstance(attrs_ids, (int, long)):
+        #     attrs_id=attrs_ids[0]
+        # else:
+        #     attrs_id=attrs_ids
+        #
+        # print '########'
+        # print 'attrs_id: %s' %(attrs_id,)
+        # print '########'
+        #
+        # attribute_ids=values.get('attribute_value_ids')[0][2]
+        # value_objs=value_proxy.browse(cr,uid,attribute_ids,context=context)
+        # print '########'
+        # print 'value_objs: %s' %(value_objs,)
+        # print '########'
+        #
+        # for value_obj in value_objs:
+        #     if value_obj.attribute_id.id == attrs_id:
+        #         values['vintage']=value_obj.name
+        #         print '########'
+        #         print 'vintage: %s' %(values.get('vintage',''),)
+        #         print '########'
+        # supprimé jusque là
 
         vintage = values.get('vintage',False)
         #name    = values.get('name',False)
@@ -99,7 +101,7 @@ class product_template(osv.Model):
 
     def onchange_vintage(self,cr,uid,ids,product_wine_id,vintage,context=None):
         vintage=ustr(vintage)
-        #name=ustr(name)
+        # name=ustr(name)
         name=product_wine_id and self.pool.get('wds.product.wine').browse(cr,uid,int(product_wine_id),context=context).name or False
         name3=""
 
@@ -218,11 +220,12 @@ class product_template(osv.Model):
                 'w_iswine'              : fields.boolean('Select if wine'),
                 'vintage'               : fields.selection([(num, str(num)) for num in sorted(range(1900,int(now())+1), reverse=True)], 'Vintage',),
                 'alcoholic_strength'    : fields.float(ustr('Alcoholic strength (%vol.)')),
-                'classification_id'     : fields.many2one('wds.classification', 'Classification',track_visibility='onchange', ),
-                'press_ids'             : fields.one2many('wds.press','product_id','Presses'),
+                # 'classification_id'     : fields.many2one('wds.classification', 'Classification',track_visibility='onchange', ),
+                # 'press_ids'             : fields.one2many('wds.press','product_id','Presses'),
                 'product_wine_id'       : fields.many2one('wds.product.wine','wine',help='Select a wine for this product.',ondelete='restrict'),
+                'agricultural_type_id': fields.many2one('wds.agriculturaltype', 'Agricultural type', ),
 
-#                 'is_offer'              : fields.boolean('Is Offer'),
+        #                 'is_offer'              : fields.boolean('Is Offer'),
 #                 'parent_id'             : fields.many2one('product.template','Parent Product', select=True, ondelete='cascade'),
 #                 'child_ids'             : fields.one2many('product.template','parent_id', string='Child Products'),
 #                 'parent_left'           : fields.integer('Left Parent', select=1),
@@ -231,7 +234,7 @@ class product_template(osv.Model):
                 #offer:
                 #natif...+
 #                 'format'                : fields.char('Format',size=50),
-#                 'winetax'               : fields.selection([(tax, str(tax)) for tax in ['CRD','acquit','?']], 'Wine Tax',),#Régie
+                'winetax'               : fields.selection([(tax, str(tax)) for tax in ['CRD','acquit','?']], 'Wine Tax',),#Régie
 #                 'supplier_wds_id'        : fields.many2one('res.partner',string="Supplier",domain="[('supplier','=',True)]" ),
 #                 'conditioning'          : fields.selection([(num, str(num)) for num in range(1, 24)], ustr('Conditioning'),),
 #                 'package_type'               : fields.selection([(str(type), str(type)) for type in ['CBO','BTL','CBO','CBOP','CBN','CTD','CTN','TB','VRAC','Cuve']], ustr('Type'),),
@@ -251,53 +254,59 @@ class product_template(osv.Model):
 #         return [ids]
 
 
-class wds_press(osv.Model):
-    _name ='wds.press'
-    def _now(self,cr,uid,context=None):
-        return time.strftime('%Y-%m-%d')
-    _columns = {
-                'name'          : fields.many2one('wds.press.comment.type', 'Comment type',),
-                'lang_id'       : fields.many2one('res.lang','Language',),
-                'partner_id'    : fields.many2one('res.partner','Partner'),
-                'date'          : fields.date('Date'),
-                'note'          : fields.char('Note',size=20,translate=True),
-                'priority'      : fields.many2one('wds.press.comment.priority', 'Priority'),
-                'link'          : fields.char('Link'),#FIXME: in xml code add widget="url"
-                'comment'       : fields.text('Comment',translate=True),
-                'product_id'    : fields.many2one('product.template','Product'),
-                }
-    _defaults = {
-                 'date':_now,
-                }
+# class wds_press(osv.Model):
+#     _name ='wds.press'
+#     def _now(self,cr,uid,context=None):
+#         return time.strftime('%Y-%m-%d')
+#     _columns = {
+#                 'name'          : fields.many2one('wds.press.comment.type', 'Comment type',),
+#                 'lang_id'       : fields.many2one('res.lang','Language',),
+#                 'partner_id'    : fields.many2one('res.partner','Partner'),
+#                 'date'          : fields.date('Date'),
+#                 'note'          : fields.char('Note',size=20,translate=True),
+#                 'priority'      : fields.many2one('wds.press.comment.priority', 'Priority'),
+#                 'link'          : fields.char('Link'),#FIXME: in xml code add widget="url"
+#                 'comment'       : fields.text('Comment',translate=True),
+#                 'product_id'    : fields.many2one('product.template','Product'),
+#                 }
+#     _defaults = {
+#                  'date':_now,
+#                 }
+    #
+    # def show_press_form(self, cr, uid, ids, context=None):
+    #     ids = ids[0]
+    #     action = {
+    #             'type'      : 'ir.actions.act_window',
+    #             'name'      : 'Press',
+    #             'view_type' : 'form',
+    #             'view_mode' : 'form,tree',
+    #             'res_model' : 'wds.press',
+    #             'res_id'    : ids,
+    #             'context'   : context,
+    #             'target'    : 'new',
+    #             }
+    #     return action
+#
+# class wds_press_comment_type(osv.Model):
+#     _name ='wds.press.comment.type'
+#     _columns = {
+#                 'name'          : fields.char('name',size=50,translate=True),
+#                 }
+# class wds_press_comment_priority(osv.Model):
+#     _name ='wds.press.comment.priority'
+#     _columns = {
+#                 'name'          : fields.char('name',size=50,translate=True),
+#                 }
+# class wds_classification(osv.Model):
+#     _name ='wds.classification'
+#     _columns = {
+#                 'name'          : fields.char('name', size=250, translate=True),
+#                 }
 
-    def show_press_form(self, cr, uid, ids, context=None):
-        ids = ids[0]
-        action = {
-                'type'      : 'ir.actions.act_window',
-                'name'      : 'Press',
-                'view_type' : 'form',
-                'view_mode' : 'form,tree',
-                'res_model' : 'wds.press',
-                'res_id'    : ids,
-                'context'   : context,
-                'target'    : 'new',
-                }
-        return action
-
-class wds_press_comment_type(osv.Model):
-    _name ='wds.press.comment.type'
+class wds_agriculturaltype(osv.Model):
+    _name ='wds.agriculturaltype'
     _columns = {
-                'name'          : fields.char('name',size=50,translate=True),
-                }
-class wds_press_comment_priority(osv.Model):
-    _name ='wds.press.comment.priority'
-    _columns = {
-                'name'          : fields.char('name',size=50,translate=True),
-                }
-class wds_classification(osv.Model):
-    _name ='wds.classification'
-    _columns = {
-                'name'          : fields.char('name', size=250, translate=True),
+                'name'          : fields.char('name', translate=True),
                 }
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
