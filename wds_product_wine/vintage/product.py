@@ -1,16 +1,21 @@
 # -*- coding: utf-8 -*-
 import time
 import openerp.addons.decimal_precision as      dp
-from openerp                            import  tools, api
-from openerp.osv                        import  osv, fields
-from openerp.tools.translate            import  _
+# from openerp                            import  tools, api
+# from openerp.osv                        import  osv, fields
+# from openerp.tools.translate            import  _
 from openerp.tools                      import  ustr
+from openerp import tools, models, fields, api, _
+
+import logging
+_logger = logging.getLogger(__name__)
 
 def now():
     return time.strftime('%Y')
 
-class product_template(osv.Model):
+class product_template(models.Model):
     _inherit ='product.template'
+
     def get_vintages(self, cr, uid, ids, context=None):
         ids = ids[0]
         action = {
@@ -24,6 +29,7 @@ class product_template(osv.Model):
                 'target'    :'current',
                 }
         return action
+
     def list_vintages(self, cr, uid, context=None):
         ng = dict(self.name_search(cr,uid,'',[]))
         print "NG %s" %(ng,)
@@ -46,7 +52,94 @@ class product_template(osv.Model):
 #             result.append((journal.id,ng[journal.id],journal.type,
 #                 bool(journal.currency),bool(journal.analytic_journal_id)))
 #         return result
-    def create(self,cr,uid,values,context=None):
+
+    # , 'product_wine_id.name','product_wine_id.appellation_id','product_wine_id.brand_id','product_wine_id.color_id','product_wine_id.grape_id'
+
+    def get_wine_name(self,cr,uid,vals,product_id=False,context=None):
+        if context is None:
+            context = {}
+        name = ''
+        if (product_id and product_id.w_iswine) or vals.get('w_iswine',False):
+            name = ''
+            ## INFOS PRODUCT_WINE_ID
+            wine_vals = {}
+            if (product_id and product_id.product_wine_id) or vals.get('product_wine_id',False):
+                if vals.get('product_wine_id',False):
+                    wine = self.pool.get('wds.product.wine').browse(cr,uid,vals['product_wine_id'],context=context)
+                    wine_vals['name'] = wine.name
+                    if wine.grape_id:
+                        wine_vals['grape'] = wine.grape_id.name
+                    if wine.appellation_id or wine.color_id:
+                        if wine.appellation_id:
+                            wine_vals['appellation'] = wine.appellation_id.name
+                        if wine.color_id:
+                            wine_vals['color'] = wine.color_id.name
+                else:
+                    wine_vals['name'] = product_id.product_wine_id.name
+                    if product_id.product_wine_id.grape_id:
+                        wine_vals['grape'] = product_id.product_wine_id.grape_id.name
+                    if product_id.product_wine_id.appellation_id or product_id.product_wine_id.color_id:
+                        if product_id.product_wine_id.appellation_id:
+                            wine_vals['appellation'] = product_id.product_wine_id.appellation_id.name
+                        if product_id.product_wine_id.color_id:
+                            wine_vals['color'] = product_id.product_wine_id.color_id.name
+            name += wine_vals['name']
+            if wine_vals.get('grape',False):
+                name += ' '+wine_vals['grape']
+            if (product_id and product_id.vintage and product_id.vintage > 0) or vals.get('vintage',False) > 0:
+                vintage = vals['vintage'] if vals.get('vintage',False) else product_id.vintage
+                name += ' '+str(vintage)
+            if wine_vals.get('appellation',False) or wine_vals.get('color',False):
+                name += ', '
+                if wine_vals.get('appellation',False):
+                    name += wine_vals['appellation']
+                if wine_vals.get('color',False):
+                    name += ' '+wine_vals['color']
+            uom_id = vals['uom_id'] if vals.get('uom_id',False) else False
+            if uom_id:
+                uom = self.pool.get('product.uom').browse(cr,uid,uom_id,context=context)
+            else:
+                uom = product_id.uom_id
+            name += ', '+uom.name
+            if (product_id and product_id.alcoholic_strength > 0) or vals.get('alcoholic_strength',False) > 0:
+                name += ', '+str(vals['alcoholic_strength'])+'% Vol.' if vals.get('alcoholic_strength',False) else ', '+str(product_id.alcoholic_strength)+'% Vol.'
+            if (product_id and product_id.agricultural_type_id) or vals.get('agricultural_type_id',False):
+                agricultural_type_id = vals['agricultural_type_id'] if vals.get('agricultural_type_id',False) else False
+                if agricultural_type_id:
+                    agri_type = self.pool.get('wds.agriculturaltype').browse(cr,uid,agricultural_type_id)
+                else:
+                    agri_type = product_id.agricultural_type_id
+                name += ', '+agri_type.name
+            if (product_id and product_id.winetax) or vals.get('winetax',False):
+                name += ', '+vals['winetax'] if vals.get('winetax',False) else ', '+product_id.winetax
+        return name
+
+    # @api.v8
+    # @api.model
+    # def create(self,vals):
+    #     if vals.get('w_iswine',False):
+    #         vals['name'] = self.get_wine_name(vals)
+    #     return super(product_template, self).create(vals)
+
+    def create(self,cr,uid,vals,context=None):
+        context = dict(context or {})
+        if vals.get('w_iswine',False):
+            vals['name'] = self.get_wine_name(cr,uid,vals,False,context)
+        return super(product_template, self).create(cr,uid,vals,context)
+
+    # @api.v8
+    # @api.model
+    # def write(self, vals):
+    #     if self.w_iswine or vals.get('w_iswine',False):
+    #         vals['name'] = self.get_wine_name(vals)
+    #     return super(product_template, self).write(vals)
+
+    def write(self,cr,uid,ids,vals,context=None):
+        context = dict(context or {})
+        for product in self.browse(cr,uid,ids,context=context):
+            if product.w_iswine or vals.get('w_iswine',False):
+                vals['name'] = self.get_wine_name(cr,uid,vals,product,context)
+        return super(product_template, self).write(cr,uid,ids,vals,context)
 
         # supprimé dans original
         # print "'##############"
@@ -78,45 +171,45 @@ class product_template(osv.Model):
         #         print '########'
         # supprimé jusque là
 
-        vintage = values.get('vintage',False)
+        # vintage = values.get('vintage',False)
         #name    = values.get('name',False)
-        product_wine_id    = values.get('product_wine_id',False)
+        # product_wine_id    = values.get('product_wine_id',False)
+        #
+        # name=product_wine_id and self.pool.get('wds.product.wine').browse(cr,uid,int(product_wine_id),context=context).name or False
+        # name3=""
+        # w_bio = wds_agriculturaltype
+        # if name:
+        #     for i in range(len(name)):
+        #         if name[i] !=" " or (name[i+1] !="1" and name[i+1] !="2" ):
+        #             name3 +=ustr(name[i])
+        #         if name[i] ==" " and (name[i+1] =="1" or name[i+1] =="2" ):
+        #             break
+        # if name3 and name3!="" and vintage:
+        #     name2=ustr(name3+' '+ustr(vintage))
+        # elif vintage:
+        #     name2=ustr(vintage)
+        # else:
+        #     name2=ustr(now)
+        # values['name']=ustr(name2) + " " + w_bio
+        # return super(product_template,self).create(cr,uid,values,context=context)
 
-        name=product_wine_id and self.pool.get('wds.product.wine').browse(cr,uid,int(product_wine_id),context=context).name or False
-        name3=""
-        w_bio = wds_agriculturaltype
-        if name:
-            for i in range(len(name)):
-                if name[i] !=" " or (name[i+1] !="1" and name[i+1] !="2" ):
-                    name3 +=ustr(name[i])
-                if name[i] ==" " and (name[i+1] =="1" or name[i+1] =="2" ):
-                    break
-        if name3 and name3!="" and vintage:
-            name2=ustr(name3+' '+ustr(vintage))
-        elif vintage:
-            name2=ustr(vintage)
-        else:
-            name2=ustr(now)
-        values['name']=ustr(name2) + " " + w_bio
-        return super(product_template,self).create(cr,uid,values,context=context)
-
-    def onchange_vintage(self,cr,uid,ids,product_wine_id,vintage,context=None):
-        vintage=ustr(vintage)
+    # def onchange_vintage(self,cr,uid,ids,product_wine_id,vintage,context=None):
+    #     vintage=ustr(vintage)
         # name=ustr(name)
-        name=product_wine_id and self.pool.get('wds.product.wine').browse(cr,uid,int(product_wine_id),context=context).name or False
-        name3=""
-        w_bio=ustr(wds_agriculturaltype)
-        if name:
-            for i in range(len(name)):
-                if name[i] !=" " or (name[i+1] !="1" and name[i+1] !="2" ):
-                    name3 +=ustr(name[i])
-                if name[i] ==" " and (name[i+1] =="1" or name[i+1] =="2" ):
-                    break
-        if name3 and name3!="":
-            name2=ustr(name3+' '+vintage+' '+w_bio)
-        else:
-            name2=ustr(vintage+' '+w_bio)
-        return self.write(cr,uid,ids,{'name':name2},context=context)
+        # name=product_wine_id and self.pool.get('wds.product.wine').browse(cr,uid,int(product_wine_id),context=context).name or False
+        # name3=""
+        # w_bio=ustr(wds_agriculturaltype)
+        # if name:
+        #     for i in range(len(name)):
+        #         if name[i] !=" " or (name[i+1] !="1" and name[i+1] !="2" ):
+        #             name3 +=ustr(name[i])
+        #         if name[i] ==" " and (name[i+1] =="1" or name[i+1] =="2" ):
+        #             break
+        # if name3 and name3!="":
+        #     name2=ustr(name3+' '+vintage+' '+w_bio)
+        # else:
+        #     name2=ustr(vintage+' '+w_bio)
+        # return self.write(cr,uid,ids,{'name':name2},context=context)
     # def name_get(self, cr, uid, ids, context=None):
     #     if isinstance(ids, (list, tuple)) and not len(ids):
     #         return []
@@ -217,14 +310,22 @@ class product_template(osv.Model):
                 }
         return action
 
-    _columns = {
-                'w_iswine'              : fields.boolean('Select if wine'),
-                'vintage'               : fields.selection([(num, str(num)) for num in sorted(range(1900,int(now())+1), reverse=True)], 'Vintage',),
-                'alcoholic_strength'    : fields.float(ustr('Alcoholic strength (%vol.)')),
+    name = fields.Char(default='/')
+    w_iswine = fields.Boolean('Select if wine')
+    vintage = fields.Selection([(num, str(num)) for num in sorted(range(1900,int(now())+1), reverse=True)], 'Vintage')
+    alcoholic_strength = fields.Float(ustr('Alcoholic strength (%vol.)'))
+    product_wine_id = fields.Many2one('wds.product.wine','wine',help='Select a wine for this product.',ondelete='restrict')
+    agricultural_type_id = fields.Many2one('wds.agriculturaltype', 'Agricultural type', )
+    winetax = fields.Selection([(tax, str(tax)) for tax in ['CRD','Neutre','Acquit','?']], 'Wine Tax')
+
+    # _columns = {
+    #             'w_iswine'              : fields.boolean('Select if wine'),
+    #             'vintage'               : fields.selection([(num, str(num)) for num in sorted(range(1900,int(now())+1), reverse=True)], 'Vintage',),
+    #             'alcoholic_strength'    : fields.float(ustr('Alcoholic strength (%vol.)')),
                 # 'classification_id'     : fields.many2one('wds.classification', 'Classification',track_visibility='onchange', ),
                 # 'press_ids'             : fields.one2many('wds.press','product_id','Presses'),
-                'product_wine_id'       : fields.many2one('wds.product.wine','wine',help='Select a wine for this product.',ondelete='restrict'),
-                'agricultural_type_id': fields.many2one('wds.agriculturaltype', 'Agricultural type', ),
+                # 'product_wine_id'       : fields.many2one('wds.product.wine','wine',help='Select a wine for this product.',ondelete='restrict'),
+                # 'agricultural_type_id': fields.many2one('wds.agriculturaltype', 'Agricultural type', ),
 
         #                 'is_offer'              : fields.boolean('Is Offer'),
 #                 'parent_id'             : fields.many2one('product.template','Parent Product', select=True, ondelete='cascade'),
@@ -235,15 +336,15 @@ class product_template(osv.Model):
                 #offer:
                 #natif...+
 #                 'format'                : fields.char('Format',size=50),
-                'winetax'               : fields.selection([(tax, str(tax)) for tax in ['CRD','acquit','?']], 'Wine Tax',),#Régie
+                # 'winetax'               : fields.selection([(tax, str(tax)) for tax in ['CRD','acquit','?']], 'Wine Tax',),#Régie
 #                 'supplier_wds_id'        : fields.many2one('res.partner',string="Supplier",domain="[('supplier','=',True)]" ),
 #                 'conditioning'          : fields.selection([(num, str(num)) for num in range(1, 24)], ustr('Conditioning'),),
 #                 'package_type'               : fields.selection([(str(type), str(type)) for type in ['CBO','BTL','CBO','CBOP','CBN','CTD','CTN','TB','VRAC','Cuve']], ustr('Type'),),
 #                 'quantity_wm'           : fields.integer('Quantity'),
-                }
-    _defaults = {
-                 'name':'/',
-                }
+    #             }
+    # _defaults = {
+    #              'name':'/',
+    #             }
 #     _parent_name = "parent_id"
 #     _parent_store = True
 #     _parent_order = 'sequence, name'
@@ -304,10 +405,15 @@ class product_template(osv.Model):
 #                 'name'          : fields.char('name', size=250, translate=True),
 #                 }
 
-class wds_agriculturaltype(osv.Model):
+
+class wds_agriculturaltype(models.Model):
     _name ='wds.agriculturaltype'
-    _columns = {
-                'name'          : fields.char('name', translate=True),
-                }
+
+    name = fields.Char('Name',translate=True)
+    shortname = fields.Char('Short name', translate=True)
+
+    # _columns = {
+    #             'name'          : fields.char('name', translate=True),
+    #             }
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

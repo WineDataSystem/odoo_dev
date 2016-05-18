@@ -34,19 +34,22 @@
 				<!--<field name='seller_ids' context="{'default_product_tmpl_id':id}"/>-->
 			<!--</field>-->
 			<field name="name" position="replace">
-				<field name="name" attrs="{'readonly': [('w_iswine', '=', True)]}" class="oe_inline"/>
+				<field name="name" attrs="{'readonly':[('w_iswine', '=', True)]}" class="oe_inline"/>
 				<!--<field name="name" attrs="{'readonly': [('w_iswine', '=', True)], 'required': [('w_iswine', '=', True)]}" readonly="context.get('w_iswine',True)" class="oe_inline"/>-->
 
 			</field>
 
 			<xpath expr="//div[@class='oe_left']/div[@class='oe_title']" position="inside">
-				<separator string=" " />
-				<field string="Est un vin" name="w_iswine" readonly="context.get('variant_ok',False)"/>
-				<newline attrs="{'invisible':[('w_iswine','=',False)]}" />
-				<label class="oe_edit_only" for="vintage" string="Millésime" attrs="{'invisible':[('w_iswine','=',False)]}" readonly="context.get('variant_ok',False)"/>
-				<h3 >
-					<field name="vintage" placeholder="Vintage..." on_change="onchange_vintage(product_wine_id,vintage)" class="oe_inline" attrs="{'invisible':[('w_iswine','=',False)]}" readonly="context.get('variant_ok',False)"/>
-				</h3>
+				<div class="col-md-12">
+					<label for="w_iswine" string="Est un vin"/>
+					<field name="w_iswine" readonly="context.get('variant_ok',False)"/>
+				</div>
+				<div class="col-md-12">
+					<label class="oe_edit_only" for="vintage" string="Millésime" attrs="{'invisible':[('w_iswine','=',False)]}" readonly="context.get('variant_ok',False)"/>
+					<h3 >
+						<field name="vintage" placeholder="Vintage..." class="oe_inline" attrs="{'invisible':[('w_iswine','=',False)]}" readonly="context.get('variant_ok',False)"/>
+					</h3>
+				</div>
 			</xpath>
 			<field name="sale_ok" 		position="replace"/>
 			<label  for="sale_ok" 		position="replace"/>
@@ -54,7 +57,7 @@
 				<div >
 					<h3>
 						<!--<field name="product_brand_id" placeholder="&#45;&#45;Marque&#45;&#45;" readonly="context.get('variant_ok',False)" />-->
-						<field name="product_wine_id" on_change="onchange_vintage(product_wine_id,vintage)" placeholder="wine" attrs="{'invisible': [('w_iswine', '=', False)], 'required': [('w_iswine', '=', True)]}" readonly="context.get('variant_ok',False)"/>
+						<field name="product_wine_id" placeholder="wine" attrs="{'invisible': [('w_iswine', '=', False)], 'required': [('w_iswine', '=', True)]}" readonly="context.get('variant_ok',False)"/>
 					</h3>
 				</div>
 			</xpath>
@@ -103,7 +106,7 @@
 		<field name="model">product.template</field>
 		<field name="inherit_id" ref="product.product_template_tree_view"/>
 		<field name="arch" type="xml">
-			<field name="name" position="after" >
+			<field name="name" position="after">
 				<field name="vintage" options='{"no_open":True}' invisible="context.get('vintage',False)" />
 				<field name="alcoholic_strength"  />
 				<field name="agricultural_type_id"  />
