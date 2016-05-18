@@ -152,7 +152,7 @@ class wds_account_ventes_report(osv.osv):
                 a.type as type,
                 a.user_type as user_type,
                 1 as nbr,
-                l.quantity as quantity,
+                Case when a.code <> '665000' then l.quantity else 0 end as quantity,
                 l.currency_id as currency_id,
                 case when rp.country_id is NULL or rp.country_id=0 then 76
                 when ai.fiscal_position=0 then 76
@@ -171,7 +171,7 @@ class wds_account_ventes_report(osv.osv):
                 left join res_partner rp on l.partner_id= rp.id
                 left join product_product pp on l.product_id=pp.id
                 left join product_template pt on pp.product_tmpl_id=pt.id
-                where l.state != 'draft' and a.code like '70%'
+                where l.state != 'draft' and (a.code like '70%' or a.code = '665000')
             ) y left join res_country_res_country_group_rel rcrcg on country_id=rcrcg.res_country_id)
         """)
 

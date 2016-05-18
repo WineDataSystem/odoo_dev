@@ -110,16 +110,16 @@ class avancement_ca_client_list(osv.osv):
                      case when ai.section_id is not null then ai.section_id
                      when rp.section_id is not null then rp.section_id
                      else 36 end section_id,
-                sum(CASE when EXTRACT (YEAR FROM l.date) = EXTRACT (YEAR FROM CURRENT_DATE) then
+                sum(CASE when EXTRACT (YEAR FROM l.date) = EXTRACT (YEAR FROM CURRENT_DATE) and a.code <> '665000' then
                     CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
-                    THEN - l.quantity ELSE l.quantity end else 0 end ) qty_annee ,
-                sum(CASE when EXTRACT (YEAR FROM l.date) = EXTRACT (YEAR FROM CURRENT_DATE)- 1 then
+                     THEN - l.quantity ELSE l.quantity end else 0 end ) qty_annee ,
+                sum(CASE when EXTRACT (YEAR FROM l.date) = EXTRACT (YEAR FROM CURRENT_DATE)- 1 and a.code <> '665000' then
                     CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
-                    THEN - l.quantity ELSE l.quantity end else 0 end ) qty_prev_annee ,
-                sum(CASE when EXTRACT (YEAR FROM l.date) = EXTRACT (YEAR FROM CURRENT_DATE) then
+                     THEN - l.quantity ELSE l.quantity end else 0 end ) qty_prev_annee ,
+                sum(CASE when EXTRACT (YEAR FROM l.date) = EXTRACT (YEAR FROM CURRENT_DATE) and a.code <> '665000' then
                     CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
                     THEN - (l.quantity*factor/0.75) ELSE (l.quantity*factor/0.75) end else 0 end ) qtye_annee ,
-                sum(CASE when EXTRACT (YEAR FROM l.date) = EXTRACT (YEAR FROM CURRENT_DATE)- 1 then
+                sum(CASE when EXTRACT (YEAR FROM l.date) = EXTRACT (YEAR FROM CURRENT_DATE)- 1 and a.code <> '665000' then
                     CASE WHEN ai.type::text = ANY (ARRAY['out_refund'::character varying::text, 'in_invoice'::character varying::text])
                     THEN - (l.quantity*factor/0.75) ELSE (l.quantity*factor/0.75) end else 0 end ) qtye_prev_annee ,
                 sum(CASE when EXTRACT (YEAR FROM l.date) = EXTRACT (YEAR FROM CURRENT_DATE) then
@@ -137,7 +137,7 @@ class avancement_ca_client_list(osv.osv):
                 left join product_product pp on l.product_id=pp.id
                 left join product_template pt on pp.product_tmpl_id=pt.id
                 left join product_uom u on pt.uom_id = u.id
-                where l.state != 'draft' and a.code like '70%'
+                where l.state != 'draft' and (a.code like '70%' or a.code = '665000')
                 group by
               case when ai.section_id is not null then ai.section_id
                      when rp.section_id is not null then rp.section_id
