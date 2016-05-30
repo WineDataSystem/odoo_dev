@@ -79,6 +79,7 @@
 							<field name="agricultural_type_id"   placeholder="--Select--" readonly="context.get('variant_ok',False)"/>
 							<field name="alcoholic_strength" readonly="context.get('variant_ok',False)" />
 							<field name="winetax"/>
+							<field name="customize_name"/>
 						</group >
 					</group>
 				</page>

@@ -107,6 +107,23 @@ class product_template(models.Model):
                 if (product_id and product_id.alcoholic_strength > 0) or vals.get('alcoholic_strength',False) > 0:
                     name += ', '+str(vals['alcoholic_strength'])+'% Vol.' if vals.get('alcoholic_strength',False) else ', '+str(product_id.alcoholic_strength)+'% Vol.'
                 if (product_id and product_id.agricultural_type_id) or vals.get('agricultural_type_id',False):
+            if wine_vals.get('appellation',False) or wine_vals.get('color',False):
+                name += ', '
+                if wine_vals.get('appellation',False):
+                    name += wine_vals['appellation']
+                if wine_vals.get('color',False):
+                    name += ' '+wine_vals['color']
+            uom_id = vals['uom_id'] if vals.get('uom_id',False) else False
+            if uom_id:
+                uom = self.pool.get('product.uom').browse(cr,uid,uom_id,context=context)
+            else:
+                uom = product_id.uom_id
+            name += ', '+uom.name
+            if (product_id and product_id.alcoholic_strength > 0) or vals.get('alcoholic_strength',False) > 0:
+                if vals.has_key('alcoholic_strength') and vals['alcoholic_strength']:
+                    name += ', '+str(vals['alcoholic_strength'])+'% Vol.' if vals.get('alcoholic_strength',False) else ', '+str(product_id.alcoholic_strength)+'% Vol.'
+            if (product_id and product_id.agricultural_type_id) or vals.get('agricultural_type_id',False):
+                if vals.has_key('agricultural_type_id') and vals['agricultural_type_id']:
                     agricultural_type_id = vals['agricultural_type_id'] if vals.get('agricultural_type_id',False) else False
                     if agricultural_type_id:
                         agri_type = self.pool.get('wds.agriculturaltype').browse(cr,uid,agricultural_type_id)
@@ -116,6 +133,12 @@ class product_template(models.Model):
                 if (product_id and product_id.winetax) or vals.get('winetax',False):
                     name += ', '+vals['winetax'] if vals.get('winetax',False) else ', '+product_id.winetax
                 name += ' )'
+            if (product_id and product_id.winetax) or vals.get('winetax',False):
+                if vals.has_key('winetax') and vals['winetax']:
+                    name += ', '+vals['winetax'] if vals.get('winetax',False) else ', '+product_id.winetax
+            if (product_id and product_id.customize_name) or vals.get('customize_name',False):
+                if vals.has_key('customize_name') and vals['customize_name']:
+                    name += ', '+vals['customize_name'] if vals.get('customize_name',False) else ', '+product_id.customize_name
         return name
 
     # @api.v8
@@ -321,6 +344,7 @@ class product_template(models.Model):
     product_wine_id = fields.Many2one('wds.product.wine','wine',help='Select a wine for this product.',ondelete='restrict')
     agricultural_type_id = fields.Many2one('wds.agriculturaltype', 'Agricultural type', )
     winetax = fields.Selection([(tax, str(tax)) for tax in ['CRD','Neutre','Acquit','?']], 'Wine Tax')
+    customize_name = fields.Char('Customization name')
 
     # _columns = {
     #             'w_iswine'              : fields.boolean('Select if wine'),
