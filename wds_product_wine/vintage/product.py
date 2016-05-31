@@ -84,12 +84,19 @@ class product_template(models.Model):
                         if product_id.product_wine_id.color_id:
                             wine_vals['color'] = product_id.product_wine_id.color_id.name
             name += wine_vals['name']
-            if (product_id and product_id.vintage and product_id.vintage > 0) or vals.get('vintage',False) > 0:
-                vintage = vals['vintage'] if vals.get('vintage',False) else product_id.vintage
-                name += ' '+str(vintage)
-            # Y a t il quelque chos à mettre entre les parnthèses
+            ## VINTAGE
+            if vals.has_key('vintage') and vals['vintage']:
+                name += ' '+str(vals['vintage'])
+            elif not vals.has_key('vintage') and product_id and product_id.vintage > 0:
+                name += ' '+str(product_id.vintage)
             uom_id = vals['uom_id'] if vals.get('uom_id', False) else False
-            if wine_vals.get('appellation', False) or wine_vals.get('color', False) or wine_vals.get('grape', False) or uom_id or (product_id and product_id.alcoholic_strength > 0) or vals.get('alcoholic_strength',False) > 0 or (product_id and product_id.agricultural_type_id) or vals.get('agricultural_type_id',False) or (product_id and product_id.winetax) or vals.get('winetax',False):
+            # Y a t il quelque chos à mettre entre les parnthèses
+            if (wine_vals.get('appellation', False) or wine_vals.get('color', False) or wine_vals.get('grape', False)
+                or uom_id or ((product_id and product_id.alcoholic_strength > 0) or (vals.has_key('alcoholic_strength') and vals['alcoholic_strength']))
+                or ((product_id and product_id.agricultural_type_id) or (vals.has_key('agricultural_type_id') and vals['agricultural_type_id']))
+                or ((product_id and product_id.winetax) or (vals.has_key('winetax') and vals['winetax']))
+                or ((product_id and product_id.customize_name) or (vals.has_key('customize_name') and vals['customize_name']))
+            ):
                 name += ' ('
                 if wine_vals.get('appellation',False) or wine_vals.get('color',False) or wine_vals.get('grape',False):
                     if wine_vals.get('appellation',False):
@@ -104,41 +111,28 @@ class product_template(models.Model):
                 else:
                     uom = product_id.uom_id
                 name += ', '+uom.name
-                if (product_id and product_id.alcoholic_strength > 0) or vals.get('alcoholic_strength',False) > 0:
-                    name += ', '+str(vals['alcoholic_strength'])+'% Vol.' if vals.get('alcoholic_strength',False) else ', '+str(product_id.alcoholic_strength)+'% Vol.'
-                if (product_id and product_id.agricultural_type_id) or vals.get('agricultural_type_id',False):
-            if wine_vals.get('appellation',False) or wine_vals.get('color',False):
-                name += ', '
-                if wine_vals.get('appellation',False):
-                    name += wine_vals['appellation']
-                if wine_vals.get('color',False):
-                    name += ' '+wine_vals['color']
-            uom_id = vals['uom_id'] if vals.get('uom_id',False) else False
-            if uom_id:
-                uom = self.pool.get('product.uom').browse(cr,uid,uom_id,context=context)
-            else:
-                uom = product_id.uom_id
-            name += ', '+uom.name
-            if (product_id and product_id.alcoholic_strength > 0) or vals.get('alcoholic_strength',False) > 0:
+                ## ALCOHOLIC STRENGTH
                 if vals.has_key('alcoholic_strength') and vals['alcoholic_strength']:
-                    name += ', '+str(vals['alcoholic_strength'])+'% Vol.' if vals.get('alcoholic_strength',False) else ', '+str(product_id.alcoholic_strength)+'% Vol.'
-            if (product_id and product_id.agricultural_type_id) or vals.get('agricultural_type_id',False):
+                    name += ', '+str(vals['alcoholic_strength'])+'% Vol.'
+                elif not vals.has_key('alcoholic_strength') and product_id and product_id.alcoholic_strength > 0:
+                    name += ', '+str(product_id.alcoholic_strength)+'% Vol.'
+                ## AGRICULTURAL TYPE ID
                 if vals.has_key('agricultural_type_id') and vals['agricultural_type_id']:
-                    agricultural_type_id = vals['agricultural_type_id'] if vals.get('agricultural_type_id',False) else False
-                    if agricultural_type_id:
-                        agri_type = self.pool.get('wds.agriculturaltype').browse(cr,uid,agricultural_type_id)
-                    else:
-                        agri_type = product_id.agricultural_type_id
+                    agri_type = self.pool.get('wds.agriculturaltype').browse(cr,uid,vals['agricultural_type_id'])
                     name += ', '+agri_type.name
-                if (product_id and product_id.winetax) or vals.get('winetax',False):
-                    name += ', '+vals['winetax'] if vals.get('winetax',False) else ', '+product_id.winetax
-                name += ' )'
-            if (product_id and product_id.winetax) or vals.get('winetax',False):
+                elif not vals.has_key('agricultural_type_id') and product_id and product_id.agricultural_type_id:
+                    name += ', '+product_id.agricultural_type_id.name
+                ## WINETAX
                 if vals.has_key('winetax') and vals['winetax']:
-                    name += ', '+vals['winetax'] if vals.get('winetax',False) else ', '+product_id.winetax
-            if (product_id and product_id.customize_name) or vals.get('customize_name',False):
+                    name += ', '+vals['winetax']
+                elif not vals.has_key('winetax') and product_id and product_id.winetax:
+                    name += ', '+product_id.winetax
+                ## CUSTOMIZE NAME
                 if vals.has_key('customize_name') and vals['customize_name']:
-                    name += ', '+vals['customize_name'] if vals.get('customize_name',False) else ', '+product_id.customize_name
+                    name += ', '+vals['customize_name']
+                elif not vals.has_key('customize_name') and product_id and product_id.customize_name:
+                    name += ', '+product_id.customize_name
+                name += ')'
         return name
 
     # @api.v8
