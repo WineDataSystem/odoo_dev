@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+      <record id="ampelidae_pos_order_search_view" model="ir.ui.view">
+          <field name="name">ampelidae.pos.order.search</field>
+          <field name="model">pos.order</field>
+          <field name="inherit_id" ref="point_of_sale.view_pos_order_filter"/>
+          <field name="arch" type="xml">
+            <filter string="Posted" position="after">
+                <separator/>
+                <filter string="Year N" name="this_year" domain="[('date_order', '&gt;=', datetime.date.today().strftime('%Y-01-01')),('date_order','&lt;=',datetime.date.today().strftime('%Y-12-31'))]"/>
+            </filter>
+        </field>
+      </record>
+
+      <record model="ir.actions.act_window" id="point_of_sale.action_pos_pos_form">
+          <field name="name">Orders</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">pos.order</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+          <field name="view_id" eval="False"/>
+          <field name="domain">[]</field>
+          <field name="context">{'search_default_this_year': 1}</field>
+          <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+              Click to create a new order.
+            </p><p>
+              Use this menu to browse previous orders. To record new
+              orders, you may use the menu <i>Your Session</i> for
+              the touchscreen interface.
+            </p>
+          </field>
+      </record>
+
+    </data>
+</openerp>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+      <record id="ampelidae_account_voucher_customer_search_view" model="ir.ui.view">
+          <field name="name">ampelidae.account.voucher.customer.search</field>
+          <field name="model">account.voucher</field>
+          <field name="inherit_id" ref="account_voucher.view_voucher_filter_customer_pay"/>
+          <field name="arch" type="xml">
+            <filter string="Posted" position="after">
+                <separator/>
+                <filter string="Year N" name="this_year" domain="[('date', '&gt;=', datetime.date.today().strftime('%Y-01-01')),('date','&lt;=',datetime.date.today().strftime('%Y-12-31'))]"/>
+            </filter>
+        </field>
+      </record>
+
+      <record id="account_voucher.action_vendor_receipt" model="ir.actions.act_window">
+          <field name="name">Customer Payments</field>
+          <field name="res_model">account.voucher</field>
+          <field name="view_type">form</field>
+          <field name="domain">[('journal_id.type', 'in', ['bank', 'cash']), ('type','=','receipt')]</field>
+          <field name="context">{'type':'receipt', 'search_default_this_year': 1}</field>
+          <field name="search_view_id" ref="account_voucher.view_voucher_filter_customer_pay"/>
+          <field name="view_id" eval="False"/>
+          <field name="target">current</field>
+          <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+              Click to register a new payment.
+            </p><p>
+              Enter the customer and the payment method and then, either
+              create manually a payment record or Odoo will propose to you
+              automatically the reconciliation of this payment with the open
+              invoices or sales receipts.
+            </p>
+          </field>
+      </record>
+
+      <record id="ampelidae_account_voucher_vendor_search_view" model="ir.ui.view">
+          <field name="name">ampelidae.account.voucher.vendor.search</field>
+          <field name="model">account.voucher</field>
+          <field name="inherit_id" ref="account_voucher.view_voucher_filter_vendor_pay"/>
+          <field name="arch" type="xml">
+            <filter string="Posted" position="after">
+                <separator/>
+                <filter string="Year N" name="this_year" domain="[('date', '&gt;=', datetime.date.today().strftime('%Y-01-01')),('date','&lt;=',datetime.date.today().strftime('%Y-12-31'))]"/>
+            </filter>
+        </field>
+      </record>
+
+      <record id="account_voucher.action_vendor_payment" model="ir.actions.act_window">
+          <field name="name">Supplier Payments</field>
+          <field name="res_model">account.voucher</field>
+          <field name="view_type">form</field>
+          <field name="domain">[('journal_id.type', 'in', ['bank', 'cash']), ('type','=','payment')]</field>
+          <field name="context">{'type':'payment', 'search_default_this_year': 1}</field>
+          <field name="view_id" eval="False"/>
+          <field name="search_view_id" ref="account_voucher.view_voucher_filter_vendor_pay"/>
+          <field name="target">current</field>
+          <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+              Click to create a new supplier payment.
+            </p><p>
+              Odoo helps you easily track payments you make and the remaining balances you need to pay your suppliers.
+            </p>
+          </field>
+      </record>
+
+    </data>
+</openerp>
