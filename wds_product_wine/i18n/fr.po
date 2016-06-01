@@ -1085,12 +1085,12 @@ msgstr "Produits"
 #: model:ir.ui.menu,name:wds_product_wine.wds_submenu_wine_product
 #: model:ir.ui.menu,name:wds_product_wine.wds_submenu_wine_wine_id
 msgid "Produit"
-msgstr "Produit"
+msgstr "Vin"
 
 #. module: wds_product_wine
 #: model:ir.actions.act_window,name:wds_product_wine.action_wds_wine
 msgid "Produits"
-msgstr "Produits"
+msgstr "Vins"
 
 #. module: wds_product_wine
 #. openerp-web
