@@ -55,10 +55,11 @@
 			<field name="parent_id" ref="product_category_13"/>
 			<field name="name">Sweet Red</field>
 		</record>
-		<record id="product_category_19" model="product.category">
+		<delete id="product_category_19" model="product.category"/>
+		<!--<record id="product_category_19" model="product.category">
 			<field name="parent_id" ref="product_category_13"/>
 			<field name="name">Herbal-Dry red</field>
-		</record>
+		</record>-->
 		<record id="product_category_20" model="product.category">
 			<field name="parent_id" ref="product_category_12"/>
 			<field name="name">dry White</field>
@@ -67,10 +68,11 @@
 			<field name="parent_id" ref="product_category_12"/>
 			<field name="name">Sweet White</field>
 		</record>
-		<record id="product_category_22" model="product.category">
+		<delete id="product_category_22" model="product.category"/>
+		<!--<record id="product_category_22" model="product.category">
 			<field name="parent_id" ref="product_category_14"/>
 			<field name="name">Off-dry Rosé</field>
-		</record>
+		</record>-->
 		<record id="product_category_23" model="product.category">
 			<field name="parent_id" ref="product_category_14"/>
 			<field name="name">Dry Rosé</field>
@@ -79,10 +81,11 @@
 			<field name="parent_id" ref="product_category_15"/>
 			<field name="name">Rosé Sparkling</field>
 		</record>
-		<record id="product_category_25" model="product.category">
+		<delete id="product_category_25" model="product.category"/>
+		<!--<record id="product_category_25" model="product.category">
 			<field name="parent_id" ref="product_category_15"/>
 			<field name="name">Red Sparkling</field>
-		</record>
+		</record>-->
 		<record id="product_category_26" model="product.category">
 			<field name="parent_id" ref="product_category_15"/>
 			<field name="name">White Sparkling</field>
@@ -95,10 +98,11 @@
 			<field name="parent_id" ref="product_category_16"/>
 			<field name="name">Fortified White Wine</field>
 		</record>
-		<record id="product_category_28" model="product.category">
+		<delete id="product_category_28" model="product.category"/>
+		<!--<record id="product_category_28" model="product.category">
 			<field name="parent_id" ref="product_category_16"/>
 			<field name="name">Nutty oxidized Fortified</field>
-		</record>
+		</record>-->
 
 	</data>
 </openerp>

@@ -77,12 +77,12 @@ class product_wine(orm.Model):
         # 'refcour'               : fields.char('Ref Cour',size=50),
         #wine###########################
         'wds'                   : fields.char('WDS',size=50),
-        'color_id'              : fields.many2one('wds.color','Color', ),
-        'appellation_id'         : fields.many2one('wds.appellation','appellation', ),
+        'color_id'              : fields.many2one('wds.color','Color', required=True),
+        'appellation_id'         : fields.many2one('wds.appellation','appellation', required=True),
         'hierarchy_id'          : fields.many2one('wds.hierarchy','Wine Hierarchy',),
-        'grape_id': fields.many2one('wds.grape', 'Grape Variety', ),
+        'grape_id': fields.many2one('wds.grape', 'Grape Variety', required=True),
         'catalog_ids'           : fields.many2many('wds.catalog', 'wds_product_catalog_2rel','product_id','catalog_id', 'Catalog'),
-        'wine_type_id'          : fields.many2one('wds.wine.type','Wine Type',),
+        'wine_type_id'          : fields.many2one('wds.wine.type','Wine Type', required=True),
         'brand_id'              : fields.many2one('wds.product.brand', 'Marque'),
     }
 

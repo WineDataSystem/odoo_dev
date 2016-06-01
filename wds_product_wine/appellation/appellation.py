@@ -33,7 +33,7 @@ class wds_appellation(osv.Model):
         'name'                  : fields.char('Name', size=64, required=True, translate=True, select=True),
         #'vintage_ids'           : fields.one2many('product.product','appellation_id','Vintage',required=False),
         'complete_name'         : fields.function(_name_get_fnc, type="char", string='Name'),
-        'appellation_type_id'    : fields.many2one('wds.appellation.type','Type'),
+        'appellation_type_id'    : fields.many2one('wds.appellation.type','Type', required=True),
         'region_id'             : fields.many2one('wds.region','Region'),
         'country_id'            : fields.related('region_id','country_id',relation='res.country',type='many2one',string='Country',store=True,select=True,readonly=True),
     }

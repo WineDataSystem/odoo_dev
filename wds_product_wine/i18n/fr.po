@@ -32,7 +32,7 @@ msgstr "--Marque--"
 #: view:wds.product.wine:wds_product_wine.view_product_wine_tree
 #: view:wds.wine.type:wds_product_wine.wds_wine_type_form_view
 msgid "--Select--"
-msgstr "--Select--"
+msgstr "--Sélectionnez--"
 
 #. module: wds_product_wine
 #: selection:product.template,vintage:0
@@ -680,7 +680,7 @@ msgstr "Activate the developer mode"
 #: field:wds.catalog,active:0
 #: field:wds.wine.type,active:0
 msgid "Active"
-msgstr "Active"
+msgstr "Actif"
 
 #. module: wds_product_wine
 #: field:product.template,agricultural_type_id:0
@@ -690,7 +690,7 @@ msgstr "Type d'agriculture"
 #. module: wds_product_wine
 #: field:product.template,alcoholic_strength:0
 msgid "Alcoholic strength (%vol.)"
-msgstr "Alcoométrie (%vol.)"
+msgstr "Degré d'alcool (%vol.)"
 
 #. module: wds_product_wine
 #: model:ir.ui.menu,name:wds_product_wine.wds_submenu_wine_Appellation
@@ -714,7 +714,7 @@ msgstr "Nom de la marque"
 #. module: wds_product_wine
 #: model:ir.ui.menu,name:wds_product_wine.menu_product_brand
 msgid "Brand management"
-msgstr "Brand management"
+msgstr "Gestion des marques"
 
 #. module: wds_product_wine
 #: field:wds.product.brand,name_short:0
@@ -734,12 +734,12 @@ msgstr "Catalogue"
 #. module: wds_product_wine
 #: field:wds.wine.type,child_id:0
 msgid "Child Types"
-msgstr "Child Types"
+msgstr "Sous-types"
 
 #. module: wds_product_wine
 #: model:wds.color,name:wds_product_wine.wds_color_claret
 msgid "Claret"
-msgstr "Claret"
+msgstr "Bordeaux"
 
 #. module: wds_product_wine
 #: model:ir.actions.act_window,name:wds_product_wine.wds_wine_color
@@ -845,7 +845,7 @@ msgstr "Fortified Red Wine"
 #. module: wds_product_wine
 #: model:product.category,name:wds_product_wine.product_category_17
 msgid "Fruity-Dry Red"
-msgstr "Fruity-Dry Red"
+msgstr "Rouge sec fruité"
 
 #. module: wds_product_wine
 #: help:wds.wine.type,sequence:0
@@ -865,7 +865,7 @@ msgstr "Grouper par..."
 #. module: wds_product_wine
 #: model:product.category,name:wds_product_wine.product_category_19
 msgid "Herbal-Dry red"
-msgstr "Herbal-Dry red"
+msgstr "Rouge sec à base de plantes"
 
 #. module: wds_product_wine
 #: field:wds.agriculturaltype,id:0
@@ -890,7 +890,7 @@ msgstr "Image Glass"
 #. module: wds_product_wine
 #: field:wds.color,image_bottle:0
 msgid "Image bottle"
-msgstr "Image bottle"
+msgstr "Image bouteille"
 
 #. module: wds_product_wine
 #: field:wds.catalog,is_deleted:0
@@ -927,7 +927,7 @@ msgstr "Est par défaut"
 #: field:wds.region,write_uid:0
 #: field:wds.wine.type,write_uid:0
 msgid "Last Updated by"
-msgstr "Last Updated by"
+msgstr "Dernière mise à jour par"
 
 #. module: wds_product_wine
 #: field:wds.agriculturaltype,write_date:0
@@ -942,12 +942,12 @@ msgstr "Last Updated by"
 #: field:wds.region,write_date:0
 #: field:wds.wine.type,write_date:0
 msgid "Last Updated on"
-msgstr "Last Updated on"
+msgstr "Dernière mise à jour à"
 
 #. module: wds_product_wine
 #: field:wds.wine.type,parent_left:0
 msgid "Left Parent"
-msgstr "Left Parent"
+msgstr "Parent gauche"
 
 #. module: wds_product_wine
 #. openerp-web
@@ -960,7 +960,7 @@ msgstr "Déconnexion"
 #: field:wds.product.brand,logo:0
 #: field:wds.product.wine,logo:0
 msgid "Logo File"
-msgstr "Logo File"
+msgstr "Logo"
 
 #. module: wds_product_wine
 #: model:ir.ui.menu,name:wds_product_wine.wds_submenu_marque
@@ -972,7 +972,7 @@ msgstr "Marque"
 #: field:wds.color,image_medium_bottle:0
 #: field:wds.color,image_medium_glass:0
 msgid "Medium-sized image"
-msgstr "Medium-sized image"
+msgstr "Image moyenne"
 
 #. module: wds_product_wine
 #: model:ir.ui.menu,name:wds_product_wine.wds_subsubmenu_vintage_id
@@ -1000,7 +1000,7 @@ msgstr "Neutre"
 #. module: wds_product_wine
 #: model:product.category,name:wds_product_wine.product_category_28
 msgid "Nutty oxidized Fortified"
-msgstr "Nutty oxidized Fortified"
+msgstr "Cuit oxydé avec gout de noissette"
 
 #. module: wds_product_wine
 #: model:product.category,name:wds_product_wine.product_category_22
@@ -1016,7 +1016,7 @@ msgstr "Ordre"
 #. module: wds_product_wine
 #: field:wds.wine.type,parent_id:0
 msgid "Parent Typr"
-msgstr "Parent Typr"
+msgstr "Type parent"
 
 #. module: wds_product_wine
 #: field:wds.product.brand,partner_id:0
@@ -1034,7 +1034,7 @@ msgstr "Prix:"
 #: model:ir.model,name:wds_product_wine.model_product_product
 #: field:wds.catalog,product_ids:0
 msgid "Product"
-msgstr "Article"
+msgstr "Produit"
 
 #. module: wds_product_wine
 #: view:wds.product.brand:wds_product_wine.product_brand_search_form_view
@@ -1046,7 +1046,7 @@ msgstr "Marque du produit"
 #: field:wds.product.brand,product_count:0
 #: field:wds.product.wine,product_count:0
 msgid "Product Count"
-msgstr "Product Count"
+msgstr "Compte produit"
 
 #. module: wds_product_wine
 #: view:wds.product.wine:wds_product_wine.view_product_wine_form
@@ -1061,7 +1061,7 @@ msgstr "Modèle d'article"
 #. module: wds_product_wine
 #: model:ir.actions.act_window,name:wds_product_wine.product_normal_action2
 msgid "Product Variants"
-msgstr "Product Variants"
+msgstr "Variantes d'article"
 
 #. module: wds_product_wine
 #: view:wds.product.wine:wds_product_wine.view_product_wine_form
@@ -1113,7 +1113,7 @@ msgstr "Rouge"
 #. module: wds_product_wine
 #: model:product.category,name:wds_product_wine.product_category_25
 msgid "Red Sparkling"
-msgstr "Red Sparkling"
+msgstr "Rouge mousseux"
 
 #. module: wds_product_wine
 #: field:wds.appellation,region_id:0
@@ -1124,7 +1124,7 @@ msgstr "Région"
 #. module: wds_product_wine
 #: field:wds.wine.type,parent_right:0
 msgid "Right Parent"
-msgstr "Right Parent"
+msgstr "Parent droit"
 
 #. module: wds_product_wine
 #: model:wds.color,name:wds_product_wine.wds_color_rose
@@ -1139,71 +1139,71 @@ msgstr "Rosé"
 #. module: wds_product_wine
 #: model:product.category,name:wds_product_wine.product_category_24
 msgid "Rosé Sparkling"
-msgstr "Rosé Sparkling"
+msgstr "Rosé mousseux"
 
 #. module: wds_product_wine
 #: help:product.template,product_brand_id:0
 msgid "Select a brand for this product."
-msgstr "Select a brand for this product."
+msgstr "Sélectionnez une marque pour ce produit."
 
 #. module: wds_product_wine
 #: help:product.template,product_wine_id:0
 msgid "Select a wine for this product."
-msgstr "Select a wine for this product."
+msgstr "Sélectionnez un vin pour ce produit."
 
 #. module: wds_product_wine
 #: help:wds.product.brand,partner_id:0
 msgid "Select a winery for this brand if it exists."
-msgstr "Select a winery for this brand if it exists."
+msgstr "Sélectionnez un établissement viticole pour cette marque."
 
 #. module: wds_product_wine
 #: help:wds.product.wine,partner_id:0
 msgid "Select a winery for this wine if it exists."
-msgstr "Select a winery for this wine if it exists."
+msgstr "Sélectionnez un établissement viticole pour ce vin."
 
 #. module: wds_product_wine
 #: field:product.template,w_iswine:0
 msgid "Select if wine"
-msgstr "Select if wine"
+msgstr "Sélectionnez si c'est un vin"
 
 #. module: wds_product_wine
 #: field:wds.catalog,sequence:0
 #: field:wds.wine.type,sequence:0
 msgid "Sequence"
-msgstr "Sequence"
+msgstr "Séquence"
 
 #. module: wds_product_wine
 #. openerp-web
 #: code:addons/wds_product_wine/static/src/xml/base.xml:43
 #, python-format
 msgid "Services dedicated to the Wine Merchants"
-msgstr "Services dedicated to the Wine Merchants"
+msgstr "Services dédiés aux marchands de vin"
 
 #. module: wds_product_wine
 #: field:wds.agriculturaltype,shortname:0
 msgid "Short name"
-msgstr "Short name"
+msgstr "Nom raccourci"
 
 #. module: wds_product_wine
 #: field:wds.color,image_small_bottle:0
 #: field:wds.color,image_small_glass:0
 msgid "Small-sized image"
-msgstr "Small-sized image"
+msgstr "Image petite"
 
 #. module: wds_product_wine
 #: model:product.category,name:wds_product_wine.product_category_15
 msgid "Sparkling"
-msgstr "Sparkling"
+msgstr "Mousseux"
 
 #. module: wds_product_wine
 #: model:product.category,name:wds_product_wine.product_category_18
 msgid "Sweet Red"
-msgstr "Sweet Red"
+msgstr "Rouge doux"
 
 #. module: wds_product_wine
 #: model:product.category,name:wds_product_wine.product_category_21
 msgid "Sweet White"
-msgstr "Sweet White"
+msgstr "Blanc doux"
 
 #. module: wds_product_wine
 #: help:wds.catalog,image:0
@@ -1241,7 +1241,7 @@ msgstr "Vins"
 #. module: wds_product_wine
 #: field:product.template,vintage:0
 msgid "Vintage"
-msgstr "Vintage"
+msgstr "Millésime"
 
 #. module: wds_product_wine
 #. openerp-web
@@ -1250,24 +1250,24 @@ msgstr "Vintage"
 #: code:addons/wds_product_wine/static/src/xml/offer_quicksearch.xml:27
 #, python-format
 msgid "Vintage :"
-msgstr "Vintage :"
+msgstr "Millésime :"
 
 #. module: wds_product_wine
 #: view:product.template:wds_product_wine.product_inherited_template_form_view
 msgid "Vintage..."
-msgstr "Vintage..."
+msgstr "Millésime..."
 
 #. module: wds_product_wine
 #: view:wds.product.brand:wds_product_wine.view_product_brand_form
 #: field:wds.product.brand,product_vintage_ids:0
 #: view:wds.product.wine:wds_product_wine.view_product_wine_form
 msgid "Vintages"
-msgstr "Vintages"
+msgstr "Millésimes"
 
 #. module: wds_product_wine
 #: view:wds.product.wine:wds_product_wine.product_wine_kanban
 msgid "Vintages..."
-msgstr "Vintages..."
+msgstr "Millésimes..."
 
 #. module: wds_product_wine
 #. openerp-web
@@ -1285,18 +1285,18 @@ msgstr "WDS"
 #: model:product.category,name:wds_product_wine.product_category_12
 #: model:wds.color,name:wds_product_wine.wds_color_white
 msgid "White"
-msgstr "White"
+msgstr "Blanc"
 
 #. module: wds_product_wine
 #: model:product.category,name:wds_product_wine.product_category_26
 msgid "White Sparkling"
-msgstr "White Sparkling"
+msgstr "Blanc mousseux"
 
 #. module: wds_product_wine
 #: model:product.category,name:wds_product_wine.product_category_11
 #: view:product.template:wds_product_wine.product_inherited_template_form_view
 msgid "Wine"
-msgstr "Wine"
+msgstr "Vin"
 
 #. module: wds_product_wine
 #. openerp-web
@@ -1308,27 +1308,27 @@ msgstr "Wine Data System"
 #. module: wds_product_wine
 #: field:wds.product.wine,hierarchy_id:0
 msgid "Wine Hierarchy"
-msgstr "Wine Hierarchy"
+msgstr "Hiérarchie du vin"
 
 #. module: wds_product_wine
 #: field:wds.product.wine,name:0
 msgid "Wine Name"
-msgstr "Wine Name"
+msgstr "Nom du vin"
 
 #. module: wds_product_wine
 #: field:wds.product.wine,name_short:0
 msgid "Wine Short Name"
-msgstr "Wine Short Name"
+msgstr "Nom du vin raccourci"
 
 #. module: wds_product_wine
 #: field:product.template,winetax:0
 msgid "Wine Tax"
-msgstr "Wine Tax"
+msgstr "Taxe sur le vin"
 
 #. module: wds_product_wine
 #: field:wds.product.wine,wine_type_id:0
 msgid "Wine Type"
-msgstr "Wine Type"
+msgstr "Type de vin"
 
 #. module: wds_product_wine
 #: model:ir.model,name:wds_product_wine.model_wds_appellation
@@ -1336,29 +1336,29 @@ msgstr "Wine Type"
 #: view:wds.appellation:wds_product_wine.wine_appellation_form_view
 #: view:wds.region:wds_product_wine.wds_region_search_view
 msgid "Wine appellation"
-msgstr "Wine appellation"
+msgstr "Appellation du vin"
 
 #. module: wds_product_wine
 #: view:wds.appellation:wds_product_wine.wds_appellation_search_view
 msgid "Wine appellation Type"
-msgstr "Wine appellation Type"
+msgstr "Type d'appellation du vin"
 
 #. module: wds_product_wine
 #: view:wds.appellation:wds_product_wine.wine_appellation_tree_view
 msgid "Wine appellations"
-msgstr "Wine appellations"
+msgstr "Appellations des vins"
 
 #. module: wds_product_wine
 #: view:wds.catalog:wds_product_wine.wine_catalog_form_view
 #: view:wds.catalog:wds_product_wine.wine_catalog_tree_view
 msgid "Wine catalog"
-msgstr "Wine catalog"
+msgstr "Catalogue du vin"
 
 #. module: wds_product_wine
 #: view:wds.color:wds_product_wine.wine_color_form_view
 #: view:wds.color:wds_product_wine.wine_color_tree_view
 msgid "Wine color"
-msgstr "Wine color"
+msgstr "Couleur du vin"
 
 #. module: wds_product_wine
 #: view:wds.wine.type:wds_product_wine.wds_wine_type_form_view
@@ -1366,12 +1366,12 @@ msgstr "Wine color"
 #: view:wds.wine.type:wds_product_wine.wds_wine_type_search_view
 #: view:wds.wine.type:wds_product_wine.wds_wine_type_tree_view
 msgid "Wine type"
-msgstr "Wine type"
+msgstr "Type de vin"
 
 #. module: wds_product_wine
 #: view:wds.product.brand:wds_product_wine.product_brand_kanban
 msgid "Wine..."
-msgstr "Wine..."
+msgstr "Vin..."
 
 #. module: wds_product_wine
 #. openerp-web
@@ -1384,35 +1384,35 @@ msgstr "WineDataSystem offers software and services"
 #: view:wds.product.brand:wds_product_wine.view_product_brand_form
 #: field:wds.product.brand,product_wine_ids:0
 msgid "Wines"
-msgstr "Wines"
+msgstr "Vins"
 
 #. module: wds_product_wine
 #: view:wds.product.brand:wds_product_wine.product_brand_kanban
 msgid "Wines..."
-msgstr "Wines..."
+msgstr "Vins..."
 
 #. module: wds_product_wine
 #: model:ir.actions.act_window,name:wds_product_wine.wds_appellation_action
 #: field:wds.product.wine,appellation_id:0
 msgid "appellation"
-msgstr "appellation"
+msgstr "Appellation"
 
 #. module: wds_product_wine
 #: model:ir.actions.act_window,name:wds_product_wine.wds_catalog_action
 msgid "catalog"
-msgstr "catalog"
+msgstr "Catalogue"
 
 #. module: wds_product_wine
 #: model:product.category,name:wds_product_wine.product_category_20
 msgid "dry White"
-msgstr "dry White"
+msgstr "Blanc sec"
 
 #. module: wds_product_wine
 #. openerp-web
 #: code:addons/wds_product_wine/static/src/xml/base.xml:46
 #, python-format
 msgid "enabling wine suppliers to increase their sales through"
-msgstr "enabling wine suppliers to increase their sales through"
+msgstr "permettre aux metteurs en marché du vin d'accroître leurs ventes au travers"
 
 #. module: wds_product_wine
 #: field:wds.catalog,image:0
@@ -1424,7 +1424,7 @@ msgstr "image"
 #: code:addons/wds_product_wine/static/src/xml/base.xml:48
 #, python-format
 msgid "innovative management of product information and customer relationships."
-msgstr "innovative management of product information and customer relationships."
+msgstr "d'une solution innovante de gestion de l'information produit et de la relation client."
 
 #. module: wds_product_wine
 #: field:wds.appellation.type,name:0
@@ -1433,12 +1433,12 @@ msgstr "innovative management of product information and customer relationships.
 #: field:wds.hierarchy,name:0
 #: field:wds.region,name:0
 msgid "name"
-msgstr "name"
+msgstr "Nom"
 
 #. module: wds_product_wine
 #: view:wds.product.wine:wds_product_wine.product_wine_kanban
 msgid "vintage..."
-msgstr "vintage..."
+msgstr "Millésime..."
 
 #. module: wds_product_wine
 #: view:wds.product.wine:wds_product_wine.view_product_wine_tree
@@ -1450,14 +1450,14 @@ msgstr "wds.product.wine"
 #: view:product.template:wds_product_wine.product_inherited_template_form_view
 #: field:product.template,product_wine_id:0
 msgid "wine"
-msgstr "wine"
+msgstr "Vin"
 
 #. module: wds_product_wine
 #: model:ir.ui.menu,name:wds_product_wine.menu_product_wine
 msgid "wine management"
-msgstr "wine management"
+msgstr "Gestion des vins"
 
 #. module: wds_product_wine
 #: view:wds.region:wds_product_wine.wds_region_form_view
 msgid "wine region"
-msgstr "wine region"
+msgstr "Région du vin"
