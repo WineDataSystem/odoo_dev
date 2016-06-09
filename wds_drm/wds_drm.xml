@@ -1,0 +1,59 @@
+<openerp>
+    <data>
+        <!-- Vue : Paramètres de recherche Analyse client report année en cours/annee moins 1-->
+         <record id="view_wds_drm_report_search" model="ir.ui.view">
+            <field name="name">wds.drm.report.search</field>
+            <field name="model">wds.drm.report</field>
+            <field name="arch" type="xml">
+                <search string="Analyse">
+<!--                    <filter string="Nouveau" name="Nouveau" domain="[('stacli', '=', '2/Nouveau')]" help="Nouveaux clients"/>
+                    <filter string="Perdus" name="Perdus" domain="[('stacli', '=', '3/Perdu ?')]" help="Clients de l'an dernier n'ayant pas recommandé"/>
+                    <filter string="+50%" name="+50%" domain="[('stacli', '=', '1/ > 50 pcent')]" help="Clients dont CA atteint 50% au moins du CA année précédente"/>
+                    <filter string="Autres" name="Autres" domain="[('stacli', '=', '4/Autres ')]" help="Clients de l'an dernier ayant recommandé pour - de 50% par rapport à l'an dernier"/>
+ -->               </search>
+            </field>
+        </record>
+        <!-- Vue : Pourcentage de CA réalisé par rapport à l'année précédente-->
+        <record id="view_wds_drm_report_graph" model="ir.ui.view">
+             <field name="name">wds.drm.report.graph</field>
+             <field name="model">wds.drm.report</field>
+             <field name="arch" type="xml">
+              <!--    <graph string="DRM" type="pivot">-->
+                  <graph string="DRM">
+                     <field name="period"/>
+                     <field name="location_id"/>
+                     <field name="docdouane"/>
+                     <field name="partner_id"/>
+                     <field name="origin"/>
+                     <field name="sit_fisc"/>
+                     <field name="cum_hl" type="measure"/>
+                 </graph>
+             </field>
+        </record>
+        <!-- Action lancée par le menu : Pourcentage de CA réalisé par rapport à l'année précédente-->
+        <record id="action_wds_drm_report_all" model="ir.actions.act_window">
+            <field name="name">Préparation DRM</field>
+            <field name="res_model">wds.drm.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="view_wds_drm_report_graph"></field>
+            <field name="search_view_id" ref="view_wds_drm_report_search"/>
+            <field name="help"></field>
+        </record>
+
+        <!-- Action lancée par le bouton fiche client : Pourcentage de CA réalisé par rapport à l'année précédente-->
+         <record id="action_wds_drm_report_all" model="ir.actions.act_window">
+            <field name="name">Préparation DRM</field>
+            <field name="res_model">wds.drm.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="view_wds_drm_report_graph"></field>
+            <field name="help"></field>
+        </record>
+
+
+
+        <!--Options de menu -->
+            <menuitem action="action_wds_drm_report_all" id="menu_action_wds_drm_report_all" parent="base.menu_product" sequence="50" name="DRM" />
+    </data>
+</openerp>
