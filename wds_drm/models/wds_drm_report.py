@@ -36,8 +36,12 @@ class wds_drm_report(osv.osv):
         'id': fields.integer('Id', readonly=True),
         'period': fields.char('Période', readonly=True),
         'location_id': fields.many2one('stock.location', 'Location', required=True, readonly=True),
-        'docdouane': fields.char('Document Douanier', size=128, readonly=True),
+        'typevin': fields.char('Type de vin', size=128, readonly=True),
+        'type_appellation': fields.char('Type Appellation', size=128, readonly=True),
+        'appellation': fields.char('Appellation', size=128, readonly=True),
+        'docdouane': fields.char('Document Douanier', size=128),
         'partner_id': fields.many2one('res.partner', 'Partenaire', readonly=True),
+        # 'partner_id': fields.integer('Partenaire', readonly=True),
         'origin': fields.char('Source Document', readonly=True),
         'sit_fisc': fields.char('Situation fiscale',size=128, readonly=True),
         'cum_hl': fields.float('Volume en HL', readonly=True),
@@ -61,60 +65,67 @@ class wds_drm_report(osv.osv):
         'product.uom': ['category_id', 'factor', 'name', 'uom_type'],
         'res.currency.rate': ['currency_id', 'name'],
         'res.partner': ['country_id'],
+        'wds.product.wine': ['wine_type_id', 'appellation_id',],
     }
 
     def _select(self):
         select_str = """
             select partner_id id,
-            period, location_id , docdouane, partner_id, origin, sit_fisc,cum_hl
-            from (
-            select period,location_id,docdouane,
-            Case when docdouane in ('DAE','DAA') then partner_id else 507 end partner_id,
-            Case when docdouane in ('DAE','DAA') then origin else '   ' end origin,
-            Case when docdouane in ('DAE','DAA') and zone_livr = 'FR' then 'SUSPENSION'
-                 when docdouane in ('DAE','DAA') and zone_livr <> 'FR' then 'EXONERATION'
-                 else 'DROITS ACQUITTES' end sit_fisc,
-            sum(cumqty)/100 cum_hl
-            from
-            (
-            select period, location_id ,
-            case when sub.winetax <> 'CRD' or zone_livr = 'EU' then 'DAE'
-                 when zone_livr= 'HEU' then 'DAA'
-                 else '   ' end docdouane,
-            partner_id,
-            cumqty,
-            origin,
-            zone_livr
-
-            from
-            (select (EXTRACT (YEAR FROM sm.date) * 100) + EXTRACT (month FROM sm.date) period, location_id,pu.name,pu.uom_type, pu.factor, origin,
-            partner_id,spt.name,
-            CASE WHEN spt.name = 'PoS Orders' then 'FR'
-                 WHEN rp.country_id = 76 then 'FR'
-                 WHEN rp.country_id is NULL then 'FR'
-                 WHEN rcg.name in ('Suède','ROE') then 'EU'
-                 ELSE 'HEU' end zone_livr,
-                 pt.winetax,
-                 rc.name,
-            case when uom_type = 'bigger' then sum(product_uom_qty*factor) else sum(product_uom_qty/factor) end cumqty, sum(product_uom_qty)
-            from stock_move sm join product_uom pu on sm.product_uom = pu.id
-            join stock_picking_type spt on picking_type_id=spt.id
-            left outer join res_partner rp on sm.partner_id=rp.id
-            left outer join res_country rc on rp.country_id = rc.id
-            left outer join res_country_res_country_group_rel rcgr on rp.country_id = rcgr.res_country_id
-            left outer join res_country_group rcg on rcgr.res_country_group_id = rcg.id
-            join product_product pp on sm.product_id= pp.id
-            join product_template pt on pp.product_tmpl_id= pt.id
-            where pu.category_id = 5 and spt.code = 'outgoing'
-            group by EXTRACT (YEAR FROM sm.date) , EXTRACT (MONTH FROM sm.date) , location_id,pu.name, pu.factor,pu.uom_type, origin, partner_id,spt.name
-            ,rp.country_id,rcg.name,rc.name,pt.winetax) sub) sub2
-            group by period, location_id , DOCDOUANE,
-            Case when DOCDOUANE in ('DAE','DAA') then partner_id else 507 end ,
-            Case when docdouane in ('DAE','DAA') then origin else '   ' end ,
-            Case when DOCDOUANE in ('DAE','DAA') and zone_livr = 'FR' then 'SUSPENSION'
-                 when DOCDOUANE in ('DAE','DAA') and zone_livr <> 'FR' then 'EXONERATION'
-                 else 'DROITS ACQUITTES' end ) sub3
-                 order by period,location_id
+            period, location_id , typevin,type_appellation,appellation,docdouane, partner_id, origin, sit_fisc,cum_hl
+from (
+	select period,location_id,docdouane,typevin,type_appellation,appellation,
+	Case when docdouane in ('DAE','DAA') then partner_id else 507 end partner_id,
+        Case when docdouane in ('DAE','DAA') then origin else '   ' end origin,
+        Case when docdouane in ('DAE','DAA') and zone_livr = 'FR' then 'SUSPENSION'
+	     when docdouane in ('DAE','DAA') and zone_livr <> 'FR' then 'EXONERATION'
+	     else 'DROITS ACQUITTES' end sit_fisc,
+        sum(cumqty)/100 cum_hl
+	from (
+		select period, location_id ,
+		case when sub.winetax <> 'CRD' or zone_livr = 'EU' then 'DAE'
+			 when zone_livr= 'HEU' then 'DAA'
+			 else '   ' end docdouane,
+		partner_id,
+		cumqty,
+		origin,
+		zone_livr,
+		typevin,type_appellation,appellation
+		from (
+			select (EXTRACT (YEAR FROM sm.date) * 100) + EXTRACT (month FROM sm.date) period, location_id,pu.name,pu.uom_type, pu.factor, origin,
+			sm.partner_id,spt.name,
+			CASE WHEN spt.name = 'PoS Orders' then 'FR'
+				 WHEN rp.country_id = 76 then 'FR'
+				 WHEN rp.country_id is NULL then 'FR'
+				 WHEN rcg.name in ('Suède','ROE') then 'EU'
+				 ELSE 'HEU' end zone_livr,
+				 pt.winetax,
+				 rc.name,wwt.name typevin,wat.name type_appellation,wa.name appellation,
+			case when uom_type = 'bigger' then sum(product_uom_qty*factor) else sum(product_uom_qty/factor) end cumqty, sum(product_uom_qty)
+			from stock_move sm join product_uom pu on sm.product_uom = pu.id
+			join stock_picking_type spt on picking_type_id=spt.id
+			left outer join res_partner rp on sm.partner_id=rp.id
+			left outer join res_country rc on rp.country_id = rc.id
+			left outer join res_country_res_country_group_rel rcgr on rp.country_id = rcgr.res_country_id
+			left outer join res_country_group rcg on rcgr.res_country_group_id = rcg.id
+			join product_product pp on sm.product_id= pp.id
+			join product_template pt on pp.product_tmpl_id= pt.id
+			left outer join wds_product_wine wpw on pt.product_wine_id = wpw.id
+			left outer join wds_wine_type wwt on wpw.wine_type_id = wwt.id
+			left outer join wds_appellation wa on wpw.appellation_id=wa.id
+			left outer join wds_appellation_type wat on wa.appellation_type_id=wat.id
+			where pu.category_id = 5 and spt.code = 'outgoing'
+			group by EXTRACT (YEAR FROM sm.date) , EXTRACT (MONTH FROM sm.date) , location_id,pu.name, pu.factor,pu.uom_type, origin,sm.partner_id,spt.name
+			,rp.country_id,rcg.name,rc.name,pt.winetax,wwt.name,wa.name,wat.name) sub
+		) sub2
+	group by period, location_id , DOCDOUANE,typevin,appellation,type_appellation,
+	Case when DOCDOUANE in ('DAE','DAA') then partner_id else 507 end ,
+	Case when docdouane in ('DAE','DAA') then origin else '   ' end ,
+	Case when DOCDOUANE in ('DAE','DAA') and zone_livr = 'FR' then 'SUSPENSION'
+		 when DOCDOUANE in ('DAE','DAA') and zone_livr <> 'FR' then 'EXONERATION'
+		 else 'DROITS ACQUITTES' end
+	) sub3
+where period = 201605
+order by period,location_id
              """
         return select_str
 
