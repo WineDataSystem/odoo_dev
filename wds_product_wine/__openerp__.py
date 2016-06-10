@@ -22,6 +22,7 @@
                        ],
     'data'          : [
                        'security/ir.model.access.csv',
+                       'wizard/update_wine_product_view.xml',
                        'appellation/appellation_view.xml',
                        'brand/product_brand_view.xml',
                        'wine/wine_view.xml',

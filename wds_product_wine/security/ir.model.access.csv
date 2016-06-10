@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_wds_appellation_user,wds.appellation,model_wds_appellation,base.group_user,1,1,1,1
+access_wds_region_user,wds.region,model_wds_region,base.group_user,1,1,1,1
+access_wds_appellation_type_user,wds.appellation.type,model_wds_appellation_type,base.group_user,1,1,1,1
+access_wds_product_brand_user,wds.product.brand,model_wds_product_brand,base.group_user,1,1,1,1
+access_wds_agriculturaltype_user,wds.agriculturaltype,model_wds_agriculturaltype,base.group_user,1,1,1,1
+access_wds_product_wine_user,wds.product.wine,model_wds_product_wine,base.group_user,1,1,1,1
+access_wds_color_user,wds.color,model_wds_color,base.group_user,1,1,1,1
+access_wds_wine_type_user,wds.wine.type,model_wds_wine_type,base.group_user,1,1,1,1
+access_wds_catalog_user,wds.catalog,model_wds_catalog,base.group_user,1,1,1,1
+access_wds_hierarchy_user,wds.hierarchy,model_wds_hierarchy,base.group_user,1,1,1,1
+access_wds_grape_user,wds.grape,model_wds_grape,base.group_user,1,1,1,1
+access_wds_update_wine_product,update.wine.product,model_update_wine_product,base.group_user,1,1,1,1

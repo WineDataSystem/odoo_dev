@@ -5,6 +5,8 @@ from openerp.tools.translate import _
 import openerp.addons.decimal_precision as dp
 from openerp.tools              import  ustr
 
+import logging
+_logger = logging.getLogger(__name__)
 
 class product_wine(orm.Model):
     _name = 'wds.product.wine'
@@ -78,15 +80,19 @@ class product_wine(orm.Model):
         #wine###########################
         'wds'                   : fields.char('WDS',size=50),
         'color_id'              : fields.many2one('wds.color','Color', required=True),
-        'appellation_id'         : fields.many2one('wds.appellation','appellation', required=True),
+        'appellation_id'        : fields.many2one('wds.appellation','appellation', required=True),
         'hierarchy_id'          : fields.many2one('wds.hierarchy','Wine Hierarchy',),
-        'grape_id': fields.many2one('wds.grape', 'Grape Variety', required=True),
+        'grape_id'              : fields.many2one('wds.grape', 'Grape Variety', required=True),
         'catalog_ids'           : fields.many2many('wds.catalog', 'wds_product_catalog_2rel','product_id','catalog_id', 'Catalog'),
         'wine_type_id'          : fields.many2one('wds.wine.type','Wine Type', required=True),
         'brand_id'              : fields.many2one('wds.product.brand', 'Marque'),
+        'wine_updated'          : fields.boolean('Wine updated',readonly=True),
     }
 
-
+    def write(self, cr, uid, ids, vals, context=None):
+        if not vals.has_key('wine_updated'):
+            vals.update({'wine_updated':True})
+        return super(product_wine, self).write(cr ,uid, ids, vals, context=context)
 
 
 

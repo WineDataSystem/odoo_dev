@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import wizard
 import appellation
 import vintage
 import wine
@@ -10,5 +11,3 @@ import product
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
-
-

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="update_wine_product_view_form" model="ir.ui.view">
+            <field name="name">update.wine.product.view.form</field>
+            <field name="model">update.wine.product</field>
+            <field name="arch" type="xml">
+                <form string="Update products name" version="7.0">
+                    <h4><center><field name="result" nolabel="1" readonly = "1"/></center></h4>
+                    <newline/>
+                    <footer>
+                        <button name="update_products" string="Confirm" type="object" class="oe_highlight"/> or
+                        <button special="cancel" string="Close" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="update_wine_product_action">
+            <field name="name">Update products name</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">update.wine.product</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</openerp>

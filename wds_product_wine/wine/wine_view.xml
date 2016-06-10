@@ -14,13 +14,16 @@
 			</field>
 		</record>
 		<!-- different wine entity view capability -->
-		
+
 		<!-- FORM VIEW -->
 		<record model="ir.ui.view" id="view_product_wine_form">
 			<field name="name">wds.product.wine.form</field>
 			<field name="model">wds.product.wine</field>
 			<field name="arch" type="xml">
 				<form string="Product wine" version="7.0">
+					<header>
+							<button name="%(update_wine_product_action)d" type="action" class="oe_highlight" string="Update products name" attrs="{'invisible':[('wine_updated','=',False)]}"/>
+					</header>
 					<sheet>
 						<div class="oe_right oe_button_box" style="width: 300px;" name="buttons"></div>
 						<div class="oe_left" style="width: 500px;">
@@ -40,7 +43,7 @@
 							</div>
 							<div class="oe_left" name="options" groups="base.group_user">
 								<div>
-									
+
 								</div>
 							</div>
 						</div>
@@ -52,6 +55,7 @@
 							<field name="catalog_ids"  	style="width:50%%" 	 placeholder="--Select--" 			 	widget="many2many_tags"/>
 							<field name="wine_type_id" 	style="width:50%%" 	 placeholder="--Select--" 			 />
 							<field name="wds" 			style="width:50%%" 	 placeholder="--ID-Import--"  />
+							<field name="wine_updated" groups="base.group_system"/>
 						</group>
 						<notebook>
 							<page string="Description"  >
@@ -102,13 +106,13 @@
 				</form>
 			</field>
 		</record>
-		
+
 		<!-- TREELIST VIEW -->
 		<record model="ir.ui.view" id="view_product_wine_tree">
 			<field name="name">wds.product.wine.tree</field>
 			<field name="model">wds.product.wine</field>
 			<field name="arch" type="xml">
-				<tree string="wds.product.wine"  editable="bottom">
+				<tree string="wds.product.wine">
 					<field name="name"/>
 					<field name="brand_id"/>
 					<field name="partner_id"/>
@@ -121,7 +125,7 @@
 				</tree>
 			</field>
 		</record>
-		
+
 		<!-- KANABAN VIEW -->
 		<record id="product_wine_kanban" model="ir.ui.view">
 			<field name="name">wds.product.wine.kanban</field>
@@ -187,7 +191,7 @@
 		</group>
 		</field>
 		</record>-->
-		
+
 		<record id="wine_catalog_form_view" model="ir.ui.view">
 			<field name="name">wds.catalog.form</field>
 			<field name="model">wds.catalog</field>
