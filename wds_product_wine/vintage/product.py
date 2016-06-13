@@ -339,6 +339,7 @@ class product_template(models.Model):
     agricultural_type_id = fields.Many2one('wds.agriculturaltype', 'Agricultural type', )
     winetax = fields.Selection([(tax, str(tax)) for tax in ['CRD','Neutre','Acquit','?']], 'Wine Tax')
     customize_name = fields.Char('Customization name')
+    wine_updated = fields.Boolean('Wine Updated', readonly=1, related='product_wine_id.wine_updated', store=True)
 
     # _columns = {
     #             'w_iswine'              : fields.boolean('Select if wine'),

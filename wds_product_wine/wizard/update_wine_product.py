@@ -13,16 +13,25 @@ class update_wine_product(models.TransientModel):
     @api.model
     def _get_product_ids(self):
         res = {}
-        wine_id = self._context.get('active_id',False)
-        products = self.env['product.template'].search([('product_wine_id','=',wine_id)]).ids
+        active_id = self._context.get('active_id',False)
+        if self._context.get('active_model',False) == 'product.template':
+            product = self.env['product.template'].browse(active_id)
+            products = self.env['product.template'].search([('product_wine_id','=',product.product_wine_id.id),('id','!=',product.id)]).ids
+        else:
+            products = self.env['product.template'].search([('product_wine_id','=',active_id)]).ids
         return products
 
     @api.model
     def _get_result(self):
-        wine_id = self._context.get('active_id',False)
-        products = self.env['product.template'].search([('product_wine_id','=',wine_id)])
+        active_id = self._context.get('active_id',False)
+        if self._context.get('active_model',False) == 'product.template':
+            product = self.env['product.template'].browse(active_id)
+            products = self.env['product.template'].search([('product_wine_id','=',product.product_wine_id.id),('id','!=',product.id)])
+        else:
+            products = self.env['product.template'].search([('product_wine_id','=',active_id)])
         product_name = []
         for p in products:
+            _logger.info(p)
             product_name.append(p.name.encode('utf8'))
         list_product = '\n'.join(product_name)
         result = _("Following the changes, product names below will be updated : \n\n %s" % (list_product))
@@ -35,7 +44,11 @@ class update_wine_product(models.TransientModel):
     def update_products(self):
         for product in self.product_ids:
             product.write({})
-        wine_id = self._context.get('active_id',False)
-        wine = self.env['wds.product.wine'].browse(wine_id)
-        wine.write({'wine_updated':False})
+        active_id = self._context.get('active_id',False)
+        if self._context.get('active_model',False) == 'product.template':
+            product = self.env['product.template'].browse(active_id)
+            product.product_wine_id.write({'wine_updated':False})
+        else:
+            wine = self.env['wds.product.wine'].browse(active_id)
+            wine.write({'wine_updated':False})
         return {}

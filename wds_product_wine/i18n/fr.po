@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0-342f749\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-10 13:36+0000\n"
-"PO-Revision-Date: 2016-06-10 13:36+0000\n"
+"POT-Creation-Date: 2016-06-13 14:30+0000\n"
+"PO-Revision-Date: 2016-06-13 14:30+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -841,14 +841,12 @@ msgid "Est un vin"
 msgstr "Est un vin"
 
 #. module: wds_product_wine
-#: code:addons/wds_product_wine/wizard/update_wine_product.py:28
+#: code:addons/wds_product_wine/wizard/update_wine_product.py:37
 #, python-format
 msgid "Following the changes, product names below will be updated : \n"
 "\n"
 " %s"
-msgstr "Suite aux changements, les noms des produits suivants vont être modifiés : \n"
-"\n"
-" %s"
+msgstr "Suite aux changements, les noms des produits suivants vont être modifiés :  %s"
 
 #. module: wds_product_wine
 #: model:product.category,name:wds_product_wine.product_category_27
@@ -1219,6 +1217,7 @@ msgstr "Type"
 
 #. module: wds_product_wine
 #: model:ir.actions.act_window,name:wds_product_wine.update_wine_product_action
+#: view:product.template:wds_product_wine.product_inherited_template_form_view
 #: view:update.wine.product:wds_product_wine.update_wine_product_view_form
 #: view:wds.product.wine:wds_product_wine.view_product_wine_form
 msgid "Update products name"
@@ -1338,6 +1337,11 @@ msgstr "Taxe sur le vin"
 #: field:wds.product.wine,wine_type_id:0
 msgid "Wine Type"
 msgstr "Type de vin"
+
+#. module: wds_product_wine
+#: field:product.template,wine_updated:0
+msgid "Wine Updated"
+msgstr "Wine Updated"
 
 #. module: wds_product_wine
 #: model:ir.model,name:wds_product_wine.model_wds_appellation

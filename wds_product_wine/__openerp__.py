@@ -32,7 +32,7 @@
                        'vintage/press_view.xml',
                        'product/product_product_view.xml',
                        'product/product_product_data.xml',
-                        'menu_view.xml',
+                       'menu_view.xml',
 
                        #
                        ],
