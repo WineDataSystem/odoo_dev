@@ -146,7 +146,12 @@ class product_template(models.Model):
         context = dict(context or {})
         if vals.get('w_iswine',False):
             vals['name'] = self.get_wine_name(cr,uid,vals,False,context)
-        return super(product_template, self).create(cr,uid,vals,context)
+        res_id = super(product_template, self).create(cr,uid,vals,context)
+        if not vals.get('default_code',False):
+            v = {'default_code':res_id}
+            context['create_now'] = True
+            self.write(cr, uid, [res_id], v, context=context)
+        return res_id
 
     # @api.v8
     # @api.model
@@ -158,7 +163,7 @@ class product_template(models.Model):
     def write(self,cr,uid,ids,vals,context=None):
         context = dict(context or {})
         for product in self.browse(cr,uid,ids,context=context):
-            if product.w_iswine or vals.get('w_iswine',False):
+            if (product.w_iswine or vals.get('w_iswine',False)) and not context.get('create_now',False):
                 vals['name'] = self.get_wine_name(cr,uid,vals,product,context)
         return super(product_template, self).write(cr,uid,ids,vals,context)
 

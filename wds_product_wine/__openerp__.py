@@ -10,6 +10,7 @@
                        #do not import 'brand_manager' module!!(we have already the folder 'brand' in our project)!
                        'base',
                        'product',
+                       'wds_report',
                        # 'crm',
                        # 'sale',
                        # 'document',

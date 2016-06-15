@@ -11,10 +11,16 @@
             <field name="name">User</field>
         </record>
 
+        <record id="group_wds_wine_manager" model="res.groups">
+            <field name="category_id" ref="category_wds_report"/>
+            <field name="name">Wine Manager</field>
+            <field name="implied_ids" eval="[(4, ref('group_wds_user'))]"/>
+        </record>
+
         <record id="group_wds_manager" model="res.groups">
             <field name="category_id" ref="category_wds_report"/>
             <field name="name">Manager</field>
-            <field name="implied_ids" eval="[(4, ref('group_wds_user'))]"/>
+            <field name="implied_ids" eval="[(4, ref('group_wds_user')),(4, ref('group_wds_wine_manager'))]"/>
         </record>
 
 		<!--<record id="rule_responsible" model="ir.rule">-->
