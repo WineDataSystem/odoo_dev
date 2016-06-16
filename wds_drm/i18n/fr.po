@@ -1,0 +1,246 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* wds_drm
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0-342f749\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-06-16 14:47+0000\n"
+"PO-Revision-Date: 2016-06-16 14:47+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: wds_drm
+#: selection:wds.drm.preview.report,winetax:0
+msgid "Acquit"
+msgstr "Acquit"
+
+#. module: wds_drm
+#: field:wds.drm.preview.report,alcoholic_strength:0
+msgid "Alcoholic strength (%vol.)"
+msgstr "Degré d'alcool (%vol.)"
+
+#. module: wds_drm
+#: view:wds.drm.preview.report:wds_drm.wds_drm_preview_report_search_view
+msgid "Appellation"
+msgstr "Appellation"
+
+#. module: wds_drm
+#: code:addons/wds_drm/report/wds_drm_preview_report.py:29
+#: selection:wds.drm.preview.report,month:0
+#, python-format
+msgid "April"
+msgstr "Avril"
+
+#. module: wds_drm
+#: code:addons/wds_drm/report/wds_drm_preview_report.py:33
+#: selection:wds.drm.preview.report,month:0
+#, python-format
+msgid "August"
+msgstr "Août"
+
+#. module: wds_drm
+#: selection:wds.drm.preview.report,winetax:0
+msgid "CRD"
+msgstr "CRD"
+
+#. module: wds_drm
+#: view:wds.drm.preview.report:wds_drm.wds_drm_preview_report_search_view
+msgid "Country"
+msgstr "Pays"
+
+#. module: wds_drm
+#: view:wds.drm.preview.report:wds_drm.wds_drm_preview_report_search_view
+#: field:wds.drm.preview.report,country_group_id:0
+msgid "Country Group"
+msgstr "Groupe Pays"
+
+#. module: wds_drm
+#: field:wds.drm.preview.report,date:0
+msgid "Date"
+msgstr "Date"
+
+#. module: wds_drm
+#: code:addons/wds_drm/report/wds_drm_preview_report.py:37
+#: selection:wds.drm.preview.report,month:0
+#, python-format
+msgid "December"
+msgstr "Décembre"
+
+#. module: wds_drm
+#: field:wds.drm.preview.report,country_id:0
+msgid "Destination country"
+msgstr "Pays de destination"
+
+#. module: wds_drm
+#: code:addons/wds_drm/report/wds_drm_preview_report.py:27
+#: selection:wds.drm.preview.report,month:0
+#, python-format
+msgid "February"
+msgstr "Février"
+
+#. module: wds_drm
+#: view:wds.drm.preview.report:wds_drm.wds_drm_preview_report_search_view
+msgid "Group By..."
+msgstr "Grouper Par..."
+
+#. module: wds_drm
+#: field:wds.drm.preview.report,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: wds_drm
+#: code:addons/wds_drm/report/wds_drm_preview_report.py:26
+#: selection:wds.drm.preview.report,month:0
+#, python-format
+msgid "January"
+msgstr "Janvier"
+
+#. module: wds_drm
+#: code:addons/wds_drm/report/wds_drm_preview_report.py:32
+#: selection:wds.drm.preview.report,month:0
+#, python-format
+msgid "July"
+msgstr "Juillet"
+
+#. module: wds_drm
+#: code:addons/wds_drm/report/wds_drm_preview_report.py:31
+#: selection:wds.drm.preview.report,month:0
+#, python-format
+msgid "June"
+msgstr "Juin"
+
+#. module: wds_drm
+#: code:addons/wds_drm/report/wds_drm_preview_report.py:28
+#: selection:wds.drm.preview.report,month:0
+#, python-format
+msgid "March"
+msgstr "Mars"
+
+#. module: wds_drm
+#: code:addons/wds_drm/report/wds_drm_preview_report.py:30
+#: selection:wds.drm.preview.report,month:0
+#, python-format
+msgid "May"
+msgstr "Mai"
+
+#. module: wds_drm
+#: view:wds.drm.preview.report:wds_drm.wds_drm_preview_report_search_view
+#: field:wds.drm.preview.report,month:0
+msgid "Month"
+msgstr "Mois"
+
+#. module: wds_drm
+#: selection:wds.drm.preview.report,winetax:0
+msgid "Neutre"
+msgstr "Neutre"
+
+#. module: wds_drm
+#: view:wds.drm.preview.report:wds_drm.wds_drm_preview_report_search_view
+msgid "No alcohol"
+msgstr "Sans alcool"
+
+#. module: wds_drm
+#: code:addons/wds_drm/report/wds_drm_preview_report.py:36
+#: selection:wds.drm.preview.report,month:0
+#, python-format
+msgid "November"
+msgstr "Novembre"
+
+#. module: wds_drm
+#: code:addons/wds_drm/report/wds_drm_preview_report.py:35
+#: selection:wds.drm.preview.report,month:0
+#, python-format
+msgid "October"
+msgstr "Octobre"
+
+#. module: wds_drm
+#: view:wds.drm.preview.report:wds_drm.wds_drm_preview_report_search_view
+#: field:wds.drm.preview.report,partner_id:0
+msgid "Partner"
+msgstr "Partenaire"
+
+#. module: wds_drm
+#: model:ir.actions.act_window,name:wds_drm.action_wds_drm_preview_report
+#: model:ir.model,name:wds_drm.model_wds_drm_preview_report
+#: model:ir.ui.menu,name:wds_drm.menu_wds_drm_preview
+#: view:wds.drm.preview.report:wds_drm.wds_drm_preview_report_search_view
+#: view:wds.drm.preview.report:wds_drm.wds_drm_preview_report_tree_view
+msgid "Preview DRM"
+msgstr "Aperçu DRM"
+
+#. module: wds_drm
+#: view:wds.drm.preview.report:wds_drm.wds_drm_preview_report_search_view
+#: field:wds.drm.preview.report,product_id:0
+msgid "Product"
+msgstr "Produit"
+
+#. module: wds_drm
+#: field:wds.drm.preview.report,w_iswine:0
+msgid "Select if wine"
+msgstr "Est un vin?"
+
+#. module: wds_drm
+#: code:addons/wds_drm/report/wds_drm_preview_report.py:34
+#: selection:wds.drm.preview.report,month:0
+#, python-format
+msgid "September"
+msgstr "Septembre"
+
+#. module: wds_drm
+#: view:wds.drm.preview.report:wds_drm.wds_drm_preview_report_tree_view
+msgid "Total volume"
+msgstr "Volume Total"
+
+#. module: wds_drm
+#: field:wds.drm.preview.report,volume:0
+msgid "Volume (L)"
+msgstr "Volume (L)"
+
+#. module: wds_drm
+#: view:wds.drm.preview.report:wds_drm.wds_drm_preview_report_search_view
+#: field:wds.drm.preview.report,warehouse_id:0
+msgid "Warehouse"
+msgstr "Entrepôt"
+
+#. module: wds_drm
+#: view:wds.drm.preview.report:wds_drm.wds_drm_preview_report_search_view
+msgid "Wine"
+msgstr "Vin"
+
+#. module: wds_drm
+#: field:wds.drm.preview.report,winetax:0
+msgid "Wine Tax"
+msgstr "Taxe sur le vin"
+
+#. module: wds_drm
+#: view:wds.drm.preview.report:wds_drm.wds_drm_preview_report_search_view
+#: field:wds.drm.preview.report,wine_type_id:0
+msgid "Wine Type"
+msgstr "Type de vin"
+
+#. module: wds_drm
+#: view:wds.drm.preview.report:wds_drm.wds_drm_preview_report_search_view
+msgid "Winetax"
+msgstr "Taxe sur le vin"
+
+#. module: wds_drm
+#: view:wds.drm.preview.report:wds_drm.wds_drm_preview_report_search_view
+#: field:wds.drm.preview.report,year:0
+msgid "Year"
+msgstr "Année"
+
+#. module: wds_drm
+#: view:wds.drm.preview.report:wds_drm.wds_drm_preview_report_search_view
+msgid "Year N"
+msgstr "Année N"
+
+#. module: wds_drm
+#: field:wds.drm.preview.report,appellation_id:0
+msgid "appellation"
+msgstr "Appellation"
