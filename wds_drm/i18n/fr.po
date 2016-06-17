@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0-342f749\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-16 14:47+0000\n"
-"PO-Revision-Date: 2016-06-16 14:47+0000\n"
+"POT-Creation-Date: 2016-06-17 14:15+0000\n"
+"PO-Revision-Date: 2016-06-17 14:15+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -31,14 +31,14 @@ msgid "Appellation"
 msgstr "Appellation"
 
 #. module: wds_drm
-#: code:addons/wds_drm/report/wds_drm_preview_report.py:29
+#: code:addons/wds_drm/report/wds_drm_preview_report.py:31
 #: selection:wds.drm.preview.report,month:0
 #, python-format
 msgid "April"
 msgstr "Avril"
 
 #. module: wds_drm
-#: code:addons/wds_drm/report/wds_drm_preview_report.py:33
+#: code:addons/wds_drm/report/wds_drm_preview_report.py:35
 #: selection:wds.drm.preview.report,month:0
 #, python-format
 msgid "August"
@@ -48,6 +48,12 @@ msgstr "Août"
 #: selection:wds.drm.preview.report,winetax:0
 msgid "CRD"
 msgstr "CRD"
+
+#. module: wds_drm
+#: view:wds.drm.preview.report:wds_drm.wds_drm_preview_report_search_view
+#: field:wds.drm.preview.report,color_id:0
+msgid "Color"
+msgstr "Couleur"
 
 #. module: wds_drm
 #: view:wds.drm.preview.report:wds_drm.wds_drm_preview_report_search_view
@@ -66,7 +72,7 @@ msgid "Date"
 msgstr "Date"
 
 #. module: wds_drm
-#: code:addons/wds_drm/report/wds_drm_preview_report.py:37
+#: code:addons/wds_drm/report/wds_drm_preview_report.py:39
 #: selection:wds.drm.preview.report,month:0
 #, python-format
 msgid "December"
@@ -78,7 +84,7 @@ msgid "Destination country"
 msgstr "Pays de destination"
 
 #. module: wds_drm
-#: code:addons/wds_drm/report/wds_drm_preview_report.py:27
+#: code:addons/wds_drm/report/wds_drm_preview_report.py:29
 #: selection:wds.drm.preview.report,month:0
 #, python-format
 msgid "February"
@@ -95,39 +101,54 @@ msgid "ID"
 msgstr "ID"
 
 #. module: wds_drm
-#: code:addons/wds_drm/report/wds_drm_preview_report.py:26
+#: code:addons/wds_drm/report/wds_drm_preview_report.py:28
 #: selection:wds.drm.preview.report,month:0
 #, python-format
 msgid "January"
 msgstr "Janvier"
 
 #. module: wds_drm
-#: code:addons/wds_drm/report/wds_drm_preview_report.py:32
+#: code:addons/wds_drm/report/wds_drm_preview_report.py:34
 #: selection:wds.drm.preview.report,month:0
 #, python-format
 msgid "July"
 msgstr "Juillet"
 
 #. module: wds_drm
-#: code:addons/wds_drm/report/wds_drm_preview_report.py:31
+#: code:addons/wds_drm/report/wds_drm_preview_report.py:33
 #: selection:wds.drm.preview.report,month:0
 #, python-format
 msgid "June"
 msgstr "Juin"
 
 #. module: wds_drm
-#: code:addons/wds_drm/report/wds_drm_preview_report.py:28
+#: code:addons/wds_drm/report/wds_drm_preview_report.py:30
 #: selection:wds.drm.preview.report,month:0
 #, python-format
 msgid "March"
 msgstr "Mars"
 
 #. module: wds_drm
-#: code:addons/wds_drm/report/wds_drm_preview_report.py:30
+#: code:addons/wds_drm/report/wds_drm_preview_report.py:32
 #: selection:wds.drm.preview.report,month:0
 #, python-format
 msgid "May"
 msgstr "Mai"
+
+#. module: wds_drm
+#: view:wds.drm.preview.report:wds_drm.wds_drm_preview_report_search_view
+msgid "Mois M"
+msgstr "Mois M"
+
+#. module: wds_drm
+#: view:wds.drm.preview.report:wds_drm.wds_drm_preview_report_search_view
+msgid "Mois M-1"
+msgstr "Mois M-1"
+
+#. module: wds_drm
+#: view:wds.drm.preview.report:wds_drm.wds_drm_preview_report_search_view
+msgid "Mois M-2"
+msgstr "Mois M-2"
 
 #. module: wds_drm
 #: view:wds.drm.preview.report:wds_drm.wds_drm_preview_report_search_view
@@ -146,14 +167,14 @@ msgid "No alcohol"
 msgstr "Sans alcool"
 
 #. module: wds_drm
-#: code:addons/wds_drm/report/wds_drm_preview_report.py:36
+#: code:addons/wds_drm/report/wds_drm_preview_report.py:38
 #: selection:wds.drm.preview.report,month:0
 #, python-format
 msgid "November"
 msgstr "Novembre"
 
 #. module: wds_drm
-#: code:addons/wds_drm/report/wds_drm_preview_report.py:35
+#: code:addons/wds_drm/report/wds_drm_preview_report.py:37
 #: selection:wds.drm.preview.report,month:0
 #, python-format
 msgid "October"
@@ -186,7 +207,7 @@ msgid "Select if wine"
 msgstr "Est un vin?"
 
 #. module: wds_drm
-#: code:addons/wds_drm/report/wds_drm_preview_report.py:34
+#: code:addons/wds_drm/report/wds_drm_preview_report.py:36
 #: selection:wds.drm.preview.report,month:0
 #, python-format
 msgid "September"

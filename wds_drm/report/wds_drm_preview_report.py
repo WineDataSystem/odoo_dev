@@ -59,6 +59,7 @@ class wds_drm_preview_report(models.Model):
     alcoholic_strength = fields.Float(tools.ustr('Alcoholic strength (%vol.)'))
     w_iswine = fields.Boolean('Select if wine', required=True)
     warehouse_id = fields.Many2one('stock.warehouse','Warehouse',required=True)
+    color_id = fields.Many2one('wds.color','Color', required=True)
 
 
     def init(self,cr):
@@ -79,6 +80,7 @@ class wds_drm_preview_report(models.Model):
                     pt.winetax as winetax,
                     w.wine_type_id as wine_type_id,
                     w.appellation_id as appellation_id,
+                    w.color_id as color_id,
                     {0} as country_id,
                     CASE WHEN cg_rel.res_country_group_id is not Null THEN cg_rel.res_country_group_id ELSE {1} END as country_group_id,
                     CASE WHEN m.partner_id is Null THEN sp.partner_id ELSE m.partner_id END as partner_id,
@@ -90,7 +92,7 @@ class wds_drm_preview_report(models.Model):
                         END)
                         ELSE m.warehouse_id
                     END as warehouse_id,
-                    (CASE WHEN pu.uom_type = 'bigger' THEN product_uom_qty*pu.factor ELSE product_uom_qty/pu.factor END) as volume
+                    (CASE WHEN pu.uom_type = 'bigger' THEN product_uom_qty/pu.factor ELSE product_uom_qty*pu.factor END) as volume
                 FROM stock_move m LEFT JOIN product_product p ON p.id = m.product_id
                 LEFT JOIN product_uom pu ON pu.id = m.product_uom
                 LEFT JOIN stock_picking_type spt ON spt.id = m.picking_type_id

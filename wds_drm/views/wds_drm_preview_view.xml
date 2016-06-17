@@ -20,6 +20,7 @@
               <field name="winetax"/>
               <field name="wine_type_id"/>
               <field name="appellation_id"/>
+              <field name="color_id"/>
               <field name="country_id"/>
               <field name="country_group_id"/>
               <field name="partner_id"/>
@@ -32,6 +33,7 @@
                 <filter string="Winetax" context="{'group_by':'winetax'}"/>
                 <filter string="Wine Type" context="{'group_by':'wine_type_id'}"/>
                 <filter string="Appellation" context="{'group_by':'appellation_id'}"/>
+                <filter string="Color" context="{'group_by':'color_id'}"/>
                 <filter string="Country" context="{'group_by':'country_id'}"/>
                 <filter string="Country Group" context="{'group_by':'country_group_id'}"/>
                 <filter string="Partner" context="{'group_by':'partner_id'}"/>
@@ -53,6 +55,7 @@
                 <field name="winetax"/>
                 <field name="wine_type_id"/>
                 <field name="appellation_id"/>
+                <field name="color_id"/>
                 <field name="volume" sum="Total volume"/>
                 <field name="country_id"/>
                 <field name="country_group_id" invisible="1"/>
