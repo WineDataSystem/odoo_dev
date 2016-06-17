@@ -99,7 +99,7 @@ class wds_drm_preview_report(models.Model):
                 LEFT JOIN stock_warehouse sw ON sw.id = spt.warehouse_id
                 LEFT JOIN stock_picking sp ON sp.id = m.picking_id
                 LEFT JOIN product_template pt ON pt.id = p.product_tmpl_id
-                LEFT JOIN res_partner part ON part.id = m.partner_id
+                LEFT JOIN res_partner part ON part.id = CASE WHEN m.partner_id is Null THEN sp.partner_id ELSE m.partner_id END
                 LEFT JOIN wds_product_wine w ON w.id = pt.product_wine_id
                 LEFT JOIN res_country c ON c.id = ({0})
                 LEFT JOIN res_country_res_country_group_rel cg_rel ON cg_rel.res_country_id = ({0})
