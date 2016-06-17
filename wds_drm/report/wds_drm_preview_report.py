@@ -21,6 +21,8 @@
 ##############################################################################
 
 from openerp import tools, models, fields, api, _
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
 MONTHS = [
     (1,_('January')),
