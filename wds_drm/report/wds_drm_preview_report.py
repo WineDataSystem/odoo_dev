@@ -73,7 +73,7 @@ class wds_drm_preview_report(models.Model):
         cr.execute("""CREATE or REPLACE view wds_drm_preview_report as (
                 SELECT
                     m.id as id,
-                    m.date date,
+                    m.date::timestamp::date as date,
                     EXTRACT (MONTH FROM m.date) as month,
                     EXTRACT (YEAR FROM m.date) as year,
                     pt.id as product_id,

@@ -9,7 +9,7 @@
     'category': 'sales',
     'depends'       : [
                        #do not import 'brand_manager' module!!(we have already the folder 'brand' in our project)!
-        'base', 'account', 'sale'
+        'base', 'account', 'sale', 'point_of_sale', 'wds_report'
                        ],
     'demo'          : [
                        ],
@@ -18,7 +18,10 @@
 
                        ],
     'data'          : [
+                      "static/src/xml/templates.xml",
+                      "wizard/sale_force_credit_limit_view.xml",
                       "workflow/sale_workflow.xml",
+                      "workflow/pos_workflow.xml",
                        ],
 #     'test'             : ['static/src/tests/timer.js'],
 

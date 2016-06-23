@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="sale_force_credit_limit_view_form" model="ir.ui.view">
+            <field name="name">sale.force.credit.limit.view.form</field>
+            <field name="model">sale.force.credit.limit</field>
+            <field name="arch" type="xml">
+                <form string="Force credit limit?" version="7.0">
+                    <h4><center><field name="name" nolabel="1" readonly = "1"/></center></h4>
+                    <newline/>
+                    <footer>
+                        <button name="force_credit_limit" string="Force" type="object" class="oe_highlight"/> or
+                        <button special="cancel" string="Close" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="sale_force_credit_limit_action">
+            <field name="name">Force credit limit?</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.force.credit.limit</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</openerp>
