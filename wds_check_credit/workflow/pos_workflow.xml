@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+			<record model="workflow.transition" id="point_of_sale.trans_draft_paid">
+	      <field name="act_from" ref="point_of_sale.act_draft"/>
+	      <field name="act_to" ref="point_of_sale.act_paid"/>
+	      <field name="condition">check_credit() and test_paid()</field>
+	      <field name="signal">paid</field>
+	    </record>
+    </data>
+</openerp>
