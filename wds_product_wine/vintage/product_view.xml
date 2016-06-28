@@ -72,9 +72,13 @@
 				<field eval="99" name="priority"/>
 				<field name="inherit_id" ref="product.product_template_only_form_view"/>
 				<field name="arch" type="xml">
-						<field name="default_code" position="attributes">
-							<attribute name="readonly">1</attribute>
-						</field>
+					<field name="default_code" position="replace"/>
+					<field name="id" position="replace"/>
+					<field name="id" position="replace">
+						<group>
+							<field name="default_code" readonly="1"/>
+						</group>
+					</field>
 				</field>
 		</record>
 
@@ -112,6 +116,9 @@
 				<field name="model">product.template</field>
 				<field name="inherit_id" ref="product.product_template_tree_view"/>
 				<field name="arch" type="xml">
+					<field name="id" position="replace">
+						<field name="default_code"/>
+					</field>
 					<field name="name" position="after">
 						<field name="vintage" options='{"no_open":True}' invisible="context.get('vintage',False)" />
 						<field name="alcoholic_strength"  />
