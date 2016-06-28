@@ -19,7 +19,7 @@
     'version': '0.3',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','account','mrp','product','sale','wds_zip_to_invoice'],
+    'depends': ['base','account','product','sale','wds_zip_to_invoice'],
 
     # always loaded
     'data': [
