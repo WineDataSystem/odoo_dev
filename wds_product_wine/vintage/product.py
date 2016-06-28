@@ -72,6 +72,8 @@ class product_template(models.Model):
                     if wine.appellation_id or wine.color_id:
                         if wine.appellation_id:
                             wine_vals['appellation'] = wine.appellation_id.name
+                            #  PPP => mémorisation type d'appellation
+                            wine_vals['type_appellation'] = wine.appellation_id.appellation_type_id.name
                         if wine.color_id:
                             wine_vals['color'] = wine.color_id.name
                 else:
@@ -81,6 +83,8 @@ class product_template(models.Model):
                     if product_id.product_wine_id.appellation_id or product_id.product_wine_id.color_id:
                         if product_id.product_wine_id.appellation_id:
                             wine_vals['appellation'] = product_id.product_wine_id.appellation_id.name
+                            #  PPP => mémorisation type d'appellation
+                            wine_vals['type_appellation'] = product_id.product_wine_id.appellation_id.appellation_type_id.name
                         if product_id.product_wine_id.color_id:
                             wine_vals['color'] = product_id.product_wine_id.color_id.name
             name += wine_vals['name']
@@ -100,7 +104,8 @@ class product_template(models.Model):
                 name += ' ('
                 if wine_vals.get('appellation',False) or wine_vals.get('color',False) or wine_vals.get('grape',False):
                     if wine_vals.get('appellation',False):
-                        name += wine_vals['appellation']
+                        # PPP ajout du type d'appellation devant l'appellation
+                        name += wine_vals['type_appellation'] + ' ' + wine_vals['appellation']
                     if wine_vals.get('grape', False):
                         name += ', ' + wine_vals['grape']
                     if wine_vals.get('color',False):
@@ -124,9 +129,13 @@ class product_template(models.Model):
                     name += ', '+product_id.agricultural_type_id.name
                 ## WINETAX
                 if vals.has_key('winetax') and vals['winetax']:
-                    name += ', '+vals['winetax']
+                    # PPP Wine tax n'apparait dans désignation que si CRD
+                    if vals['winetax'] == 'CRD':
+                        name += ', '+vals['winetax']
                 elif not vals.has_key('winetax') and product_id and product_id.winetax:
-                    name += ', '+product_id.winetax
+                    # PPP Wine tax n'apparait dans désignation que si CRD
+                    if product_id.winetax=='CRD':
+                        name += ', '+product_id.winetax
                 ## CUSTOMIZE NAME
                 if vals.has_key('customize_name') and vals['customize_name']:
                     name += ', '+vals['customize_name']
